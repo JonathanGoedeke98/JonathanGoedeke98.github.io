@@ -13,6 +13,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles to ensure centering */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .centered-card {
+            max-width: 600px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <!-- Skip to content link for accessibility -->
@@ -61,8 +74,9 @@
     <!-- Contact Information Section -->
     <section>
         <div class="container">
-            <div class="grid grid-center">
-                <div class="card reveal" style="max-width: 600px; margin: 0 auto;">
+            <!-- Replaced grid with flex container for more reliable centering -->
+            <div class="center-container">
+                <div class="card reveal centered-card">
                     <h2 class="card-title">Contact Information</h2>
                     <div class="contact-info">
                         <p><i class="fas fa-envelope"></i> <a href="mailto:j.godeke@lse.ac.uk">j.godeke@lse.ac.uk</a></p>
