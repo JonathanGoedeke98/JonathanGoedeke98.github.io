@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    
+    <!-- Loading animation -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Jonathan Gödeke</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="education-experience.html">Education & Experience</a></li>
+                    <li><a href="research.html">Research Interests</a></li>
+                    <li><a href="theses.html">Theses</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>Get in Touch</h1>
+                <p>I'm always interested in research collaborations and academic discussions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section>
+        <div class="container">
+            <div class="grid">
+                <div class="card reveal">
+                    <h2 class="card-title">Contact Information</h2>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:j.godeke@lse.ac.uk">j.godeke@lse.ac.uk</a></p>
+                        <p><i class="fas fa-university"></i> University of Cologne, Department of Economics</p>
+                        <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener">LinkedIn Profile</a></p>
+                    </div>
+                    
+                    <h3 class="mt-2">Connect With Me</h3>
+                    <ul class="social-icons" style="margin-top: 1rem;">
+                        <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover-lift"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" aria-label="Twitter" class="hover-lift"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" aria-label="Google Scholar" class="hover-lift"><i class="fas fa-graduation-cap"></i></a></li>
+                        <li><a href="#" aria-label="ResearchGate" class="hover-lift"><i class="fab fa-researchgate"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="card reveal" style="animation-delay: 0.2s;">
+                    <h2 class="card-title">Send Me a Message</h2>
+                    <form class="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="required">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="required">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="required">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn hover-lift">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Collaboration Section -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Research Collaboration</h2>
+            <div class="card reveal">
+                <p>I'm open to collaborating on research projects related to my areas of interest, including:</p>
+                <ul>
+                    <li>Distributional policy analysis</li>
+                    <li>Welfare measures and subjective well-being</li>
+                    <li>Social preferences and distributive justice</li>
+                    <li>Health economics and health behaviors</li>
+                </ul>
+                <p>If you're working on a project in these areas and are looking for a collaborator, please reach out with details about your research. I'm particularly interested in interdisciplinary approaches that combine economic methods with insights from psychology, sociology, and public health.</p>
+                <div class="text-center mt-2">
+                    <a href="mailto:j.godeke@lse.ac.uk" class="btn hover-lift"><i class="fas fa-envelope"></i> Email Me About Collaboration</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
+                <li><a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

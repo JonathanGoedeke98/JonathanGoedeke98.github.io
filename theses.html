@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theses | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    
+    <!-- Loading animation -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Jonathan Gödeke</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="education-experience.html">Education & Experience</a></li>
+                    <li><a href="research.html">Research Interests</a></li>
+                    <li><a href="theses.html" class="active">Theses</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>Academic Work</h1>
+                <p>Theses and academic papers from my studies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master's Thesis Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Master's Thesis</h2>
+            <div class="card reveal">
+                <h3 class="publication-title">Distribution Sensitive Policy Analysis: Constructing a Prioritarian SWF using Causal Evidence on Life Satisfaction</h3>
+                <p class="publication-meta">MSc in Behavioral Science | London School of Economics and Political Science | 2024</p>
+                <p class="publication-meta">Supervised by Dr. Christian Krekel</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h4>Abstract</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>This thesis develops a framework for incorporating distributional concerns into policy analysis using causal evidence on life satisfaction. By constructing a prioritarian social welfare function that gives greater weight to improvements in well-being for those who are worse off, the analysis moves beyond traditional approaches that focus solely on average effects.</p>
+                        
+                        <p>Using data from several large-scale studies, I demonstrate how this approach can be applied to evaluate the distributional impacts of various policy interventions, including COVID-19 lockdown measures, income support programs, and health interventions. The results highlight the importance of considering heterogeneous effects across the distribution of outcomes when evaluating policy effectiveness.</p>
+                        
+                        <p>The thesis contributes to the growing literature on using subjective well-being measures in policy evaluation and offers a practical methodology for policymakers interested in equity considerations alongside efficiency goals.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-2">
+                    <h4>Key Contributions:</h4>
+                    <ul>
+                        <li>Development of a methodological framework for distribution-sensitive policy analysis</li>
+                        <li>Integration of causal inference methods with normative welfare economics</li>
+                        <li>Application to real-world policy examples with heterogeneous effects</li>
+                        <li>Practical guidance for policymakers on incorporating distributional concerns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bachelor's Thesis Section -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Bachelor's Thesis</h2>
+            <div class="card reveal">
+                <h3 class="publication-title">The Effect of Opening Hours Liberalizations on Health Behaviors in Germany</h3>
+                <p class="publication-meta">BSc in Economics | University of Cologne | 2023</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h4>Abstract</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>This thesis examines the impact of retail opening hours liberalization in Germany on various health behaviors, including alcohol consumption, smoking, physical activity, and dietary choices. Using a difference-in-differences approach that exploits the staggered implementation of liberalization across German states, I identify causal effects on health-related behaviors.</p>
+                        
+                        <p>The analysis draws on data from the German Socio-Economic Panel (SOEP) and regional health surveys. Results indicate that extended shopping hours led to modest increases in alcohol consumption and convenience food purchases, particularly among younger adults and urban residents, while having minimal effects on physical activity patterns.</p>
+                        
+                        <p>The findings contribute to our understanding of how regulatory changes in retail markets can have unintended consequences for public health, with implications for policy design that considers health impacts alongside economic benefits.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-2">
+                    <h4>Key Contributions:</h4>
+                    <ul>
+                        <li>Causal analysis of regulatory policy effects on health behaviors</li>
+                        <li>Identification of heterogeneous effects across demographic groups</li>
+                        <li>Integration of economic and public health perspectives</li>
+                        <li>Policy recommendations for mitigating negative health externalities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Papers Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Academic Papers</h2>
+            
+            <div class="publication reveal">
+                <h3 class="publication-title">The Effect of Cash Transfers on Political Support</h3>
+                <p class="publication-meta">Essay | London School of Economics and Political Science | 2024 | Grade: 83%</p>
+                <p>An examination of how cash transfer programs influence political support among recipients and the broader implications for policy design. This paper reviews evidence from multiple countries and contexts, analyzing the mechanisms through which cash transfers affect political attitudes and voting behavior.</p>
+            </div>
+            
+            <div class="publication reveal" style="animation-delay: 0.2s;">
+                <h3 class="publication-title">Determinants of Vegetarianism: A Social Norms Perspective</h3>
+                <p class="publication-meta">Term Paper | University of Cologne | 2022 | Grade: 1.3 (German scale)</p>
+                <p>This paper investigates the role of social norms in shaping dietary choices, with a focus on vegetarianism. Using survey data and experimental evidence, it examines how descriptive and injunctive norms influence the adoption of vegetarian diets across different social contexts.</p>
+            </div>
+            
+            <div class="publication reveal" style="animation-delay: 0.4s;">
+                <h3 class="publication-title">Effort Provision in Medical Processes: An Experimental Approach</h3>
+                <p class="publication-meta">Research Project | University of Cologne | 2023</p>
+                <p>A collaborative research project examining how different incentive structures affect effort provision among healthcare providers. Using a laboratory experiment, the study tests various theoretical predictions about intrinsic and extrinsic motivation in medical decision-making.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
+                <li><a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

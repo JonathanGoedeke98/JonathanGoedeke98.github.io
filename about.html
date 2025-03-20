@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    
+    <!-- Loading animation -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Jonathan Gödeke</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="education-experience.html">Education & Experience</a></li>
+                    <li><a href="research.html">Research Interests</a></li>
+                    <li><a href="theses.html">Theses</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>About Me</h1>
+                <p>Economist & Behavioral Scientist with a focus on distributional policy analysis and welfare measures</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biography Section -->
+    <section>
+        <div class="container">
+            <div class="card reveal">
+                <h2 class="section-title">Biography</h2>
+                <p>I am an economist and behavioral scientist specializing in distributional policy analysis, welfare measures, and social preferences. My research focuses on understanding how policies affect different segments of the population, with particular attention to equity considerations and subjective well-being.</p>
+                
+                <p>Currently pursuing an MSc in Economics at the University of Cologne with a specialization in Microeconometrics and Economic Policy, I also hold an MSc in Behavioral Science from the London School of Economics and Political Science, where I focused on policy analysis and subjective wellbeing measures.</p>
+                
+                <p>My academic journey is driven by a passion for understanding how economic policies impact human welfare across different population segments. I combine rigorous quantitative methods with insights from behavioral science to develop more nuanced approaches to policy evaluation.</p>
+                
+                <p>In addition to my research, I am committed to teaching and mentoring the next generation of economists and social scientists. As a tutor and exam grader at the University of Cologne, I help undergraduate students develop strong foundations in statistics, econometrics, and economic theory.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests Section -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Research Interests</h2>
+            <div class="grid">
+                <div class="card reveal">
+                    <div class="interest-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3 class="card-title">Distributional Policy Analyses</h3>
+                    <p>Exploring how policies affect different segments of the population, with a focus on welfare distribution and equity considerations.</p>
+                </div>
+                <div class="card reveal" style="animation-delay: 0.2s;">
+                    <div class="interest-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="card-title">Distributional and Social Preferences</h3>
+                    <p>Investigating how individuals and societies value different distributions of resources and outcomes across populations.</p>
+                </div>
+                <div class="card reveal" style="animation-delay: 0.4s;">
+                    <div class="interest-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="card-title">Welfare Measures</h3>
+                    <p>Developing and analyzing metrics for measuring societal welfare, with particular attention to subjective well-being indicators.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="interest-icon"><i class="fas fa-smile"></i></div>
+                    <h3 class="card-title">Subjective Wellbeing Measures</h3>
+                    <p>Exploring how subjective wellbeing data can be used to inform policy decisions and evaluate interventions.</p>
+                </div>
+                <div class="card reveal" style="animation-delay: 0.2s;">
+                    <div class="interest-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3 class="card-title">Causal Analysis</h3>
+                    <p>Applying causal inference methods to understand the impact of policies and interventions on various outcomes.</p>
+                </div>
+                <div class="card reveal" style="animation-delay: 0.4s;">
+                    <div class="interest-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3 class="card-title">Health Economics</h3>
+                    <p>Studying economic aspects of healthcare systems, health behaviors, and health outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Skills & Languages</h2>
+            <div class="grid">
+                <div class="card reveal">
+                    <h3 class="card-title">Technical Skills</h3>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>R</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Stata</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>oTree</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Qualtrics</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="65"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>LaTeX</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="85"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card reveal" style="animation-delay: 0.2s;">
+                    <h3 class="card-title">Research Skills</h3>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Statistics and Econometrics</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>(Quasi-) Experimental Design</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Welfare Measures</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Policy Analyses</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Survey Design</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Data Analysis</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="90"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card reveal" style="animation-delay: 0.4s;">
+                    <h3 class="card-title">Languages</h3>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>German</span>
+                            <span>Native</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="100"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>English</span>
+                            <span>TOEFL 111/120</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Spanish</span>
+                            <span>B1</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="60"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>French</span>
+                            <span>Willing to learn</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-percent" data-percent="20"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Section -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Curriculum Vitae</h2>
+            <div class="text-center reveal">
+                <p>For a complete overview of my academic and professional background, please download my CV.</p>
+                <a href="files/CV_Jonathan_Goedeke.pdf" class="btn hover-lift" download><i class="fas fa-download"></i> Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
+                <li><a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
