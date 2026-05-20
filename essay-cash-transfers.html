@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Transfers & Political Support | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .essay-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin: 1.2rem 0;
+        }
+        .essay-table th {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.6rem 0.75rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        .essay-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+            vertical-align: top;
+        }
+        .essay-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+        .essay-table tr:nth-child(even) {
+            background-color: rgba(0,0,0,0.025);
+        }
+        .essay-table .se {
+            color: #666;
+            font-size: 0.83rem;
+        }
+        .essay-table .table-note {
+            font-size: 0.78rem;
+            color: #666;
+            text-align: left;
+            padding: 0.4rem 0.75rem;
+            border-top: 2px solid #ccc;
+        }
+        .table-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-bottom: 0.3rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .figure-box {
+            background: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+        .figure-box .figure-label {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+        .figure-box .figure-title {
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .finding-highlight {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .finding-highlight .big-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        .finding-highlight .big-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        .finding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .finding-stat {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .finding-stat .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+        }
+        .finding-stat .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.2rem;
+        }
+        .method-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        .method-step-num {
+            background: var(--secondary-color);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .method-step-content h4 {
+            margin: 0 0 0.25rem 0;
+            font-size: 0.95rem;
+        }
+        .method-step-content p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: #555;
+        }
+        .section-divider {
+            border: none;
+            border-top: 2px solid var(--light-color);
+            margin: 2.5rem 0;
+        }
+        .critique-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 0.75rem 0;
+        }
+        .critique-box h4 {
+            margin: 0 0 0.4rem 0;
+            font-size: 0.92rem;
+            color: var(--secondary-color);
+        }
+        .critique-box p {
+            margin: 0;
+            font-size: 0.87rem;
+        }
+        @media (max-width: 600px) {
+            .essay-table { font-size: 0.78rem; }
+            .essay-table th, .essay-table td { padding: 0.4rem 0.4rem; }
+            .finding-highlight .big-number { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="theses.html" class="active">Academic Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;"><a href="theses.html" style="color: inherit; text-decoration: underline;">Academic Work</a> &rsaquo; Quantitative Policy Analysis</p>
+                <h1 style="font-size: 1.8rem; margin-bottom: 0.6rem;">The Effect of Cash Transfers on Political Support</h1>
+                <p style="font-size: 0.95rem; opacity: 0.9; margin-bottom: 1rem;">Replication and Extension of Manacorda, Miguel &amp; Vigorito (2011) &mdash; <em>AEJ: Applied Economics</em><br>LSE &mdash; Quantitative Methods &nbsp;|&nbsp; 2024 &nbsp;|&nbsp; Grade: <strong>83% &mdash; Distinction</strong></p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; margin-bottom: 1.2rem;">
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Regression Discontinuity Design</span>
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Stata</span>
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Causal Inference</span>
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Robustness Testing</span>
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Policy Evaluation</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="files/PB4A7_Cash_Transfers_Political_Support_Report.pdf" target="_blank" rel="noopener" class="btn"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Full Report (PDF)</a>
+                    <a href="files/PB4A7_Cash_Transfers_Political_Support_Poster.pdf" target="_blank" rel="noopener" class="btn btn-outline" style="border-color: rgba(255,255,255,0.7); color: inherit;"><i class="fas fa-image" style="margin-right: 0.4rem;"></i>Research Poster</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Finding -->
+    <section>
+        <div class="container">
+            <div class="finding-highlight reveal">
+                <span class="big-number">~10%</span>
+                <span class="big-label">Causal increase in political support for Uruguay's incumbent government among PANES cash transfer recipients &mdash; robust across OLS, donut-hole, bandwidth sensitivity, and local polynomial specifications</span>
+            </div>
+
+            <div class="finding-grid reveal">
+                <div class="finding-stat">
+                    <span class="stat-number">0.1096***</span>
+                    <span class="stat-label">Effect on gov. support 2007 (OLS linear)</span>
+                </div>
+                <div class="finding-stat">
+                    <span class="stat-number">0.0998**</span>
+                    <span class="stat-label">Persistent effect post-program (2008)</span>
+                </div>
+                <div class="finding-stat">
+                    <span class="stat-number">0.1515***</span>
+                    <span class="stat-label">Effect on confidence in MIDES</span>
+                </div>
+                <div class="finding-stat">
+                    <span class="stat-number">0.4111</span>
+                    <span class="stat-label">McCrary test p-value (no manipulation)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Context -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Research Context</h2>
+            <div class="card reveal">
+                <p>Manacorda, Miguel &amp; Vigorito (2011) investigate whether Uruguay's PANES anti-poverty programme &mdash; a cash and food-card transfer to the poorest households &mdash; causally increased political support for the incumbent centre-left government. This replication uses a similar dataset covering ±0.02 around the eligibility cutoff and reconstructs the full empirical pipeline from scratch in Stata.</p>
+                <p style="margin-top: 0.8rem;">PANES (Plan de Atención Nacional a la Emergencia Social) ran from 2005 to 2007 and targeted households below a predicted income score threshold. Participants were surveyed at programme start (2005), 18 months into the programme (2007), and one year after it ended (2008). Self-reported political support was measured as a preference comparison of the incumbent government relative to the previous one.</p>
+                <p style="margin-top: 0.8rem;">The key question: does receiving a government transfer causally shift political loyalty toward the distributing government? This has first-order implications for how democratic governments deploy social spending and whether welfare programmes function as electoral tools.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Identification Strategy -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Identification Strategy: Sharp RDD</h2>
+            <div class="card reveal">
+                <p>The core identification challenge is that PANES eligibility is correlated with poverty and pre-existing political preferences &mdash; a simple comparison of recipients and non-recipients would be biased. The Regression Discontinuity Design (RDD) solves this by exploiting the sharp eligibility rule: households below the predicted income score cutoff (set to 0 after centring) received treatment, while those just above did not.</p>
+
+                <p style="margin-top: 0.8rem;">Near the cutoff, assignment is <em>as good as random</em> &mdash; households just below and just above the threshold are virtually identical in all baseline characteristics. This local quasi-randomisation yields an unbiased estimate of the Local Average Treatment Effect (LATE) for households around the poverty threshold.</p>
+
+                <p style="margin-top: 0.8rem; font-weight: 600;">The full analysis pipeline in Stata:</p>
+                <div style="margin-top: 1rem;">
+                    <div class="method-step">
+                        <div class="method-step-num">1</div>
+                        <div class="method-step-content">
+                            <h4>Visual inspection &amp; histograms</h4>
+                            <p>Plotted binned means of government support by income score (Figure 1) to confirm a visible discontinuity at the cutoff. Discrete and continuous histograms of the running variable checked for heaping (Figures 2–3).</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-num">2</div>
+                        <div class="method-step-content">
+                            <h4>McCrary density test</h4>
+                            <p>Formal test for manipulation of the running variable. A significant density jump at the cutoff would suggest households strategically selected into treatment &mdash; invalidating the RDD. Result: p = 0.4111, no evidence of manipulation.</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-num">3</div>
+                        <div class="method-step-content">
+                            <h4>Placebo regressions on pre-treatment covariates</h4>
+                            <p>Regressed baseline characteristics (gender, age, education, income) on treatment status. If the RDD is valid, no pre-treatment covariate should jump at the cutoff. One exception: mean household size showed a significant jump (p&lt;0.05), which was thereafter included as a control.</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-num">4</div>
+                        <div class="method-step-content">
+                            <h4>Main OLS regressions (linear &amp; polynomial)</h4>
+                            <p>Estimated the treatment effect on government support in 2007 (during PANES) and 2008 (after PANES), using linear and second-order polynomial specifications, with and without controls for household size.</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-num">5</div>
+                        <div class="method-step-content">
+                            <h4>Donut-hole robustness checks</h4>
+                            <p>Excluded observations within ±0.005 and ±0.002 of the cutoff to test sensitivity to potential heaping. If results hold after removing the most suspicious near-cutoff observations, confidence in the estimate increases.</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-num">6</div>
+                        <div class="method-step-content">
+                            <h4>Local polynomial regressions (bias-corrected, rdrobust)</h4>
+                            <p>Applied nonparametric local polynomial regression using the <em>rdrobust</em> package with optimal bandwidth selection (MSERD and MSETWO algorithms) and Epanechnikov kernel weighting to down-weight observations far from the cutoff.</p>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-num">7</div>
+                        <div class="method-step-content">
+                            <h4>Bandwidth sensitivity analysis</h4>
+                            <p>Plotted treatment coefficients at bandwidths of 0.005, 0.01, 0.015, and 0.02 to verify stability. A bandwidth-sensitive result would raise external validity concerns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continuity Checks -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Step 1 &amp; 2: Continuity of the Running Variable</h2>
+
+            <div class="card reveal">
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Visual Discontinuity Check</h3>
+                <p style="font-size: 0.9rem;">A preliminary plot of binned mean government support by income score (Figure 1) immediately reveals a visible jump at the cutoff &mdash; the first piece of evidence that PANES eligibility affects political support. This visual inspection motivates the full regression analysis.</p>
+
+                <div class="figure-box" style="margin-top: 1rem;">
+                    <div class="figure-label">Figure 1</div>
+                    <div class="figure-title">Government Support 2007 by Income Score</div>
+                    <p>Plotted means of self-reported government support by bins of the predicted income score, centred around the eligibility cutoff (0). Values to the left (PANES-eligible) are visibly higher than to the right (ineligible), with a clear drop at the threshold. Y-axis ranges from approximately 0.70 to 0.95. The red dashed line marks the policy cutoff.</p>
+                </div>
+
+                <h3 style="font-size: 1rem; margin: 1.2rem 0 0.5rem;">McCrary Density Test</h3>
+                <p style="font-size: 0.9rem;">The McCrary test (McCrary, 2008) formally tests whether the density of the running variable is continuous at the cutoff. A significant discontinuity would indicate that households strategically manipulated their predicted income score to gain PANES eligibility &mdash; which would invalidate local randomisation.</p>
+                <div class="figure-box" style="margin-top: 0.8rem;">
+                    <div class="figure-label">Figure 4</div>
+                    <div class="figure-title">McCrary Test &mdash; Density of Predicted Income Score at the Cutoff</div>
+                    <p>Shows the local polynomial density estimate on each side of the cutoff with 95% confidence intervals (red left, blue right). The confidence intervals overlap substantially at the threshold, and the density appears smooth across the cutoff. <strong>McCrary test p-value: 0.4111</strong> &mdash; no evidence of manipulation. The RDD's local randomisation assumption holds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placebo Regressions -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Step 3: Placebo Regressions on Covariates</h2>
+            <div class="card reveal">
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">A valid RDD requires that only the outcome &mdash; not pre-treatment characteristics &mdash; jumps at the cutoff. The table below regresses each baseline covariate on treatment status (being PANES-eligible). Significant coefficients would threaten the randomisation assumption.</p>
+
+                <div class="table-title">TABLE 1 — Placebo Regression with Baseline Characteristics</div>
+                <div style="overflow-x: auto;">
+                    <table class="essay-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Dependent Variable (2005 baseline)</th>
+                                <th>Coefficient<br>(std. error)</th>
+                                <th>Observations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Respondent is female</td>
+                                <td>-0.025<br><span class="se">(0.038)</span></td>
+                                <td>2,231</td>
+                            </tr>
+                            <tr>
+                                <td>2. Mean household size</td>
+                                <td><strong>-0.273**</strong><br><span class="se">(0.122)</span></td>
+                                <td>3,098</td>
+                            </tr>
+                            <tr>
+                                <td>3. Household average age</td>
+                                <td>-1.194<br><span class="se">(1.29)</span></td>
+                                <td>2,232</td>
+                            </tr>
+                            <tr>
+                                <td>4. Respondent age</td>
+                                <td>-0.92<br><span class="se">(1.242)</span></td>
+                                <td>2,231</td>
+                            </tr>
+                            <tr>
+                                <td>5. Respondent years of education</td>
+                                <td>0.228<br><span class="se">(0.227)</span></td>
+                                <td>2,206</td>
+                            </tr>
+                            <tr>
+                                <td>6. Respondent voted in 2004 elections</td>
+                                <td>0.0310<br><span class="se">(0.024)</span></td>
+                                <td>2,200</td>
+                            </tr>
+                            <tr>
+                                <td>7. Log per capita income</td>
+                                <td>-0.061<br><span class="se">(0.055)</span></td>
+                                <td>2,150</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="table-note">OLS with robust standard errors. *** p&lt;0.01, ** p&lt;0.05, * p&lt;0.10. Mean household size is the only covariate showing a significant jump (p&lt;0.05) and is included as a control in subsequent models.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.8rem;">Six of seven covariates show no significant jump at the cutoff, supporting the validity of the RDD. Mean household size is the exception (coefficient -0.273**, suggesting PANES-eligible households are smaller), which may reflect the income score prediction formula's weighting of household composition. To be conservative, all subsequent models include household size as a control variable.</p>
+
+                <div class="figure-box" style="margin-top: 0.8rem;">
+                    <div class="figure-label">Figure 5</div>
+                    <div class="figure-title">Jump at the Cutoff in Covariate Mean Household Size</div>
+                    <p>Scatter plot of binned means of household size by income score, with separate linear fits on each side of the cutoff. Green dots (treatment group) sit above blue dots (control), showing the PANES-eligible households are systematically larger in the left tail but the bins closest to the cutoff show a visible drop &mdash; confirming the significant jump detected in Table 1. This motivates including household size as a control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Results -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Step 4: Main Results</h2>
+            <div class="card reveal">
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">The main regressions estimate the causal effect of PANES eligibility on self-reported government support. Four specifications are reported: OLS linear (1), second-order polynomial (2), OLS linear with household-size control (3), and polynomial with control (4).</p>
+
+                <div class="table-title">TABLE 2 — Main Results: Effect of PANES Eligibility on Government Support</div>
+                <div style="overflow-x: auto;">
+                    <table class="essay-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Dependent Variable</th>
+                                <th>(1)<br>OLS Linear</th>
+                                <th>(2)<br>Polynomial</th>
+                                <th>(3)<br>OLS + Control</th>
+                                <th>(4)<br>Poly + Control</th>
+                                <th>N</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Government support 2007<br><span style="font-size:0.8rem;font-weight:400;">(during PANES)</span></td>
+                                <td><strong>0.1096***</strong><br><span class="se">(0.026)</span></td>
+                                <td><strong>0.1302***</strong><br><span class="se">(0.039)</span></td>
+                                <td><strong>0.1093***</strong><br><span class="se">(0.026)</span></td>
+                                <td><strong>0.1298***</strong><br><span class="se">(0.039)</span></td>
+                                <td>2,089</td>
+                            </tr>
+                            <tr>
+                                <td>2. Government support 2008<br><span style="font-size:0.8rem;font-weight:400;">(post-PANES)</span></td>
+                                <td><strong>0.0998**</strong><br><span class="se">(0.029)</span></td>
+                                <td><strong>0.0928**</strong><br><span class="se">(0.043)</span></td>
+                                <td><strong>0.1009**</strong><br><span class="se">(0.030)</span></td>
+                                <td><strong>0.0958**</strong><br><span class="se">(0.043)</span></td>
+                                <td>1,948</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="table-note">OLS estimates. Columns 1–2 include no controls; Columns 3–4 add a control for mean household size. Standard errors in parentheses. *** p&lt;0.01, ** p&lt;0.05, * p&lt;0.10.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.8rem;">The effect is <strong>consistent and significant across all four specifications</strong>. The treatment effect ranges from 9.3–13%. Tighter standard errors in linear models reflect a better fit near the cutoff. Notably, the effect persists into 2008 (post-PANES), suggesting that political loyalty induced by cash transfers does not immediately dissipate once the programme ends.</p>
+
+                <div class="figure-box" style="margin-top: 0.8rem;">
+                    <div class="figure-label">Figure 6</div>
+                    <div class="figure-title">Government Support around the Cutoff (Linear Fit)</div>
+                    <p>Scatter plot of binned mean government support in 2007 against the centred income score, with separate linear regression fits on each side. Green dots (treatment, left of cutoff) cluster around 0.88–0.98; blue dots (control, right) cluster around 0.74–0.84. The gap at the cutoff visually shows the ~10.96% treatment effect. Confidence bands are plotted around each linear fit.</p>
+                </div>
+
+                <div class="figure-box">
+                    <div class="figure-label">Figure 7</div>
+                    <div class="figure-title">Bandwidth Sensitivity — Treatment Effects Across Bandwidths (OLS)</div>
+                    <p>Plots the OLS treatment coefficient and 95% confidence interval at four bandwidth choices: 0.005, 0.01, 0.015, and 0.02. The coefficients are remarkably stable, hovering around 0.10–0.13 across all bandwidths, and the confidence intervals consistently exclude zero. This rules out that the main result is an artifact of bandwidth choice &mdash; a critical robustness check the original authors did not perform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidence in President, MIDES, Interest in Politics -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Step 4b: Political Behaviour — Confidence &amp; Interest</h2>
+            <div class="card reveal">
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Beyond overall government support, I estimated the effect on confidence in the current president, confidence in the Ministry of Social Development (MIDES, the agency that administered PANES), and self-reported interest in politics. These provide a richer picture of how welfare transfers shape political behaviour.</p>
+
+                <div class="table-title">TABLE 3 — Effect on Confidence in President, MIDES, and Interest in Politics</div>
+                <div style="overflow-x: auto;">
+                    <table class="essay-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Dependent Variable</th>
+                                <th>(1) OLS Linear</th>
+                                <th>(2) Polynomial</th>
+                                <th>N</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Confidence in the current president</td>
+                                <td><strong>0.0821**</strong><br><span class="se">(0.035)</span></td>
+                                <td><strong>0.1201**</strong><br><span class="se">(0.055)</span></td>
+                                <td>1,937</td>
+                            </tr>
+                            <tr>
+                                <td>2. Confidence in Ministry of Social Development (MIDES)</td>
+                                <td><strong>0.1515***</strong><br><span class="se">(0.036)</span></td>
+                                <td><strong>0.1336**</strong><br><span class="se">(0.055)</span></td>
+                                <td>1,805</td>
+                            </tr>
+                            <tr>
+                                <td>3. Interest in politics</td>
+                                <td><strong>0.0564**</strong><br><span class="se">(0.028)</span></td>
+                                <td>0.0191<br><span class="se">(0.044)</span></td>
+                                <td>2,045</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="table-note">OLS estimates. Standard errors in parentheses. *** p&lt;0.01, ** p&lt;0.05, * p&lt;0.10.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.8rem;">PANES eligibility raised confidence in the Ministry of Social Development by 13–15% and in the president personally by 8–12%. The significant effect on interest in politics (linear model) suggests that cash transfers may also activate political participation &mdash; not merely shift support toward the incumbent. If recipients become more interested in politics, they may be more likely to vote, translating self-reported support into actual electoral outcomes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Robustness Checks -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Steps 5–6: Robustness Checks</h2>
+
+            <!-- Donut -->
+            <div class="card reveal" style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Donut-Hole Regression (±0.005 exclusion)</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Observations within ±0.005 of the cutoff are excluded to test whether the result depends on observations most susceptible to near-cutoff heaping or measurement error.</p>
+
+                <div class="table-title">TABLE 4 — Donut-Hole Regression (Donut = ±0.005)</div>
+                <div style="overflow-x: auto;">
+                    <table class="essay-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Dependent Variable</th>
+                                <th>(1)</th>
+                                <th>(2)</th>
+                                <th>(3)</th>
+                                <th>(4)</th>
+                                <th>N</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Government support 2007</td>
+                                <td>0.1157**<br><span class="se">(0.045)</span></td>
+                                <td>0.3216**<br><span class="se">(0.131)</span></td>
+                                <td>0.1156**<br><span class="se">(0.045)</span></td>
+                                <td>0.3225**<br><span class="se">(0.131)</span></td>
+                                <td>1,600</td>
+                            </tr>
+                            <tr>
+                                <td>2. Government support 2008</td>
+                                <td>0.1379**<br><span class="se">(0.055)</span></td>
+                                <td>0.4480***<br><span class="se">(0.158)</span></td>
+                                <td>0.1377**<br><span class="se">(0.055)</span></td>
+                                <td>0.4488***<br><span class="se">(0.158)</span></td>
+                                <td>1,486</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="table-note">Columns 1–2: linear and polynomial, no controls. Columns 3–4: same with household size control. *** p&lt;0.01, ** p&lt;0.05. Observation counts reduced by excluded near-cutoff data.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.8rem;">Results remain significant and the linear coefficients are slightly larger than in the main analysis. The inflated polynomial coefficients (0.32–0.45) suggest that near-cutoff observations slightly suppress the quadratic estimate &mdash; a key finding of this extension. The core result of a 10%+ treatment effect is unaffected by removing near-cutoff observations.</p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.8rem;">
+                    <div class="figure-box" style="flex: 1; min-width: 280px; margin: 0;">
+                        <div class="figure-label">Figure 8</div>
+                        <div class="figure-title">Donut Regression — Linear Fit (±0.005 exclusion)</div>
+                        <p>Scatter plot of government support in 2007 with the near-cutoff observations excluded. The gap between the green (treated) and blue (control) fitted lines at the cutoff remains clearly visible, showing an 11.57% effect. The exclusion zone around zero is visible as an empty band in the data.</p>
+                    </div>
+                    <div class="figure-box" style="flex: 1; min-width: 280px; margin: 0;">
+                        <div class="figure-label">Figure 9</div>
+                        <div class="figure-title">Donut Regression — Polynomial Fit (±0.005 exclusion)</div>
+                        <p>Same donut exclusion with a second-order polynomial fit. The quadratic model amplifies the treatment effect to 32.16% due to the curvature in the excluded data suppressing the jump in the full-sample polynomial model. The large confidence bands reflect reduced statistical power with the smaller sample.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adjusted Donut -->
+            <div class="card reveal" style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Adjusted Donut Regression (±0.002 exclusion)</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">A narrower donut of ±0.002 balances robustness to near-cutoff heaping with preserving statistical power.</p>
+
+                <div class="table-title">TABLE 5 — Adjusted Donut (Donut = ±0.002)</div>
+                <div style="overflow-x: auto;">
+                    <table class="essay-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Dependent Variable</th>
+                                <th>(1)</th>
+                                <th>(2)</th>
+                                <th>(3)</th>
+                                <th>(4)</th>
+                                <th>N</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Government support 2007</td>
+                                <td>0.1160***<br><span class="se">(0.032)</span></td>
+                                <td>0.1658***<br><span class="se">(0.062)</span></td>
+                                <td>0.1160***<br><span class="se">(0.004)</span></td>
+                                <td>0.1659***<br><span class="se">(0.062)</span></td>
+                                <td>1,914</td>
+                            </tr>
+                            <tr>
+                                <td>2. Government support 2008</td>
+                                <td>0.1363***<br><span class="se">(0.055)</span></td>
+                                <td>0.2070***<br><span class="se">(0.068)</span></td>
+                                <td>0.1367***<br><span class="se">(0.0373)</span></td>
+                                <td>0.2096***<br><span class="se">(0.068)</span></td>
+                                <td>1,781</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="table-note">*** p&lt;0.01. Narrower donut preserves more power while still excluding the most manipulation-prone observations.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.8rem;">With the adjusted donut, all four specifications achieve 1% significance for both years &mdash; stronger evidence than the main results. Polynomial coefficients settle at 16–21%, closer to the main estimates than the ±0.005 donut. This suggests the ±0.002 donut provides the best balance between robustness and precision, and that the true treatment effect is conservatively around 10–17%.</p>
+            </div>
+
+            <!-- Local Polynomials -->
+            <div class="card reveal">
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Local Polynomial Regressions (rdrobust, Epanechnikov kernel)</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Nonparametric local polynomial regression using the <em>rdrobust</em> Stata package with bias-corrected inference. This approach uses data-driven bandwidth selection (MSERD and MSETWO) and an Epanechnikov kernel that down-weights observations further from the cutoff.</p>
+
+                <div class="table-title">TABLE 6 — Local Polynomials (symmetric &amp; asymmetric bandwidths)</div>
+                <div style="overflow-x: auto;">
+                    <table class="essay-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Dependent Variable</th>
+                                <th>(1) MSERD<br>(symmetric)</th>
+                                <th>(2) MSETWO<br>(asymmetric)</th>
+                                <th>(3) Full bandwidth<br>(±0.002)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Government support 2007</td>
+                                <td>0.1770**<br><span class="se">(0.087)</span></td>
+                                <td>0.1697**<br><span class="se">(0.085)</span></td>
+                                <td>0.1255***<br><span class="se">(0.040)</span></td>
+                            </tr>
+                            <tr>
+                                <td>2. Government support 2008</td>
+                                <td>-0.0587<br><span class="se">(0.077)</span></td>
+                                <td>-0.0927<br><span class="se">(0.091)</span></td>
+                                <td>0.0614<br><span class="se">(0.044)</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="table-note">Second order local polynomial with Epanechnikov kernel. *** p&lt;0.01, ** p&lt;0.05. MSERD = mean square error optimal symmetric bandwidth. MSETWO = MSE optimal asymmetric bandwidth. 2008 results are mixed and should be interpreted with caution.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-title" style="margin-top: 1.5rem;">TABLE 7 — Local Polynomials with Donut (±0.002)</div>
+                <div style="overflow-x: auto;">
+                    <table class="essay-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Dependent Variable</th>
+                                <th>(1) MSERD</th>
+                                <th>(2) MSETWO</th>
+                                <th>(3) Full bandwidth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Government support 2007</td>
+                                <td>0.0564<br><span class="se">(0.1818)</span></td>
+                                <td>0.1125<br><span class="se">(0.139)</span></td>
+                                <td>0.1658***<br><span class="se">(0.0598)</span></td>
+                            </tr>
+                            <tr>
+                                <td>2. Government support 2008</td>
+                                <td>0.0250<br><span class="se">(0.178)</span></td>
+                                <td>0.0320<br><span class="se">(0.191)</span></td>
+                                <td>0.2070***<br><span class="se">(0.069)</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="table-note">Uniform kernel used with donut (Epanechnikov not suitable when near-cutoff data is excluded). *** p&lt;0.01. Narrower bandwidths lose significance due to combined power reduction from donut + small bandwidth.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.8rem;">The 2007 local polynomial results are consistent with the OLS findings: a 12.5–17.7% effect depending on bandwidth. The mixed 2008 local polynomial results warrant caution &mdash; the post-PANES persistence found in OLS is less robust to the nonparametric approach, particularly with narrower bandwidths.</p>
+
+                <div class="figure-box">
+                    <div class="figure-label">Figure 10</div>
+                    <div class="figure-title">Bandwidth Sensitivity — Local Polynomial Treatment Coefficients</div>
+                    <p>Plots the second-order local polynomial treatment effect and 95% confidence interval at four bandwidth choices (0.005, 0.01, 0.015, 0.02). All confidence intervals exclude zero, and coefficients hover around 0.10–0.13 with no systematic drift. This confirms that the local polynomial estimate is not bandwidth-sensitive &mdash; a key validation of the robustness analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Graphical Presentations Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Graphical Presentations (rdplot &amp; cmogram)</h2>
+            <div class="card reveal">
+                <p style="font-size: 0.9rem;">The final graphical analysis uses cmogram and rdplot Stata commands to present the treatment effect with alternative visualisation approaches. Cmograms show confidence intervals; rdplot focuses on the discontinuity at the cutoff without assuming a constant standard deviation on each side.</p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.8rem;">
+                    <div class="figure-box" style="flex: 1; min-width: 260px; margin: 0;">
+                        <div class="figure-label">Figure 11</div>
+                        <div class="figure-title">Government Support — MSETWO Bandwidth, cmogram Linear</div>
+                        <p>Cmogram with MSETWO asymmetric bandwidth (-0.005/+0.006). Shows the jump at the cutoff clearly with confidence intervals. The asymmetric bandwidth allows more data on the control side where variability is higher, providing a more targeted estimate of the treatment effect.</p>
+                    </div>
+                    <div class="figure-box" style="flex: 1; min-width: 260px; margin: 0;">
+                        <div class="figure-label">Figures 12–14</div>
+                        <div class="figure-title">rdplot: Linear and Polynomial Fits at MSETWO Bandwidth</div>
+                        <p>Four rdplot visualisations showing sample averages within bins alongside linear and quadratic regression fits. The gap between the two sides of the cutoff is consistent across specifications and clearly visible in all plots, providing complementary graphical confirmation of the regression estimates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Critique & Policy Implications -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Critical Assessment &amp; Policy Implications</h2>
+            <div class="card reveal">
+                <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">Methodological Limitations</h3>
+
+                <div class="critique-box">
+                    <h4>External Validity: LATE is Local</h4>
+                    <p>The RDD identifies the treatment effect only for households near the poverty threshold &mdash; the Local Average Treatment Effect (LATE). This cannot be extrapolated to households well below the poverty line or to wealthier populations. The external validity to other countries with different political institutions is also limited.</p>
+                </div>
+                <div class="critique-box">
+                    <h4>Internal Validity: Contact Effects</h4>
+                    <p>PANES eligibility brought not just cash, but visits from MIDES personnel and increased contact with government officials. Positive social interaction with government representatives could independently shift political support, confounding the pure cash transfer effect with a contact and information effect.</p>
+                </div>
+                <div class="critique-box">
+                    <h4>Self-Reported Support vs. Voting Behaviour</h4>
+                    <p>The outcome is self-reported political support, not actual votes. Social desirability bias may inflate the effect if PANES recipients felt pressure to express gratitude. Low voter turnout among low-income groups further limits the programme's potential electoral impact.</p>
+                </div>
+                <div class="critique-box">
+                    <h4>Heaping in the Running Variable</h4>
+                    <p>Histograms revealed some heaping in predicted income scores, even if not directly at the cutoff. Following Barreca, Lindo &amp; Waddell (2016), distant heaping can still bias estimates, which is why donut-hole regressions were implemented as the primary robustness check.</p>
+                </div>
+
+                <hr class="section-divider" style="margin: 1.5rem 0;">
+
+                <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">Policy Implications</h3>
+                <p style="font-size: 0.9rem;">The finding that cash transfers increase political support, confidence in the implementing ministry, and interest in politics has several implications for policy design:</p>
+                <ul style="font-size: 0.9rem; margin: 0.5rem 0 0 1.2rem; line-height: 1.8;">
+                    <li>Well-designed anti-poverty programmes with visible government branding can generate political dividends beyond their direct welfare impact</li>
+                    <li>The persistence of the effect into 2008 (post-PANES) suggests that loyalty effects from welfare transfers are not purely transactional &mdash; they may reflect genuine shifts in political attitudes</li>
+                    <li>The large effect on MIDES confidence (13–15%) implies that <em>how</em> transfers are delivered matters: personal contact with government personnel amplifies political effects beyond the monetary benefit alone</li>
+                    <li>Policymakers in other countries should not assume these magnitudes generalise: Uruguay in 2005–07 was a distinctive context &mdash; a newly elected left-wing government implementing its first major social programme</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extension -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Extension: Bandwidth Analysis</h2>
+            <div class="card reveal">
+                <p style="font-size: 0.9rem;">The original Manacorda et al. (2011) paper does not include a bandwidth sensitivity analysis &mdash; a significant gap, given that bandwidth selection is one of the most consequential analytical choices in RDD. This report fills that gap by systematically reporting treatment effects at four bandwidths (0.005, 0.01, 0.015, 0.02) for three estimators: OLS, second-order polynomial, and local polynomial (rdrobust).</p>
+
+                <p style="font-size: 0.9rem; margin-top: 0.8rem;">All three estimators produce bandwidth-stable results for 2007, with coefficients consistently in the 9–13% range and confidence intervals excluding zero throughout. This provides the strongest possible evidence that the treatment effect is not a statistical artifact of a particular bandwidth choice. The conservative estimate of <strong>~10% political support gain from PANES eligibility</strong> stands as the primary conclusion.</p>
+
+                <p style="font-size: 0.9rem; margin-top: 0.8rem;">The 2008 local polynomial results are more mixed, raising legitimate questions about the long-run persistence of the effect. The OLS evidence for persistence is stronger, but future work with larger datasets and wider bandwidths would be needed to resolve this definitively.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Academic Work + Full Report CTA -->
+    <section style="background-color: var(--light-color);">
+        <div class="container" style="text-align: center;">
+            <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 1rem 0;">
+                <a href="files/PB4A7_Cash_Transfers_Political_Support_Report.pdf" target="_blank" rel="noopener" class="btn"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Download Full Report</a>
+                <a href="files/PB4A7_Cash_Transfers_Political_Support_Poster.pdf" target="_blank" rel="noopener" class="btn btn-outline"><i class="fas fa-image" style="margin-right: 0.4rem;"></i>Download Research Poster</a>
+                <a href="theses.html" class="btn btn-outline"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Academic Work</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theses.html">Academic Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/main.js"></script>
+</body>
+</html>
