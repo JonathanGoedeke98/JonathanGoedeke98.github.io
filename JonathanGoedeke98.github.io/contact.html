@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles to ensure centering */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .centered-card {
+            max-width: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    
+    <!-- Loading animation -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Jonathan Gödeke</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="education-experience.html">Education & Experience</a></li>
+                    <li><a href="theses.html">Essays</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>Get in Touch</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section>
+        <div class="container">
+            <!-- Replaced grid with flex container for more reliable centering -->
+            <div class="center-container">
+                <div class="card reveal centered-card">
+                    <h2 class="card-title">Contact Information</h2>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:j.godeke@lse.ac.uk">j.godeke@lse.ac.uk</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:goedeke@wiso.uni-koeln.de">goedeke@wiso.uni-koeln.de</a></p>
+                        <p><i class="fas fa-university"></i> University of Cologne, Department of Healthcare Management</p>
+                        <p><i class="fas fa-university"></i> University of Cologne, Institute for Econometrics and Statistics</p>
+                        <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener">LinkedIn Profile</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="theses.html">Essays</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
