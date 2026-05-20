@@ -336,7 +336,8 @@
                 <div class="figure-box" style="margin-top: 1rem;">
                     <div class="figure-label">Figure 1</div>
                     <div class="figure-title">Government Support 2007 by Income Score</div>
-                    <p>Plotted means of self-reported government support by bins of the predicted income score, centred around the eligibility cutoff (0). Values to the left (PANES-eligible) are visibly higher than to the right (ineligible), with a clear drop at the threshold. Y-axis ranges from approximately 0.70 to 0.95. The red dashed line marks the policy cutoff.</p>
+                    <img src="images/figures/rdd-03.png" alt="Government support 2007 by income score — scatter plot showing jump at cutoff" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                    <p style="font-size:0.8rem; color:#666; margin:0;">Binned means of government support by predicted income score centred at the cutoff. Values left of zero (PANES-eligible) are visibly higher, with a clear discontinuity at the threshold.</p>
                 </div>
 
                 <h3 style="font-size: 1rem; margin: 1.2rem 0 0.5rem;">McCrary Density Test</h3>
@@ -344,7 +345,8 @@
                 <div class="figure-box" style="margin-top: 0.8rem;">
                     <div class="figure-label">Figure 4</div>
                     <div class="figure-title">McCrary Test &mdash; Density of Predicted Income Score at the Cutoff</div>
-                    <p>Shows the local polynomial density estimate on each side of the cutoff with 95% confidence intervals (red left, blue right). The confidence intervals overlap substantially at the threshold, and the density appears smooth across the cutoff. <strong>McCrary test p-value: 0.4111</strong> &mdash; no evidence of manipulation. The RDD's local randomisation assumption holds.</p>
+                    <img src="images/figures/rdd-05.png" alt="McCrary density test and continuous histogram of running variable" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                    <p style="font-size:0.8rem; color:#666; margin:0;">Top: continuous histogram of predicted income scores. Bottom: McCrary test — local polynomial density estimates on each side with 95% CIs (red/blue). CIs overlap at zero. <strong>p-value: 0.4111</strong> — no evidence of manipulation.</p>
                 </div>
             </div>
         </div>
@@ -415,7 +417,8 @@
                 <div class="figure-box" style="margin-top: 0.8rem;">
                     <div class="figure-label">Figure 5</div>
                     <div class="figure-title">Jump at the Cutoff in Covariate Mean Household Size</div>
-                    <p>Scatter plot of binned means of household size by income score, with separate linear fits on each side of the cutoff. Green dots (treatment group) sit above blue dots (control), showing the PANES-eligible households are systematically larger in the left tail but the bins closest to the cutoff show a visible drop &mdash; confirming the significant jump detected in Table 1. This motivates including household size as a control.</p>
+                    <img src="images/figures/rdd-07.png" alt="Scatter plot showing jump at cutoff in covariate mean household size" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                    <p style="font-size:0.8rem; color:#666; margin:0;">Binned means of household size by predicted income score with linear fits on each side. A visible drop at the cutoff confirms the significant jump (–0.273**) detected in Table 1, motivating its inclusion as a control variable.</p>
                 </div>
             </div>
         </div>
@@ -470,13 +473,15 @@
                 <div class="figure-box" style="margin-top: 0.8rem;">
                     <div class="figure-label">Figure 6</div>
                     <div class="figure-title">Government Support around the Cutoff (Linear Fit)</div>
-                    <p>Scatter plot of binned mean government support in 2007 against the centred income score, with separate linear regression fits on each side. Green dots (treatment, left of cutoff) cluster around 0.88–0.98; blue dots (control, right) cluster around 0.74–0.84. The gap at the cutoff visually shows the ~10.96% treatment effect. Confidence bands are plotted around each linear fit.</p>
+                    <img src="images/figures/rdd-08.png" alt="RDD scatter plot showing government support jump at PANES eligibility cutoff" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                    <p style="font-size:0.8rem; color:#666; margin:0;">Binned mean government support (2007) against the centred income score. Green dots (PANES-eligible) cluster around 0.88–0.98; blue dots (ineligible) around 0.74–0.84. The gap at zero visualises the ~10.96% treatment effect.</p>
                 </div>
 
                 <div class="figure-box">
                     <div class="figure-label">Figure 7</div>
                     <div class="figure-title">Bandwidth Sensitivity — Treatment Effects Across Bandwidths (OLS)</div>
-                    <p>Plots the OLS treatment coefficient and 95% confidence interval at four bandwidth choices: 0.005, 0.01, 0.015, and 0.02. The coefficients are remarkably stable, hovering around 0.10–0.13 across all bandwidths, and the confidence intervals consistently exclude zero. This rules out that the main result is an artifact of bandwidth choice &mdash; a critical robustness check the original authors did not perform.</p>
+                    <img src="images/figures/rdd-09.png" alt="Treatment effects for different bandwidths with confidence intervals" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                    <p style="font-size:0.8rem; color:#666; margin:0;">OLS treatment coefficient and 95% CI at bandwidths of 0.005, 0.01, 0.015, and 0.02. Coefficients are stable (0.10–0.13) and CIs consistently exclude zero — the result is not an artefact of bandwidth choice.</p>
                 </div>
             </div>
         </div>
@@ -584,12 +589,14 @@
                     <div class="figure-box" style="flex: 1; min-width: 280px; margin: 0;">
                         <div class="figure-label">Figure 8</div>
                         <div class="figure-title">Donut Regression — Linear Fit (±0.005 exclusion)</div>
-                        <p>Scatter plot of government support in 2007 with the near-cutoff observations excluded. The gap between the green (treated) and blue (control) fitted lines at the cutoff remains clearly visible, showing an 11.57% effect. The exclusion zone around zero is visible as an empty band in the data.</p>
+                        <img src="images/figures/rdd-11.png" alt="Donut regression scatter plot with ±0.005 exclusion zone around cutoff" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                        <p style="font-size:0.8rem; color:#666; margin:0;">Near-cutoff observations excluded (±0.005). The gap at zero remains clearly visible — 11.57% linear effect. Empty band around zero shows the exclusion zone.</p>
                     </div>
                     <div class="figure-box" style="flex: 1; min-width: 280px; margin: 0;">
                         <div class="figure-label">Figure 9</div>
                         <div class="figure-title">Donut Regression — Polynomial Fit (±0.005 exclusion)</div>
-                        <p>Same donut exclusion with a second-order polynomial fit. The quadratic model amplifies the treatment effect to 32.16% due to the curvature in the excluded data suppressing the jump in the full-sample polynomial model. The large confidence bands reflect reduced statistical power with the smaller sample.</p>
+                        <img src="images/figures/rdd-12.png" alt="Donut regression with ±0.002 adjusted exclusion zone and polynomial fit" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                        <p style="font-size:0.8rem; color:#666; margin:0;">Adjusted donut (±0.002) with second-order polynomial. Tighter exclusion zone balances robustness with statistical power — all four specifications remain significant at p&lt;0.01.</p>
                     </div>
                 </div>
             </div>
@@ -711,7 +718,8 @@
                 <div class="figure-box">
                     <div class="figure-label">Figure 10</div>
                     <div class="figure-title">Bandwidth Sensitivity — Local Polynomial Treatment Coefficients</div>
-                    <p>Plots the second-order local polynomial treatment effect and 95% confidence interval at four bandwidth choices (0.005, 0.01, 0.015, 0.02). All confidence intervals exclude zero, and coefficients hover around 0.10–0.13 with no systematic drift. This confirms that the local polynomial estimate is not bandwidth-sensitive &mdash; a key validation of the robustness analysis.</p>
+                    <img src="images/figures/rdd-14.png" alt="Local polynomial treatment effects for different bandwidths" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                    <p style="font-size:0.8rem; color:#666; margin:0;">Second-order local polynomial treatment coefficients and 95% CIs across four bandwidth choices. Coefficients are stable around 0.10–0.13 with no systematic drift — confirms the nonparametric result is not bandwidth-sensitive.</p>
                 </div>
             </div>
         </div>
@@ -727,13 +735,15 @@
                 <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.8rem;">
                     <div class="figure-box" style="flex: 1; min-width: 260px; margin: 0;">
                         <div class="figure-label">Figure 11</div>
-                        <div class="figure-title">Government Support — MSETWO Bandwidth, cmogram Linear</div>
-                        <p>Cmogram with MSETWO asymmetric bandwidth (-0.005/+0.006). Shows the jump at the cutoff clearly with confidence intervals. The asymmetric bandwidth allows more data on the control side where variability is higher, providing a more targeted estimate of the treatment effect.</p>
+                        <div class="figure-title">Government Support — MSETWO Bandwidth, Linear</div>
+                        <img src="images/figures/rdd-15.png" alt="Government support around cutoff using MSETWO asymmetric bandwidth linear model" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                        <p style="font-size:0.8rem; color:#666; margin:0;">MSETWO asymmetric bandwidth (–0.005/+0.006), linear regression. Jump at the cutoff remains clearly visible with confidence intervals.</p>
                     </div>
                     <div class="figure-box" style="flex: 1; min-width: 260px; margin: 0;">
                         <div class="figure-label">Figures 12–14</div>
                         <div class="figure-title">rdplot: Linear and Polynomial Fits at MSETWO Bandwidth</div>
-                        <p>Four rdplot visualisations showing sample averages within bins alongside linear and quadratic regression fits. The gap between the two sides of the cutoff is consistent across specifications and clearly visible in all plots, providing complementary graphical confirmation of the regression estimates.</p>
+                        <img src="images/figures/rdd-16.png" alt="rdplot visualisations with linear and quadratic fits at MSETWO bandwidth" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                        <p style="font-size:0.8rem; color:#666; margin:0;">rdplot with linear (top) and quadratic (bottom) fits at MSETWO bandwidth. Both show a consistent gap at the cutoff, confirming the regression estimates graphically.</p>
                     </div>
                 </div>
             </div>

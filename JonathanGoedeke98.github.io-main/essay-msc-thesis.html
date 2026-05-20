@@ -12,6 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        .figure-box { background: var(--light-color); border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+        .figure-box .figure-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color); margin-bottom: 0.3rem; }
+        .figure-box .figure-title { font-weight: 600; margin-bottom: 0.4rem; font-size: 0.9rem; }
         .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.8rem 0; }
         .tag { background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.78rem; font-weight: 500; }
         .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color); margin-bottom: 0.3rem; }
@@ -400,6 +403,24 @@
                 <div class="finding-highlight" style="margin-top: 2rem;">
                     <span class="finding-title">Endogeneity is Practically Relevant — But Only for High-Education Workers</span>
                     <span class="finding-label">The scalar Wu–Hausman test misses this heterogeneity entirely. Distribution regression reveals that the IV correction changes the conditional wage distribution by a practically meaningful amount (d̂ = 0.195) for high-education workers, while the middle profile shows only small differences (d̂ = 0.030). This is a distributional finding, not a mean-based one.</span>
+                </div>
+
+                <h3 style="font-size: 1.05rem; margin: 1.8rem 0 0.6rem;">Estimated Conditional Distribution Functions</h3>
+                <p style="font-size: 0.9rem;">Figures 1 and 2 plot the estimated conditional CDFs of log wages for naive DR (solid) and IV/control-function DR (dashed) at the three covariate profiles. The curves are closest for the middle profile; the low and high profiles show visibly larger discrepancies — especially the high profile, where the IV correction shifts the distribution substantially.</p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.8rem;">
+                    <div class="figure-box" style="flex: 1; min-width: 280px; margin: 0;">
+                        <div class="figure-label">Figure 1</div>
+                        <div class="figure-title">Naive and IV-DR Estimates — Baseline Specification</div>
+                        <img src="images/figures/thesis-44.png" alt="Naive DR and IV control-function DR conditional CDF estimates for three covariate profiles, baseline specification" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                        <p style="font-size:0.8rem; color:#666; margin:0;">Baseline controls (experience, experience², Black, SMSA, South). Solid: naive DR; dashed: IV-DR. The high-education profile (right panel) shows the largest gap.</p>
+                    </div>
+                    <div class="figure-box" style="flex: 1; min-width: 280px; margin: 0;">
+                        <div class="figure-label">Figure 2</div>
+                        <div class="figure-title">Naive and IV-DR Estimates — Full Specification</div>
+                        <img src="images/figures/thesis-45.png" alt="Naive DR and IV control-function DR conditional CDF estimates, full control specification" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                        <p style="font-size:0.8rem; color:#666; margin:0;">Full controls (baseline + smsa66 + region indicators). Qualitative pattern persists: middle profile closest, low and high profiles most discrepant. Formal rejection for the high profile disappears with the richer control set.</p>
+                    </div>
                 </div>
             </div>
         </div>

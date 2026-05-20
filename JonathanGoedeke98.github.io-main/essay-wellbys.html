@@ -367,7 +367,8 @@
                 <div class="figure-box">
                     <div class="figure-label">Figure 4</div>
                     <div class="figure-title">Pre-Trends Analysis: Mean Life Satisfaction 2001&ndash;2020</div>
-                    <p>Line chart showing mean life satisfaction for the treatment group (Victoria, red solid line) and control group (all other states, blue dashed line) from 2001 to 2020. Both series fluctuate between approximately 7.85 and 8.00 across the period, with broadly similar trajectories. Some divergence is visible around 2015. In 2020, the treatment group shows a substantial drop to its lowest recorded level over two decades, while the control group declines only modestly &mdash; consistent with a general pandemic effect. The broadly parallel pre-2020 trends support the DiD identification assumption.</p>
+                    <img src="images/figures/wellby-24.png" alt="Pre-trends analysis: mean life satisfaction for Victoria (treatment) vs other states (control) 2001-2020" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                    <p style="font-size:0.8rem; color:#666; margin:0;">Treatment group (Victoria, red) and control group (other states, blue) track closely from 2001–2019, supporting the parallel trends assumption. In 2020 the treatment group drops sharply to its lowest recorded level — consistent with the lockdown effect.</p>
                 </div>
             </div>
         </div>
@@ -515,7 +516,8 @@
                 <div class="figure-box">
                     <div class="figure-label">Figure 5</div>
                     <div class="figure-title">Balance Check after Propensity Score Matching</div>
-                    <p>Dot plot showing standardised percentage bias across all 11 covariates after matching. All covariates achieve balance with absolute bias below 4% &mdash; the threshold criterion for successful matching (Huntington-Klein, 2021). This confirms that the PSM successfully equated treatment and control groups on all observable characteristics.</p>
+                    <img src="images/figures/wellby-28.png" alt="Standardised percentage bias across covariates after propensity score matching" style="width:100%; border-radius:6px; margin: 0.5rem 0;">
+                    <p style="font-size:0.8rem; color:#666; margin:0;">Standardised % bias across all 11 covariates after nearest-neighbour PSM (caliper 0.05). All covariates below the 4% threshold — the matched sample is well-balanced on all observable characteristics.</p>
                 </div>
 
                 <p style="font-size: 0.9rem; margin-top: 0.75rem;"><strong>PSM result:</strong> &minus;0.299 points (95% CI &minus;1.255 to 0.658, p = 0.48). The substantial sample reduction during matching (from 215,733 to 1,077 observations) severely reduces statistical power, preventing significance. However, the <em>direction</em> of the effect is consistent with the main DiD finding &mdash; PSM confirms the negative sign and cannot reject the main result.</p>
