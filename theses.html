@@ -63,10 +63,11 @@
         <div class="container">
             <h2 class="section-title reveal">Research Focus</h2>
             <div class="card reveal">
-                <p>My academic essays focus on two primary areas:</p>
+                <p>My academic essays focus on three primary areas:</p>
                 <ol>
-                    <li><strong>Distributional Policy Analysis</strong> - Using quasi-experimental methods to examine how policies affect different segments of the population, with particular attention to those who are worse-off and the philosophical theory of Prioritarianism</li>
-                    <li><strong>Social Preferences</strong> - Using experimental research designs to analyze social preferences such as altruism</li>
+                    <li><strong>Policy Analysis &amp; Causal Inference</strong> - Applying quasi-experimental methods (RDD, DiD) to evaluate real-world policies and quantify causal effects, with a focus on communicating results and limitations to inform decision-making</li>
+                    <li><strong>Distributional Policy Analysis</strong> - Examining how policies affect different segments of the population, with attention to those who are worse-off and the philosophical foundations of Prioritarianism</li>
+                    <li><strong>Social Preferences</strong> - Using experimental research designs to measure behavioural outcomes such as altruism and self-defeating behaviour</li>
                 </ol>
             </div>
         </div>
@@ -182,35 +183,56 @@
     <!-- Quasi-Experimental Methods Section -->
     <section>
         <div class="container">
-            <h2 class="section-title reveal">Quasi-Experimental Methods</h2>
+            <h2 class="section-title reveal">Policy Analysis &amp; Causal Inference</h2>
             <div class="card reveal">
                 <h3 class="publication-title">The Effect of Cash Transfers on Political Support</h3>
-                <p class="publication-meta">Essay | Quantitative Methods |  London School of Economics and Political Science | 2024 | Grade: 83%</p>
-                
+                <p class="publication-meta">Policy Analysis Essay | Quantitative Methods | London School of Economics and Political Science | 2024 | Grade: 83%</p>
+                <p class="publication-meta">Replication and examination of Manacorda, Miguel, &amp; Vigorito (2011), <em>American Economic Journal: Applied Economics</em></p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Regression Discontinuity Design</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Causal Inference</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Stata</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Quasi-Experimental Methods</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Policy Evaluation</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Robustness Testing</span>
+                </div>
+
                 <div class="accordion">
                     <div class="accordion-header">
                         <h4>Abstract</h4>
                         <i class="fas fa-chevron-down accordion-icon"></i>
                     </div>
                     <div class="accordion-content">
-                        <p>This essay investigates the causal effect of governmental cash transfers on self-reported political support for the incumbent government in Uruguay. Using a Regression Discontinuity Design (RDD), the analysis examines how eligibility for the PANES program affected political support for the government.</p>
-                        
-                        <p>The research utilizes a predicted income score as the running variable and includes McCrary density tests and placebo regressions on covariates.</p>
-                        
-                        <p>The main results indicate a consistent positive effect of the treatment on government support in 2007 and 2008, with coefficients ranging from 9% to 13%. The study also finds significant positive effects on confidence in the president, confidence in the Ministry of Social Development, and interest in politics.</p>
-                        
-                        <p>Extensive robustness checks, including donut hole regressions and local polynomial analyses, confirm the stability of the treatment effect. The research concludes that eligibility for the PANES Program in Uruguay is associated with an increase of around 10% in self-reported support for the incumbent government.</p>
-                        
-                        <p>The essay concludes with limitations in external validity and potential confounding factors, while suggesting policy implications and avenues for further research using alternative quasi-experimental methods.</p>
+                        <p>This essay investigates the causal effect of governmental cash and food card transfers on self-reported political support for the incumbent government in Uruguay. Replicating and extending Manacorda et al. (2011), the analysis applies a <strong>Regression Discontinuity Design (RDD)</strong> — a quasi-experimental method exploiting a sharp eligibility cutoff in a predicted income score to compare treatment and control groups around the threshold.</p>
+
+                        <p>The preliminary analysis uses <strong>McCrary density tests</strong> (p = 0.4111) and <strong>placebo regressions on covariates</strong> to verify the key RDD assumptions of no manipulation and local randomization around the cutoff.</p>
+
+                        <p>Main results show a consistent <strong>positive treatment effect of 9–13%</strong> on government support in 2007 and 2008, with significant positive effects on confidence in the president, confidence in the Ministry of Social Development (MIDES), and interest in politics.</p>
+
+                        <p>A comprehensive suite of <strong>robustness checks</strong> — including donut hole regressions (excluding observations closest to the cutoff), bandwidth sensitivity analyses, and local polynomial models — confirm the stability and significance of the treatment effect across specifications.</p>
+
+                        <p>The essay concludes with a structured policy critique: limitations in external validity (local average treatment effect for low-income earners only), potential internal validity concerns (contact bias from MIDES personnel), and suggested extensions using Difference-in-Differences and Instrumental Variables designs to improve identification.</p>
                     </div>
                 </div>
-                
+
                 <div class="mt-2">
-                    <h4>Key Contributions:</h4>
+                    <h4>Key Analytical Contributions:</h4>
                     <ul>
-                        <li>Comprehensive robustness checks including donut hole regressions with bandwidth analyses and local polynomials</li>
-                        <li>Discussion of methodological and contextual limitations and their policy implications</li>
+                        <li><strong>Full RDD pipeline in Stata:</strong> data preparation, McCrary test, placebo regressions on covariates, OLS main regressions, and graphical visualisations</li>
+                        <li><strong>Robustness checks:</strong> donut hole regressions across multiple exclusion radii, bandwidth sensitivity plots, and local polynomial (quadratic/cubic) models</li>
+                        <li><strong>Policy critique:</strong> structured assessment of methodological and contextual limitations with concrete suggestions for alternative causal designs (DiD, IV)</li>
+                        <li><strong>Replication of a published AEJ paper</strong>, demonstrating ability to work with real-world survey data and reproduce peer-reviewed empirical findings</li>
                     </ul>
+                </div>
+
+                <div class="mt-2" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <a href="files/PB4A7_Cash_Transfers_Political_Support_Report.pdf" target="_blank" rel="noopener" class="btn">
+                        <i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i> Full Report
+                    </a>
+                    <a href="files/PB4A7_Cash_Transfers_Political_Support_Poster.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+                        <i class="fas fa-image" style="margin-right: 0.4rem;"></i> Research Poster
+                    </a>
                 </div>
             </div>
         </div>
