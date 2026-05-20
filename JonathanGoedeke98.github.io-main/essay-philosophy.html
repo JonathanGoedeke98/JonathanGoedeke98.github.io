@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well-Being is Measurable After All | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .finding-highlight {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .finding-highlight .finding-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .finding-highlight .finding-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .finding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .finding-item {
+            background: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .finding-item .stat {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+        }
+        .finding-item .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+        .debate-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 600px) {
+            .debate-grid { grid-template-columns: 1fr; }
+        }
+        .debate-box {
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .debate-box.skeptic {
+            background: #fce4ec;
+            border-left: 4px solid #e91e63;
+        }
+        .debate-box.optimist {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+        }
+        .debate-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .debate-box ul {
+            list-style: disc;
+            padding-left: 1.2rem;
+            font-size: 0.9rem;
+        }
+        .debate-box ul li {
+            margin-bottom: 0.4rem;
+        }
+        .view-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 600px) {
+            .view-grid { grid-template-columns: 1fr; }
+        }
+        .view-box {
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .view-box.contextualism {
+            background: #fff3e0;
+            border-left: 4px solid #f39c12;
+        }
+        .view-box.dr {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+        .view-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .view-box p, .view-box ul {
+            font-size: 0.9rem;
+        }
+        .view-box ul {
+            padding-left: 1.2rem;
+            list-style: disc;
+        }
+        .view-box ul li {
+            margin-bottom: 0.35rem;
+        }
+        .quote-block {
+            background: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .argument-box {
+            background: var(--light-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .argument-box .arg-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--secondary-color);
+            margin-bottom: 0.4rem;
+        }
+        .argument-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.8rem 0;
+        }
+        .tag {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--secondary-color);
+            margin-bottom: 0.3rem;
+        }
+        .connection-box {
+            background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+            border: 1px solid #b3d9f5;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .connection-box h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="theses.html" class="active">Academic Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;">LSE &mdash; Philosophy of Economics | 2024</p>
+                <h1 style="font-size: 1.9rem; line-height: 1.3; margin-bottom: 1rem;">Well-Being is Measurable After All:<br>A Case for the Differential Realization View</h1>
+                <div class="tag-row" style="justify-content: center; margin-bottom: 1.2rem;">
+                    <span class="tag">Philosophy of Economics</span>
+                    <span class="tag">Well-Being Measurement</span>
+                    <span class="tag">Psychometrics</span>
+                    <span class="tag">Policy Metrics</span>
+                    <span class="tag">Contextualism</span>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <span style="background: var(--secondary-color); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">Grade: 69%</span>
+                    <a href="files/PH435_Wellbeing_Measurable_Differential_Realization.pdf" target="_blank" rel="noopener" class="btn" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Download PDF</a>
+                    <a href="theses.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.6); color: inherit;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>All Academic Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section>
+        <div class="container">
+            <div class="card reveal">
+                <div class="section-label">Overview</div>
+                <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">Abstract</h2>
+                <p>Can well-being be measured for public policy? This essay confronts a longstanding philosophical objection — that well-being is too heterogeneous to admit of a common metric — and argues against it. Drawing on philosophy of language and psychometrics, the essay defends the <strong>Differential Realization View</strong> (DR View): the claim that well-being has invariant semantic content across contexts, even though it is realised differently for different people. This provides the philosophical foundations for using subjective well-being measures — specifically life satisfaction scores — in policy evaluation.</p>
+
+                <div class="finding-grid" style="margin-top: 1.5rem;">
+                    <div class="finding-item">
+                        <span class="stat">Contextualism</span>
+                        <div class="stat-label">Alexandrova (2013): semantic content of well-being varies by context — rejected</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">DR View</span>
+                        <div class="stat-label">Invariant core concept, contextual truth conditions — defended</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">2 Arguments</span>
+                        <div class="stat-label">Original arguments for DR over Contextualism advanced in the essay</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">Policy Link</span>
+                        <div class="stat-label">Philosophical foundation for WELLBY-based distributional welfare analysis</div>
+                    </div>
+                </div>
+
+                <div class="connection-box">
+                    <h4><i class="fas fa-link" style="margin-right: 0.4rem;"></i>Connection to MSc Dissertation</h4>
+                    <p style="font-size: 0.9rem;">This philosophy essay provides the conceptual foundations for the MSc dissertation on Prioritarian Social Welfare Functions. The dissertation uses life satisfaction (WELLBYs) as the welfare metric — a practice that requires the philosophical defence mounted here: that life satisfaction can be compared across persons despite heterogeneity in how well-being is realised. <a href="essay-wellbys.html">Read the dissertation analysis &rarr;</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Debate -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">1. The Measurement Debate</h2>
+
+            <div class="card reveal">
+                <p>The philosophical debate about whether well-being is measurable for policy has two canonical poles. Hausman (2006) represents scepticism: preference satisfaction is the only valid welfare measure, subjective reports are unreliable, and comparisons across persons are illegitimate. Alexandrova (2016) represents optimism: well-being science is making real progress, and context-specific measures can be valid even if no universal concept exists.</p>
+
+                <div class="debate-grid" style="margin-top: 1.5rem;">
+                    <div class="debate-box skeptic">
+                        <h4><i class="fas fa-times-circle" style="margin-right: 0.4rem;"></i>Hausman (2006) — The Sceptic</h4>
+                        <ul>
+                            <li>Preference satisfaction is the only defensible welfare metric</li>
+                            <li>Subjective reports are too noisy, biased, and context-dependent to be valid</li>
+                            <li>Interpersonal comparisons of well-being are philosophically illegitimate</li>
+                            <li>There is no shared referent when different people say "I am doing well"</li>
+                            <li>Heterogeneity in what constitutes flourishing makes a common scale impossible</li>
+                        </ul>
+                    </div>
+                    <div class="debate-box optimist">
+                        <h4><i class="fas fa-check-circle" style="margin-right: 0.4rem;"></i>Alexandrova (2016) — The Optimist</h4>
+                        <ul>
+                            <li>Wellbeing science produces valid measurements within specific contexts</li>
+                            <li>Context-specific concepts are good enough for policy — we don't need a universal metric</li>
+                            <li>Psychometric validation provides empirical warrant for subjective measures</li>
+                            <li>Pragmatic policy requirement: some welfare measure is better than none</li>
+                            <li>Cross-contextual comparisons are possible if properly qualified</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1rem;">The essay's contribution is to take Alexandrova's optimism seriously while rejecting her <em>Contextualism</em> — the specific semantic thesis that explains how it is possible. A better semantic framework, the essay argues, is the Differential Realization View.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contextualism vs DR View -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">2. Contextualism vs. the Differential Realization View</h2>
+
+            <div class="card reveal">
+                <p>Both Contextualism and the Differential Realization View accept that well-being looks different across persons and contexts. They disagree on the semantic explanation for this variation.</p>
+
+                <div class="view-grid" style="margin-top: 1.5rem;">
+                    <div class="view-box contextualism">
+                        <h4><i class="fas fa-map-marked-alt" style="margin-right: 0.4rem;"></i>Contextualism (Alexandrova 2013)</h4>
+                        <p>The <em>semantic content</em> of "well-being" varies by context. "Well-being" means something different when applied to a child, an elderly person, and a cancer patient. There is no single, context-independent concept — only a family of related, context-specific concepts.</p>
+                        <ul style="margin-top: 0.8rem;">
+                            <li>Like epistemic Contextualism: "knows" has different truth conditions in different contexts</li>
+                            <li>Implies that cross-contextual comparisons involve semantic equivocation</li>
+                            <li>Policy implication: measures must be context-specific; no aggregate welfare metric</li>
+                        </ul>
+                    </div>
+                    <div class="view-box dr">
+                        <h4><i class="fas fa-bullseye" style="margin-right: 0.4rem;"></i>Differential Realization View (DR View)</h4>
+                        <p>There is a single, invariant core concept of well-being — something like: <em>the degree to which one's life goes well for oneself</em>. This concept has the same semantic content across all contexts. What varies is how that concept is <em>realised</em>: the substantive conditions that constitute well-being for different persons in different circumstances.</p>
+                        <ul style="margin-top: 0.8rem;">
+                            <li>Like natural kind terms: "water" refers to H₂O regardless of context; its empirical profile varies</li>
+                            <li>Variation is metaphysical (in realisation), not semantic (in meaning)</li>
+                            <li>Policy implication: life satisfaction scores can be aggregated across persons as measures of the same concept</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two Arguments -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">3. Two Arguments for the DR View</h2>
+
+            <div class="card reveal">
+                <div class="argument-box">
+                    <div class="arg-label">Argument 1</div>
+                    <h4>The Epistemic Contextualism Analogy Fails</h4>
+                    <p>Alexandrova motivates Contextualism by analogy with epistemic Contextualism (Cohen 1986; DeRose 1992): just as "knows" means something different in high-stakes versus low-stakes contexts, "well-being" means something different in different life circumstances. The essay argues this analogy fails for a crucial reason.</p>
+                    <p style="margin-top: 0.8rem;">Epistemic Contextualism holds that whether an agent "knows" a proposition varies with the standards operative in the <em>attributor's</em> context, not the agent's — and crucially, the object of knowledge is the same across contexts. Well-being, by contrast, is irreducibly <em>agent-relative</em>: what counts as going well for a person depends on that person's nature, projects, and circumstances. This is a metaphysical feature of well-being, not evidence that its concept is context-variable. The analogy misfires: well-being really is context-sensitive, but that is a feature of its <em>realization</em>, not its <em>concept</em>.</p>
+                </div>
+
+                <div class="argument-box" style="margin-top: 1rem;">
+                    <div class="arg-label">Argument 2</div>
+                    <h4>Cross-Contextual Policy Comparison Requires a Uniform Concept</h4>
+                    <p>If Contextualism is correct and "well-being" is semantically different for different people, then welfare comparisons across persons involve comparing different things — a form of semantic equivocation. This is not merely inconvenient: it undermines the very possibility of aggregative welfare economics and distributional analysis.</p>
+                    <p style="margin-top: 0.8rem;">Policy decisions routinely require comparing welfare across individuals — which group is most affected by a lockdown? Which income quartile benefits most from a transfer programme? These comparisons presuppose that the welfare of different people is being measured on the same conceptual scale. If Contextualism is true, this presupposition is false. The DR View, by maintaining semantic invariance, preserves the conceptual coherence of interpersonal welfare comparisons — while acknowledging that different people's well-being is realised differently, and that empirical measurement must be sensitive to this.</p>
+                </div>
+
+                <div class="quote-block" style="margin-top: 1.5rem;">
+                    "The Contextualist can capture the variation in what counts as well-being across lives. The Differential Realization View can capture it <em>and</em> explain why aggregating life satisfaction across persons is not semantic nonsense." &mdash; Essay core claim
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Implications -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">4. Policy Implications</h2>
+
+            <div class="card reveal">
+                <p>The DR View has direct implications for welfare measurement in public policy. If there is an invariant core concept of well-being — even if it is realised differently for different persons — then it is philosophically legitimate to use a single subjective measure as a proxy for that concept, provided the measure is appropriately validated.</p>
+
+                <div class="finding-grid">
+                    <div class="finding-item">
+                        <span class="stat" style="font-size: 1.1rem;">Life Satisfaction</span>
+                        <div class="stat-label">Valid cross-person welfare measure under the DR View — respondents access the same concept via different realizations</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat" style="font-size: 1.1rem;">Aggregation</span>
+                        <div class="stat-label">Interpersonal summation and distributional comparison are semantically coherent — we are comparing the same thing</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat" style="font-size: 1.1rem;">WELLBYs</span>
+                        <div class="stat-label">One point of life satisfaction per person per year — unit of account in WELLBY-based welfare analysis, justified by DR View</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat" style="font-size: 1.1rem;">Prioritarian SWF</span>
+                        <div class="stat-label">Distributional weighting of WELLBYs via Atkinson SWF — requires interpersonal comparability the DR View provides</div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem;">Heterogeneity Without Incommensurability</h3>
+                <p>The DR View permits acknowledging that two people with identical life satisfaction scores may have very different lives — different sources of meaning, different levels of need-fulfilment, different objective circumstances. This heterogeneity in <em>realisation</em> is not an objection to measurement: it is exactly what psychometricians call construct validity. A measure of well-being can be valid even if the construct is realised heterogeneously, as long as respondents are accessing the same underlying concept when they report their satisfaction.</p>
+
+                <p style="margin-top: 0.8rem;">The Hausman sceptic is wrong to conclude that heterogeneity implies incommensurability. The Contextualist is wrong to conclude that it implies semantic variation. The DR View offers the correct diagnosis: well-being is the same concept for everyone; it just looks different, because we are different.</p>
+
+                <div class="finding-highlight" style="margin-top: 2rem;">
+                    <span class="finding-title">The Differential Realization View</span>
+                    <span class="finding-label">Well-being has an invariant semantic core — what varies across persons is its realization, not its meaning. This makes life satisfaction a philosophically coherent basis for cross-person welfare comparison and distributional policy analysis.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key References -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Key Literature</h2>
+            <div class="card reveal">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Hausman (2006)</strong><br>
+                        Valuing health: A new proposal. <em>Health Economics</em>, 15(2), 107–113.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Alexandrova (2013)</strong><br>
+                        Doing well in the circumstances. <em>Journal of Moral Philosophy</em>, 9(3), 381–394.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Alexandrova (2016)</strong><br>
+                        Well-being as an object of science. <em>Philosophy of Science</em>, 79(5), 678–689.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Cohen (1986)</strong><br>
+                        Knowledge and context. <em>Journal of Philosophy</em>, 83(10), 574–583.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>DeRose (1992)</strong><br>
+                        Contextualism and knowledge attributions. <em>Philosophy and Phenomenological Research</em>, 52(4), 913–929.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Diener et al. (1999)</strong><br>
+                        Subjective well-being: Three decades of progress. <em>Psychological Bulletin</em>, 125(2), 276–302.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Dolan & Kahneman (2008)</strong><br>
+                        Interpretations of utility and their implications for the valuation of health. <em>Economic Journal</em>, 118(525), 215–234.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Purdam & Tranmer (2019)</strong><br>
+                        Wellbeing science: Methodological issues and the role of mixed methods. <em>Journal of Mixed Methods Research</em>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back CTA -->
+    <section>
+        <div class="container" style="text-align: center; padding: 2rem 0;">
+            <a href="theses.html" class="btn btn-outline hover-lift" style="margin-right: 1rem;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Academic Work</a>
+            <a href="essay-wellbys.html" class="btn hover-lift" style="margin-right: 1rem;"><i class="fas fa-chart-bar" style="margin-right: 0.4rem;"></i>Related: WELLBY Dissertation</a>
+            <a href="files/PH435_Wellbeing_Measurable_Differential_Realization.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Download Full Essay</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theses.html">Academic Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/main.js"></script>
+</body>
+</html>
