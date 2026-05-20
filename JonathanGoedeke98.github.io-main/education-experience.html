@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education & Experience | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    
+    <!-- Loading animation -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Jonathan Gödeke</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="education-experience.html" class="active">Education & Experience</a></li>
+                    <li><a href="theses.html">Essays</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>Education & Experience</h1>
+                <p>My academic journey and professional experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Section -->
+    <section>
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-link" data-target="education-tab">Education</button>
+                <button class="tab-link" data-target="experience-tab">Experience</button>
+            </div>
+            
+            <!-- Education Tab -->
+            <div id="education-tab" class="tab-content">
+                <h2 class="section-title reveal">Education</h2>
+                
+                <div class="timeline-alt">
+                    <div class="timeline-container left reveal">
+                        <div class="timeline-content">
+                            <h3>MSc in Economics</h3>
+                            <p class="timeline-date">2024 - 2026 (Expected)</p>
+                            <p><strong>University of Cologne</strong></p>
+                            <p>Specialization in Microeconometrics</p>
+                            <p>Supported by the Germany-Scholarship</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-container right reveal" style="animation-delay: 0.2s;">
+                        <div class="timeline-content">
+                            <h3>MSc in Behavioural Science</h3>
+                            <p class="timeline-date">2023 - 2024</p>
+                            <p><strong>London School of Economics and Political Science</strong></p>
+                            <p>Focus on Policy Analysis and Subjective Wellbeing Measures</p>
+                            <p>Thesis: “Distribution Sensitive Policy Analysis: Constructing a Prioritarian SWF
+using Causal Evidence on Life Satisfaction,” <italic>(65%) supervised by Dr. Christian Krekel</italic><p>
+                            <ul>
+                                <li>The Effect of Cash Transfers on Political Support <italic>(83%), Quantitative Methods</italic></li>
+                                <li>A Dual-Process Model of Self-Defeating Behaviours <italic>(70%), Fundamentals of Behavioural Science</italic></li>
+                                <li>Measuring Well-Being for Policy Analyses <italic>(69%), Philosophy of Economics</italic></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-container left reveal" style="animation-delay: 0.4s;">
+                        <div class="timeline-content">
+                            <h3>Bachelor of Science</h3>
+                            <p class="timeline-date">2020 - 2023</p>
+                            <p><strong>University of Cologne</strong></p>
+                            <p>Focus on Behavioral Management Science and Economic Psychology</p>
+                            <p>Thesis: "Experimental Measurement of Provided Effort in Medical Processes by
+Diagnostic Indicator Tasks," <italic>(1.0), supervised by Prof. Dr. Daniel Wiesen</italic></p>
+                            <p>Seminar thesis: "Incentives vs Commitment," <italic>(1.0), supervised by Prof. Dr. Daniel Wiesen</italic></p>
+                            <p>Supported by the Germany-Scholarship</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-container right reveal" style="animation-delay: 0.6s;">
+                        <div class="timeline-content">
+                            <h3>Exchange Semester</h3>
+                            <p class="timeline-date">Fall 2022</p>
+                            <p><strong>Instituto Tecnológico Autónomo de México</strong></p>
+                            <p>Communication in Spanish, Managerial Skills Development, Investments</p>
+                            <p>Supported by the PROMOS-Scholarship (DAAD)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Experience Tab -->
+            <div id="experience-tab" class="tab-content">
+                <h2 class="section-title reveal" id="experience">Experience</h2>
+                
+                <div class="timeline-alt">
+                    <div class="timeline-container left reveal">
+                        <div class="timeline-content">
+                            <h3>Tutor and Exam Grader</h3>
+                            <p class="timeline-date">10/2024 - Present</p>
+                            <p><strong>Institute of Econometrics and Statistics, University of Cologne</strong></p>
+                            <p>Taught weekly undergraduate seminars in the classes:</a></p>
+                            <ul>
+                                <li>“Inferential Statistics and Econometrics,” covering probability distributions, limit theorems, point and
+interval estimation, and linear regression analyses</li>
+                                <li>“Descriptive Statistics and Probability Theory,” covering analysis of uni- and multivariate data, measures
+of disparity, and random processes and probabilities</li>
+                                <li>Pre-graded the exams in the undergraduate Mathematics class</li>
+                                <li>Under the Supervision of Prof. Dr. Rainer Dyckerhoff</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-container left reveal" style="animation-delay: 0.4s;">
+                        <div class="timeline-content">
+                            <h3>Research Assistant</h3>
+                            <p class="timeline-date">04/2022 - Present</p>
+                            <p><strong>Department of Healthcare Management, University of Cologne</strong></p>
+                            <ul>
+                                <li>Programmed a game theoretical experiment about individual differences in altruism for medical students using
+oTree and Python</li>
+                                <li>Coded questionnaires on demographics, preferences, and personality traits and assisted in executing an
+experiment regarding incentives in healthcare markets</li>
+                                <li>Coordinated and executed a nationwide survey about physical pain in surgeons and its behavioral implications</li>
+                                <li>Interviewed clinical directors for qualitative data collection</li>
+                                <li>Under the Supervision of Prof. Dr. Daniel Wiesen</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-container right reveal" style="animation-delay: 0.2s;">
+                        <div class="timeline-content">
+                            <h3>Research Assistant</h3>
+                            <p class="timeline-date">10/2023 - 10/2024</p>
+                            <p><strong>Department for Health Policy, London School of Economics and Political Science</strong></p>
+                            <ul>
+                                <li>Analyzed the effect of opening hours liberalizations on health behaviors in Germany using quasi-experimental
+designs and regression models in Stata</li>
+                                <li>Investigated determinants of vegetarianism using concepts of social norms and survey data</li>
+                                <li>Under the Supervision of Prof. Dr. Joan Costa-i-Font</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-container left reveal" style="animation-delay: 0.6s;">
+                        <div class="timeline-content">
+                            <h3>Intern</h3>
+                            <p class="timeline-date">10/2021 - 01/2022</p>
+                            <p><strong>Institute for Socoiology and Social Psychology, University of Cologne</strong></p>
+                            <ul>
+                                <li>Reviewed psychological interventions focused on improvements in individual well-being caused by different
+types of coping with mortality</li>
+                                <li>Delivered a presentation at the institute in front of a Professor, Postdocs and PhD students, illustrating well-being
+interventions</li>                
+                                <li>Under the Supervision of Prof. Dr. Detlef Fetchenhauer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theses.html">Essays</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

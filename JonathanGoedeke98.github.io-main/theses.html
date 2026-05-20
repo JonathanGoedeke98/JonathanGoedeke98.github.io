@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theses | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    
+    <!-- Loading animation -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Jonathan Gödeke</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="education-experience.html">Education & Experience</a></li>
+                    <li><a href="theses.html" class="active">Essays</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>Academic Work</h1>
+                <p>Essays from my studies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Research Focus</h2>
+            <div class="card reveal">
+                <p>My academic essays focus on three primary areas:</p>
+                <ol>
+                    <li><strong>Policy Analysis &amp; Causal Inference</strong> - Applying quasi-experimental methods (RDD, DiD) to evaluate real-world policies and quantify causal effects, with a focus on communicating results and limitations to inform decision-making</li>
+                    <li><strong>Distributional Policy Analysis</strong> - Examining how policies affect different segments of the population, with attention to those who are worse-off and the philosophical foundations of Prioritarianism</li>
+                    <li><strong>Social Preferences</strong> - Using experimental research designs to measure behavioural outcomes such as altruism and self-defeating behaviour</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master's Thesis Section -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">MSc Thesis in Behavioural Science</h2>
+            <div class="card reveal">
+                <h3 class="publication-title">Distribution Sensitive Policy Analysis based on WELLBYs: Constructing a Prioritarian Social Welfare Function through Causal Evidence on Life Satisfaction</h3>
+                <p class="publication-meta">MSc Dissertation | Behavioural Science | London School of Economics and Political Science | 2024 | Grade: 65%</p>
+                <p class="publication-meta">Supervised by Dr. Christian Krekel</p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Difference-in-Differences</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Panel Data Analysis</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Propensity Score Matching</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Stata</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Welfare Economics</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Distributional Analysis</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Policy Evaluation</span>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h4>Abstract</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>This dissertation is the <strong>first study to construct a Prioritarian Social Welfare Function (SWF) using life satisfaction (WELLBYs) as a welfare measure</strong>. It begins with a comprehensive theoretical analysis justifying Prioritarianism — the view that improvements for those worse-off carry greater moral weight — over Utilitarianism and Egalitarianism, drawing on claims-based fairness and the levelling-down objection. Life satisfaction is justified as the welfare measure due to its alignment with democratic principles and psychometric validity.</p>
+
+                        <p>The empirical core applies a <strong>Difference-in-Differences (DiD) design</strong> to Australia's major household panel survey (HILDA) to isolate the causal effect of Victoria's second COVID-19 lockdown (July–October 2020) on life satisfaction. The treatment group (Victoria, August–November 2020) is compared to the control group (all other Australian states) across time. <strong>Propensity Score Matching</strong> and parallel trends verification are used to strengthen identification.</p>
+
+                        <p>Results show a <strong>highly significant negative effect of −0.0303 points</strong> on a 0–10 scale (95% CI −0.0486 to −0.0120, p = 0.006), with disproportionately large effects on individuals with lower baseline life satisfaction, poor mental health, and younger age (15–19 years).</p>
+
+                        <p>The DiD estimates are then fed into the <strong>Atkinson SWF</strong> to produce distributional welfare comparisons: the lockdown scenario yields 13,775,625 Prioritarian WELLBYs versus 52,366,212 under Business-as-Usual. The analysis concludes that the wellbeing decline from the lockdown outweighed the benefits of reduced premature deaths — offering a novel, distribution-sensitive framework for evaluating public health policy.</p>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <h4>Key Contributions:</h4>
+                    <ul>
+                        <li><strong>Novel methodology:</strong> first application of a Prioritarian SWF using life satisfaction (WELLBYs) as a welfare measure, bridging philosophical theory and empirical policy analysis</li>
+                        <li><strong>Causal identification:</strong> Difference-in-Differences design on HILDA panel data with Propensity Score Matching and parallel trends testing to isolate the lockdown effect</li>
+                        <li><strong>Distributional insight:</strong> heterogeneous effects analysis revealing that the policy disproportionately harmed the worse-off — those with low life satisfaction, poor mental health, and adolescents</li>
+                        <li><strong>Welfare accounting:</strong> quantified social welfare under lockdown vs. Business-as-Usual using the Atkinson SWF, translating causal estimates into actionable policy recommendations</li>
+                    </ul>
+                </div>
+
+                <div class="mt-2" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <a href="files/PB4D6_MSc_Thesis_Prioritarian_SWF_Life_Satisfaction.pdf" target="_blank" rel="noopener" class="btn">
+                        <i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i> Full Dissertation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophical Foundations Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Philosophy of Economics</h2>
+            <div class="card reveal">
+                <h3 class="publication-title">Well-Being is Measurable After All: A Case for the Differential Realization View</h3>
+                <p class="publication-meta">Essay | Philosophy of Economics | London School of Economics and Political Science | 2024 | Grade: 69%</p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Well-Being Measurement</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Psychometrics</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Welfare Economics</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Philosophy of Science</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Policy Metrics</span>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h4>Abstract</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>This essay engages a foundational debate in welfare economics: whether well-being can be validly measured for policy purposes. Hausman (2006) argues it cannot — that the natural heterogeneity of well-being across individuals and circumstances makes any measurement instrument incapable of enabling meaningful cross-individual comparisons. Alexandrova (2013, 2016) offers an optimistic counterargument, proposing that heterogeneity is manageable through <em>modest generalisation</em> — defining well-being for specific kinds of people in specific circumstances — and construct validity of psychometric scales.</p>
+
+                        <p>The essay endorses Alexandrova's optimism but reopens the debate between her preferred <strong>Contextualism</strong> and the <strong>Differential Realization (DR) view</strong>. Contextualism holds that the semantic content of well-being varies with context, making a uniform concept impossible. The DR view argues instead for an <em>invariant semantic core</em> — well-being's meaning stays constant — while contextual variation is captured through the truth conditions that determine when a well-being claim holds in a given situation.</p>
+
+                        <p>The essay challenges Alexandrova's two premises for Contextualism: first, that well-being should remain stable across contexts (analogous to Epistemic Contextualism) — I argue well-being is inherently sensitive to situational factors, making this analogy invalid. Second, that an invariant core is insufficient to capture well-being's full complexity — I argue it is both sufficient and preferable, as a consistent semantic standard enables cross-contextual policy comparisons without the measurement fragmentation Contextualism would require.</p>
+
+                        <p>The essay concludes that the <strong>DR view with life satisfaction as an invariant concept</strong> is the superior foundation for policy-relevant well-being measurement: it preserves comparability across populations while remaining sensitive to contextual determinants through variable truth conditions.</p>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <h4>Key Contributions:</h4>
+                    <ul>
+                        <li><strong>Philosophical argument:</strong> original case for the Differential Realization view over Contextualism, directly challenging Alexandrova's two premises with reasoned counter-arguments</li>
+                        <li><strong>Policy relevance:</strong> demonstrates why a stable, invariant well-being concept is essential for coherent cross-contextual policy evaluation and comparison</li>
+                        <li><strong>Measurement foundations:</strong> provides the philosophical grounding for using life satisfaction as a welfare metric in empirical policy analysis — directly informing the approach taken in the MSc dissertation</li>
+                    </ul>
+                </div>
+
+                <div class="mt-2" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <a href="files/PH435_Wellbeing_Measurable_Differential_Realization.pdf" target="_blank" rel="noopener" class="btn">
+                        <i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i> Full Essay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behavioral Science Section -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Behavioural Science Theory</h2>
+            <div class="card reveal">
+                <h3 class="publication-title">A Dual-Process Model of Self-Defeating Behaviours</h3>
+                <p class="publication-meta">Essay | Fundamentals of Behavioural Science | London School of Economics and Political Science | 2023 | Grade: 70%</p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Dual-Process Theory</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Behavioural Economics</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Nudge Theory</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Intervention Design</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Policy Implications</span>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h4>Abstract</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>This essay applies <strong>dual-process theory</strong> (Evans &amp; Stanovich, 2013; Kahneman &amp; Frederick, 2002) to analyse the cognitive mechanisms behind self-defeating behaviours — defined as repetitive actions that invite failure and prevent individuals from attaining their goals. It builds a theoretical framework around two root causes: <strong>self-control failures</strong> (the tension between the impulsive "doer" and the forward-looking "planner", Thaler &amp; Shefrin, 1981) and <strong>negatively biased self-reflection</strong> (System 1 pattern-completion that reinforces pessimistic self-associations and drives avoidance behaviour).</p>
+
+                        <p>The essay applies this framework to concrete behavioural domains — overspending, substance abuse, binge-eating, and task avoidance driven by low self-esteem — explaining how limited working memory capacity constrains System 2's ability to intervene and correct automatic biases (Gunn &amp; Finn, 2015; Beevers, 2005).</p>
+
+                        <p>Drawing on this analysis, the essay proposes and evaluates a typology of <strong>cost-effective policy interventions</strong>: <em>other-deployed</em> approaches (defaults such as automatic pension enrolment, Madrian &amp; Shea, 2001; taxes on addictive goods, Gruber &amp; Mullainathan, 2006) that reduce reliance on reflective processing, and <em>self-deployed</em> strategies (mindfulness meditation, mental contrasting) that build System 2 capacity and agency.</p>
+
+                        <p>The essay concludes with an <strong>ethical analysis</strong> of the autonomy trade-off: self-deployed interventions enhance agency by strengthening System 2, while other-deployed paternalistic measures reduce autonomy by targeting System 1 — yet may be socially optimal in the presence of externalities or where System 2 intervention is not feasible (e.g. severe addiction).</p>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <h4>Key Contributions:</h4>
+                    <ul>
+                        <li><strong>Theoretical framework:</strong> original classification of self-defeating behaviours into self-control failures and negatively biased self-reflection, analysed through a dual-process lens</li>
+                        <li><strong>Intervention typology:</strong> structured comparison of other-deployed vs. self-deployed policy approaches, grounded in empirical evidence from behavioural economics</li>
+                        <li><strong>Ethical reasoning:</strong> systematic analysis of the autonomy–welfare trade-off in paternalistic policy design, relevant for real-world nudge and public health applications</li>
+                        <li><strong>Literature synthesis:</strong> integrates cognitive science, behavioural economics, and public policy literatures to produce actionable design principles for behaviour change interventions</li>
+                    </ul>
+                </div>
+
+                <div class="mt-2" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <a href="files/PB405_Dual_Process_Model_Self_Defeating_Behaviours.pdf" target="_blank" rel="noopener" class="btn">
+                        <i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i> Full Essay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quasi-Experimental Methods Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Policy Analysis &amp; Causal Inference</h2>
+            <div class="card reveal">
+                <h3 class="publication-title">The Effect of Cash Transfers on Political Support</h3>
+                <p class="publication-meta">Policy Analysis Essay | Quantitative Methods | London School of Economics and Political Science | 2024 | Grade: 83%</p>
+                <p class="publication-meta">Replication and examination of Manacorda, Miguel, &amp; Vigorito (2011), <em>American Economic Journal: Applied Economics</em></p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Regression Discontinuity Design</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Causal Inference</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Stata</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Quasi-Experimental Methods</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Policy Evaluation</span>
+                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Robustness Testing</span>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h4>Abstract</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>This essay investigates the causal effect of governmental cash and food card transfers on self-reported political support for the incumbent government in Uruguay. Replicating and extending Manacorda et al. (2011), the analysis applies a <strong>Regression Discontinuity Design (RDD)</strong> — a quasi-experimental method exploiting a sharp eligibility cutoff in a predicted income score to compare treatment and control groups around the threshold.</p>
+
+                        <p>The preliminary analysis uses <strong>McCrary density tests</strong> (p = 0.4111) and <strong>placebo regressions on covariates</strong> to verify the key RDD assumptions of no manipulation and local randomization around the cutoff.</p>
+
+                        <p>Main results show a consistent <strong>positive treatment effect of 9–13%</strong> on government support in 2007 and 2008, with significant positive effects on confidence in the president, confidence in the Ministry of Social Development (MIDES), and interest in politics.</p>
+
+                        <p>A comprehensive suite of <strong>robustness checks</strong> — including donut hole regressions (excluding observations closest to the cutoff), bandwidth sensitivity analyses, and local polynomial models — confirm the stability and significance of the treatment effect across specifications.</p>
+
+                        <p>The essay concludes with a structured policy critique: limitations in external validity (local average treatment effect for low-income earners only), potential internal validity concerns (contact bias from MIDES personnel), and suggested extensions using Difference-in-Differences and Instrumental Variables designs to improve identification.</p>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <h4>Key Analytical Contributions:</h4>
+                    <ul>
+                        <li><strong>Full RDD pipeline in Stata:</strong> data preparation, McCrary test, placebo regressions on covariates, OLS main regressions, and graphical visualisations</li>
+                        <li><strong>Robustness checks:</strong> donut hole regressions across multiple exclusion radii, bandwidth sensitivity plots, and local polynomial (quadratic/cubic) models</li>
+                        <li><strong>Policy critique:</strong> structured assessment of methodological and contextual limitations with concrete suggestions for alternative causal designs (DiD, IV)</li>
+                        <li><strong>Replication of a published AEJ paper</strong>, demonstrating ability to work with real-world survey data and reproduce peer-reviewed empirical findings</li>
+                    </ul>
+                </div>
+
+                <div class="mt-2" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <a href="files/PB4A7_Cash_Transfers_Political_Support_Report.pdf" target="_blank" rel="noopener" class="btn">
+                        <i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i> Full Report
+                    </a>
+                    <a href="files/PB4A7_Cash_Transfers_Political_Support_Poster.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+                        <i class="fas fa-image" style="margin-right: 0.4rem;"></i> Research Poster
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Experimental Methods Section -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">BSc Thesis</h2>
+            <div class="card reveal">
+                <h3 class="publication-title">Experimental Measurement of Provided Effort in Medical Processes by Diagnostic Indicator Tasks</h3>
+                <p class="publication-meta">Bachelor's Thesis | University of Cologne | 2023 | Grade: 1.0</p>
+                <p class="publication-meta">Supervised by Prof. Dr. Daniel Wiesen</p>
+                
+                <p>This thesis establishes an experimental methodology to assess the level of effort exerted by physicians in diagnostic decision-making.</p>
+                
+                <div class="mt-2">
+                    <h4>Key Contributions:</h4>
+                    <ul>
+                        <li>Development of experimental methodology to measure provided effort in medical diagnostics</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card reveal" style="animation-delay: 0.2s;">
+                <h3 class="publication-title">Incentives vs Commitment</h3>
+                <p class="publication-meta">Seminar Thesis | University of Cologne | Grade: 1.0</p>
+                <p class="publication-meta">Supervised by Prof. Dr. Daniel Wiesen</p>
+                
+                <p>This seminar thesis explored the relationship between external incentives and internal commitment in healthcare settings.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Research Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Current Academic Work</h2>
+            <div class="publication reveal">
+                <h3 class="publication-title">Determinants of Vegetarianism: A Social Norms Perspective</h3>
+                <p class="publication-meta">Research Project | In collaboration with Prof. Joan Costa-i-Font | London School of Economics and Political Science</p>
+                <p>This research investigates the role of social norms and policies in shaping vegetarianism.</p>
+            </div>
+            
+            <div class="publication reveal" style="animation-delay: 0.2s;">
+                <h3 class="publication-title">Game Theoretical Experiment on Altruism in Medical Students</h3>
+                <p class="publication-meta">Research Project | Under the supervision of Prof. Dr. Daniel Wiesen | University of Cologne</p>
+                <p>This project involves programming a game theoretical experiment to measure altruistic behavior among medical students using oTree and Python.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theses.html">Essays</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

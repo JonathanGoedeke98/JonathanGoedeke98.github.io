@@ -1,0 +1,298 @@
+/* Accessibility improvements */
+:root {
+  --focus-outline: 3px solid var(--accent-color);
+}
+
+/* Focus styles */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Improved contrast */
+.high-contrast {
+  --primary-color: #003366;
+  --secondary-color: #0056b3;
+  --accent-color: #008000;
+  --text-color: #000000;
+  --light-text-color: #ffffff;
+  --border-color: #000000;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-fade-in,
+  .reveal,
+  .hover-lift:hover,
+  .card:hover,
+  .btn:hover,
+  .profile-image:hover {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Improved form accessibility */
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+/* ARIA support */
+[aria-hidden="true"] {
+  display: none;
+}
+
+/* Keyboard navigation indicators */
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none;
+}
+
+/* Improved link underlines */
+.underline-links a:not(.btn) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.underline-links a:not(.btn):hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Improved color contrast for placeholders */
+::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+/* Improved focus for interactive elements */
+.card:focus-within {
+  box-shadow: 0 0 0 3px var(--accent-color);
+}
+
+/* Improved table accessibility */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+th {
+  text-align: left;
+  background-color: var(--light-color);
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+}
+
+caption {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Improved list markers */
+ul:not(.social-icons):not(.footer-links):not(nav ul) {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Improved blockquote */
+blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+}
+
+/* Improved code blocks */
+code {
+  font-family: monospace;
+  background-color: var(--light-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: var(--light-color);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Improved image accessibility */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improved form error states */
+.form-error {
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+input.error,
+textarea.error,
+select.error {
+  border-color: #d32f2f;
+}
+
+/* Improved required field indicators */
+.required::after {
+  content: "*";
+  color: #d32f2f;
+  margin-left: 0.25rem;
+}
+
+/* Improved focus within */
+.form-group:focus-within label {
+  color: var(--secondary-color);
+}
+
+/* Improved keyboard focus styles */
+.keyboard-focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Improved ARIA landmarks */
+[role="banner"],
+[role="navigation"],
+[role="main"],
+[role="contentinfo"] {
+  display: block;
+}
+
+/* Improved dark mode contrast */
+body.dark-theme {
+  --text-color: #f0f0f0;
+}
+
+/* Improved link indicators */
+a[href^="http"]:not([href*="jonathan-goedeke.de"])::after {
+  content: " ↗";
+  font-size: 0.8em;
+}
+
+/* Improved focus visible */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Improved form labels */
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+/* Improved button states */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Improved form field sizing */
+input, select, textarea {
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* Improved touch targets */
+@media (max-width: 768px) {
+  button, 
+  .btn,
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  a.btn,
+  nav a {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Placeholder image for profile */
+.profile-image {
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 3rem;
+  overflow: hidden;
+}
+
+.profile-image::before {
+  content: "\f007"; /* Font Awesome user icon */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
