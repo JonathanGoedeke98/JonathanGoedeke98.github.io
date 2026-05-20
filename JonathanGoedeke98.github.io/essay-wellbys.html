@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribution Sensitive Policy Analysis (WELLBYs) | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .essay-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin: 1.2rem 0;
+        }
+        .essay-table th {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.6rem 0.75rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        .essay-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+            vertical-align: top;
+        }
+        .essay-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+        .essay-table tr:nth-child(even) { background-color: rgba(0,0,0,0.025); }
+        .essay-table .se { color: #666; font-size: 0.82rem; }
+        .essay-table .ci { color: #666; font-size: 0.8rem; font-style: italic; }
+        .essay-table .table-note {
+            font-size: 0.78rem;
+            color: #666;
+            text-align: left;
+            padding: 0.4rem 0.75rem;
+            border-top: 2px solid #ccc;
+        }
+        .table-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-bottom: 0.3rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .figure-box {
+            background: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+        .figure-box .figure-label {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+        .figure-box .figure-title { font-weight: 600; margin-bottom: 0.4rem; }
+        .finding-highlight {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .finding-highlight .big-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        .finding-highlight .big-label { font-size: 0.95rem; opacity: 0.9; }
+        .finding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .finding-stat {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .finding-stat .stat-number {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+        }
+        .finding-stat .stat-label { font-size: 0.8rem; color: #666; margin-top: 0.2rem; }
+        .formula-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .formula-box .formula-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.6rem;
+        }
+        .welfare-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .welfare-scenario {
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .welfare-scenario.lockdown {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #fff;
+        }
+        .welfare-scenario.bau {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: #fff;
+        }
+        .welfare-scenario .scenario-wellby {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .welfare-scenario .scenario-label { font-size: 0.85rem; opacity: 0.9; }
+        .welfare-scenario .scenario-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; }
+        .method-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        .method-step-num {
+            background: var(--secondary-color);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .method-step-content h4 { margin: 0 0 0.25rem 0; font-size: 0.95rem; }
+        .method-step-content p { margin: 0; font-size: 0.88rem; color: #555; }
+        .section-divider { border: none; border-top: 2px solid var(--light-color); margin: 2rem 0; }
+        .heterogeneous-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        .het-card {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 0.9rem 1rem;
+            border-left: 3px solid var(--secondary-color);
+        }
+        .het-card .het-group { font-size: 0.78rem; color: #666; text-transform: uppercase; letter-spacing: 0.04em; }
+        .het-card .het-effect { font-size: 1.3rem; font-weight: 700; color: #c0392b; }
+        .het-card .het-desc { font-size: 0.8rem; color: #444; margin-top: 0.2rem; }
+        @media (max-width: 600px) {
+            .welfare-comparison { grid-template-columns: 1fr; }
+            .essay-table { font-size: 0.78rem; }
+            .essay-table th, .essay-table td { padding: 0.35rem 0.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="theses.html" class="active">Academic Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;"><a href="theses.html" style="color: inherit; text-decoration: underline;">Academic Work</a> &rsaquo; MSc Dissertation</p>
+                <h1 style="font-size: 1.65rem; margin-bottom: 0.6rem;">Distribution Sensitive Policy Analysis based on WELLBYs: Constructing a Prioritarian Social Welfare Function through Causal Evidence on Life Satisfaction</h1>
+                <p style="font-size: 0.95rem; opacity: 0.9; margin-bottom: 1rem;">MSc Dissertation &nbsp;|&nbsp; LSE &mdash; Behavioural Science &nbsp;|&nbsp; 2024 &nbsp;|&nbsp; Supervised by Dr. Christian Krekel &nbsp;|&nbsp; Grade: <strong>65%</strong></p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; margin-bottom: 1.2rem;">
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Difference-in-Differences</span>
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Panel Data</span>
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Propensity Score Matching</span>
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Stata</span>
+                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Welfare Economics</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="files/PB4D6_MSc_Thesis_Prioritarian_SWF_Life_Satisfaction.pdf" target="_blank" rel="noopener" class="btn"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Full Dissertation (PDF)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Finding -->
+    <section>
+        <div class="container">
+            <div class="finding-highlight reveal">
+                <span class="big-number">&minus;0.0303</span>
+                <span class="big-label">Points on a 0&ndash;10 life satisfaction scale &mdash; causal impact of Victoria's second COVID-19 lockdown (95% CI &minus;0.049 to &minus;0.012, p = 0.006). Harm concentrated disproportionately among those already worst-off (&minus;0.334 additional points for those with LS&nbsp;&lt;&nbsp;4)</span>
+            </div>
+
+            <div class="finding-grid reveal">
+                <div class="finding-stat">
+                    <span class="stat-number">215,733</span>
+                    <span class="stat-label">Observations (HILDA panel, 20 waves)</span>
+                </div>
+                <div class="finding-stat">
+                    <span class="stat-number">16,513</span>
+                    <span class="stat-label">Individuals tracked over time</span>
+                </div>
+                <div class="finding-stat">
+                    <span class="stat-number">13.8M</span>
+                    <span class="stat-label">Prioritarian WELLBYs under lockdown</span>
+                </div>
+                <div class="finding-stat">
+                    <span class="stat-number">52.4M</span>
+                    <span class="stat-label">Prioritarian WELLBYs in Business-as-Usual</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Context -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Research Context &amp; Contribution</h2>
+            <div class="card reveal">
+                <p>Standard policy analysis aggregates total welfare &mdash; it treats a unit of wellbeing gained by the richest and the poorest as morally equivalent. This dissertation challenges that assumption. Drawing on the <em>Prioritarianism in Practice</em> project initiated by Matthew Adler and colleagues, it constructs the first Prioritarian Social Welfare Function (SWF) using life satisfaction (WELLBYs) as the welfare measure.</p>
+
+                <p style="margin-top: 0.8rem;">The empirical application evaluates Victoria's second COVID-19 lockdown (July&ndash;October 2020) &mdash; one of the most stringent lockdowns outside China. By applying Difference-in-Differences to Australia's major household panel survey (HILDA), the study isolates the lockdown's causal effect on life satisfaction from the general pandemic context. This is, to my knowledge, the first study to causally identify the impact of a COVID-19 lockdown on life satisfaction.</p>
+
+                <p style="margin-top: 0.8rem;">The results are then fed into an Atkinson Social Welfare Function (with inequality-aversion parameter γ = 1) to formally compare the wellbeing consequences of the lockdown policy with a Business-as-Usual counterfactual. The comparison provides an evidence-based recommendation framed in terms that capture fairness to those worst-off &mdash; something a simple cost-benefit analysis cannot do.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theoretical Framework -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Theoretical Framework: Why Prioritarianism?</h2>
+
+            <div class="card reveal">
+                <h3 style="font-size: 1rem; margin-bottom: 0.6rem;">From Utilitarianism to Prioritarianism</h3>
+                <p style="font-size: 0.9rem;">Policy evaluation has long been dominated by Utilitarianism, which maximises the sum of individual welfare. While tractable, this approach violates the <strong>Pigou-Dalton Axiom</strong>: it is morally indifferent to who receives a welfare gain, ignoring inequality. Behavioral economics provides substantial evidence that citizens are inequality-averse (Clark &amp; D'Ambrosio, 2015; Hurley et al., 2020), justifying a policy framework that weights improvements for the worse-off more heavily.</p>
+
+                <p style="font-size: 0.9rem; margin-top: 0.75rem;">Two alternatives satisfy the Pigou-Dalton Axiom: <strong>Egalitarianism</strong> (comparative fairness, relative wellbeing) and <strong>Prioritarianism</strong> (absolute wellbeing, independent of relative position). Prioritarianism is preferred for two reasons:</p>
+                <ul style="font-size: 0.9rem; margin: 0.5rem 0 0 1.2rem; line-height: 1.9;">
+                    <li><strong>Separability Axiom:</strong> Rankings of wellbeing vectors are independent of unaffected individuals &mdash; practically, this allows focusing only on those affected by a policy, without needing to account for the entire population</li>
+                    <li><strong>Levelling-Down Objection:</strong> Egalitarianism can imply that equalising welfare by reducing the wellbeing of better-off individuals is morally good. Prioritarianism avoids this &mdash; a move from a scenario where some have 7 and some have 9 (unequal) to a scenario where all have 7 (equal) is not an improvement under Prioritarianism, because no one is made better off</li>
+                </ul>
+
+                <h3 style="font-size: 1rem; margin: 1.2rem 0 0.5rem;">The Atkinson Social Welfare Function</h3>
+                <p style="font-size: 0.9rem;">The Atkinson SWF implements Prioritarianism formally through a strictly concave and increasing transformation of individual wellbeing, giving greater weight to improvements for those with lower wellbeing:</p>
+
+                <div class="formula-box">
+                    <div class="formula-title">Atkinson SWF (general form, γ &gt; 0, γ ≠ 1)</div>
+                    <em>Social Welfare<sub>Atkinson</sub></em> = &sum;<sub>i=1</sub><sup>N</sup> g(w(&middot;)<sub>i</sub>) = &sum;<sub>i=1</sub><sup>N</sup> &frac12;(1&minus;&gamma;) &middot; w(&middot;)<sub>i</sub><sup>1&minus;&gamma;</sup>
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-title">Atkinson SWF (γ = 1, applied in this dissertation)</div>
+                    <em>Social Welfare<sub>Atkinson, γ=1</sub></em> = &sum;<sub>i=1</sub><sup>N</sup> ln(w(&middot;)<sub>i</sub>)
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.75rem;">Setting γ = 1 reduces the SWF to the sum of log-transformed life satisfaction scores. The logarithm is strictly concave: the same unit increase in life satisfaction contributes more to social welfare for a person at 3/10 than for a person at 8/10. This formally encodes the Prioritarian principle that improvements for the worse-off matter more. γ = 1 represents a moderate inequality-aversion &mdash; a balance between efficiency and equality.</p>
+
+                <h3 style="font-size: 1rem; margin: 1.2rem 0 0.5rem;">WELLBYs as the Welfare Measure</h3>
+                <p style="font-size: 0.9rem;">A WELLBY (Well-Being Year) equals one point of life satisfaction for one person for one year, measured on a 0&ndash;10 Likert scale. WELLBYs are used as the welfare measure because: (1) asking citizens directly about their life satisfaction aligns with democratic principles, respecting individual judgements; (2) life satisfaction predicts key behaviours like voting; and (3) the Atkinson SWF requires ratio-rescaling invariance, which WELLBYs on a 0&ndash;10 scale satisfy, unlike positive-affine invariance required for Utilitarian SWFs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empirical Design -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Empirical Design: Difference-in-Differences on HILDA</h2>
+
+            <div class="card reveal">
+                <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">Data: HILDA Panel Survey</h3>
+                <p style="font-size: 0.9rem;">The analysis uses 20 annual waves (2001&ndash;2021) of the <strong>Household, Income and Labour Dynamics in Australia (HILDA)</strong> survey &mdash; Australia's major household panel survey, initiated in 2001. Initial sample: 7,682 households; 2,153 additional households added in 2011 (top-up sample); re-interview rates rose from 87% (wave 2) to over 95% (wave 8+).</p>
+
+                <p style="font-size: 0.9rem; margin-top: 0.75rem;">The treatment window is the 20th wave (2020), when over 90% of interviews were completed before end of October 2020. The sample was restricted to respondents who provided data in 2020 and who were exposed to the lockdown (Stage 3 mobility restrictions in their postcode):</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin: 1rem 0;">
+                    <div class="finding-stat">
+                        <span class="stat-number">236,099</span>
+                        <span class="stat-label">Observations after exclusions</span>
+                    </div>
+                    <div class="finding-stat">
+                        <span class="stat-number">3,796</span>
+                        <span class="stat-label">Treatment observations (360 individuals in Victoria)</span>
+                    </div>
+                    <div class="finding-stat">
+                        <span class="stat-number">232,303</span>
+                        <span class="stat-label">Control observations (all other Australian states)</span>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1rem; margin: 1.2rem 0 0.5rem;">DiD Model Specification</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">The DiD design compares the change in life satisfaction over time in the treatment group (Victoria, August&ndash;November 2020) with changes in the control group (all other Australian states, same period). This isolates the lockdown's specific effect from the general pandemic effect.</p>
+
+                <div class="formula-box" style="text-align: left; font-size: 0.9rem;">
+                    <div class="formula-title">Equation 1 — Main DiD Model</div>
+                    <em>LifeSatisfaction<sub>it</sub></em> = α + β<sub>1</sub> &times; <em>Treatment<sub>it</sub></em> + β<sub>2</sub> &times; <em>Year'<sub>t</sub></em> + β<sub>3</sub> &times; <em>State'<sub>it</sub></em> + μ<sub>i</sub> + ε<sub>it</sub>
+                </div>
+
+                <ul style="font-size: 0.88rem; margin: 0.5rem 0 0 1.2rem; line-height: 1.8;">
+                    <li><em>Treatment<sub>it</sub></em> = 1 if individual <em>i</em> lived in a locked-down postcode in year <em>t</em>, 0 otherwise</li>
+                    <li><em>Year'<sub>t</sub></em>: year fixed effects (2019 as base year)</li>
+                    <li><em>State'<sub>it</sub></em>: state fixed effects (Victoria as base)</li>
+                    <li>μ<sub>i</sub>: individual fixed effects (absorbs time-invariant person-specific variation)</li>
+                    <li>β<sub>1</sub>: the causal treatment effect of the lockdown on life satisfaction</li>
+                    <li>Estimated using <em>reghdfe</em> (Stata) with standard errors clustered at state level (8 clusters)</li>
+                    <li>SCQ HILDA population weights applied throughout for representativeness</li>
+                </ul>
+
+                <h3 style="font-size: 1rem; margin: 1.2rem 0 0.5rem;">Parallel Trends Assumption</h3>
+                <p style="font-size: 0.9rem;">The DiD design requires that, absent the lockdown, life satisfaction in Victoria would have followed the same trajectory as in other Australian states. A graphical pre-trends analysis (Figure 4) plots mean life satisfaction for treatment and control groups from 2001 to 2019.</p>
+
+                <div class="figure-box">
+                    <div class="figure-label">Figure 4</div>
+                    <div class="figure-title">Pre-Trends Analysis: Mean Life Satisfaction 2001&ndash;2020</div>
+                    <p>Line chart showing mean life satisfaction for the treatment group (Victoria, red solid line) and control group (all other states, blue dashed line) from 2001 to 2020. Both series fluctuate between approximately 7.85 and 8.00 across the period, with broadly similar trajectories. Some divergence is visible around 2015. In 2020, the treatment group shows a substantial drop to its lowest recorded level over two decades, while the control group declines only modestly &mdash; consistent with a general pandemic effect. The broadly parallel pre-2020 trends support the DiD identification assumption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Results -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Results: Three Models</h2>
+            <div class="card reveal">
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Three models are estimated: Model 1 (overall effect), Model 2 (excluding COVID-diagnosed individuals to further isolate the lockdown policy effect from the direct health impact of infection), and Model 3 (stratified analysis comparing worst-off to better-off).</p>
+
+                <div class="table-title">TABLE 1 — DiD Results: Impact of COVID-19 Lockdown on Life Satisfaction</div>
+                <div style="overflow-x: auto;">
+                    <table class="essay-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Variable</th>
+                                <th>Model 1<br>Overall Effect</th>
+                                <th>Model 2<br>Excl. COVID-19</th>
+                                <th>Model 3<br>Stratified</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Treatment (β<sub>1</sub>)<br><span style="font-size:0.8rem;font-weight:400;">Causal lockdown effect</span></td>
+                                <td>
+                                    <strong>&minus;0.0303***</strong><br>
+                                    <span class="se">(0.0077)</span><br>
+                                    <span class="ci">[&minus;0.0486, &minus;0.0120]</span>
+                                </td>
+                                <td>
+                                    <strong>&minus;0.0297***</strong><br>
+                                    <span class="se">(0.0080)</span><br>
+                                    <span class="ci">[&minus;0.0487, &minus;0.0106]</span>
+                                </td>
+                                <td>
+                                    <strong>&minus;0.0260**</strong><br>
+                                    <span class="se">(0.0103)</span><br>
+                                    <span class="ci">[&minus;0.0505, &minus;0.0013]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Group (life sat. &lt; 4)<br><span style="font-size:0.8rem;font-weight:400;">Worst-off indicator</span></td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>
+                                    <strong>&minus;4.1795***</strong><br>
+                                    <span class="se">(0.0442)</span><br>
+                                    <span class="ci">[&minus;4.2841, &minus;4.0749]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Treatment &times; Group<br><span style="font-size:0.8rem;font-weight:400;">Additional effect on worst-off</span></td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>
+                                    <strong>&minus;0.3343***</strong><br>
+                                    <span class="se">(0.0175)</span><br>
+                                    <span class="ci">[&minus;0.3756, &minus;0.2929]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Constant</td>
+                                <td>7.9022***<br><span class="ci">[7.9019, 7.9025]</span></td>
+                                <td>7.9020***<br><span class="ci">[7.9016, 7.9023]</span></td>
+                                <td>7.9528***<br><span class="ci">[7.9513, 7.9544]</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:400;">Year Fixed Effects</td>
+                                <td>Yes</td><td>Yes</td><td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:400;">State Fixed Effects</td>
+                                <td>Yes</td><td>Yes</td><td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:400;">Individual Fixed Effects</td>
+                                <td>Yes</td><td>Yes</td><td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:400;">Observations</td>
+                                <td>215,733</td><td>215,555</td><td>215,733</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:400;">State clusters</td>
+                                <td>8</td><td>8</td><td>8</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="table-note">All models use SCQ HILDA population weights. Standard errors clustered at state level (adjusted for heteroskedasticity). Group = 1 for life satisfaction &lt; 4 (threshold from ONS definition of "misery", Oman, 2016). *** p &lt; 0.01, ** p &lt; 0.05, * p &lt; 0.10.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.8rem;"><strong>Model 1</strong> establishes a highly significant average treatment effect: the lockdown reduced life satisfaction by 0.0303 points (p = 0.006). <strong>Model 2</strong> virtually replicates this result after excluding COVID-positive individuals (&minus;0.0297, p = 0.008), ruling out direct health impacts as a confounder. <strong>Model 3</strong> reveals the distributional story: the interaction term (Treatment × Group) is &minus;0.334*** &mdash; those with initial life satisfaction below 4 experienced an additional 0.334-point decline, on top of the average effect of &minus;0.026. The lockdown was strongly regressive.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heterogeneous Effects -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Distributional &amp; Heterogeneous Effects</h2>
+            <div class="card reveal">
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Stratified DiD analyses (in the appendix) reveal which groups were most harmed by the lockdown:</p>
+
+                <div class="heterogeneous-grid">
+                    <div class="het-card">
+                        <div class="het-group">Worst-off (LS &lt; 4)</div>
+                        <div class="het-effect">&minus;0.334***</div>
+                        <div class="het-desc">Additional impact beyond average treatment effect. Lockdown's regressive core finding.</div>
+                    </div>
+                    <div class="het-card">
+                        <div class="het-group">Low Mental Health (MHI &le; 33)</div>
+                        <div class="het-effect">&minus;0.419*</div>
+                        <div class="het-desc">Respondents with poor baseline mental health disproportionately affected.</div>
+                    </div>
+                    <div class="het-card">
+                        <div class="het-group">Age 15&ndash;19</div>
+                        <div class="het-effect">&minus;0.095**</div>
+                        <div class="het-desc">Youngest age group drove much of the average effect — most exposed to school closures and social restrictions.</div>
+                    </div>
+                    <div class="het-card">
+                        <div class="het-group">Men</div>
+                        <div class="het-effect">&minus;0.081*</div>
+                        <div class="het-desc">Significant for men; women showed a small, non-significant positive effect (+0.027).</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.88rem; margin-top: 0.8rem;">These findings have direct implications for future intervention design: targeted mental health support for those with low baseline wellbeing and poor mental health would be warranted if lockdowns are ever repeated. The gender differential also warrants specific policy consideration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Robustness: PSM -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Robustness: Propensity Score Matching</h2>
+            <div class="card reveal">
+                <p style="font-size: 0.9rem;">While DiD controls for time-invariant individual characteristics and common time trends, it does not account for time-varying observable differences between treatment and control groups. Propensity Score Matching (PSM) addresses this by creating a matched sample that is balanced on observed covariates likely to influence both lockdown exposure and life satisfaction.</p>
+
+                <p style="font-size: 0.9rem; margin-top: 0.75rem;"><strong>Covariates used for matching:</strong> Big Five personality traits (openness, conscientiousness, extraversion, agreeableness, emotional stability), risk preferences, age, sex, number of children, occupation, and employment status. All variables were standardised before logistic regression. Matching was performed using nearest-neighbour with a caliper of 0.05.</p>
+
+                <div class="figure-box">
+                    <div class="figure-label">Figure 5</div>
+                    <div class="figure-title">Balance Check after Propensity Score Matching</div>
+                    <p>Dot plot showing standardised percentage bias across all 11 covariates after matching. All covariates achieve balance with absolute bias below 4% &mdash; the threshold criterion for successful matching (Huntington-Klein, 2021). This confirms that the PSM successfully equated treatment and control groups on all observable characteristics.</p>
+                </div>
+
+                <p style="font-size: 0.9rem; margin-top: 0.75rem;"><strong>PSM result:</strong> &minus;0.299 points (95% CI &minus;1.255 to 0.658, p = 0.48). The substantial sample reduction during matching (from 215,733 to 1,077 observations) severely reduces statistical power, preventing significance. However, the <em>direction</em> of the effect is consistent with the main DiD finding &mdash; PSM confirms the negative sign and cannot reject the main result.</p>
+
+                <p style="font-size: 0.88rem; color: #555; margin-top: 0.5rem;"><em>Additional robustness checks in the appendix: Hausman test for fixed vs. random effects, placebo regressions for alternative treatment years, varied time windows, reverse causality test, and further stratified DiD analyses by age, gender, family type, and mental health baseline.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Welfare Analysis -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Prioritarian Welfare Comparison: Lockdown vs. Business-as-Usual</h2>
+
+            <div class="card reveal">
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">The DiD estimates are used to construct an Atkinson SWF (γ = 1) for two scenarios, comparing their Prioritarian WELLBYs to determine which policy yields greater social welfare when the worst-off receive priority weight.</p>
+
+                <div class="method-step">
+                    <div class="method-step-num">1</div>
+                    <div class="method-step-content">
+                        <h4>Policy 1: Lockdown Scenario</h4>
+                        <p>Life satisfaction scores predicted from the main DiD model (Equation 1) for Victorian citizens. Predicted data, rather than observed data, is used to isolate the causal lockdown effect. Scores are scaled to the full Victorian population using SCQ survey weights, then transformed using the Atkinson SWF with γ = 1 (logarithmic transformation).</p>
+                    </div>
+                </div>
+                <div class="method-step">
+                    <div class="method-step-num">2</div>
+                    <div class="method-step-content">
+                        <h4>Policy 2: Business-as-Usual Scenario</h4>
+                        <p>Life satisfaction from the 2020 control group represents what Victorian citizens' wellbeing would have looked like without the lockdown policy (but still including broader pandemic effects). In addition, a Business-as-Usual scenario would have led to 44,756 additional deaths (applying a 0.67% mortality rate, Ferranna et al. (2022), to Victoria's 6.68 million population). These lost WELLBYs &mdash; calculated using a remaining lifetime of 6 years and an indifference point of 2 (Peasgood et al., 2018) &mdash; are subtracted from the Business-as-Usual welfare total.</p>
+                    </div>
+                </div>
+
+                <div class="welfare-comparison reveal">
+                    <div class="welfare-scenario lockdown">
+                        <div class="scenario-title">Policy 1: Lockdown</div>
+                        <span class="scenario-wellby">13,775,625</span>
+                        <span class="scenario-label">Prioritarian WELLBYs<br>(Σ ln(LS<sub>i</sub>), lockdown predicted scores)</span>
+                    </div>
+                    <div class="welfare-scenario bau">
+                        <div class="scenario-title">Policy 2: Business-as-Usual</div>
+                        <span class="scenario-wellby">52,366,212</span>
+                        <span class="scenario-label">Prioritarian WELLBYs<br>(control group scores &minus; 44,756 COVID deaths)</span>
+                    </div>
+                </div>
+
+                <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 1rem 1.25rem; margin-top: 1rem;">
+                    <strong style="color: #856404;">Conclusion:</strong> <span style="font-size: 0.9rem;">The Prioritarian welfare comparison is unambiguous. The Business-as-Usual scenario yields 52.4 million Prioritarian WELLBYs versus only 13.8 million under the lockdown. Even accounting for the 44,756 additional deaths that would have occurred without the lockdown, the wellbeing cost of restricted social activities and heightened economic distress far outweighs the welfare loss from these additional deaths. Under a Prioritarian welfare framework, the lockdown policy is <strong>not preferable</strong>.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formula detail -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Welfare Function Specifications</h2>
+            <div class="card reveal">
+                <div class="formula-box" style="text-align: left;">
+                    <div class="formula-title">Policy 1: Lockdown Social Welfare</div>
+                    <em>Social Welfare<sub>Lockdown</sub></em> = &sum;<sub>i=1</sub><sup>N</sup> ln(LS<sub>i</sub>) = <strong>13,775,625</strong> Prioritarian WELLBYs
+                </div>
+
+                <div class="formula-box" style="text-align: left;">
+                    <div class="formula-title">Policy 2: Business-as-Usual Social Welfare (with COVID mortality)</div>
+                    <em>Social Welfare<sub>BAU</sub></em> = &sum;<sub>i=1</sub><sup>N&minus;D</sup> ln(LS<sub>i</sub>) &minus; &sum;<sub>j=1</sub><sup>D</sup> (ln(LS<sub>j,deceased</sub>) &minus; I<sub>j,deceased</sub>) &times; Y<sub>j,deceased</sub> = <strong>52,366,212</strong> Prioritarian WELLBYs
+                </div>
+
+                <p style="font-size: 0.85rem; color: #555; margin-top: 0.5rem;">Where: <em>D</em> = 44,756 (estimated additional deaths); <em>I</em> = 2 (indifference point between life and death, Peasgood et al. 2018); <em>Y</em> = 6 (remaining lifetime in years, Layard et al. 2020); γ = 1 (moderate inequality-aversion parameter).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Implications & Limitations -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Policy Implications &amp; Limitations</h2>
+            <div class="card reveal">
+                <h3 style="font-size: 1rem; margin-bottom: 0.6rem;">Policy Implications</h3>
+                <ul style="font-size: 0.9rem; line-height: 1.9; margin-left: 1.2rem;">
+                    <li><strong>A case for distributional policy evaluation:</strong> This dissertation provides a practical template for constructing Prioritarian SWFs using life satisfaction. Switching from Utilitarian cost-benefit analysis to Prioritarian SWFs would systematically favour policies that do not impose regressive wellbeing burdens on the worst-off</li>
+                    <li><strong>Targeted interventions for future lockdowns:</strong> The regressive distribution of lockdown effects — concentrated in those with low life satisfaction, poor mental health, young people (15–19), and men — calls for targeted complementary interventions. Digital mental health tools, income support, and outreach for the worst-off should accompany any future lockdown decision</li>
+                    <li><strong>The lockdown decision reconsidered:</strong> Under a Prioritarian framework, the wellbeing cost of Victoria's second lockdown substantially exceeded the wellbeing benefit from prevented deaths. This does not mean lockdowns are always wrong &mdash; context matters &mdash; but it does highlight that standard public health analysis, which focuses exclusively on mortality, systematically underweights the diffuse wellbeing harms to the living</li>
+                    <li><strong>Governance implications:</strong> Life satisfaction significantly predicts electoral outcomes (Ward, 2019). Governments that allow large, concentrated wellbeing declines among vulnerable groups risk electoral consequences beyond the immediate policy debate</li>
+                </ul>
+
+                <hr class="section-divider">
+
+                <h3 style="font-size: 1rem; margin-bottom: 0.6rem;">Key Limitations</h3>
+                <ul style="font-size: 0.9rem; line-height: 1.9; margin-left: 1.2rem;">
+                    <li><strong>Small treatment group:</strong> Only 360 individuals in the Victorian treatment group, limiting statistical power particularly for PSM</li>
+                    <li><strong>Cardinality of life satisfaction:</strong> The Atkinson SWF requires cardinal comparability of the 0&ndash;10 scale across individuals. While the literature provides strong theoretical and empirical arguments for treating the scale cardinally (Layard &amp; De Neve, 2023; Peasgood et al., 2018), this remains contested</li>
+                    <li><strong>Business-as-Usual mortality assumptions:</strong> The 0.67% mortality rate (Ferranna et al., 2022) is conservative &mdash; it applies to a pre-vaccination scenario. Alternative assumptions would shift the welfare comparison</li>
+                    <li><strong>SWF framework limitations:</strong> The SWF is Welfarist (only wellbeing matters) and Consequentialist (morality determined by outcomes). Critics including Amartya Sen (1979) note these assumptions neglect justice, rights, and procedural fairness</li>
+                    <li><strong>External validity:</strong> The lockdown was specific to Victoria, Australia in a particular epidemiological and socioeconomic context. Results may not generalise directly to other settings</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back -->
+    <section>
+        <div class="container" style="text-align: center;">
+            <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 1rem 0;">
+                <a href="files/PB4D6_MSc_Thesis_Prioritarian_SWF_Life_Satisfaction.pdf" target="_blank" rel="noopener" class="btn"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Download Full Dissertation</a>
+                <a href="theses.html" class="btn btn-outline"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Academic Work</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theses.html">Academic Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/main.js"></script>
+</body>
+</html>

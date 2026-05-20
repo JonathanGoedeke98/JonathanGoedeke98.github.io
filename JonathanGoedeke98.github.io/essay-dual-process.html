@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual-Process Model of Self-Defeating Behaviours | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .finding-highlight {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .finding-highlight .finding-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .finding-highlight .finding-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .finding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .finding-item {
+            background: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .finding-item .stat {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+        }
+        .finding-item .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+        .system-box {
+            border-radius: 10px;
+            padding: 1.5rem;
+            flex: 1;
+        }
+        .system-box.system1 {
+            background: #fff3e0;
+            border-left: 4px solid #f39c12;
+        }
+        .system-box.system2 {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+        }
+        .system-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 600px) {
+            .system-grid { grid-template-columns: 1fr; }
+        }
+        .system-box h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .system-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .system-box ul li {
+            font-size: 0.9rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .system-box ul li:last-child { border-bottom: none; }
+        .intervention-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 600px) {
+            .intervention-grid { grid-template-columns: 1fr; }
+        }
+        .intervention-card {
+            background: var(--light-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .intervention-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        .intervention-card ul {
+            list-style: disc;
+            padding-left: 1.2rem;
+            font-size: 0.9rem;
+        }
+        .intervention-card ul li {
+            margin-bottom: 0.4rem;
+        }
+        .quote-block {
+            background: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.8rem 0;
+        }
+        .tag {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--secondary-color);
+            margin-bottom: 0.3rem;
+        }
+        .tradeoff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 600px) {
+            .tradeoff-grid { grid-template-columns: 1fr; }
+        }
+        .tradeoff-box {
+            border-radius: 10px;
+            padding: 1.2rem;
+        }
+        .tradeoff-box.welfare {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+        }
+        .tradeoff-box.autonomy {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+        .tradeoff-box h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+        .tradeoff-box p {
+            font-size: 0.88rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="theses.html" class="active">Academic Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;">LSE &mdash; Fundamentals of Behavioural Science | 2023</p>
+                <h1 style="font-size: 1.9rem; line-height: 1.3; margin-bottom: 1rem;">A Dual-Process Model of<br>Self-Defeating Behaviours</h1>
+                <div class="tag-row" style="justify-content: center; margin-bottom: 1.2rem;">
+                    <span class="tag">Dual-Process Theory</span>
+                    <span class="tag">Nudge Theory</span>
+                    <span class="tag">Intervention Design</span>
+                    <span class="tag">Behavioural Economics</span>
+                    <span class="tag">Paternalism</span>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <span style="background: #2ecc71; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">Grade: 73% &mdash; Distinction</span>
+                    <a href="files/PB405_Dual_Process_Model_Self_Defeating_Behaviours.pdf" target="_blank" rel="noopener" class="btn" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Download PDF</a>
+                    <a href="theses.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.6); color: inherit;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>All Academic Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section>
+        <div class="container">
+            <div class="card reveal">
+                <div class="section-label">Overview</div>
+                <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">Abstract</h2>
+                <p>This essay develops a dual-process account of self-defeating behaviours — actions that agents undertake despite knowing they are contrary to their own interests. Drawing on Evans and Stanovich's (2013) Type 1/Type 2 framework and Thaler and Shefrin's (1981) doer/planner model, the essay identifies the cognitive mechanisms that generate self-defeating conduct. It proposes a typology of cost-effective behavioural interventions and evaluates the autonomy–welfare trade-off inherent in paternalistic policy design.</p>
+
+                <div class="finding-grid" style="margin-top: 1.5rem;">
+                    <div class="finding-item">
+                        <span class="stat">System 1/2</span>
+                        <div class="stat-label">Evans & Stanovich (2013) dual-process framework applied to policy design</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">Doer/Planner</span>
+                        <div class="stat-label">Thaler & Shefrin (1981) intra-personal principal-agent model</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">4-Type</span>
+                        <div class="stat-label">Typology of interventions: automatic vs reflective × other-deployed vs self-deployed</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">Libertarian<br>Paternalism</span>
+                        <div class="stat-label">Thaler & Sunstein (2003) as resolution to autonomy-welfare trade-off</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual-Process Theory -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">1. The Dual-Process Framework</h2>
+
+            <div class="card reveal">
+                <p>The dominant framework in behavioural science distinguishes two types of cognitive processing. Evans and Stanovich (2013) synthesise decades of dual-process research into a robust taxonomy: Type 1 processes are fast, automatic, and associative; Type 2 processes are slow, deliberate, and rule-governed. The distinction is not binary but describes a continuum of autonomy — the degree to which processing is independent of working memory capacity.</p>
+
+                <div class="system-grid" style="margin-top: 1.5rem;">
+                    <div class="system-box system1">
+                        <h4><i class="fas fa-bolt" style="margin-right: 0.4rem;"></i>System 1 — Automatic Processing</h4>
+                        <ul>
+                            <li>Fast, associative, heuristic-based</li>
+                            <li>Operates below conscious awareness</li>
+                            <li>Minimal cognitive load required</li>
+                            <li>Driven by affect and prior conditioning</li>
+                            <li>The <em>doer</em> in Thaler & Shefrin's model</li>
+                            <li>Source of present bias and self-control failures</li>
+                        </ul>
+                    </div>
+                    <div class="system-box system2">
+                        <h4><i class="fas fa-brain" style="margin-right: 0.4rem;"></i>System 2 — Reflective Processing</h4>
+                        <ul>
+                            <li>Slow, deliberate, rule-governed</li>
+                            <li>Requires working memory resources</li>
+                            <li>Conscious and effortful</li>
+                            <li>Capable of override and self-monitoring</li>
+                            <li>The <em>planner</em> in Thaler & Shefrin's model</li>
+                            <li>Can be depleted under cognitive load or stress</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1rem;">Self-defeating behaviour arises from the tension between these two systems. Type 1 processing generates impulsive responses aligned with immediate reward; Type 2 processing recognises the long-run cost of those responses but is frequently unable to override them. Understanding <em>why</em> override fails — and under what conditions — is the empirical key to designing effective interventions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Self-Defeating Behaviours -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">2. Self-Defeating Behaviours</h2>
+
+            <div class="card reveal">
+                <p>The American Psychological Association defines self-defeating behaviours as actions or attitudes that prevent people from achieving their own goals, that they are aware of, and that they continue despite this awareness. This deliberate-yet-persistent structure is precisely what makes them analytically tractable: they are not failures of information, but failures of impulse control.</p>
+
+                <div class="quote-block">
+                    "Self-defeating behaviour is not caused by ignorance. The agent knows that the behaviour is contrary to their interests — and does it anyway." &mdash; Central puzzle of the essay
+                </div>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem;">The Doer/Planner Dynamic</h3>
+                <p>Thaler and Shefrin (1981) model the individual as a principal-agent dyad within a single mind. The <strong>planner</strong> (System 2) has long-run preferences and sets rules; the <strong>doer</strong> (System 1) executes actions in each period, maximising myopic utility. Self-defeating behaviour emerges when the doer overrides the planner's prior commitments — a form of intra-personal governance failure.</p>
+
+                <p style="margin-top: 0.8rem;">This model explains why commitment devices are effective: they are technologies that strengthen planner authority before temptation arises. Automatic pension enrolment, for instance, removes the doer's moment of discretion entirely — the planner's preferred outcome is achieved without requiring System 2 to win a within-period contest against System 1.</p>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem;">Negative Self-Reflection Spirals</h3>
+                <p>A particularly damaging class of self-defeating behaviour is the negative self-reflection spiral. Callan, Kay and Dawtry (2014) show that failure experiences trigger self-critical evaluation, which depletes cognitive resources, which increases reliance on System 1 heuristics, which produces further failures — a self-reinforcing loop. Beevers (2005) links this mechanism to depression: ruminative self-focus activates mood-congruent memories, suppresses corrective System 2 appraisal, and deepens negative affect. Interventions must break the loop, not just address the proximate failure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interventions -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">3. A Typology of Interventions</h2>
+
+            <div class="card reveal">
+                <p>The essay develops a two-dimensional typology of behavioural interventions based on (i) which cognitive system is targeted, and (ii) who deploys the intervention. This yields four cells, each with distinct welfare and autonomy implications.</p>
+
+                <div class="intervention-grid" style="margin-top: 1.5rem;">
+                    <div class="intervention-card">
+                        <h4><i class="fas fa-building" style="margin-right: 0.4rem;"></i>Other-Deployed / Automatic</h4>
+                        <p style="font-size: 0.88rem; margin-bottom: 0.8rem;">Targets System 1 without agent involvement. Highest effectiveness, greatest autonomy cost.</p>
+                        <ul>
+                            <li><strong>Default rules:</strong> automatic pension enrolment removes the doer's discretion window; exploits status quo bias in favour of the planner's preferred option</li>
+                            <li><strong>Environmental design:</strong> cafeteria placement, point-of-sale restrictions</li>
+                            <li><strong>Framing:</strong> opt-out vs opt-in framing shifts baseline behaviour without altering choice set</li>
+                        </ul>
+                    </div>
+                    <div class="intervention-card">
+                        <h4><i class="fas fa-gavel" style="margin-right: 0.4rem;"></i>Other-Deployed / Reflective</h4>
+                        <p style="font-size: 0.88rem; margin-bottom: 0.8rem;">Engages System 2 via external incentives or information. Effective when System 2 capacity is intact.</p>
+                        <ul>
+                            <li><strong>Taxes:</strong> tobacco taxes increase the explicit cost of smoking; Gruber and Mullainathan (2006) show smokers report <em>higher</em> well-being under higher taxes — consistent with the doer/planner model, where they value external constraints on the doer</li>
+                            <li><strong>Bans:</strong> remove choice entirely; high effectiveness but low autonomy compatibility</li>
+                            <li><strong>Information campaigns:</strong> enhance System 2 quality but require cognitive load</li>
+                        </ul>
+                    </div>
+                    <div class="intervention-card">
+                        <h4><i class="fas fa-user-check" style="margin-right: 0.4rem;"></i>Self-Deployed / Automatic</h4>
+                        <p style="font-size: 0.88rem; margin-bottom: 0.8rem;">Agent trains automatic responses in advance. Preserves autonomy; requires initial System 2 investment.</p>
+                        <ul>
+                            <li><strong>Habit formation:</strong> deliberate practice that automates desired responses, reducing System 2 burden at moment of temptation</li>
+                            <li><strong>Pre-commitment:</strong> removing temptation from the environment before willpower is tested (Ulysses strategy)</li>
+                        </ul>
+                    </div>
+                    <div class="intervention-card">
+                        <h4><i class="fas fa-meditation" style="margin-right: 0.4rem;"></i>Self-Deployed / Reflective</h4>
+                        <p style="font-size: 0.88rem; margin-bottom: 0.8rem;">Strengthens System 2 control capacity directly. Highest autonomy compatibility; requires sustained engagement.</p>
+                        <ul>
+                            <li><strong>Mindfulness-based interventions (MBIs):</strong> Yakobi et al. (2021) meta-analysis finds MBIs significantly improve executive control; Desbordes et al. (2012) show reduced amygdala reactivity; Mrazek et al. (2013) find improved working memory capacity — all consistent with strengthened System 2 override</li>
+                            <li><strong>Cognitive behavioural therapy:</strong> restructures the reflective evaluation loop</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block" style="margin-top: 1.5rem;">
+                    "Mindfulness strengthens the cognitive machinery of self-regulation. Automatic pension enrolment bypasses it. Both reduce self-defeating behaviour — through entirely opposite mechanisms." &mdash; Essay core distinction
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Autonomy-Welfare Trade-off -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">4. The Autonomy–Welfare Trade-off</h2>
+
+            <div class="card reveal">
+                <p>Other-deployed interventions — particularly automatic defaults and bans — raise a fundamental normative question: when is it legitimate for a policy designer to override an agent's revealed preferences in the name of that agent's welfare? This is the classical liberal objection to paternalism, sharpened by the dual-process insight that "revealed preferences" may reflect System 1 impulses rather than the agent's own considered values.</p>
+
+                <div class="tradeoff-grid" style="margin-top: 1.5rem;">
+                    <div class="tradeoff-box welfare">
+                        <h4><i class="fas fa-heart" style="margin-right: 0.4rem;"></i>Welfare Case for Intervention</h4>
+                        <p>Self-defeating behaviours, by definition, are contrary to the agent's own interests. The planner — the agent's deliberative self — would endorse the intervention. Tobacco taxes are welcomed by many smokers precisely because they strengthen the planner against the doer (Gruber & Mullainathan 2006). Where System 2 is systematically outmatched, welfare-enhancing intervention is justified.</p>
+                    </div>
+                    <div class="tradeoff-box autonomy">
+                        <h4><i class="fas fa-balance-scale" style="margin-right: 0.4rem;"></i>Autonomy Case Against Intervention</h4>
+                        <p>Individuals may have legitimate higher-order preferences to experience and manage temptation without external interference. Paternalism assumes the policymaker knows the agent's true preferences better than the agent does — epistemically and normatively suspect. Coercive interventions like bans foreclose minority preferences that are not self-defeating for all individuals.</p>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem;">Resolution: Libertarian Paternalism</h3>
+                <p>The essay concludes with Thaler and Sunstein's (2003) libertarian paternalism as the most defensible resolution. A policy is <strong>libertarian paternalistic</strong> if it steers choices towards the planner's preferred outcome while preserving the agent's freedom to opt out. Defaults achieve this: automatic pension enrolment is the canonical example — it serves the planner's long-run retirement preferences while allowing the doer to opt out at any time.</p>
+
+                <p style="margin-top: 0.8rem;">This approach is superior to both pure libertarianism (which ignores the systematic disadvantage of System 2 in within-period conflicts) and hard paternalism (which removes choice entirely). It is also cost-effective: by targeting architecture rather than prices or bans, it can achieve welfare gains without the distributional costs of taxation or the freedom costs of prohibition.</p>
+
+                <div class="finding-highlight" style="margin-top: 2rem;">
+                    <span class="finding-number">Libertarian Paternalism</span>
+                    <span class="finding-label">Steers choices towards the planner's preferred outcome &mdash; while preserving the agent's right to opt out. The optimal balance between autonomy and welfare in dual-process policy design.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key References -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">Key Literature</h2>
+            <div class="card reveal">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Evans & Stanovich (2013)</strong><br>
+                        Dual-process theories of higher cognition: Advancing the debate. <em>Perspectives on Psychological Science</em>, 8(3), 223–241.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Thaler & Shefrin (1981)</strong><br>
+                        An economic theory of self-control. <em>Journal of Political Economy</em>, 89(2), 392–406.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Thaler & Sunstein (2003)</strong><br>
+                        Libertarian paternalism. <em>American Economic Review</em>, 93(2), 175–179.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Gruber & Mullainathan (2006)</strong><br>
+                        Do cigarette taxes make smokers happier? <em>Advances in Economic Analysis & Policy</em>, 5(1).
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Yakobi et al. (2021)</strong><br>
+                        Meta-analysis of mindfulness-based interventions and executive control. <em>Psychological Bulletin</em>, 147(11), 1138–1171.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Desbordes et al. (2012)</strong><br>
+                        Effects of mindfulness-based cognitive therapy on brain activity. <em>Frontiers in Human Neuroscience</em>, 6, 292.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Mrazek et al. (2013)</strong><br>
+                        Mindfulness training improves working memory capacity and GRE performance. <em>Psychological Science</em>, 24(5), 776–781.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: white; border-radius: 8px;">
+                        <strong>Callan, Kay & Dawtry (2014)</strong><br>
+                        Making sense of misfortune: Deservingness, self-esteem, and patterns of self-defeat. <em>Journal of Personality and Social Psychology</em>, 107(1), 142–162.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back CTA -->
+    <section>
+        <div class="container" style="text-align: center; padding: 2rem 0;">
+            <a href="theses.html" class="btn btn-outline hover-lift" style="margin-right: 1rem;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Academic Work</a>
+            <a href="files/PB405_Dual_Process_Model_Self_Defeating_Behaviours.pdf" target="_blank" rel="noopener" class="btn hover-lift"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Download Full Essay</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theses.html">Academic Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/main.js"></script>
+</body>
+</html>
