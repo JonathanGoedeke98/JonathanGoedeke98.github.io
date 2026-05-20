@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Test for the Practical Relevance of Endogeneity in Distribution Regression | Jonathan Gödeke</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.8rem 0; }
+        .tag { background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.78rem; font-weight: 500; }
+        .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color); margin-bottom: 0.3rem; }
+
+        .finding-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .finding-item { background: var(--light-color); border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .finding-item .stat { font-size: 1.4rem; font-weight: 700; color: var(--secondary-color); display: block; }
+        .finding-item .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+        .finding-highlight { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #fff; border-radius: 12px; padding: 2rem; text-align: center; margin: 2rem 0; }
+        .finding-highlight .finding-title { font-size: 1.5rem; font-weight: 700; display: block; margin-bottom: 0.5rem; }
+        .finding-highlight .finding-label { font-size: 0.95rem; opacity: 0.9; }
+
+        .quote-block { background: var(--light-color); border-left: 4px solid var(--secondary-color); padding: 1rem 1.5rem; border-radius: 0 8px 8px 0; font-style: italic; margin: 1.5rem 0; font-size: 0.95rem; }
+
+        .math-block { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.2rem 1.5rem; font-family: 'Courier New', monospace; font-size: 0.9rem; margin: 1rem 0; overflow-x: auto; }
+        .math-block .math-label { font-family: Inter, sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--secondary-color); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 0.5rem; }
+
+        .step-grid { display: grid; gap: 1rem; margin: 1.5rem 0; }
+        .step-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--light-color); border-radius: 10px; padding: 1.2rem; }
+        .step-number { background: var(--secondary-color); color: #fff; border-radius: 50%; width: 2rem; height: 2rem; min-width: 2rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+        .step-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .step-item p { font-size: 0.88rem; margin: 0; }
+
+        .contrib-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
+        .contrib-card { background: var(--light-color); border-radius: 10px; padding: 1.2rem; border-top: 3px solid var(--secondary-color); }
+        .contrib-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--secondary-color); }
+        .contrib-card p { font-size: 0.85rem; }
+
+        .essay-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1.2rem 0; }
+        .essay-table th { background: var(--secondary-color); color: #fff; padding: 0.6rem 0.8rem; text-align: center; font-weight: 600; }
+        .essay-table td { padding: 0.5rem 0.8rem; text-align: center; border-bottom: 1px solid #eee; }
+        .essay-table tr:nth-child(even) { background: #f9f9f9; }
+        .essay-table tfoot td { font-size: 0.78rem; color: #666; font-style: italic; text-align: left; padding-top: 0.5rem; }
+        .reject-yes { color: #27ae60; font-weight: 700; }
+        .reject-no { color: #c0392b; }
+
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
+        .compare-box { border-radius: 10px; padding: 1.3rem; }
+        .compare-box.old { background: #fce4ec; border-left: 4px solid #e91e63; }
+        .compare-box.new { background: #e8f5e9; border-left: 4px solid #27ae60; }
+        .compare-box h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; }
+        .compare-box ul { list-style: disc; padding-left: 1.2rem; font-size: 0.88rem; }
+        .compare-box ul li { margin-bottom: 0.35rem; }
+
+        .wip-banner { background: linear-gradient(135deg, #f39c12, #e67e22); color: #fff; border-radius: 10px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
+        .wip-banner i { font-size: 1.4rem; }
+        .wip-banner p { margin: 0; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="theses.html" class="active">Academic Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;">MSc Thesis &mdash; University of Cologne | Supervised by Prof. Dr. Dominik Wied | 2026</p>
+                <h1 style="font-size: 1.8rem; line-height: 1.3; margin-bottom: 1rem;">A Test for the Practical Relevance<br>of Endogeneity in Semiparametric<br>Distribution Regression</h1>
+                <div class="tag-row" style="justify-content: center; margin-bottom: 1.2rem;">
+                    <span class="tag">Statistical Theory</span>
+                    <span class="tag">Semiparametric Econometrics</span>
+                    <span class="tag">Distribution Regression</span>
+                    <span class="tag">Instrumental Variables</span>
+                    <span class="tag">Asymptotic Theory</span>
+                    <span class="tag">Monte Carlo Simulation</span>
+                    <span class="tag">R</span>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <span style="background: #f39c12; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem;"><i class="fas fa-flask" style="margin-right: 0.4rem;"></i>Research in Progress &mdash; 2026</span>
+                    <a href="files/MSC_Thesis_Endogeneity_Distribution_Regression.pdf" target="_blank" rel="noopener" class="btn" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Current Draft</a>
+                    <a href="theses.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.6); color: inherit;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>All Academic Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section>
+        <div class="container">
+            <div class="card reveal">
+                <div class="wip-banner">
+                    <i class="fas fa-flask"></i>
+                    <p><strong>Research in progress.</strong> This is my MSc thesis at the University of Cologne, currently being written under supervision of Prof. Dr. Dominik Wied. The theoretical framework, asymptotic proofs, and Monte Carlo simulation are complete. The empirical application is included as a preliminary illustration.</p>
+                </div>
+
+                <div class="section-label">Overview</div>
+                <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">Abstract</h2>
+                <p>We develop a test for the <em>practical</em> relevance of endogeneity in semiparametric distribution regression (DR). Classical tests ask whether the endogenous regressor is <em>exactly</em> exogenous — a question that is uninformative in large samples because even negligible deviations are detected with probability approaching one. We instead test whether correcting for endogeneity changes the estimated conditional distribution by more than an economically meaningful threshold &Delta; &gt; 0.</p>
+                <p style="margin-top: 0.8rem;">The object of interest is the L&sup2;-distance d(x,y&#8322;) = &Vert;F&#x1D441;(&middot;|x,y&#8322;) &minus; F&#x1D449;(&middot;|x,y&#8322;)&Vert;&#8322; between the ordinary DR estimator and the control-function IV-DR estimator of Wied (2024). The resulting test statistic is asymptotically pivotal: its limiting distribution under the boundary d = &Delta; is that of a ratio of Brownian-motion functionals, whose quantiles can be obtained by simulation once and for all. The test is consistent and detects local alternatives at rate n&#8315;&frac12;.</p>
+
+                <div class="finding-grid" style="margin-top: 1.5rem;">
+                    <div class="finding-item">
+                        <span class="stat">L&#8322;-Distance</span>
+                        <div class="stat-label">New functional object: distance between naive and IV-corrected conditional distribution estimates</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">Pivotal</span>
+                        <div class="stat-label">No bootstrap, no variance estimation — limiting distribution is a Brownian-motion ratio, simulatable once</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">n&#8315;&frac12;</span>
+                        <div class="stat-label">Consistent test, detects local alternatives at the parametric rate</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat">Card (1995)</span>
+                        <div class="stat-label">Returns-to-education application: endogeneity practically relevant only for high-education workers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Core Problem -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">1. The Problem with Classical Endogeneity Tests</h2>
+            <div class="card reveal">
+                <p>A central challenge in applied microeconometrics is deciding whether to use instrumental variables (IV) estimation. IV is consistent under endogeneity but less precise than OLS. The conventional approach relies on Hausman-type tests of exact exogeneity: if the null is rejected, switch to IV. This creates a well-known trap.</p>
+
+                <div class="compare-grid">
+                    <div class="compare-box old">
+                        <h4><i class="fas fa-times-circle" style="margin-right: 0.4rem;"></i>Classical Hausman Test (Problem)</h4>
+                        <ul>
+                            <li>Tests: is endogeneity <em>exactly</em> zero?</li>
+                            <li>In large samples, even economically negligible correlations are detected with probability &rarr; 1 (Berkson 1938; Hodges &amp; Lehmann 1954)</li>
+                            <li>Forces IV estimation even when bias is trivially small — at a precision cost that outweighs the benefit</li>
+                            <li>Summarises all evidence in a single mean-based scalar, missing distributional heterogeneity</li>
+                            <li>Not designed to answer the practically relevant question</li>
+                        </ul>
+                    </div>
+                    <div class="compare-box new">
+                        <h4><i class="fas fa-check-circle" style="margin-right: 0.4rem;"></i>Relevant-Endogeneity Test (This Paper)</h4>
+                        <ul>
+                            <li>Tests: does correcting for endogeneity change the conditional distribution by more than &Delta;?</li>
+                            <li>Practically motivated threshold &Delta; is set by the researcher on substantive grounds before seeing the data</li>
+                            <li>Profile-specific: can identify that endogeneity matters for some subgroups but not others</li>
+                            <li>Operates on the entire conditional distribution — captures heterogeneous distributional effects</li>
+                            <li>Directly answers whether IV correction is worth its precision cost</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    "The appropriate question is not <em>whether</em> endogeneity is exactly zero but <em>whether it is large enough to matter practically.</em>" &mdash; Paper, Introduction
+                </div>
+
+                <p>This perspective belongs to the equivalence-testing and minimum-detectable-effect literatures (Wellek 2010; Lakens 2017), but has received little attention in distributional models. This paper fills that gap for semiparametric distribution regression.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Distribution Regression Framework -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">2. Distribution Regression and the Structural Model</h2>
+            <div class="card reveal">
+                <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem;">Distribution Regression</h3>
+                <p>Distribution regression (DR), introduced by Foresi &amp; Peracchi (1995) and developed by Chernozhukov, Fernández-Val &amp; Melly (2013), models the <em>entire</em> conditional distribution function of an outcome Y given covariates X:</p>
+
+                <div class="math-block">
+                    <span class="math-label">DR Model</span>
+                    F<sub>Y|X</sub>(y|x) = &Lambda;(x'&beta;(y))
+                </div>
+
+                <p>where &Lambda; is a known link function (e.g. probit or logit) and &beta;(y) varies with the threshold y. Each y-binary regression 1{Y&#8336; &le; y} = &Lambda;(X&#8336;'&beta;(y)) + U&#8336;(y) is estimated separately, yielding a flexible nonparametric description of the full conditional distribution. Unlike quantile regression, DR handles mass points and non-smooth distributions naturally, and avoids bandwidth choices.</p>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Structural Model with Endogeneity</h3>
+                <p>When the regressor Y&#8322; is endogenous — correlated with the latent error U(y) — the standard DR estimator is inconsistent for the structural conditional distribution. The paper adopts a triangular simultaneous-equations structure:</p>
+
+                <div class="math-block">
+                    <span class="math-label">Structural Equations</span>
+                    1*<sub>y</sub> = X'&beta;<sub>1</sub>(y) + Y<sub>2</sub>&beta;<sub>2</sub>(y) + U(y)<br>
+                    Y<sub>2</sub> = X'&gamma;<sub>1</sub> + Z'&gamma;<sub>2</sub> + V
+                </div>
+
+                <p style="margin-top: 0.8rem;">Endogeneity enters through the error decomposition U(y) = &alpha;<sub>1</sub>(y)V + &alpha;<sub>2</sub>(y)&epsilon;(y), where &alpha;<sub>1</sub>(y) &ne; 0 induces correlation between the structural error and the first-stage residual V. Using instruments Z and the control-function approach of Rivers &amp; Vuong (1988), Wied (2024) proposes a three-step IV-DR estimator that recovers the structural distribution.</p>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Three-Step IV-DR Estimation</h3>
+                <div class="step-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4>First Stage (OLS)</h4>
+                            <p>Regress Y&#8322;&#8336; on (X&#8336;, Z&#8336;) by OLS to obtain estimated first-stage residuals V̂&#8336; = Y&#8322;&#8336; &minus; A&#8336;'&Gamma;̂.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4>Control-Function Binary Choice (MLE)</h4>
+                            <p>For each threshold y, estimate the augmented binary choice model that includes V̂&#8336; as an additional regressor, treating it as the control function.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4>Average over Residual Distribution</h4>
+                            <p>Integrate out unobserved heterogeneity V by averaging over the empirical distribution of V̂&#8336;, obtaining the average structural distribution F&#x1D449;(y|x,y&#8322;).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Test -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">3. The Relevant-Endogeneity Test</h2>
+            <div class="card reveal">
+                <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem;">The Endogeneity Distance Functional</h3>
+                <p>The practical endogeneity distance at covariate profile (x,y&#8322;) is the L&sup2;-norm of the pointwise difference between the naive and IV-corrected conditional distribution functions over the outcome interval I:</p>
+
+                <div class="math-block">
+                    <span class="math-label">Practical Endogeneity Distance</span>
+                    d(x,y&#8322;) = &Vert;&delta;(&middot;|x,y&#8322;)&Vert;<sub>2,I</sub> = (&int;<sub>I</sub> &delta;(y|x,y&#8322;)&sup2; dy)<sup>1/2</sup><br><br>
+                    where &delta;(y|x,y&#8322;) = F&#x1D441;(y|x,y&#8322;) &minus; F&#x1D449;(y|x,y&#8322;)
+                </div>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Hypotheses</h3>
+                <div class="math-block">
+                    <span class="math-label">Relevant-Endogeneity Hypotheses</span>
+                    H&#8320;: d(x,y&#8322;) &le; &Delta; &nbsp;&nbsp;&nbsp; (endogeneity is practically <strong>irrelevant</strong>)<br>
+                    H&#8321;: d(x,y&#8322;) &gt; &Delta; &nbsp;&nbsp;&nbsp; (endogeneity is practically <strong>relevant</strong>)
+                </div>
+
+                <p>Rejecting H&#8320; means that correcting for endogeneity changes the estimated conditional distribution by more than &Delta; over I. Failing to reject means endogeneity is practically irrelevant at that covariate profile, regardless of statistical significance.</p>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Threshold Calibration</h3>
+                <p>The threshold &Delta; must be chosen before observing the data on substantive grounds. Two natural approaches:</p>
+                <div class="finding-grid" style="margin: 1rem 0;">
+                    <div class="finding-item">
+                        <span class="stat" style="font-size: 1rem;">Benchmark Shift</span>
+                        <div class="stat-label">&Delta;&#178;<sub>c</sub> = &int;<sub>I</sub> [F<sub>Y</sub>(y) &minus; F<sub>Y</sub>(y&minus;c)]&#178; dy — calibrated to the L&sup2;-distance of a meaningful c-unit shift in the outcome distribution</div>
+                    </div>
+                    <div class="finding-item">
+                        <span class="stat" style="font-size: 1rem;">Fraction of Variance</span>
+                        <div class="stat-label">&Delta;&#178; = &eta; &middot; &int;<sub>I</sub> F<sub>Y</sub>(y)(1&minus;F<sub>Y</sub>(y)) dy — normalizes the threshold as a fraction &eta; of marginal variance</div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Test Statistic and Decision Rule</h3>
+                <p>The test statistic is the full-sample integrated squared distance:</p>
+                <div class="math-block">
+                    <span class="math-label">Test Statistic &amp; Decision Rule</span>
+                    T̂<sub>n</sub>(x,y&#8322;) = &int;<sub>I</sub> &delta;̂(1,y|x,y&#8322;)&#178; dy<br><br>
+                    Reject H&#8320; at level &alpha; if: <strong>T̂<sub>n</sub>(x,y&#8322;) &gt; &Delta;&#178; + q<sub>1&minus;&alpha;</sub> V̂<sub>n</sub>(x,y&#8322;)</strong>
+                </div>
+                <p>The self-normalizing term V̂<sub>n</sub>(x,y&#8322;) is constructed from sequential (partial-sample) versions of both estimators, adapting the self-normalization device of Dette, Möllenhoff &amp; Wied (2025) to the one-sample correlated setting. The quantile q<sub>1&minus;&alpha;</sub> is that of a Brownian-motion ratio W = B(1) / (&int;<sub>&epsilon;</sub><sup>1</sup>(B(t)/t &minus; B(1))&#178; dt)<sup>1/2</sup> — simulatable to arbitrary precision with q<sub>0.95</sub> &asymp; 1.755 for &epsilon; = 0.1.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Asymptotic Theory -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">4. Asymptotic Theory</h2>
+            <div class="card reveal">
+                <p>The theoretical contribution requires combining three distinct bodies of asymptotic theory, because the naive and IV-DR estimators are estimated from the <em>same</em> data — creating a non-trivial correlation structure absent in the independent two-sample case.</p>
+
+                <div class="contrib-grid">
+                    <div class="contrib-card">
+                        <h4>Joint Influence-Function Representation</h4>
+                        <p>Derives the influence functions &phi;<sup>N</sup><sub>i</sub>(y) and &phi;<sup>V</sup><sub>i</sub>(y) for the naive and IV-DR estimators jointly, accounting for their dependence. The IV influence function requires four steps: first-stage OLS expansion, generated-residual Taylor expansion, Z-estimator expansion for the control-function MLE, and the final averaging step.</p>
+                    </div>
+                    <div class="contrib-card">
+                        <h4>Sequential Asymptotic Linearity</h4>
+                        <p>States a high-level sequential (partial-sample) linearization condition under which √n{&delta;̂(t,y) &minus; &delta;(y)} = (√n/n<sub>t</sub>) &Sigma;<sub>i=1</sub><sup>n<sub>t</sub></sup> &xi;<sub>i</sub>(y) + o<sub>p</sub>(1) uniformly in (t,y) &isin; [&epsilon;,1]&times;I. Primitive sufficient conditions given in Proposition 5.1.</p>
+                    </div>
+                    <div class="contrib-card">
+                        <h4>Pivotal Limit via Self-Normalization</h4>
+                        <p>The key observation is that both √n(T̂<sub>n</sub>&minus;T) and √n V̂<sub>n</sub> converge to &tau; times a Brownian-motion functional. The &tau; cancels in the ratio (T̂<sub>n</sub>&minus;T)/V̂<sub>n</sub>, giving the pivotal limit W — free of nuisance parameters without bootstrap.</p>
+                    </div>
+                    <div class="contrib-card">
+                        <h4>Main Theorem (5.7)</h4>
+                        <p>Under Assumptions 5.1–5.5, the test has asymptotic level &alpha; on the null d &le; &Delta;, exact asymptotic level &alpha; on the boundary d = &Delta;, is consistent against d &gt; &Delta;, and detects local alternatives at rate n<sup>&minus;1/2</sup> (Corollary 5.8).</p>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    "No bootstrap and no variance estimation are required. The test statistic is asymptotically pivotal under d = &Delta; — a ratio of Brownian-motion functionals whose quantiles can be simulated once and for all."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monte Carlo -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">5. Monte Carlo Evidence</h2>
+            <div class="card reveal">
+                <p>Simulations use a triangular model with one exogenous regressor X, one instrument Z, one endogenous regressor Y&#8322;, and a continuous outcome Y. The endogeneity strength is controlled by &rho; &isin; [0,1) — when &rho; = 0, Y&#8322; is exogenous; when &rho; &gt; 0, Y&#8322; is endogenous. Distribution regression is implemented using a probit link, evaluated at the covariate profile (x, y&#8322;) = (0, 0). Sample size n = 1,000; nominal level &alpha; = 0.05.</p>
+
+                <h3 style="font-size: 1.05rem; margin: 1.2rem 0 0.6rem;">Interior Null: Endogeneity is Present but Not Practically Relevant (&Delta; = 0.05)</h3>
+                <p>Table 1 shows that even at &rho; = 0.5 — substantial correlation between structural error and first-stage residual — the estimated distance d̂ = 0.026 remains <em>below</em> the relevance threshold &Delta; = 0.05, and the test correctly does not reject.</p>
+
+                <table class="essay-table">
+                    <thead>
+                        <tr><th>&rho;</th><th>&Delta;</th><th>n</th><th>Rejection rate</th><th>Mean T̂<sub>n</sub></th><th>Mean d̂</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0.0</td><td>0.05</td><td>1000</td><td>0.00</td><td>2.82 &times; 10&minus;&#8310;</td><td>0.0014</td></tr>
+                        <tr><td>0.2</td><td>0.05</td><td>1000</td><td>0.00</td><td>3.95 &times; 10&minus;&#8310;</td><td>0.0057</td></tr>
+                        <tr><td>0.5</td><td>0.05</td><td>1000</td><td>0.00</td><td>7.23 &times; 10&minus;&#8308;</td><td>0.0263</td></tr>
+                    </tbody>
+                    <tfoot><tr><td colspan="6">B = 100 Monte Carlo replications. The test does not reject when d &lt; &Delta;, regardless of statistical significance of endogeneity.</td></tr></tfoot>
+                </table>
+
+                <h3 style="font-size: 1.05rem; margin: 1.5rem 0 0.6rem;">Power as the Relevance Threshold Varies (&rho; = 0.5)</h3>
+                <p>Table 2 shows power as &Delta; varies. Rejection probability decreases as &Delta; increases — the test is sensitive to the threshold rather than merely to the presence of nonzero endogeneity. The transition occurs near &Delta; &asymp; 0.027, consistent with the estimated distance d̂ &asymp; 0.027.</p>
+
+                <table class="essay-table">
+                    <thead>
+                        <tr><th>&rho;</th><th>&Delta;</th><th>n</th><th>Rejection rate</th><th>Mean d̂</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0.5</td><td>0.005</td><td>1000</td><td>0.65</td><td>0.0284</td></tr>
+                        <tr><td>0.5</td><td>0.010</td><td>1000</td><td>0.62</td><td>0.0268</td></tr>
+                        <tr><td>0.5</td><td>0.020</td><td>1000</td><td>0.21</td><td>0.0274</td></tr>
+                        <tr><td>0.5</td><td>0.030</td><td>1000</td><td>0.01</td><td>0.0269</td></tr>
+                        <tr><td>0.5</td><td>0.040</td><td>1000</td><td>0.00</td><td>0.0279</td></tr>
+                        <tr><td>0.5</td><td>0.050</td><td>1000</td><td>0.00</td><td>0.0277</td></tr>
+                    </tbody>
+                    <tfoot><tr><td colspan="5">Power decreases monotonically with &Delta;. Transition near &Delta; &asymp; 0.027 confirms the test targets practical relevance, not mere statistical significance.</td></tr></tfoot>
+                </table>
+
+                <h3 style="font-size: 1.05rem; margin: 1.5rem 0 0.6rem;">Boundary Behavior (&rho; = 0.5, &Delta; = 0.027)</h3>
+                <p>When &Delta; is set close to the true distance d(x,y&#8322;) &asymp; 0.027, rejection rates converge to the nominal level &alpha; = 0.05 for both n = 1,000 and n = 2,000, confirming the theoretical prediction of Theorem 5.7.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empirical Application -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">6. Empirical Application: Returns to Education</h2>
+            <div class="card reveal">
+                <p>The test is applied to Card's (1995) returns-to-schooling data (n = 3,010), where education is treated as potentially endogenous and proximity to a four-year college (<em>nearc4</em>) serves as the excluded instrument. Controls include experience, experience squared, Black, SMSA, and South indicators.</p>
+
+                <h3 style="font-size: 1.05rem; margin: 1.2rem 0 0.6rem;">Benchmark: Mean-Based Analysis Finds No Evidence of Endogeneity</h3>
+                <p>The standard linear Wu–Hausman test fails to reject exogeneity (p-value = 0.215), despite the OLS estimate (0.0740) and the IV estimate (0.1323) differing substantially in magnitude. This motivates asking a distributional question: even if mean endogeneity is not statistically detectable, does the IV correction shift the <em>distribution</em> of log wages by a practically relevant amount?</p>
+
+                <h3 style="font-size: 1.05rem; margin: 1.2rem 0 0.6rem;">Profile-Specific Relevant-Endogeneity Test</h3>
+                <p>The test is applied at three covariate profiles representing low (educ=10, exper=4), middle (educ=13, exper=8), and high (educ=17, exper=15) education/experience workers. The findings are strikingly heterogeneous.</p>
+
+                <table class="essay-table">
+                    <thead>
+                        <tr><th>Profile</th><th>&Delta;</th><th>T̂<sub>n</sub></th><th>d̂</th><th>Critical value</th><th>Reject?</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td rowspan="4" style="font-weight:600;">Low<br>(educ=10)</td><td>0.01</td><td>0.0219</td><td>0.1479</td><td>0.0254</td><td class="reject-no">No</td></tr>
+                        <tr><td>0.02</td><td>0.0219</td><td>0.1479</td><td>0.0257</td><td class="reject-no">No</td></tr>
+                        <tr><td>0.03</td><td>0.0219</td><td>0.1479</td><td>0.0262</td><td class="reject-no">No</td></tr>
+                        <tr><td>0.05</td><td>0.0219</td><td>0.1479</td><td>0.0278</td><td class="reject-no">No</td></tr>
+                        <tr style="border-top: 2px solid #ddd;"><td rowspan="4" style="font-weight:600;">Middle<br>(educ=13)</td><td>0.01</td><td>0.0009</td><td>0.0304</td><td>0.0129</td><td class="reject-no">No</td></tr>
+                        <tr><td>0.02</td><td>0.0009</td><td>0.0304</td><td>0.0132</td><td class="reject-no">No</td></tr>
+                        <tr><td>0.03</td><td>0.0009</td><td>0.0304</td><td>0.0137</td><td class="reject-no">No</td></tr>
+                        <tr><td>0.05</td><td>0.0009</td><td>0.0304</td><td>0.0153</td><td class="reject-no">No</td></tr>
+                        <tr style="border-top: 2px solid #ddd;"><td rowspan="4" style="font-weight:600;">High<br>(educ=17)</td><td>0.01</td><td>0.0380</td><td>0.1949</td><td>0.0353</td><td class="reject-yes">Yes</td></tr>
+                        <tr><td>0.02</td><td>0.0380</td><td>0.1949</td><td>0.0356</td><td class="reject-yes">Yes</td></tr>
+                        <tr><td>0.03</td><td>0.0380</td><td>0.1949</td><td>0.0361</td><td class="reject-yes">Yes</td></tr>
+                        <tr><td>0.05</td><td>0.0380</td><td>0.1949</td><td>0.0377</td><td class="reject-yes">Yes</td></tr>
+                    </tbody>
+                    <tfoot><tr><td colspan="6">Baseline specification. &epsilon; = 0.2, central 10–90% log-wage grid with 31 points, q<sub>0.95</sub> &asymp; 2.69. Rejection rule: T̂<sub>n</sub> &gt; &Delta;&#178; + q<sub>1&minus;&alpha;</sub>V̂<sub>n</sub>.</td></tr></tfoot>
+                </table>
+
+                <div class="finding-highlight" style="margin-top: 2rem;">
+                    <span class="finding-title">Endogeneity is Practically Relevant — But Only for High-Education Workers</span>
+                    <span class="finding-label">The scalar Wu–Hausman test misses this heterogeneity entirely. Distribution regression reveals that the IV correction changes the conditional wage distribution by a practically meaningful amount (d̂ = 0.195) for high-education workers, while the middle profile shows only small differences (d̂ = 0.030). This is a distributional finding, not a mean-based one.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extensions -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title reveal">7. Extensions</h2>
+            <div class="card reveal">
+                <div class="contrib-grid">
+                    <div class="contrib-card">
+                        <h4>Aggregated Version</h4>
+                        <p>Integrates the pointwise test over all covariate profiles with weight measure &mu;, yielding a global relevance test D&#178; = &int; &int; [F&#x1D441;(y|x,y&#8322;) &minus; F&#x1D449;(y|x,y&#8322;)]&#178; dy d&mu;(x,y&#8322;). Natural choices: empirical, policy-relevant, or population measure.</p>
+                    </div>
+                    <div class="contrib-card">
+                        <h4>Monotonicity Correction</h4>
+                        <p>DR estimators are not guaranteed monotone in y in finite samples. Both monotone rearrangement (Chernozhukov et al. 2010) and isotonic regression (Wied 2024) can be applied — the √n-convergence rate and Gaussian limit carry over.</p>
+                    </div>
+                    <div class="contrib-card">
+                        <h4>Confidence Sets for d(x,y&#8322;)</h4>
+                        <p>Inverting the test gives a one-sided lower confidence set [&Delta;̂<sub>&alpha;</sub>, &infin;) for the practical endogeneity distance, providing a data-driven summary of endogeneity magnitude at each covariate profile.</p>
+                    </div>
+                    <div class="contrib-card">
+                        <h4>Multiple Endogenous Regressors</h4>
+                        <p>The framework extends to Y&#8322; &isin; &#x211D;<sup>m</sup> with m &gt; 1 endogenous regressors and &ell; &ge; m instruments. The first stage becomes a system of linear equations; the asymptotic results carry over under multivariate generalizations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key References -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Key Literature</h2>
+            <div class="card reveal">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: var(--light-color); border-radius: 8px;">
+                        <strong>Wied (2024)</strong><br>
+                        Semiparametric distribution regression with instruments and monotonicity. <em>Labour Economics</em>, 90:102565.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: var(--light-color); border-radius: 8px;">
+                        <strong>Dette, Möllenhoff &amp; Wied (2025)</strong><br>
+                        Practically significant differences between conditional distribution functions. <em>arXiv:2506.06545</em>.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: var(--light-color); border-radius: 8px;">
+                        <strong>Chernozhukov, Fernández-Val &amp; Melly (2013)</strong><br>
+                        Inference on counterfactual distributions. <em>Econometrica</em>, 81(6):2205–2268.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: var(--light-color); border-radius: 8px;">
+                        <strong>Rivers &amp; Vuong (1988)</strong><br>
+                        Limited information estimators and exogeneity tests for simultaneous probit models. <em>Journal of Econometrics</em>, 39(3):347–366.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: var(--light-color); border-radius: 8px;">
+                        <strong>Card (1995)</strong><br>
+                        Using geographic variation in college proximity to estimate the return to schooling. <em>Essays in Honour of John Vanderkamp</em>, pp. 201–222.
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: var(--light-color); border-radius: 8px;">
+                        <strong>van der Vaart &amp; Wellner (1996)</strong><br>
+                        <em>Weak Convergence and Empirical Processes.</em> Springer. [Theoretical foundation for functional CLTs and Z-estimators in function spaces]
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: var(--light-color); border-radius: 8px;">
+                        <strong>Hodges &amp; Lehmann (1954)</strong><br>
+                        Testing the approximate validity of statistical hypotheses. <em>J. Roy. Stat. Soc. B</em>, 16(2):261–268. [Motivates the practical-relevance framing]
+                    </div>
+                    <div style="font-size: 0.88rem; padding: 0.8rem; background: var(--light-color); border-radius: 8px;">
+                        <strong>Foresi &amp; Peracchi (1995)</strong><br>
+                        The conditional distribution of excess returns. <em>JASA</em>, 90(430):451–466. [Original distribution regression paper]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back CTA -->
+    <section>
+        <div class="container" style="text-align: center; padding: 2rem 0;">
+            <a href="theses.html" class="btn btn-outline hover-lift" style="margin-right: 1rem;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Academic Work</a>
+            <a href="files/MSC_Thesis_Endogeneity_Distribution_Regression.pdf" target="_blank" rel="noopener" class="btn hover-lift"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Download Current Draft</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theses.html">Academic Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/main.js"></script>
+</body>
+</html>
