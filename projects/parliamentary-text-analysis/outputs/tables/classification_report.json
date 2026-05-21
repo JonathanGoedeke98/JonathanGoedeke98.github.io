@@ -1,0 +1,14 @@
+{
+  "cv_accuracy_mean": 0.32,
+  "cv_accuracy_std": 0.055402055513329475,
+  "cv_folds": 5,
+  "classes": [
+    "AfD",
+    "BÜNDNIS 90/DIE GRÜNEN",
+    "CDU/CSU",
+    "DIE LINKE",
+    "FDP",
+    "SPD"
+  ],
+  "note": "Small corpus: CV scores are noisy and should not be over-interpreted."
+}

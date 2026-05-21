@@ -1,9 +1,23 @@
 {
-  "mode": "sample",
-  "note": "Synthetic XML files matching the official Bundestag DTD v1.0.2 (2023-09-05). Replace with real data downloaded via the DIP API for production use.",
+  "mode": "real",
+  "source": "Deutscher Bundestag Open Data Portal",
+  "source_url": "https://www.bundestag.de/services/opendata",
+  "license": "Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)",
+  "license_url": "https://www.govdata.de/dl-de/by-2-0",
+  "wahlperiode": 20,
+  "total_sessions_available": 214,
+  "download_method": "Bundestag CMS filterlist AJAX endpoint (node 866354-866354), no authentication required",
+  "filterlist_endpoint": "https://www.bundestag.de/ajax/filterlist/de/services/opendata/866354-866354",
+  "url_list": "url_list_wp20.txt",
+  "note": "Real XML Plenarprotokolle for the 20. Wahlperiode (2021-2025). Directly downloadable without authentication from bundestag.de/resource/blob/ URLs. All 214 session URLs are catalogued in url_list_wp20.txt.",
   "files": [
-    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20180.xml",
-    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20185.xml",
-    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20190.xml"
-  ]
+    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20001.xml",
+    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20002.xml",
+    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20003.xml"
+  ],
+  "session_metadata": {
+    "20001": {"date": "26.10.2021", "url": "https://www.bundestag.de/resource/blob/866350/20001.xml"},
+    "20002": {"date": "2021", "url": "https://www.bundestag.de/resource/blob/868600/20002.xml"},
+    "20003": {"date": "2021", "url": "https://www.bundestag.de/resource/blob/869486/20003.xml"}
+  }
 }

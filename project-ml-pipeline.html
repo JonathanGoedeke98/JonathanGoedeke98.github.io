@@ -38,6 +38,9 @@
         @media (max-width: 640px) { .fig-grid { grid-template-columns: 1fr; } }
         .limitation-list li { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.3rem; }
         .data-note { background: #f0f7ee; border: 1px solid #b2d8b2; border-left: 4px solid #2e8b57; border-radius: 0 8px 8px 0; padding: 1.1rem 1.4rem; margin: 0.5rem 0 1rem; }
+        .role-relevance { background: #e8f4fd; border-left: 4px solid var(--secondary-color); border-radius: 0 8px 8px 0; padding: 0.8rem 1.3rem; margin: 1rem 0 1.5rem; }
+        .role-relevance .rr-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--secondary-color); margin: 0 0 0.2rem; }
+        .role-relevance p { font-size: 0.87rem; color: #444; margin: 0; line-height: 1.55; }
     </style>
 </head>
 <body>
@@ -102,6 +105,12 @@
                         <span class="label">Tests</span>
                         <span class="value">11 pytest tests passing</span>
                     </div>
+                </div>
+
+                <!-- Role relevance -->
+                <div class="role-relevance">
+                    <p class="rr-label">Role relevance</p>
+                    <p>Demonstrates an end-to-end supervised-learning workflow: data ingestion, preprocessing, leak-free sklearn pipelines, model comparison, validation, visualisation, testing, and reproducible documentation.</p>
                 </div>
 
                 <!-- Result summary callout -->

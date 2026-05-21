@@ -50,6 +50,9 @@
         .ethics-note { background: #f0f7ee; border: 1px solid #b2d8b2; border-left: 4px solid #2e8b57; border-radius: 0 8px 8px 0; padding: 1.1rem 1.4rem; margin: 1rem 0; }
         .limitation-list li { font-size: 0.88rem; line-height: 1.75; margin-bottom: 0.25rem; }
         .caveat-banner { background: #fef9ec; border: 1px solid #f0d060; border-left: 4px solid #d4ac0d; border-radius: 0 8px 8px 0; padding: 0.9rem 1.3rem; margin: 1.25rem 0; font-size: 0.88rem; }
+        .role-relevance { background: #e8f4fd; border-left: 4px solid var(--secondary-color); border-radius: 0 8px 8px 0; padding: 0.8rem 1.3rem; margin: 1rem 0 1.5rem; }
+        .role-relevance .rr-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--secondary-color); margin: 0 0 0.2rem; }
+        .role-relevance p { font-size: 0.87rem; color: #444; margin: 0; line-height: 1.55; }
     </style>
 </head>
 <body>
@@ -122,6 +125,12 @@
                     <p style="margin:0;font-size:0.88rem;">This project uses only publicly available, aggregated official statistics from the German Federal Ministry of the Interior (BMI) and the Federal Criminal Police Office (BKA). It does not involve personal data, operational intelligence, scraping of extremist content, or identification of individuals or groups. The aim is to demonstrate careful statistical analysis and transparent visualisation of public administrative data — the same type of analysis published routinely in government statistics reports.</p>
                 </div>
 
+                <!-- Role relevance -->
+                <div class="role-relevance">
+                    <p class="rr-label">Role relevance</p>
+                    <p>Demonstrates descriptive analysis of official aggregated administrative data, careful source documentation, transparent visualisation, and ethical handling of sensitive public statistics.</p>
+                </div>
+
                 <!-- Summary callout -->
                 <div class="result-callout">
                     <strong>Summary:</strong> This dashboard constructs a documented dataset from official BMI/BKA PMK publications, validates figures against published totals (checksum verified), and produces four descriptive charts covering 2024 composition, 2023–2024 comparison, violent offenses by category, and a three-year antisemitic offenses trend. All figures are reproducible from code.
@@ -138,22 +147,22 @@
                     <div class="stat-tile">
                         <span class="stat-num">84,172</span>
                         <div class="stat-change">+40.2% vs. 2023</div>
-                        <div class="stat-label">Total PMK offenses — highest level recorded since 2001</div>
+                        <div class="stat-label">Total PMK offenses recorded (2024)</div>
                     </div>
                     <div class="stat-tile">
                         <span class="stat-num">4,107</span>
                         <div class="stat-change">+15.3% vs. 2023</div>
-                        <div class="stat-label">Violent PMK offenses (Gewalttaten)</div>
+                        <div class="stat-label">Violent PMK offenses (Gewalttaten, 2024)</div>
                     </div>
                     <div class="stat-tile accent">
                         <span class="stat-num">20,074</span>
                         <div class="stat-change">≈ 24% of total</div>
-                        <div class="stat-label">Offenses using the internet as means</div>
+                        <div class="stat-label">Offenses using the internet as means (2024)</div>
                     </div>
                     <div class="stat-tile accent">
                         <span class="stat-num">6,236</span>
                         <div class="stat-change">+20.8% vs. 2023</div>
-                        <div class="stat-label">Antisemitic offenses — highest level since tracking began</div>
+                        <div class="stat-label">Antisemitic offenses (2024)</div>
                     </div>
                 </div>
 
@@ -182,13 +191,13 @@
                     <div class="fig-block">
                         <img src="images/projects/crime-trends/fig4_pmk_antisemitic_trend.png"
                              alt="Bar chart showing antisemitic offenses rising from 2641 in 2022 to 5164 in 2023 to 6236 in 2024">
-                        <p class="fig-caption">Fig. 4 &mdash; Antisemitic offenses (Antisemitische Straftaten) 2022–2024. Confirmed three-year trend using official BMI/BKA figures for each year. Note that 2023 saw a particularly large increase from 2022; the 2024 increase is proportionally smaller but brings the total to the highest level since systematic tracking began.</p>
+                        <p class="fig-caption">Fig. 4 &mdash; Antisemitic offenses (Antisemitische Straftaten) 2022–2024. Three-year trend from official BMI/BKA figures for each year. The 2023 increase from 2022 was proportionally larger; the 2024 figure is the highest in this three-year window. The BMI/BKA 2024 report describes the overall PMK total as the highest since the statistics were introduced in 2001.</p>
                     </div>
                 </div>
 
                 <!-- ── Data sources ───────────────────────────────── -->
                 <h3 class="card-title">Data Sources</h3>
-                <p>All data was manually transcribed from official BMI and BKA publications. BKA and BMI web servers block automated access; figures were extracted from official press releases and the authoritative bpb.de synthesis article that quotes them verbatim. All figures were cross-verified across at least two independent sources.</p>
+                <p>All data was manually transcribed from official BMI and BKA publications and press releases, which are the primary sources for all figures. BKA and BMI web servers block automated access; all values were extracted from the official annual press releases. The bpb.de article listed below was used only for secondary cross-verification — it is not a primary source. All figures were confirmed across at least two sources before inclusion.</p>
 
                 <table class="source-table">
                     <thead>

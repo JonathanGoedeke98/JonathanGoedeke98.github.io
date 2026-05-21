@@ -184,6 +184,8 @@ def fig4_speech_length(corpus: pd.DataFrame, dpi: int):
         return name
 
     corpus = corpus.copy()
+    corpus["fraktion"] = corpus["fraktion"].fillna("").str.replace("\xa0", " ", regex=False)
+    corpus = corpus[corpus["fraktion"].str.strip() != ""]
     corpus["party_short"] = corpus["fraktion"].apply(short_name)
     order = corpus.groupby("party_short")["speech_len"].median().sort_values(ascending=False).index
 

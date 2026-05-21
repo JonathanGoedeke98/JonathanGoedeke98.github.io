@@ -111,6 +111,20 @@ def run_classification(corpus: pd.DataFrame, X):
     (fewer than 5 per class) cross-validation scores will be very noisy and are
     reported with appropriate caveats.
     """
+    # Normalise encoding variants and drop rows without a party label
+    corpus = corpus.copy()
+    corpus["fraktion"] = corpus["fraktion"].str.replace("\xa0", " ", regex=False)
+    corpus = corpus[corpus["fraktion"].notna() & (corpus["fraktion"].str.strip() != "")]
+    # Only keep classes with enough samples for CV
+    counts = corpus["fraktion"].value_counts()
+    valid_classes = counts[counts >= 3].index
+    corpus = corpus[corpus["fraktion"].isin(valid_classes)]
+    if corpus.empty:
+        log.warning("No valid classes for classification.")
+        return None, None
+    if hasattr(X, "toarray"):
+        X = X[corpus.index]
+
     le = LabelEncoder()
     y = le.fit_transform(corpus["fraktion"])
 
@@ -121,7 +135,7 @@ def run_classification(corpus: pd.DataFrame, X):
         log.warning("Too few samples per class for meaningful cross-validation.")
         return None, None
 
-    clf = LogisticRegression(max_iter=500, C=1.0, solver="lbfgs", multi_class="multinomial")
+    clf = LogisticRegression(max_iter=500, C=1.0, solver="lbfgs")
     cv = StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=42)
     scores = cross_val_score(clf, X, y, cv=cv, scoring="accuracy")
 

@@ -4,39 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jonathan Gödeke | Data Scientist &amp; Quantitative Researcher</title>
-    <meta name="description" content="Personal website of Jonathan Gödeke, Data Scientist and Quantitative Researcher working with Python, R, statistical modeling, machine learning, causal inference, and public-policy data analysis.">
-    <meta name="keywords" content="Data Scientist, Quantitative Researcher, Python, R, Machine Learning, Causal Inference, Public Policy, Statistical Modeling">
+    <meta name="description" content="Jonathan Gödeke — Data Scientist with multi-year research-based experience in Python, R, Stata, statistical modelling, machine learning, causal inference, and reproducible analysis for social and public-policy questions.">
+    <meta name="keywords" content="Data Scientist, Quantitative Researcher, Python, R, Machine Learning, Statistical Modelling, Causal Inference, Reproducible Research, Public Policy">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/accessibility.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/profile-image-styles.css">
+    <style>
+        /* ── Role Fit cards ──────────────────────────────── */
+        .rf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        .rf-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--accent-color);
+            padding: 1.1rem 1.2rem;
+            box-shadow: var(--card-shadow);
+        }
+        .rf-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.45rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .rf-card p { font-size: 0.83rem; color: #555; line-height: 1.58; margin: 0; }
+
+        /* ── Project cards ────────────────────────────────── */
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+        @media (max-width: 800px) { .proj-grid { grid-template-columns: 1fr; } }
+        .proj-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            padding: 1.3rem 1.5rem;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .proj-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+        .proj-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.45rem;
+        }
+        .proj-card h3 { font-size: 0.96rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+        .proj-desc { font-size: 0.83rem; color: #666; margin: 0 0 0.35rem; line-height: 1.55; font-style: italic; }
+        .proj-demonstrates { font-size: 0.83rem; color: #444; margin: 0 0 0.75rem; line-height: 1.55; }
+        .badge-row { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.85rem; }
+        .badge { font-size: 0.71rem; font-weight: 600; padding: 0.14rem 0.5rem; border-radius: 20px; }
+        .badge-method { background: #e8f4fd; color: #2471a3; border: 1px solid #a9cce3; }
+        .badge-status-green { background: #eafaf1; color: #1a7a45; border: 1px solid #82c8a0; }
+        .badge-status-amber { background: #fef9ec; color: #b7770d; border: 1px solid #f0d060; }
+        .proj-card .btn { margin-top: auto; align-self: flex-start; font-size: 0.83rem; padding: 0.35rem 0.85rem; }
+
+        /* ── Technical toolkit ────────────────────────────── */
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        .tk-col h4 {
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--secondary-color);
+            margin-bottom: 0.55rem;
+        }
+        .tk-col ul { list-style: none; padding: 0; margin: 0; }
+        .tk-col ul li { font-size: 0.84rem; color: #444; padding: 0.13rem 0; border-bottom: 1px solid #f0f0f0; }
+        .tk-col ul li:last-child { border-bottom: none; }
+
+        /* ── Experience cards ─────────────────────────────── */
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.1rem;
+            margin-top: 1.25rem;
+        }
+        .exp-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            padding: 1.2rem 1.4rem;
+            box-shadow: var(--card-shadow);
+        }
+        .exp-card .exp-dates { font-size: 0.77rem; color: var(--secondary-color); font-weight: 600; margin-bottom: 0.2rem; }
+        .exp-card .exp-role { font-weight: 700; font-size: 0.93rem; color: var(--primary-color); }
+        .exp-card .exp-org { font-size: 0.83rem; color: #555; margin: 0.1rem 0 0.5rem; }
+        .exp-card .exp-desc { font-size: 0.83rem; color: #555; line-height: 1.58; }
+
+        /* ── Academic background ──────────────────────────── */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        .edu-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--secondary-color);
+            padding: 1rem 1.2rem;
+            box-shadow: var(--card-shadow);
+        }
+        .edu-card .edu-dates { font-size: 0.75rem; color: var(--secondary-color); font-weight: 600; }
+        .edu-card .edu-deg { font-weight: 700; font-size: 0.9rem; color: var(--primary-color); margin: 0.1rem 0; }
+        .edu-card .edu-inst { font-size: 0.82rem; color: #555; margin-bottom: 0.3rem; }
+        .edu-card .edu-detail { font-size: 0.81rem; color: #666; line-height: 1.52; margin-top: 0.3rem; }
+
+        /* ── Academic work entries ────────────────────────── */
+        .acad-entries { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.25rem; }
+        .acad-entry {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--primary-color);
+            padding: 1rem 1.3rem;
+            box-shadow: var(--card-shadow);
+        }
+        .acad-entry h4 { font-size: 0.92rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.2rem; }
+        .acad-entry .acad-meta { font-size: 0.76rem; color: var(--secondary-color); font-weight: 600; margin-bottom: 0.3rem; }
+        .acad-entry p { font-size: 0.84rem; color: #555; line-height: 1.55; margin: 0 0 0.5rem; }
+        .acad-entry .badge-row { margin-bottom: 0.4rem; }
+        .acad-link { font-size: 0.82rem; color: var(--secondary-color); font-weight: 600; text-decoration: none; }
+        .acad-link:hover { text-decoration: underline; }
+
+        /* ── Final CTA ────────────────────────────────────── */
+        .cta-banner { text-align: center; padding: 2.5rem 1rem; }
+        .cta-banner h2 { font-size: 1.45rem; margin-bottom: 0.6rem; color: var(--primary-color); }
+        .cta-banner p { font-size: 0.93rem; color: #555; max-width: 540px; margin: 0 auto 1.4rem; line-height: 1.65; }
+        .cta-banner .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+    </style>
 </head>
 <body>
-    <!-- Skip to content link for accessibility -->
     <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
 
-    <!-- Loading animation -->
-    <div class="loader">
-        <div class="loader-spinner"></div>
-    </div>
-
-    <!-- Progress bar -->
-    <div class="progress-container">
-        <div class="progress-bar"></div>
-    </div>
-
-    <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <a href="index.html">Jonathan Gödeke</a>
-            </div>
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
@@ -51,24 +181,16 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ── 1. Hero ─────────────────────────────────────────── -->
     <section class="hero" id="main-content">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content animate-fade-in">
                 <img src="images/Profil.png" alt="Jonathan Gödeke" class="profile-image">
-                <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">Jonathan Gödeke</h1>
-                <p style="font-size: 1.1rem; margin-bottom: 0.4rem;"><strong>Data Scientist &amp; Quantitative Researcher</strong></p>
-                <p style="font-size: 0.95rem; opacity: 0.85;">MSc Economics (Cologne, graduating 2026) &nbsp;&middot;&nbsp; MSc Behavioural Science &mdash; LSE &nbsp;|&nbsp; Currently: Data Science for Public Policy &mdash; University of Tokyo &nbsp;|&nbsp; Research Assistant &mdash; Max-Planck-Institute</p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; margin: 1rem 0 1.5rem;">
-                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: inherit; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Python</span>
-                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: inherit; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Machine Learning</span>
-                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: inherit; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">R &amp; Stata</span>
-                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: inherit; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Statistical Modelling</span>
-                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: inherit; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Data Visualisation</span>
-                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: inherit; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Git &amp; Version Control</span>
-                    <span style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: inherit; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem;">Behavioural Science</span>
-                </div>
-                <div>
+                <h1 style="font-size: 2rem; margin-bottom: 0.4rem;">Jonathan Gödeke</h1>
+                <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">Data Scientist &amp; Quantitative Researcher</p>
+                <p style="font-size: 0.93rem; opacity: 0.9; max-width: 610px; margin: 0 auto 0.7rem; line-height: 1.65;">I build reproducible data pipelines, statistical models, machine-learning workflows, and visualisations for complex social, economic, and public-policy questions.</p>
+                <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 1.35rem; letter-spacing: 0.01em;">Python &nbsp;&middot;&nbsp; R &nbsp;&middot;&nbsp; Stata &nbsp;&middot;&nbsp; scikit-learn &nbsp;&middot;&nbsp; tidyverse &nbsp;&middot;&nbsp; Git/GitHub &nbsp;&middot;&nbsp; Statistical Modelling &nbsp;&middot;&nbsp; Causal Inference</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;">
                     <a href="projects.html" class="btn hover-lift">View Projects</a>
                     <a href="files/CV_Jonathan_Goedeke.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="border-color: rgba(255,255,255,0.7); color: inherit;">Download CV</a>
                     <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="border-color: rgba(255,255,255,0.7); color: inherit;"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>GitHub</a>
@@ -77,267 +199,330 @@
         </div>
     </section>
 
-    <!-- Brief About Section -->
-    <section>
-        <div class="container">
-            <div class="card reveal">
-                <h2 class="section-title">About</h2>
-                <p>I am a quantitative researcher and data scientist with over three years of research and data-analysis experience across three institutions. I hold an <strong>MSc in Behavioural Science from the London School of Economics</strong> (GPA 69%, High Merit) and am completing an <strong>MSc in Economics at the University of Cologne</strong> (GPA 1.0, Distinction, top 1%) — graduating 2026. I am currently on exchange at the <strong>University of Tokyo</strong> studying Data Science for Public Policy.</p>
-
-                <p style="margin-top: 0.8rem;">Since 2022, I have worked in Python and R on data ingestion, statistical modelling, machine learning, and reproducible analysis pipelines — at the <strong>Max-Planck-Institute for the Study of Societies</strong> (large cross-country panel datasets in R), the <strong>University of Cologne</strong> (Python-based experimental research, nationwide survey data, Git version control), and the <strong>London School of Economics</strong> (policy analysis and quantitative methods). My work consistently involves presenting quantitative findings clearly for both specialist and non-specialist audiences.</p>
-
-                <p style="margin-top: 0.8rem;">My statistical training covers <strong>machine learning, causal inference, Bayesian modelling, and econometric theory</strong> — supported by teaching experience in Inferential Statistics and Theoretical Econometrics. My MSc in Behavioural Science from LSE provides additional grounding in the cognitive and decision-theoretic processes underlying behavioural data, enabling more careful interpretation of findings involving human actors.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Profile Snapshot -->
+    <!-- ── 2. Role Fit ─────────────────────────────────────── -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <h2 class="section-title reveal">Profile Snapshot</h2>
-            <div class="grid">
-                <div class="card reveal">
-                    <div class="interest-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3 class="card-title">Quantitative Background</h3>
-                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">MSc in Economics (Cologne, GPA 1.0) with focus on statistics, econometrics, machine learning, Bayesian methods, and causal inference. MSc in Behavioural Science (LSE, High Merit). Supported by the German Academic Scholarship Foundation throughout.</p>
+            <h2 class="section-title reveal">Applied data science from data to decision</h2>
+            <div class="rf-grid">
+                <div class="rf-card reveal">
+                    <h4><i class="fas fa-database" style="color: var(--accent-color);"></i>Large datasets</h4>
+                    <p>Experience constructing, cleaning, and analysing survey, experimental, panel, text, and public administrative datasets.</p>
                 </div>
-                <div class="card reveal" style="animation-delay: 0.15s;">
-                    <div class="interest-icon"><i class="fas fa-database"></i></div>
-                    <h3 class="card-title">Applied Data Science</h3>
-                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Python and R-based data pipelines and statistical modelling applied across three research institutions to large-scale datasets. Proficient in scikit-learn, pandas, ggplot2, and standard machine-learning and statistical-analysis workflows.</p>
+                <div class="rf-card reveal" style="animation-delay: 0.08s;">
+                    <h4><i class="fas fa-tasks" style="color: var(--accent-color);"></i>Independent analysis projects</h4>
+                    <p>From question formulation and data preparation to modelling, validation, visualisation, and documented outputs.</p>
                 </div>
-                <div class="card reveal" style="animation-delay: 0.3s;">
-                    <div class="interest-icon"><i class="fas fa-landmark"></i></div>
-                    <h3 class="card-title">Public-Policy Focus</h3>
-                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Sustained experience with policy-relevant research questions, social-science and administrative datasets, and presenting quantitative findings clearly to technical specialists and non-specialist audiences.</p>
+                <div class="rf-card reveal" style="animation-delay: 0.16s;">
+                    <h4><i class="fas fa-chart-line" style="color: var(--accent-color);"></i>Statistics &amp; machine learning</h4>
+                    <p>Econometrics, Bayesian methods, causal inference, classification, regression, clustering, and model evaluation.</p>
                 </div>
-                <div class="card reveal" style="animation-delay: 0.45s;">
-                    <div class="interest-icon"><i class="fas fa-code-branch"></i></div>
-                    <h3 class="card-title">Reproducible Workflows</h3>
-                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Git/GitHub version control, documented analysis pipelines, replication code, and basic Docker/containerization. All analytical work is structured for transparency and reproducibility from the outset.</p>
+                <div class="rf-card reveal" style="animation-delay: 0.24s;">
+                    <h4><i class="fas fa-code-branch" style="color: var(--accent-color);"></i>Reproducible toolchains</h4>
+                    <p>Python, R, Stata, Git/GitHub, documented pipelines, replication code, and basic Docker/containerisation.</p>
+                </div>
+                <div class="rf-card reveal" style="animation-delay: 0.32s;">
+                    <h4><i class="fas fa-comments" style="color: var(--accent-color);"></i>Clear communication</h4>
+                    <p>Research summaries, visualisations, and presentations for specialist and non-specialist audiences.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills & Methods Section -->
+    <!-- ── 3. Selected Applied Projects ───────────────────── -->
     <section>
         <div class="container">
-            <h2 class="section-title reveal">Skills &amp; Methods</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem;">
+            <h2 class="section-title reveal">Selected applied projects</h2>
+            <p class="reveal" style="font-size: 0.9rem; color: #555; max-width: 680px; margin-bottom: 0.25rem;">Four independent data science projects demonstrating end-to-end workflows from raw data to documented, reproducible outputs.</p>
+            <div class="proj-grid">
 
-                <div class="card reveal">
-                    <h4 style="margin-bottom: 0.75rem;"><i class="fab fa-python" style="color: var(--secondary-color); margin-right: 0.4rem;"></i>Python</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">pandas</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">numpy</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">scikit-learn</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">matplotlib</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">seaborn</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">statsmodels</span>
+                <div class="proj-card reveal">
+                    <div class="proj-card-header">
+                        <h3>Political Text Analysis of Parliamentary Speeches</h3>
+                        <span class="badge badge-status-green">Prototype &mdash; Real Data</span>
                     </div>
+                    <p class="proj-desc">Can NLP methods recover meaningful thematic structure from German parliamentary speech transcripts?</p>
+                    <p class="proj-demonstrates"><strong>Demonstrates:</strong> Text-data processing, XML parsing, TF-IDF feature extraction, NMF topic modelling, classification evaluation, and transparent visual reporting on public parliamentary records.</p>
+                    <div class="badge-row">
+                        <span class="badge badge-method">Python</span>
+                        <span class="badge badge-method">lxml</span>
+                        <span class="badge badge-method">TF-IDF</span>
+                        <span class="badge badge-method">NMF</span>
+                        <span class="badge badge-method">scikit-learn</span>
+                        <span class="badge badge-method">matplotlib</span>
+                    </div>
+                    <a href="project-parliamentary-text.html" class="btn hover-lift">View Project &rarr;</a>
                 </div>
 
-                <div class="card reveal" style="animation-delay: 0.08s;">
-                    <h4 style="margin-bottom: 0.75rem;"><i class="fas fa-chart-area" style="color: var(--secondary-color); margin-right: 0.4rem;"></i>R &amp; Stata</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">ggplot2</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">tidyverse</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Panel Data</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">GIS / Spatial</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Stata (causal inf.)</span>
+                <div class="proj-card reveal" style="animation-delay: 0.1s;">
+                    <div class="proj-card-header">
+                        <h3>Reproducible Machine Learning Pipeline</h3>
+                        <span class="badge badge-status-green">Complete</span>
                     </div>
+                    <p class="proj-desc">Can an end-to-end supervised classification pipeline be built without data leakage, with automated tests and full reproducibility?</p>
+                    <p class="proj-demonstrates"><strong>Demonstrates:</strong> Data ingestion, preprocessing, leak-free sklearn Pipeline, three-model comparison, cross-validation, visualisation, automated testing (pytest), and reproducible documentation. Random Forest: AUC 0.900.</p>
+                    <div class="badge-row">
+                        <span class="badge badge-method">Python</span>
+                        <span class="badge badge-method">scikit-learn</span>
+                        <span class="badge badge-method">pandas</span>
+                        <span class="badge badge-method">pytest</span>
+                        <span class="badge badge-method">Random Forest</span>
+                        <span class="badge badge-method">GBM</span>
+                    </div>
+                    <a href="project-ml-pipeline.html" class="btn hover-lift">View Project &rarr;</a>
                 </div>
 
-                <div class="card reveal" style="animation-delay: 0.16s;">
-                    <h4 style="margin-bottom: 0.75rem;"><i class="fas fa-robot" style="color: var(--secondary-color); margin-right: 0.4rem;"></i>Machine Learning</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Classification</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Regression</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Clustering</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Cross-Validation</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Model Evaluation</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Feature Engineering</span>
+                <div class="proj-card reveal" style="animation-delay: 0.2s;">
+                    <div class="proj-card-header">
+                        <h3>Causal Policy Analysis</h3>
+                        <span class="badge badge-status-amber">Research-Based Case Study</span>
                     </div>
+                    <p class="proj-desc">What causal effects did Uruguay's PANES cash transfers and Victoria's COVID-19 lockdown have on political support and wellbeing distributions?</p>
+                    <p class="proj-demonstrates"><strong>Demonstrates:</strong> Causal identification strategy, assumption testing, robustness checks, uncertainty communication, and limitations of quasi-experimental observational analysis.</p>
+                    <div class="badge-row">
+                        <span class="badge badge-method">Stata</span>
+                        <span class="badge badge-method">R</span>
+                        <span class="badge badge-method">RDD</span>
+                        <span class="badge badge-method">DiD</span>
+                        <span class="badge badge-method">PSM</span>
+                        <span class="badge badge-method">Panel Data</span>
+                    </div>
+                    <a href="project-causal-policy.html" class="btn hover-lift">View Project &rarr;</a>
                 </div>
 
-                <div class="card reveal" style="animation-delay: 0.24s;">
-                    <h4 style="margin-bottom: 0.75rem;"><i class="fas fa-chart-line" style="color: var(--secondary-color); margin-right: 0.4rem;"></i>Statistical Modelling</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Bayesian Econometrics</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Distributional Analysis</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Monte Carlo Simulation</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Panel Data</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Time Series</span>
+                <div class="proj-card reveal" style="animation-delay: 0.3s;">
+                    <div class="proj-card-header">
+                        <h3>Public PMK Data Dashboard</h3>
+                        <span class="badge badge-status-green">Initial Dashboard</span>
                     </div>
+                    <p class="proj-desc">Can official German administrative statistics on politically motivated crime be turned into a reproducible, validated, and transparently visualised dataset?</p>
+                    <p class="proj-demonstrates"><strong>Demonstrates:</strong> Descriptive analysis of official aggregate administrative data, checksum validation against published totals, primary source documentation, and sober visualisation with explicit caveats.</p>
+                    <div class="badge-row">
+                        <span class="badge badge-method">Python</span>
+                        <span class="badge badge-method">pandas</span>
+                        <span class="badge badge-method">matplotlib</span>
+                        <span class="badge badge-method">BMI/BKA data</span>
+                        <span class="badge badge-method">Data Validation</span>
+                    </div>
+                    <a href="project-crime-trends.html" class="btn hover-lift">View Project &rarr;</a>
                 </div>
 
-                <div class="card reveal" style="animation-delay: 0.32s;">
-                    <h4 style="margin-bottom: 0.75rem;"><i class="fas fa-balance-scale" style="color: var(--secondary-color); margin-right: 0.4rem;"></i>Causal Inference</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Difference-in-Differences</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Regression Discontinuity</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Instrumental Variables</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Robustness Checks</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Experimental Design</span>
-                    </div>
-                </div>
-
-                <div class="card reveal" style="animation-delay: 0.4s;">
-                    <h4 style="margin-bottom: 0.75rem;"><i class="fas fa-tools" style="color: var(--secondary-color); margin-right: 0.4rem;"></i>Workflows &amp; Communication</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Git &amp; GitHub</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Docker (basic)</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Data Visualisation</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Policy-Oriented Reporting</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">LaTeX</span>
-                        <span style="background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem;">Jupyter</span>
-                    </div>
-                </div>
-
+            </div>
+            <div class="text-center reveal" style="margin-top: 1.5rem;">
+                <a href="projects.html" class="btn btn-outline hover-lift">View All Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- Background Highlights — moved above Featured Work -->
+    <!-- ── 4. Technical Toolkit ────────────────────────────── -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <h2 class="section-title reveal">Background</h2>
-            <div class="grid">
-                <div class="card reveal">
-                    <h3 class="card-title">Education</h3>
-                    <div class="timeline-item">
-                        <p class="timeline-date">2024 – 2026</p>
-                        <p class="timeline-title">MSc in Economics &mdash; GPA 1.0, top 1%</p>
-                        <p class="timeline-subtitle">University of Cologne &bull; currently on exchange at University of Tokyo (Data Science for Public Policy) &bull; graduating 2026</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">2023 – 2025</p>
-                        <p class="timeline-title">MSc in Behavioural Science &mdash; GPA 69%, High Merit</p>
-                        <p class="timeline-subtitle">London School of Economics and Political Science</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">2019 – 2023</p>
-                        <p class="timeline-title">BSc in Business Administration &mdash; GPA 1.3, top 5%</p>
-                        <p class="timeline-subtitle">University of Cologne</p>
-                    </div>
-                    <a href="files/CV_Jonathan_Goedeke.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift">Download CV</a>
+            <h2 class="section-title reveal">Technical toolkit</h2>
+            <div class="toolkit-grid reveal">
+                <div class="tk-col">
+                    <h4>Programming</h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>R</li>
+                        <li>Stata</li>
+                        <li>SQL (basic)</li>
+                    </ul>
                 </div>
-                <div class="card reveal" style="animation-delay: 0.2s;">
-                    <h3 class="card-title">Experience</h3>
-                    <div class="timeline-item">
-                        <p class="timeline-date">08/2025 – present</p>
-                        <p class="timeline-title">Research Assistant in Political Economy</p>
-                        <p class="timeline-subtitle">Max-Planck-Institute for the Study of Societies (MPIfG)</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">04/2022 – 03/2026</p>
-                        <p class="timeline-title">Research Assistant in Behavioral Economics</p>
-                        <p class="timeline-subtitle">University of Cologne &mdash; supervised by Prof. Dr. Daniel Wiesen</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">12/2023 – 03/2024</p>
-                        <p class="timeline-title">Research Assistant in Policy Analysis</p>
-                        <p class="timeline-subtitle">London School of Economics &mdash; supervised by Prof. Dr. Joan Costa-i-Font</p>
-                    </div>
-                    <a href="files/CV_Jonathan_Goedeke.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift">Download CV</a>
+                <div class="tk-col">
+                    <h4>Python ecosystem</h4>
+                    <ul>
+                        <li>pandas &amp; numpy</li>
+                        <li>scikit-learn</li>
+                        <li>matplotlib &amp; seaborn</li>
+                        <li>statsmodels</li>
+                        <li>lxml &amp; requests</li>
+                    </ul>
                 </div>
-                <div class="card reveal" style="animation-delay: 0.4s;">
-                    <h3 class="card-title">Scholarships &amp; Awards</h3>
-                    <div class="timeline-item">
-                        <p class="timeline-date">2024 – 2026</p>
-                        <p class="timeline-title">German Academic Scholarship Foundation</p>
-                        <p class="timeline-subtitle">University of Cologne MSc</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">2023 – 2024</p>
-                        <p class="timeline-title">German Academic Scholarship Foundation</p>
-                        <p class="timeline-subtitle">LSE MSc</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">2026</p>
-                        <p class="timeline-title">DAAD Scholarship</p>
-                        <p class="timeline-subtitle">University of Tokyo Exchange</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">2020 – 2023</p>
-                        <p class="timeline-title">German Academic Scholarship Foundation</p>
-                        <p class="timeline-subtitle">University of Cologne BSc</p>
-                    </div>
+                <div class="tk-col">
+                    <h4>R ecosystem</h4>
+                    <ul>
+                        <li>tidyverse</li>
+                        <li>ggplot2</li>
+                        <li>Panel data packages</li>
+                        <li>GIS / spatial analysis</li>
+                        <li>Monte Carlo simulation</li>
+                    </ul>
+                </div>
+                <div class="tk-col">
+                    <h4>Methods</h4>
+                    <ul>
+                        <li>Statistical modelling</li>
+                        <li>Bayesian econometrics</li>
+                        <li>Machine learning</li>
+                        <li>Causal inference</li>
+                        <li>NLP / text analysis</li>
+                        <li>Model validation</li>
+                    </ul>
+                </div>
+                <div class="tk-col">
+                    <h4>Workflow</h4>
+                    <ul>
+                        <li>Git &amp; GitHub</li>
+                        <li>Reproducible pipelines</li>
+                        <li>Automated testing (pytest)</li>
+                        <li>Documentation</li>
+                        <li>Basic Docker</li>
+                        <li>Jupyter &amp; LaTeX</li>
+                    </ul>
+                </div>
+                <div class="tk-col">
+                    <h4>Communication</h4>
+                    <ul>
+                        <li>Data visualisation</li>
+                        <li>Research summaries</li>
+                        <li>Policy-oriented reporting</li>
+                        <li>Audience-oriented presentations</li>
+                        <li>English (academic)</li>
+                        <li>German (native)</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Work Section -->
+    <!-- ── 5. Research Experience ──────────────────────────── -->
     <section>
         <div class="container">
-            <h2 class="section-title reveal">Featured Data Science &amp; Policy Analysis Work</h2>
+            <h2 class="section-title reveal">Research-based data science experience</h2>
+            <div class="exp-grid">
 
-            <div class="publication reveal" style="border-left: 3px solid #f39c12; padding-left: 1rem;">
-                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
-                    <span style="background: #f39c12; color: #fff; padding: 0.15rem 0.6rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;"><i class="fas fa-flask" style="margin-right: 0.3rem;"></i>Research in Progress</span>
+                <div class="exp-card reveal">
+                    <div class="exp-dates">08/2025 &ndash; present</div>
+                    <div class="exp-role">Research Assistant</div>
+                    <div class="exp-org">Max-Planck-Institute for the Study of Societies (MPIfG), Cologne</div>
+                    <p class="exp-desc">Independent data-analysis projects on large cross-country panel datasets using R/tidyverse, statistical modelling, visualisation, Git-based workflows, and research summaries for specialist and non-specialist audiences.</p>
                 </div>
-                <h3 class="publication-title">A Test for the Practical Relevance of Endogeneity in Semiparametric Distribution Regression</h3>
-                <p class="publication-meta">MSc Thesis | University of Cologne &mdash; Empirical Methods &amp; Data Analysis | 2026 | Supervised by Prof. Dr. Dominik Wied</p>
-                <p>Develops a novel <strong>asymptotically pivotal test</strong> for whether endogeneity materially affects semiparametric distribution regression estimates. Defines an L&sup2;-distance functional between the naive and IV/control-function DR estimators, derives joint influence-function representations, and constructs a self-normalized test statistic whose limiting distribution is a <strong>ratio of Brownian-motion functionals</strong> — no bootstrap required. Validated through extensive <strong>Monte Carlo simulations</strong> in R. Applied to Card (1995) returns-to-education data: IV correction is practically relevant only for high-education workers, a heterogeneous finding invisible to the scalar Wu–Hausman test.</p>
-                <div style="margin-top: 0.6rem;">
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; margin-right: 0.3rem;">Statistical Theory</span>
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; margin-right: 0.3rem;">Distribution Regression</span>
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; margin-right: 0.3rem;">Monte Carlo Simulation</span>
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem;">R</span>
-                </div>
-                <div style="margin-top: 0.8rem;">
-                    <a href="essay-msc-thesis.html" class="btn btn-outline hover-lift" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">Read Analysis &rarr;</a>
-                </div>
-            </div>
 
-            <div class="publication reveal">
-                <h3 class="publication-title">The Effect of Cash Transfers on Political Support</h3>
-                <p class="publication-meta">Policy Analysis Essay | LSE &mdash; Quantitative Methods | 2024</p>
-                <p>Extension of Manacorda et al. (2011) using <strong>Regression Discontinuity Design</strong> in Stata. Full analysis pipeline: McCrary density tests, placebo regressions, donut-hole robustness checks, bandwidth sensitivity analysis, and local polynomial models. Finds a robust ~10% causal increase in political support from Uruguay's PANES cash transfer programme.</p>
-                <div style="margin-top: 0.6rem;">
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; margin-right: 0.3rem;">RDD</span>
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; margin-right: 0.3rem;">Stata</span>
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem;">Causal Inference</span>
+                <div class="exp-card reveal" style="animation-delay: 0.1s;">
+                    <div class="exp-dates">04/2022 &ndash; 03/2026</div>
+                    <div class="exp-role">Research Assistant</div>
+                    <div class="exp-org">University of Cologne (Prof. Dr. Daniel Wiesen)</div>
+                    <p class="exp-desc">Python-based data science pipelines using pandas, numpy, scikit-learn and matplotlib for experimental data collection, cleaning, feature engineering, statistical modelling, visualisation, and reproducible outputs.</p>
                 </div>
-                <div style="margin-top: 0.8rem;">
-                    <a href="essay-cash-transfers.html" class="btn btn-outline hover-lift" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">Read Analysis &rarr;</a>
-                </div>
-            </div>
 
-            <div class="publication reveal" style="animation-delay: 0.2s;">
-                <h3 class="publication-title">Distribution Sensitive Policy Analysis based on WELLBYs</h3>
-                <p class="publication-meta">MSc Dissertation | LSE &mdash; Behavioural Science | 2024 | Supervised by Dr. Christian Krekel</p>
-                <p>First study to construct a <strong>Prioritarian Social Welfare Function</strong> using life satisfaction. Applied <strong>Difference-in-Differences</strong> with Propensity Score Matching on Australia's HILDA panel survey (n &gt; 17,000) to estimate the distributional wellbeing impact of Victoria's COVID-19 lockdown — revealing disproportionate effects on the worst-off.</p>
-                <div style="margin-top: 0.6rem;">
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; margin-right: 0.3rem;">DiD</span>
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; margin-right: 0.3rem;">Propensity Score Matching</span>
-                    <span style="background-color: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem;">Panel Data</span>
+                <div class="exp-card reveal" style="animation-delay: 0.2s;">
+                    <div class="exp-dates">12/2023 &ndash; 03/2024</div>
+                    <div class="exp-role">Research Assistant</div>
+                    <div class="exp-org">London School of Economics (Prof. Dr. Joan Costa-i-Font)</div>
+                    <p class="exp-desc">Quasi-experimental policy analysis using difference-in-differences and regression discontinuity designs in Stata, including dataset construction, variable coding, and replication documentation.</p>
                 </div>
-                <div style="margin-top: 0.8rem;">
-                    <a href="essay-wellbys.html" class="btn btn-outline hover-lift" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">Read Analysis &rarr;</a>
-                </div>
-            </div>
 
-            <div class="text-center mt-2">
-                <a href="theses.html" class="btn btn-outline hover-lift reveal">View All Academic Work</a>
-                <a href="projects.html" class="btn hover-lift reveal" style="margin-left: 0.5rem;">View Applied Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- Current Focus Section -->
+    <!-- ── 6. Quantitative Academic Background ─────────────── -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <div class="card reveal" style="border-left: 4px solid var(--accent-color); max-width: 800px; margin: 0 auto;">
-                <h2 style="font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--primary-color);">Current Focus</h2>
-                <p style="margin: 0;">I am currently developing an applied data science portfolio covering public-policy text analysis, reproducible machine-learning workflows, and visual analysis of publicly available administrative datasets. Each project documents the full analytical process: question formulation, data preparation, modelling, validation, and transparent presentation of results. <a href="projects.html">View portfolio &rarr;</a></p>
+            <h2 class="section-title reveal">Quantitative academic background</h2>
+            <div class="edu-grid">
+
+                <div class="edu-card reveal">
+                    <div class="edu-dates">2024 &ndash; 2026</div>
+                    <div class="edu-deg">MSc Economics &mdash; GPA 1.0, top 1%</div>
+                    <div class="edu-inst">University of Cologne &nbsp;&middot;&nbsp; currently on exchange at University of Tokyo</div>
+                    <div class="edu-detail">Focus on statistics and data analysis. Courses: Microeconometrics, Bayesian Econometrics, Machine Learning Methods, Probability Theory and Inference. MSc thesis: statistical test for endogeneity in semiparametric distribution regression, Monte Carlo validation in R.</div>
+                </div>
+
+                <div class="edu-card reveal" style="animation-delay: 0.1s;">
+                    <div class="edu-dates">2023 &ndash; 2025</div>
+                    <div class="edu-deg">MSc Behavioural Science &mdash; High Merit</div>
+                    <div class="edu-inst">London School of Economics and Political Science</div>
+                    <div class="edu-detail">Focus on causal inference applied to policy analysis. Dissertation: distributional wellbeing effects of COVID-19 lockdown using DiD and PSM on HILDA panel data (n &gt; 17,000).</div>
+                </div>
+
+                <div class="edu-card reveal" style="animation-delay: 0.2s;">
+                    <div class="edu-dates">2026 (exchange semester)</div>
+                    <div class="edu-deg">Data Science for Public Policy</div>
+                    <div class="edu-inst">University of Tokyo &nbsp;&middot;&nbsp; DAAD Scholarship</div>
+                    <div class="edu-detail">Machine learning methods and large-scale data pipelines for public-policy applications.</div>
+                </div>
+
+                <div class="edu-card reveal" style="animation-delay: 0.3s;">
+                    <div class="edu-dates">2019 &ndash; 2023</div>
+                    <div class="edu-deg">BSc Business Administration &mdash; GPA 1.3, top 5%</div>
+                    <div class="edu-inst">University of Cologne</div>
+                    <div class="edu-detail">Quantitative methods and experimental design. German Academic Scholarship Foundation (Studienstiftung) throughout BSc and both MSc programmes.</div>
+                </div>
+
+            </div>
+            <div style="margin-top: 1.25rem;">
+                <a href="files/CV_Jonathan_Goedeke.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift reveal" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">Download CV</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ── 7. Selected Quantitative Research ──────────────── -->
+    <section>
+        <div class="container">
+            <h2 class="section-title reveal">Selected quantitative research</h2>
+            <div class="acad-entries">
+
+                <div class="acad-entry reveal">
+                    <h4>A Test for the Practical Relevance of Endogeneity in Semiparametric Distribution Regression</h4>
+                    <div class="acad-meta">MSc Thesis &nbsp;&middot;&nbsp; University of Cologne &nbsp;&middot;&nbsp; 2026 &nbsp;&middot;&nbsp; Supervised by Prof. Dr. Dominik Wied</div>
+                    <p>Novel asymptotically pivotal test based on L&sup2;-distance between naive and IV/control-function estimators, validated via Monte Carlo simulation in R. Applied to Card (1995) returns-to-education data: IV correction is relevant only for high-education workers — a heterogeneous finding invisible to scalar endogeneity tests.</p>
+                    <div class="badge-row">
+                        <span class="badge badge-method">Statistical Theory</span>
+                        <span class="badge badge-method">Distribution Regression</span>
+                        <span class="badge badge-method">Monte Carlo</span>
+                        <span class="badge badge-method">R</span>
+                    </div>
+                    <a href="essay-msc-thesis.html" class="acad-link">Read analysis &rarr;</a>
+                </div>
+
+                <div class="acad-entry reveal" style="animation-delay: 0.1s;">
+                    <h4>Distribution Sensitive Policy Analysis based on WELLBYs</h4>
+                    <div class="acad-meta">MSc Dissertation &nbsp;&middot;&nbsp; LSE &nbsp;&middot;&nbsp; 2024 &nbsp;&middot;&nbsp; Supervised by Dr. Christian Krekel</div>
+                    <p>Difference-in-differences with propensity score matching on Australia's HILDA panel (n &gt; 17,000) to estimate the distributional wellbeing impact of Victoria's COVID-19 lockdown, revealing disproportionate effects on the worst-off.</p>
+                    <div class="badge-row">
+                        <span class="badge badge-method">DiD</span>
+                        <span class="badge badge-method">PSM</span>
+                        <span class="badge badge-method">Panel Data</span>
+                        <span class="badge badge-method">Stata</span>
+                    </div>
+                    <a href="essay-wellbys.html" class="acad-link">Read analysis &rarr;</a>
+                </div>
+
+                <div class="acad-entry reveal" style="animation-delay: 0.2s;">
+                    <h4>The Effect of Cash Transfers on Political Support</h4>
+                    <div class="acad-meta">Policy Analysis Essay &nbsp;&middot;&nbsp; LSE &nbsp;&middot;&nbsp; 2024 &nbsp;&middot;&nbsp; Distinction (83%)</div>
+                    <p>Regression discontinuity design (McCrary test, donut-hole robustness checks, bandwidth sensitivity analysis) applied to Uruguay's PANES cash transfer programme. Finds a robust ~10% causal increase in political support.</p>
+                    <div class="badge-row">
+                        <span class="badge badge-method">RDD</span>
+                        <span class="badge badge-method">Stata</span>
+                        <span class="badge badge-method">Causal Inference</span>
+                    </div>
+                    <a href="essay-cash-transfers.html" class="acad-link">Read analysis &rarr;</a>
+                </div>
+
+            </div>
+            <div class="text-center reveal" style="margin-top: 1.5rem;">
+                <a href="theses.html" class="btn btn-outline hover-lift">View All Academic Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 8. Final CTA ────────────────────────────────────── -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <div class="cta-banner reveal">
+                <h2>Explore my work</h2>
+                <p>Applied data science projects with reproducible code and documented pipelines — alongside quantitative research covering statistical theory, econometrics, and causal inference.</p>
+                <div class="btn-row">
+                    <a href="projects.html" class="btn hover-lift">View Projects</a>
+                    <a href="contact.html" class="btn btn-outline hover-lift">Contact</a>
+                    <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────────── -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
@@ -355,17 +540,8 @@
         </div>
     </footer>
 
-    <!-- Back to top button -->
-    <button class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Theme toggle -->
-    <button class="theme-toggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </button>
-
-    <!-- JavaScript -->
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
     <script src="js/main.js"></script>
 </body>
 </html>
