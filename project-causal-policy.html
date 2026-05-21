@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Causal Policy Analysis with Quasi-Experimental Methods | Jonathan Gödeke</title>
+    <meta name="description" content="Research-based case study: turning policy questions into rigorous empirical designs using difference-in-differences, regression discontinuity, robustness checks, and clear uncertainty communication.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0; }
+        .tag { background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .info-box { background: var(--light-color); border-radius: 8px; padding: 1rem; }
+        .info-box .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--secondary-color); margin-bottom: 0.3rem; display: block; }
+        .info-box .value { font-size: 0.9rem; font-weight: 500; }
+        .status-badge { display: inline-block; padding: 0.25rem 0.8rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+        .result-callout { background: linear-gradient(135deg, #eaf4fb, #f0f7ee); border-left: 4px solid var(--secondary-color); border-radius: 0 8px 8px 0; padding: 1rem 1.5rem; margin: 1.5rem 0; font-size: 0.92rem; }
+        /* Method cards */
+        .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.25rem 0; }
+        @media (max-width: 640px) { .method-grid { grid-template-columns: 1fr; } }
+        .method-card { background: var(--light-color); border-radius: 10px; padding: 1.1rem 1.25rem; border-top: 3px solid var(--secondary-color); }
+        .method-card.accent-top { border-top-color: var(--accent-color); }
+        .method-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .method-card .method-meta { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--secondary-color); font-weight: 700; margin-bottom: 0.5rem; display: block; }
+        .method-card p, .method-card li { font-size: 0.85rem; color: #444; line-height: 1.65; }
+        .method-card ul { padding-left: 1.1rem; margin: 0.35rem 0 0; }
+        /* Case study blocks */
+        .case-block { border: 1px solid #e0e0e0; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; background: #fff; }
+        .case-block .case-type { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.18rem 0.6rem; border-radius: 20px; margin-bottom: 0.6rem; }
+        .case-block .case-type.rdd { background: #eaf4fb; color: #2471a3; border: 1px solid #a9cce3; }
+        .case-block .case-type.did { background: #eafaf1; color: #1a7a45; border: 1px solid #82c8a0; }
+        .case-block h4 { font-size: 1rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.35rem; }
+        .case-block p { font-size: 0.88rem; color: #444; line-height: 1.7; margin-bottom: 0.6rem; }
+        .case-block .finding-chip { display: inline-block; background: var(--primary-color); color: #fff; border-radius: 6px; padding: 0.2rem 0.65rem; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.75rem; }
+        /* Step workflow */
+        .step-grid { display: grid; gap: 0.85rem; margin: 1rem 0; }
+        .step-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--light-color); border-radius: 10px; padding: 0.9rem 1.1rem; }
+        .step-number { background: var(--secondary-color); color: #fff; border-radius: 50%; width: 1.9rem; height: 1.9rem; min-width: 1.9rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem; }
+        .step-item h5 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.15rem; }
+        .step-item p { font-size: 0.83rem; margin: 0; color: #555; }
+        /* Demonstrates box */
+        .demonstrates-box { background: var(--primary-color); color: #fff; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; }
+        .demonstrates-box h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .demonstrates-box ul { padding-left: 1.2rem; margin: 0; }
+        .demonstrates-box li { font-size: 0.88rem; line-height: 1.85; }
+        .demonstrates-box li::marker { color: var(--accent-color); }
+        /* Figures */
+        .fig-block { margin: 1.5rem 0; }
+        .fig-block img { width: 100%; border: 1px solid #e0e0e0; border-radius: 8px; }
+        .fig-caption { font-size: 0.80rem; color: #666; margin-top: 0.4rem; font-style: italic; }
+        .fig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0; }
+        @media (max-width: 640px) { .fig-grid { grid-template-columns: 1fr; } }
+        /* Data note */
+        .data-note { background: #f0f7ee; border: 1px solid #b2d8b2; border-left: 4px solid #2e8b57; border-radius: 0 8px 8px 0; padding: 1.1rem 1.4rem; margin: 0.5rem 0 1rem; }
+        .assumption-list li { font-size: 0.88rem; line-height: 1.7; margin-bottom: 0.3rem; }
+        .related-link { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.9rem 1rem; background: var(--light-color); border-radius: 8px; margin-bottom: 0.75rem; border-left: 3px solid var(--secondary-color); text-decoration: none; color: inherit; transition: background 0.2s; }
+        .related-link:hover { background: #e8f4fd; }
+        .related-link .rl-icon { color: var(--secondary-color); font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+        .related-link .rl-title { font-size: 0.9rem; font-weight: 600; color: var(--primary-color); margin-bottom: 0.15rem; }
+        .related-link .rl-desc { font-size: 0.81rem; color: #555; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="theses.html">Academic Work</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;"><a href="projects.html" style="color: inherit; text-decoration: underline;">Projects</a> &rsaquo; Causal Inference</p>
+                <h1 style="font-size: 2rem;">Causal Policy Analysis with Quasi-Experimental Methods</h1>
+                <p style="font-size: 1rem;">Turning policy questions into transparent empirical designs: difference-in-differences, regression discontinuity, robustness checks, and clear uncertainty communication.</p>
+                <span class="status-badge" style="background:#eafaf1;color:#1a7a45;border:1px solid #82c8a0;"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Research-Based Case Study</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="card reveal" style="max-width: 900px; margin: 0 auto;">
+
+                <div class="info-grid">
+                    <div class="info-box">
+                        <span class="label">Domain</span>
+                        <span class="value">Quantitative Policy Analysis</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Methods</span>
+                        <span class="value">RDD, DiD, PSM, robustness</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Tools</span>
+                        <span class="value">Stata, R, Python</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Type</span>
+                        <span class="value">Research-based case study</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Analyses</span>
+                        <span class="value">2 completed (LSE, 2024)</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Graded</span>
+                        <span class="value">Distinction (83%) + MSc thesis</span>
+                    </div>
+                </div>
+
+                <!-- Summary callout -->
+                <div class="result-callout">
+                    <strong>Summary:</strong> This page documents my research-based experience with causal policy analysis — two completed, peer-assessed analyses using quasi-experimental methods on real observational datasets. The focus is on the workflow: defining an estimand, choosing an identification strategy, evaluating assumptions, implementing robustness checks, and communicating what can — and cannot — be concluded from data.
+                </div>
+
+                <!-- ── Section 1: Overview ──────────────────────────────────── -->
+                <h3 class="card-title" style="margin-top: 1.5rem;">Overview</h3>
+                <p>Policy questions — whether a cash transfer programme increases political support, whether a lockdown damages wellbeing — cannot be answered by simply comparing outcomes between groups that chose differently. Treated and untreated groups typically differ in many ways that also affect the outcome. Quasi-experimental methods provide principled ways to isolate causal effects from this confounding, by exploiting naturally occurring sources of variation that approximate random assignment.</p>
+                <p style="margin-top: 0.6rem;">This project page summarises two complete analyses conducted during my MSc at the London School of Economics, each addressing a different policy question with a different empirical design. The analyses are documented in detail on separate pages; this page explains the methods, assumptions, workflow, and what the work demonstrates as a data science competency.</p>
+
+                <!-- ── Section 2: The Policy Analysis Problem ──────────────── -->
+                <h3 class="card-title">The Empirical Challenge</h3>
+                <p>Simple correlations between a policy and an outcome are typically not causal. The groups that receive treatment differ from those that do not — in income, geography, prior behaviour, or dozens of other characteristics that also influence the outcome. This is the fundamental problem of causal inference: in observational data, we never observe the same unit with and without treatment simultaneously.</p>
+                <p style="margin-top: 0.6rem;">Quasi-experimental designs address this by finding situations where treatment assignment is as-good-as-random for a well-defined subset of the data. A sharp eligibility cutoff produces near-random variation near the threshold. A policy change that affects one region but not an otherwise-similar one can reveal causal effects if pre-treatment trends were parallel. The skill lies in recognising these structures in the data, formalising the assumptions they require, and testing those assumptions before interpreting results.</p>
+
+                <!-- ── Section 3: Method cards ─────────────────────────────── -->
+                <h3 class="card-title">Methods</h3>
+
+                <div class="method-grid">
+                    <div class="method-card">
+                        <span class="method-meta">Difference-in-Differences</span>
+                        <h4>DiD &amp; Event-Study</h4>
+                        <p>Compares the change in outcomes for a treated group before and after a policy event, relative to a control group that was not exposed. The key assumption is that the two groups would have followed parallel trends in the absence of treatment.</p>
+                        <ul>
+                            <li><strong>Key assumption:</strong> parallel pre-treatment trends</li>
+                            <li><strong>Tested with:</strong> event-study plots, pre-trend tests</li>
+                            <li><strong>Outputs:</strong> ATT estimate with 95% CI, heterogeneity analysis</li>
+                            <li><strong>Applied in:</strong> Victoria COVID-19 lockdown / HILDA panel</li>
+                        </ul>
+                    </div>
+                    <div class="method-card">
+                        <span class="method-meta">Regression Discontinuity</span>
+                        <h4>Sharp RDD</h4>
+                        <p>Exploits a sharp eligibility threshold in a running variable. Units just below and just above the cutoff are nearly identical in all respects except treatment assignment — yielding a Local Average Treatment Effect (LATE) at the cutoff.</p>
+                        <ul>
+                            <li><strong>Key assumption:</strong> continuity of potential outcomes at the cutoff</li>
+                            <li><strong>Tested with:</strong> McCrary density test, covariate placebo regressions</li>
+                            <li><strong>Outputs:</strong> LATE with SE, bandwidth sensitivity plots</li>
+                            <li><strong>Applied in:</strong> Uruguay PANES / political support</li>
+                        </ul>
+                    </div>
+                    <div class="method-card accent-top">
+                        <span class="method-meta" style="color: var(--accent-color);">Robustness &amp; Sensitivity</span>
+                        <h4>Validation Checks</h4>
+                        <p>Results are only credible if they hold up to alternative specifications. Every analysis includes systematic robustness checks designed to challenge the main finding rather than confirm it.</p>
+                        <ul>
+                            <li>Donut-hole regressions (RDD)</li>
+                            <li>Bandwidth sensitivity analysis</li>
+                            <li>Placebo tests on pre-treatment covariates</li>
+                            <li>Linear vs. polynomial functional form comparison</li>
+                            <li>Local polynomial (rdrobust) vs. OLS comparison</li>
+                        </ul>
+                    </div>
+                    <div class="method-card accent-top">
+                        <span class="method-meta" style="color: var(--accent-color);">Heterogeneity &amp; Distribution</span>
+                        <h4>Subgroup &amp; Distributional Analysis</h4>
+                        <p>Average treatment effects can mask important heterogeneity. In the WELLBY dissertation, the distributional impact was the central question: does the harm fall on those already worst-off? A Prioritarian Social Welfare Function was used to formally evaluate this.</p>
+                        <ul>
+                            <li>Subgroup analysis by wellbeing quantile</li>
+                            <li>Propensity Score Matching for covariate balance</li>
+                            <li>Atkinson SWF (inequality-aversion parameter γ = 1)</li>
+                            <li>WELLBY accounting (life satisfaction welfare measure)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ── Section 4: Illustrative design figures ──────────────── -->
+                <h3 class="card-title">Design Illustrations</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">The figures below illustrate the two designs with synthetic simulated data. They show the structural logic of each approach — not results from any specific analysis.</p>
+
+                <div class="fig-grid">
+                    <div class="fig-block">
+                        <img src="images/projects/causal-policy-analysis/fig1_did_illustrative.png"
+                             alt="Difference-in-Differences diagram: treated and control group trend lines pre- and post-treatment, showing parallel pre-trends and divergence post-treatment with DiD estimate annotated">
+                        <p class="fig-caption">Fig. 1 &mdash; Difference-in-Differences. Pre-treatment parallel trends (left of t₀) validate the identifying assumption; the gap between the treated group and the counterfactual (dashed) after treatment is the DiD estimate. <em>Illustrative simulated data.</em></p>
+                    </div>
+                    <div class="fig-block">
+                        <img src="images/projects/causal-policy-analysis/fig2_rdd_illustrative.png"
+                             alt="Regression Discontinuity diagram: scatter of observations on either side of a cutoff with linear fits, showing a clear jump at the threshold annotated as the LATE">
+                        <p class="fig-caption">Fig. 2 &mdash; Regression Discontinuity Design. Observations just left and right of the cutoff are nearly identical; the discontinuity in the fitted line at the threshold identifies the Local Average Treatment Effect (LATE). <em>Illustrative simulated data.</em></p>
+                    </div>
+                </div>
+
+                <!-- ── Section 5: Case studies ─────────────────────────────── -->
+                <h3 class="card-title">Completed Analyses</h3>
+
+                <div class="case-block">
+                    <span class="case-type rdd"><i class="fas fa-chart-line" style="margin-right: 0.3rem;"></i>Regression Discontinuity Design</span>
+                    <h4>The Effect of Cash Transfers on Political Support</h4>
+                    <p><strong>Policy question:</strong> Does receiving a government cash transfer causally increase support for the incumbent government? And does this effect persist after the programme ends?</p>
+                    <p><strong>Context:</strong> Uruguay's PANES programme (2005–2007) distributed cash and food-card transfers to households below a predicted income score threshold. Manacorda, Miguel &amp; Vigorito (2011) identified the causal effect using the sharp eligibility cutoff as an instrument. This analysis replicates and extends their methodology with a full robustness battery.</p>
+                    <p><strong>Identification:</strong> Sharp RDD at the income score cutoff. Households just below and just above the threshold are comparable on all pre-treatment characteristics, except treatment assignment. This was confirmed by a McCrary density test (p = 0.41, no manipulation) and placebo regressions on seven baseline covariates (six of seven non-significant).</p>
+                    <span class="finding-chip">Core finding: ~10% causal increase in political support &mdash; robust across OLS, donut-hole, bandwidth sensitivity, and local polynomial specifications</span>
+                    <div class="tag-row">
+                        <span class="tag">Sharp RDD</span>
+                        <span class="tag">McCrary test</span>
+                        <span class="tag">Donut-hole</span>
+                        <span class="tag">rdrobust</span>
+                        <span class="tag">Stata</span>
+                        <span class="tag">Distinction (83%)</span>
+                    </div>
+                    <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.75rem;">
+                        <a href="essay-cash-transfers.html" class="btn" style="font-size: 0.83rem; padding: 0.38rem 0.85rem;">Full Analysis &rarr;</a>
+                        <a href="files/PB4A7_Cash_Transfers_Political_Support_Report.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.38rem 0.85rem;"><i class="fas fa-file-pdf" style="margin-right: 0.3rem;"></i>PDF Report</a>
+                    </div>
+                </div>
+
+                <div class="case-block">
+                    <span class="case-type did"><i class="fas fa-chart-area" style="margin-right: 0.3rem;"></i>Difference-in-Differences + PSM</span>
+                    <h4>Distribution-Sensitive Policy Analysis: COVID-19 Lockdowns and Life Satisfaction</h4>
+                    <p><strong>Policy question:</strong> What was the causal impact of Victoria's second COVID-19 lockdown (July–October 2020) on life satisfaction, and did the harm fall disproportionately on those already worst-off?</p>
+                    <p><strong>Context:</strong> Victoria imposed one of the most stringent lockdowns outside China, while other Australian states remained open. The HILDA panel (215,733 observations, 16,513 individuals, 20 waves) allows comparison of Victorians and non-Victorians before and after the lockdown — the structure a DiD design requires.</p>
+                    <p><strong>Identification:</strong> Difference-in-Differences with Propensity Score Matching pre-processing (to improve covariate balance between treated Victorians and control states). The parallel-trends assumption was tested using pre-treatment waves. Results were fed into an Atkinson Social Welfare Function (γ = 1) to formally evaluate the distributional consequences.</p>
+                    <span class="finding-chip">Core finding: −0.030 points life satisfaction (95% CI −0.049 to −0.012) — harm concentrated among worst-off (LS &lt; 4: additional −0.334 points)</span>
+                    <div class="tag-row">
+                        <span class="tag">Difference-in-Differences</span>
+                        <span class="tag">Propensity Score Matching</span>
+                        <span class="tag">Panel data</span>
+                        <span class="tag">HILDA (215K obs)</span>
+                        <span class="tag">Stata</span>
+                        <span class="tag">MSc Dissertation</span>
+                    </div>
+                    <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.75rem;">
+                        <a href="essay-wellbys.html" class="btn" style="font-size: 0.83rem; padding: 0.38rem 0.85rem;">Full Analysis &rarr;</a>
+                        <a href="files/PB4D6_MSc_Thesis_Prioritarian_SWF_Life_Satisfaction.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.38rem 0.85rem;"><i class="fas fa-file-pdf" style="margin-right: 0.3rem;"></i>Dissertation PDF</a>
+                    </div>
+                </div>
+
+                <!-- ── Section 6: Technical workflow ───────────────────────── -->
+                <h3 class="card-title">Technical Workflow</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">The typical pipeline for a quasi-experimental analysis, from raw data to written findings:</p>
+                <div class="step-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h5>Data cleaning &amp; variable construction</h5>
+                            <p>Harmonise raw survey data; construct treatment indicator, running variable, outcome variable, and control variables. Validate sample composition against the research question.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h5>Treatment / control definition &amp; exploratory diagnostics</h5>
+                            <p>Plot the distribution of the running variable (RDD) or the raw group trends over time (DiD). Visual inspection often reveals whether the design is viable before any regression is run.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h5>Assumption tests</h5>
+                            <p>Formally test the identifying assumptions: McCrary density test and covariate placebo regressions (RDD); parallel-trends pre-test and covariate balance check (DiD/PSM). Document what is found, not just what supports the design.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h5>Main estimation</h5>
+                            <p>Estimate the preferred specification: OLS with robust standard errors (RDD), or two-way fixed-effects regression (DiD). Report the point estimate, standard error, and confidence interval alongside sample size.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">5</div>
+                        <div>
+                            <h5>Robustness checks</h5>
+                            <p>Systematically vary the specification: bandwidth, functional form, exclusion zones (donut), control variables. A credible result holds across all meaningful alternatives. Any instability is reported transparently.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">6</div>
+                        <div>
+                            <h5>Visualisation &amp; communication</h5>
+                            <p>Produce RD plots, event-study plots, bandwidth sensitivity charts, and coefficient plots with confidence intervals. Figures are generated programmatically (Stata, R, or Python) — no manual editing. Write findings for both technical and non-technical readers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Section 7: What this demonstrates ───────────────────── -->
+                <div class="demonstrates-box">
+                    <h4>What this demonstrates</h4>
+                    <ul>
+                        <li><strong>Causal reasoning beyond prediction</strong> — choosing the right estimand and identification strategy, not just fitting a model</li>
+                        <li><strong>Statistical modelling of policy interventions</strong> — RDD, DiD, PSM, and local polynomial regression, implemented on real survey data</li>
+                        <li><strong>Careful interpretation of observational data</strong> — knowing what can be claimed (LATE at the cutoff, ATT for the treated) and what cannot</li>
+                        <li><strong>Robustness and sensitivity thinking</strong> — treating robustness checks as a challenge to the main finding, not a box-ticking exercise</li>
+                        <li><strong>Clear communication of uncertainty</strong> — presenting confidence intervals, p-values, and limitations honestly in both tables and prose</li>
+                        <li><strong>Bridging technical analysis and policy relevance</strong> — translating regression coefficients into policy-relevant quantities and clearly stating what the findings do and do not imply</li>
+                    </ul>
+                </div>
+
+                <!-- ── Section 8: Assumptions and limitations ──────────────── -->
+                <h3 class="card-title">Assumptions and Limitations</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.5rem;">Every quasi-experimental design rests on identifying assumptions that are testable in part but not fully provable. Honest analysis requires stating them explicitly:</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                    <div style="background: var(--light-color); border-radius: 8px; padding: 1rem;">
+                        <p style="font-weight: 700; font-size: 0.85rem; color: var(--primary-color); margin-bottom: 0.4rem;">RDD assumptions</p>
+                        <ul class="assumption-list" style="padding-left: 1.1rem; margin: 0;">
+                            <li>Continuity of potential outcomes at the cutoff — tested with McCrary, covariate placebos</li>
+                            <li>No precise manipulation of the running variable — inspected via histograms; McCrary p = 0.41</li>
+                            <li>LATE is local: findings apply only near the poverty threshold, not to the full population</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--light-color); border-radius: 8px; padding: 1rem;">
+                        <p style="font-weight: 700; font-size: 0.85rem; color: var(--primary-color); margin-bottom: 0.4rem;">DiD assumptions</p>
+                        <ul class="assumption-list" style="padding-left: 1.1rem; margin: 0;">
+                            <li>Parallel trends — tested using pre-treatment waves of HILDA</li>
+                            <li>No differential anticipation — lockdown was announced with limited advance notice</li>
+                            <li>SUTVA — spillovers between states are possible; treated as negligible given state border closures</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="assumption-list" style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>This page is a methodological case study. Underlying datasets (HILDA, PANES) require data access agreements and are not independently redistributable here.</li>
+                    <li>Causal claims depend on design assumptions that are partially but not fully verifiable.</li>
+                    <li>The purpose is to document workflow and reasoning — not to claim universally applicable policy effects.</li>
+                </ul>
+
+                <!-- ── Section 9: Reproducibility note ────────────────────── -->
+                <div class="data-note" style="margin-top: 1.5rem;">
+                    <p style="margin:0 0 0.4rem; font-size:0.9rem; font-weight:600; color:#1a5c38;">Reproducibility note</p>
+                    <p style="margin:0; font-size:0.88rem;">The two illustrative design figures on this page are fully reproducible from <code>projects/causal-policy-analysis/scripts/generate_illustrative_figures.py</code> using synthetic data. The underlying Stata analysis scripts exist for both completed analyses; public replication files will be added where the licensing of the source datasets permits. Where data cannot be shared, this page documents the analytical design, assumptions, workflow, and outputs in sufficient detail to evaluate the methodology.</p>
+                </div>
+
+                <!-- ── Section 10: Related work ────────────────────────────── -->
+                <h3 class="card-title">Related Work</h3>
+
+                <a href="essay-cash-transfers.html" class="related-link">
+                    <i class="fas fa-chart-line rl-icon"></i>
+                    <div>
+                        <div class="rl-title">Cash Transfers &amp; Political Support — Full RDD Analysis</div>
+                        <div class="rl-desc">Complete pipeline: McCrary test, placebo regressions, OLS main results (Tables 1–3), donut-hole robustness (Tables 4–5), local polynomial regression (Tables 6–7), bandwidth sensitivity plots. Stata. Grade: 83% Distinction, LSE.</div>
+                    </div>
+                </a>
+
+                <a href="essay-wellbys.html" class="related-link">
+                    <i class="fas fa-chart-area rl-icon"></i>
+                    <div>
+                        <div class="rl-title">Distribution-Sensitive Policy Analysis (WELLBYs) — MSc Dissertation</div>
+                        <div class="rl-desc">DiD + PSM on HILDA panel (215K observations). First causal estimate of a COVID-19 lockdown's impact on life satisfaction. Atkinson SWF for distributional welfare comparison. Stata. LSE Behavioural Science.</div>
+                    </div>
+                </a>
+
+                <a href="theses.html" class="related-link">
+                    <i class="fas fa-graduation-cap rl-icon"></i>
+                    <div>
+                        <div class="rl-title">Endogeneity in Semiparametric Distribution Regression — MSc Thesis (Cologne)</div>
+                        <div class="rl-desc">Statistical theory: a test for the practical relevance of endogeneity using L²-distance between naïve and IV distribution regression estimators. Asymptotically pivotal test statistic. Applied to Card (1995) returns-to-education data. R.</div>
+                    </div>
+                </a>
+
+                <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <a href="projects.html" class="btn btn-outline hover-lift"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Projects</a>
+                    <a href="theses.html" class="btn hover-lift"><i class="fas fa-book" style="margin-right: 0.4rem;"></i>All Academic Work</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="theses.html">Academic Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="mailto:goedeke@wiso.uni-koeln.de">Email</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/main.js"></script>
+</body>
+</html>

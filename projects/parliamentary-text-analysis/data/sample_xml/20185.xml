@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dbtplenarprotokoll SYSTEM "dbtplenarprotokoll.dtd">
+<!--
+  EXAMPLE FILE — Synthetic data for pipeline demonstration only.
+  Format matches the official Bundestag Plenarprotokoll DTD (Version 1.0.2, 2023-09-05).
+-->
+<dbtplenarprotokoll
+  wahlperiode="20"
+  sitzung-nr="185"
+  sitzung-datum="17.04.2024"
+  sitzung-start-uhrzeit="09:00"
+  sitzung-ende-uhrzeit="17:30"
+  sitzung-naechste-datum="18.04.2024"
+  sitzung-ort="Berlin"
+  herausgeber="Deutscher Bundestag"
+  herstellung="SRZ Berlin"
+  vertrieb="Bundesanzeiger Verlag GmbH, Postfach 1 0 05 34, 50445 Köln, Telefon (02 21) 97 66 83 40, Fax (02 21) 97 66 83 44, www.bundesanzeiger-verlag.de"
+  issn="0722-7980"
+  start-seitennr="23100">
+
+  <vorspann>
+    <kopfdaten>
+      <plenarprotokoll-nummer>Plenarprotokoll <wahlperiode>20</wahlperiode>/<sitzungsnr>185</sitzungsnr></plenarprotokoll-nummer>
+      <herausgeber>Deutscher Bundestag</herausgeber>
+      <berichtart>Stenografischer Bericht</berichtart>
+      <sitzungstitel><sitzungsnr>185</sitzungsnr>. Sitzung</sitzungstitel>
+      <veranstaltungsdaten>Berlin, <datum date="17.04.2024">Mittwoch, den 17. April 2024</datum></veranstaltungsdaten>
+    </kopfdaten>
+    <inhaltsverzeichnis>
+      <ivz-titel>Inhalt:</ivz-titel>
+      <ivz-block>
+        <ivz-block-titel>Tagesordnung</ivz-block-titel>
+        <ivz-eintrag>Tagesordnungspunkt 1: Digitalisierung der öffentlichen Verwaltung und Einsatz Künstlicher Intelligenz im öffentlichen Sektor</ivz-eintrag>
+        <ivz-eintrag>Tagesordnungspunkt 2: Breitbandausbau und digitale Infrastruktur</ivz-eintrag>
+      </ivz-block>
+    </inhaltsverzeichnis>
+  </vorspann>
+
+  <sitzungsverlauf>
+    <sitzungsbeginn sitzung-start-uhrzeit="09:00">
+      <p>Die Sitzung wird um 9 Uhr durch die Präsidentin eröffnet.</p>
+    </sitzungsbeginn>
+
+    <tagesordnungspunkt top-id="tagesordnungspunkt1">
+      <top-titel>Tagesordnungspunkt 1: Digitalisierung der öffentlichen Verwaltung</top-titel>
+
+      <rede id="ID2018501100">
+        <p><redner id="11009901"><name><vorname>Klaus</vorname> <nachname>Weber</nachname><fraktion>SPD</fraktion></name></redner></p>
+        <p klasse="J_1">Frau Präsidentin! Liebe Kolleginnen und Kollegen!</p>
+        <p>Die Digitalisierung der öffentlichen Verwaltung ist eine der wichtigsten Aufgaben dieser Legislaturperiode. Das Onlinezugangsgesetz hat den Rahmen geschaffen – jetzt kommt es auf die Umsetzung an. Bürgerinnen und Bürger haben ein Recht auf schnelle, digitale und nutzerfreundliche Verwaltungsdienstleistungen.</p>
+        <p>Die Bundesregierung investiert gezielt in die digitale Infrastruktur der Verwaltung. Das Datenangebot der öffentlichen Hand wird ausgebaut, und Behörden erhalten die notwendigen Ressourcen, um ihre Prozesse zu digitalisieren. Das Registermodernisierungsgesetz ist ein wichtiger Schritt, um Bürokratie abzubauen und Behördengänge überflüssig zu machen.</p>
+        <p>Künstliche Intelligenz bietet dabei enorme Chancen. KI kann Verwaltungsprozesse beschleunigen, Antragsbearbeitungen automatisieren und Fehlerquoten reduzieren. Gleichzeitig müssen wir sicherstellen, dass Datenschutz und Transparenz gewahrt bleiben. KI im öffentlichen Sektor muss erklärbar, fair und kontrollierbar sein.</p>
+        <p>Wir unterstützen die Einrichtung eines nationalen KI-Kompetenzzentrums, das Behörden beim Einsatz von KI-Systemen berät und Standards setzt. Deutschland kann eine Vorreiterrolle bei der ethischen und transparenten Nutzung von KI in der öffentlichen Verwaltung übernehmen.</p>
+        <kommentar>(Beifall bei der SPD)</kommentar>
+      </rede>
+
+      <rede id="ID2018501200">
+        <p><redner id="11009902"><name><vorname>Anna</vorname> <nachname>Müller</nachname><fraktion>CDU/CSU</fraktion></name></redner></p>
+        <p klasse="J_1">Frau Präsidentin! Meine Damen und Herren!</p>
+        <p>Deutschland hinkt bei der Verwaltungsdigitalisierung im europäischen Vergleich deutlich hinterher. Das ist keine Behauptung – das zeigen alle internationalen Rankings. Der eGovernment-Index der Europäischen Union belegt, dass wir bei der digitalen Verwaltung erheblichen Nachholbedarf haben.</p>
+        <p>Die Ursache liegt nicht primär im fehlenden Geld, sondern in fragmentierten Zuständigkeiten, fehlenden Standards und zu vielen parallelen Systemen auf Bundes-, Landes- und Kommunalebene. Wir brauchen eine nationale digitale Plattformstrategie, die Silodenken überwindet und echte Interoperabilität zwischen den Verwaltungsebenen schafft.</p>
+        <p>Der Einsatz von KI in der öffentlichen Verwaltung bietet tatsächlich Potenzial, birgt aber auch Risiken. Wir fordern klare rechtliche Rahmenbedingungen, die den Einsatz von KI in hoheitlichen Verfahren regulieren und die Grundrechte der Bürger schützen. Algorithmische Entscheidungen müssen nachvollziehbar und anfechtbar sein.</p>
+        <p>Auch der Breitbandausbau muss schneller voranschreiten. Ohne flächendeckendes Gigabit-Internet bleiben ländliche Regionen bei der Digitalisierung zurück – das ist eine Frage der regionalen Chancengerechtigkeit.</p>
+        <kommentar>(Beifall bei der CDU/CSU)</kommentar>
+      </rede>
+
+      <rede id="ID2018501300">
+        <p><redner id="11009903"><name><vorname>Thomas</vorname> <nachname>Fischer</nachname><fraktion>BÜNDNIS 90/DIE GRÜNEN</fraktion></name></redner></p>
+        <p klasse="J_1">Frau Präsidentin! Kolleginnen und Kollegen!</p>
+        <p>Digitalisierung und Nachhaltigkeit gehören zusammen. Smarte digitale Infrastrukturen können wesentlich dazu beitragen, unseren Energieverbrauch zu senken und Ressourcen effizienter zu nutzen. Intelligente Stromnetze, digitale Mobilitätslösungen und datengestützte Umweltmonitoring-Systeme sind Bereiche, in denen Digitalisierung und Klimaschutz Hand in Hand gehen.</p>
+        <p>Beim Einsatz von KI müssen wir auch die ökologischen Kosten im Blick behalten. Große KI-Modelle verbrauchen erhebliche Mengen an Rechenleistung und damit Energie. Wir fordern eine verpflichtende Nachhaltigkeitsberichterstattung für KI-Systeme im öffentlichen Sektor, damit Energieverbrauch und CO2-Fußabdruck transparent werden.</p>
+        <p>Open Source und Open Data sind Grundpfeiler einer demokratischen und transparenten Digitalstrategie. Wenn die öffentliche Hand Software entwickeln lässt, sollte der Quellcode öffentlich zugänglich sein. Das stärkt Vertrauen, ermöglicht externe Überprüfung und verhindert Abhängigkeiten von einzelnen Anbietern.</p>
+        <p>Datensouveränität und digitale Grundrechte sind für uns keine Nebenthemen – sie sind zentrale politische Anliegen, die wir auch auf europäischer Ebene konsequent vertreten.</p>
+        <kommentar>(Beifall beim BÜNDNIS 90/DIE GRÜNEN)</kommentar>
+      </rede>
+
+      <rede id="ID2018501400">
+        <p><redner id="11009904"><name><vorname>Sabine</vorname> <nachname>Schneider</nachname><fraktion>FDP</fraktion></name></redner></p>
+        <p klasse="J_1">Frau Präsidentin! Meine Damen und Herren!</p>
+        <p>Die FDP setzt auf Innovation durch den Markt und nicht auf staatliche Lenkung. Beim Thema KI und Digitalisierung bedeutet das: Der Staat setzt klare, technologieneutrale Rahmenbedingungen, und die Privatwirtschaft entwickelt die besten Lösungen. Überregulierung würde innovativen deutschen Unternehmen im globalen Wettbewerb schaden.</p>
+        <p>Bürokratieabbau durch Digitalisierung ist unser zentrales Anliegen. Jeder Verwaltungsprozess, der heute noch papierbasiert läuft, kostet Unternehmen und Bürger wertvolle Zeit und Ressourcen. Hier liegt ein riesiges Effizienzpotenzial, das wir endlich heben müssen.</p>
+        <p>Das Onlinezugangsgesetz war ein guter erster Schritt, aber die Umsetzungsgeschwindigkeit ist enttäuschend. Wir brauchen verbindliche Fristen und Sanktionsmechanismen, damit Bund und Länder liefern. Freiwilligkeit allein reicht nicht aus – das haben die vergangenen Jahre gezeigt.</p>
+        <p>Schließlich brauchen wir mehr Wagniskapital und bessere Bedingungen für Startups im Bereich KI und Deeptech. Deutschland hat exzellente Hochschulen und Forschungseinrichtungen – wir müssen besser darin werden, aus Forschungsergebnissen marktfähige Produkte zu machen.</p>
+        <kommentar>(Beifall bei der FDP)</kommentar>
+      </rede>
+
+      <rede id="ID2018501500">
+        <p><redner id="11009905"><name><vorname>Hans</vorname> <nachname>Becker</nachname><fraktion>DIE LINKE</fraktion></name></redner></p>
+        <p klasse="J_1">Frau Präsidentin! Kolleginnen und Kollegen!</p>
+        <p>Digitalisierung kann Chancen schaffen, sie kann aber auch bestehende Ungleichheiten verstärken. Wer keinen Internetzugang hat, kein Smartphone besitzt oder digitale Dienstleistungen nicht bedienen kann, wird durch die Digitalisierung der Verwaltung abgehängt – nicht besser versorgt.</p>
+        <p>Wir fordern deshalb, dass analoge Zugangswege zu Verwaltungsleistungen dauerhaft erhalten bleiben. Digitale Angebote sind eine Ergänzung, keine Ersetzung. Ältere Menschen, Menschen mit Behinderungen und Menschen mit geringen digitalen Kompetenzen haben ein Recht auf gleichwertige Versorgung.</p>
+        <p>Beim Einsatz von KI im öffentlichen Sektor warnen wir vor voreiligen Entscheidungen. Algorithmen können Diskriminierungen reproduzieren und verstärken, wenn sie mit verzerrten Trainingsdaten gefüttert werden. Wir brauchen unabhängige Algorithmen-Audits und ein Verbot von KI-Systemen, die gesellschaftliche Gruppen benachteiligen.</p>
+        <p>Die Datenschutzgrundverordnung ist ein wichtiger Baustein – wir müssen sicherstellen, dass sie konsequent angewendet wird und nicht durch wirtschaftliche Interessen ausgehöhlt wird.</p>
+        <kommentar>(Beifall bei der LINKEN)</kommentar>
+      </rede>
+
+    </tagesordnungspunkt>
+
+    <tagesordnungspunkt top-id="tagesordnungspunkt2">
+      <top-titel>Tagesordnungspunkt 2: Breitbandausbau und digitale Infrastruktur</top-titel>
+
+      <rede id="ID2018502100">
+        <p><redner id="11009906"><name><vorname>Maria</vorname> <nachname>Hoffmann</nachname><fraktion>SPD</fraktion></name></redner></p>
+        <p klasse="J_1">Frau Präsidentin! Liebe Kolleginnen und Kollegen!</p>
+        <p>Der Breitbandausbau ist eine kritische Infrastrukturaufgabe, vergleichbar mit dem Bau von Straßen und Schienen. Gigabit-Anschlüsse für alle – das ist unser Ziel bis 2030. Die Bundesregierung stellt dafür erhebliche Fördermittel bereit und koordiniert die Ausbauprogramme zwischen Bund und Ländern.</p>
+        <p>Besonders in ländlichen Regionen besteht noch erheblicher Nachholbedarf. Wir können nicht akzeptieren, dass die digitale Versorgung von der geografischen Lage abhängt. Das Gigabit-Förderprogramm des Bundes zielt gezielt auf unterversorgte Gebiete und schließt so die digitale Lücke zwischen Stadt und Land.</p>
+        <kommentar>(Beifall bei der SPD)</kommentar>
+      </rede>
+
+    </tagesordnungspunkt>
+
+    <sitzungsende sitzung-ende-uhrzeit="17:30">
+      <p>Ich berufe die nächste Sitzung des Deutschen Bundestages auf Donnerstag, den 18. April 2024, 9 Uhr, ein.</p>
+      <p>Die Sitzung ist geschlossen.</p>
+    </sitzungsende>
+  </sitzungsverlauf>
+
+  <anlagen>
+    <anlagen-titel>Anlagen zum Stenografischen Bericht</anlagen-titel>
+    <anlage>
+      <anlagen-titel>Anlage 1 — Liste der entschuldigten Abgeordneten</anlagen-titel>
+      <anlagen-text anlagen-typ="Entschuldigung">
+        <p>Entschuldigungen sind der Anlage zu entnehmen.</p>
+      </anlagen-text>
+    </anlage>
+  </anlagen>
+
+  <rednerliste sitzung-datum="17.04.2024">
+    <redner id="11009901"><name><vorname>Klaus</vorname> <nachname>Weber</nachname><fraktion>SPD</fraktion></name></redner>
+    <redner id="11009902"><name><vorname>Anna</vorname> <nachname>Müller</nachname><fraktion>CDU/CSU</fraktion></name></redner>
+    <redner id="11009903"><name><vorname>Thomas</vorname> <nachname>Fischer</nachname><fraktion>BÜNDNIS 90/DIE GRÜNEN</fraktion></name></redner>
+    <redner id="11009904"><name><vorname>Sabine</vorname> <nachname>Schneider</nachname><fraktion>FDP</fraktion></name></redner>
+    <redner id="11009905"><name><vorname>Hans</vorname> <nachname>Becker</nachname><fraktion>DIE LINKE</fraktion></name></redner>
+    <redner id="11009906"><name><vorname>Maria</vorname> <nachname>Hoffmann</nachname><fraktion>SPD</fraktion></name></redner>
+  </rednerliste>
+
+</dbtplenarprotokoll>

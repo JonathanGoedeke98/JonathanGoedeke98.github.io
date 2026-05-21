@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dbtplenarprotokoll SYSTEM "dbtplenarprotokoll.dtd">
+<!--
+  EXAMPLE FILE — Synthetic data for pipeline demonstration only.
+  Format matches the official Bundestag Plenarprotokoll DTD (Version 1.0.2, 2023-09-05).
+-->
+<dbtplenarprotokoll
+  wahlperiode="20"
+  sitzung-nr="190"
+  sitzung-datum="08.05.2024"
+  sitzung-start-uhrzeit="09:00"
+  sitzung-ende-uhrzeit="19:00"
+  sitzung-naechste-datum="09.05.2024"
+  sitzung-ort="Berlin"
+  herausgeber="Deutscher Bundestag"
+  herstellung="SRZ Berlin"
+  vertrieb="Bundesanzeiger Verlag GmbH, Postfach 1 0 05 34, 50445 Köln, Telefon (02 21) 97 66 83 40, Fax (02 21) 97 66 83 44, www.bundesanzeiger-verlag.de"
+  issn="0722-7980"
+  start-seitennr="23890">
+
+  <vorspann>
+    <kopfdaten>
+      <plenarprotokoll-nummer>Plenarprotokoll <wahlperiode>20</wahlperiode>/<sitzungsnr>190</sitzungsnr></plenarprotokoll-nummer>
+      <herausgeber>Deutscher Bundestag</herausgeber>
+      <berichtart>Stenografischer Bericht</berichtart>
+      <sitzungstitel><sitzungsnr>190</sitzungsnr>. Sitzung</sitzungstitel>
+      <veranstaltungsdaten>Berlin, <datum date="08.05.2024">Mittwoch, den 8. Mai 2024</datum></veranstaltungsdaten>
+    </kopfdaten>
+    <inhaltsverzeichnis>
+      <ivz-titel>Inhalt:</ivz-titel>
+      <ivz-block>
+        <ivz-block-titel>Tagesordnung</ivz-block-titel>
+        <ivz-eintrag>Tagesordnungspunkt 1: Klimaschutzgesetz und Sektorziele</ivz-eintrag>
+        <ivz-eintrag>Tagesordnungspunkt 2: Erneuerbare Energien und Energiewende</ivz-eintrag>
+        <ivz-eintrag>Tagesordnungspunkt 3: Soziale Sicherung und Rentenpolitik</ivz-eintrag>
+      </ivz-block>
+    </inhaltsverzeichnis>
+  </vorspann>
+
+  <sitzungsverlauf>
+    <sitzungsbeginn sitzung-start-uhrzeit="09:00">
+      <p>Die Sitzung wird um 9 Uhr durch den Präsidenten eröffnet.</p>
+    </sitzungsbeginn>
+
+    <tagesordnungspunkt top-id="tagesordnungspunkt1">
+      <top-titel>Tagesordnungspunkt 1: Klimaschutzgesetz</top-titel>
+
+      <rede id="ID2019001100">
+        <p><redner id="11009903"><name><vorname>Thomas</vorname> <nachname>Fischer</nachname><fraktion>BÜNDNIS 90/DIE GRÜNEN</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Kolleginnen und Kollegen!</p>
+        <p>Das Klimaschutzgesetz ist das zentrale Instrument, mit dem Deutschland seinen Verpflichtungen aus dem Pariser Klimaabkommen nachkommen kann. Die gesetzlich verankerten Sektorziele für Energie, Verkehr, Gebäude, Industrie und Landwirtschaft sind der richtige Ansatz – sie machen Fortschritte messbar und politisch rechenschaftspflichtig.</p>
+        <p>Die Treibhausgasemissionen in Deutschland müssen bis 2030 um mindestens 65 Prozent gegenüber 1990 sinken. Das ist ehrgeizig, aber machbar – wenn wir jetzt die richtigen politischen Weichen stellen. Die Energiewende ist auf einem guten Weg: Der Anteil erneuerbarer Energien am Strommix hat 2023 einen historischen Höchstwert erreicht.</p>
+        <p>Im Gebäudesektor hinken wir den Zielen allerdings noch hinterher. Die Sanierungsrate muss deutlich steigen, und das erfordert ambitioniertere Förderprogramme sowie klare Mindeststandards für energetische Renovierungen. Wir brauchen eine sozial gerechte Ausgestaltung, die auch einkommensschwächere Haushalte beim Umstieg auf klimafreundliche Heizungen unterstützt.</p>
+        <p>Der CO2-Preis ist ein wichtiges marktwirtschaftliches Instrument, das Anreize für klimafreundliches Verhalten setzt. Wir plädieren für eine schrittweise Erhöhung des CO2-Preises, verbunden mit sozialen Ausgleichsmechanismen, um die Lastenverteilung gerecht zu gestalten.</p>
+        <kommentar>(Beifall beim BÜNDNIS 90/DIE GRÜNEN und bei der SPD)</kommentar>
+      </rede>
+
+      <rede id="ID2019001200">
+        <p><redner id="11009902"><name><vorname>Anna</vorname> <nachname>Müller</nachname><fraktion>CDU/CSU</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Meine Damen und Herren!</p>
+        <p>Klimaschutz ist eine generationsübergreifende Aufgabe, die wir gemeinsam angehen müssen. Die CDU/CSU steht zum Pariser Klimaabkommen und zu den deutschen Klimazielen. Wir streiten aber darüber, welche Wege und Instrumente am effizientesten und sozialverträglichsten sind.</p>
+        <p>Technologieoffenheit muss das Leitprinzip unserer Klimapolitik sein. Wir sollten nicht auf eine einzige Technologie setzen, sondern ein breites Portfolio an Lösungen fördern – von erneuerbaren Energien über Wasserstoff und Kernenergie bis hin zu Kohlenstoffabscheidung. Der Markt sollte entscheiden, welche Technologien sich im Wettbewerb durchsetzen.</p>
+        <p>Klimaschutz darf nicht zu Lasten der wirtschaftlichen Wettbewerbsfähigkeit gehen. Wenn deutsche Unternehmen durch zu hohe CO2-Preise unter Druck geraten und ihre Produktion ins Ausland verlagern, werden Emissionen exportiert statt vermieden – das ist kontraproduktiv. Ein europaweiter oder internationaler CO2-Preis wäre wirkungsvoller als nationale Alleingänge.</p>
+        <p>Auch die Energiesicherheit darf nicht vernachlässigt werden. Der Ausstieg aus der Kernenergie war eine politische Entscheidung, die wir nicht rückgängig machen können. Aber wir müssen sicherstellen, dass die Stromversorgung auch in Dunkelflauten zuverlässig bleibt.</p>
+        <kommentar>(Beifall bei der CDU/CSU)</kommentar>
+      </rede>
+
+      <rede id="ID2019001300">
+        <p><redner id="11009904"><name><vorname>Sabine</vorname> <nachname>Schneider</nachname><fraktion>FDP</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Meine Damen und Herren!</p>
+        <p>Die FDP setzt beim Klimaschutz auf marktwirtschaftliche Instrumente und Technologieneutralität. Der europäische Emissionshandel ist das effizienteste Instrument, um Treibhausgasemissionen kosteneffizient zu reduzieren. Statt staatlicher Verbote brauchen wir Preissignale, die die richtigen Anreize setzen.</p>
+        <p>Das Verbrennerverbot in der EU für 2035 lehnen wir ab, weil es Technologieneutralität verletzt und die Automobilindustrie in ihren Innovationsmöglichkeiten einschränkt. E-Fuels und Wasserstoff können ebenfalls klimaneutral sein – warum sollten wir diese Optionen von vornherein ausschließen?</p>
+        <p>Bürokratieabbau im Bereich der Genehmigungsverfahren für erneuerbare Energien und Stromleitungen ist dringend notwendig. Windkraftanlagen, die jahrelang im Genehmigungsverfahren feststecken, tragen nicht zur Energiewende bei. Wir brauchen deutlich kürzere Verfahrensdauern und klarere rechtliche Rahmenbedingungen.</p>
+        <p>Wasserstoff hat großes Potenzial für die Dekarbonisierung von Industrie und Verkehr. Deutschland sollte in den Aufbau einer Wasserstoffinfrastruktur investieren und sich dabei auf internationale Partnerschaften stützen, um günstig produzierten grünen Wasserstoff zu importieren.</p>
+        <kommentar>(Beifall bei der FDP)</kommentar>
+      </rede>
+
+    </tagesordnungspunkt>
+
+    <tagesordnungspunkt top-id="tagesordnungspunkt3">
+      <top-titel>Tagesordnungspunkt 3: Soziale Sicherung und Rentenpolitik</top-titel>
+
+      <rede id="ID2019003100">
+        <p><redner id="11009905"><name><vorname>Hans</vorname> <nachname>Becker</nachname><fraktion>DIE LINKE</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Kolleginnen und Kollegen!</p>
+        <p>Die Rentenpolitik muss endlich konsequent auf Armutsvermeidung ausgerichtet werden. Altersarmut ist kein Randphänomen – es betrifft Millionen von Menschen in Deutschland, und die Tendenz ist steigend. Das ist ein gesellschaftlicher Skandal, den wir nicht hinnehmen dürfen.</p>
+        <p>Wir fordern eine Rentenerhöhung, die das Rentenniveau dauerhaft auf mindestens 53 Prozent des Durchschnittslohns stabilisiert. Die Einführung einer Mindestrente, die das Existenzminimum sichert, ist längst überfällig. Wer 40 Jahre gearbeitet hat, darf im Alter nicht auf Sozialleistungen angewiesen sein.</p>
+        <p>Auch die Pflegeversicherung muss grundlegend reformiert werden. Die Pflegekosten steigen kontinuierlich, und viele Pflegebedürftige und ihre Familien geraten in finanzielle Not. Wir brauchen eine solidarische Pflegeversicherung, die alle einschließt – auch Beamte und Selbstständige.</p>
+        <p>Das Gesundheitssystem braucht mehr öffentliche Finanzierung und weniger privatwirtschaftliche Renditeorientierung. Krankenhäuser dürfen keine Profitcenter sein. Wir fordern eine Bedarfsplanung, die sich an medizinischen Notwendigkeiten orientiert, nicht an wirtschaftlichen Kennzahlen.</p>
+        <kommentar>(Beifall bei der LINKEN)</kommentar>
+      </rede>
+
+      <rede id="ID2019003200">
+        <p><redner id="11009901"><name><vorname>Klaus</vorname> <nachname>Weber</nachname><fraktion>SPD</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Meine Damen und Herren!</p>
+        <p>Die Rentenreform der Bundesregierung stärkt die gesetzliche Rentenversicherung und ergänzt sie durch kapitalgedeckte Elemente. Das Rentenpaket II sichert das Rentenniveau bis 2040 und schafft Planungssicherheit für heutige und künftige Rentnerinnen und Rentner.</p>
+        <p>Die Einführung des Generationenkapitals ist ein innovativer Ansatz, der die gesetzliche Rente durch kapitalmarktbasierte Erträge ergänzt. Langfristig kann dies dazu beitragen, den Beitragssatz stabil zu halten und die Rentenversicherung demografiefest zu machen.</p>
+        <p>Gleichzeitig stärken wir die betriebliche Altersvorsorge und machen sie auch für Beschäftigte mit niedrigeren Einkommen attraktiver. Niemand sollte allein auf die gesetzliche Rente angewiesen sein – die drei Säulen der Altersvorsorge müssen gemeinsam gestärkt werden.</p>
+        <p>Für die Pflege investieren wir in die Ausbildung von Pflegefachkräften und in die Verbesserung der Arbeitsbedingungen. Gute Pflege braucht gut ausgebildetes und gut bezahltes Personal. Das ist sowohl eine Frage der Würde für Pflegebedürftige als auch eine Frage der Wertschätzung für Pflegekräfte.</p>
+        <kommentar>(Beifall bei der SPD)</kommentar>
+      </rede>
+
+      <rede id="ID2019003300">
+        <p><redner id="11009906"><name><vorname>Maria</vorname> <nachname>Hoffmann</nachname><fraktion>SPD</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Liebe Kolleginnen und Kollegen!</p>
+        <p>Bildungspolitik ist Sozialpolitik. Der Bildungserfolg von Kindern in Deutschland hängt noch immer zu stark vom sozioökonomischen Hintergrund der Eltern ab. Das ist nicht nur ungerecht – es ist auch wirtschaftlich ineffizient, denn wir verschwenden damit enormes Talentpotenzial.</p>
+        <p>Wir fordern einen nationalen Bildungspakt, der die Mittel des Bundes für frühkindliche Bildung, Schulen und berufliche Ausbildung massiv erhöht. Kein Kind darf aufgrund mangelnder Ressourcen in seiner Bildungschance benachteiligt werden. Ganztagsschulen, kleinere Klassen und mehr Schulsozialarbeit sind konkrete Instrumente.</p>
+        <p>Die duale Berufsausbildung ist ein Erfolgsmodell, das wir stärken und attraktiver machen müssen. Ausbildungsvergütungen müssen auch in schlecht tariflich organisierten Branchen auskömmlich sein. Und wir müssen die Gleichwertigkeit von beruflicher und akademischer Bildung gesellschaftlich stärker verankern.</p>
+        <kommentar>(Beifall bei der SPD)</kommentar>
+      </rede>
+
+    </tagesordnungspunkt>
+
+    <sitzungsende sitzung-ende-uhrzeit="19:00">
+      <p>Ich berufe die nächste Sitzung des Deutschen Bundestages auf Donnerstag, den 9. Mai 2024, 9 Uhr, ein.</p>
+      <p>Die Sitzung ist geschlossen.</p>
+    </sitzungsende>
+  </sitzungsverlauf>
+
+  <anlagen>
+    <anlagen-titel>Anlagen zum Stenografischen Bericht</anlagen-titel>
+    <anlage>
+      <anlagen-titel>Anlage 1 — Liste der entschuldigten Abgeordneten</anlagen-titel>
+      <anlagen-text anlagen-typ="Entschuldigung">
+        <p>Entschuldigungen sind der Anlage zu entnehmen.</p>
+      </anlagen-text>
+    </anlage>
+  </anlagen>
+
+  <rednerliste sitzung-datum="08.05.2024">
+    <redner id="11009903"><name><vorname>Thomas</vorname> <nachname>Fischer</nachname><fraktion>BÜNDNIS 90/DIE GRÜNEN</fraktion></name></redner>
+    <redner id="11009902"><name><vorname>Anna</vorname> <nachname>Müller</nachname><fraktion>CDU/CSU</fraktion></name></redner>
+    <redner id="11009904"><name><vorname>Sabine</vorname> <nachname>Schneider</nachname><fraktion>FDP</fraktion></name></redner>
+    <redner id="11009905"><name><vorname>Hans</vorname> <nachname>Becker</nachname><fraktion>DIE LINKE</fraktion></name></redner>
+    <redner id="11009901"><name><vorname>Klaus</vorname> <nachname>Weber</nachname><fraktion>SPD</fraktion></name></redner>
+    <redner id="11009906"><name><vorname>Maria</vorname> <nachname>Hoffmann</nachname><fraktion>SPD</fraktion></name></redner>
+  </rednerliste>
+
+</dbtplenarprotokoll>

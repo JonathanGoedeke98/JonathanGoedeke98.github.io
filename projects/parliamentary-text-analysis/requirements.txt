@@ -1,0 +1,14 @@
+# Parliamentary Text Analysis — Python dependencies
+# Tested with Python 3.13
+#
+# Install: pip install -r requirements.txt
+# Optional: use a virtual environment first
+#   python -m venv .venv && source .venv/bin/activate
+
+lxml>=5.0           # XML parsing
+pandas>=2.0         # tabular data
+numpy>=1.26         # numerical operations
+scikit-learn>=1.4   # TF-IDF, NMF, logistic regression, model evaluation
+matplotlib>=3.8     # static figure generation
+seaborn>=0.13       # statistical plots
+requests>=2.31      # DIP API download (only needed for --mode api)

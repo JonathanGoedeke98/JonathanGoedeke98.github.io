@@ -1,0 +1,9 @@
+{
+  "mode": "sample",
+  "note": "Synthetic XML files matching the official Bundestag DTD v1.0.2 (2023-09-05). Replace with real data downloaded via the DIP API for production use.",
+  "files": [
+    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20180.xml",
+    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20185.xml",
+    "/Users/jonathangodek/Desktop/GitHub/JonathanGoedeke98.github.io/projects/parliamentary-text-analysis/data/sample_xml/20190.xml"
+  ]
+}

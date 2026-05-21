@@ -1,0 +1,11 @@
+year,category,category_label_de,offenses,violent_offenses,source,source_url,access_date,notes
+2023,PMK-rechts,PMK -rechts-,28945,1270,"BMI/BKA PMK-Jahresbericht 2023","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2024/05/pmk2023.html","2025-05-20","violent_offenses derived: 3561 total minus confirmed 2023 values for other four categories (916+491+90+794=2291); 3561-2291=1270; consistent with stated +17.17% change to 1488 in 2024"
+2023,PMK-links,PMK -links-,7777,916,"BMI/BKA PMK-Jahresbericht 2023","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2024/05/pmk2023.html","2025-05-20",""
+2023,PMK-auslaendische-Ideologie,PMK -ausländische Ideologie-,5170,491,"BMI/BKA PMK-Jahresbericht 2023","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2024/05/pmk2023.html","2025-05-20",""
+2023,PMK-religioese-Ideologie,PMK -religiöse Ideologie-,1458,90,"BMI/BKA PMK-Jahresbericht 2023","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2024/05/pmk2023.html","2025-05-20",""
+2023,PMK-sonstige,PMK -sonstige Zuordnung-,16678,794,"BMI/BKA PMK-Jahresbericht 2023","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2024/05/pmk2023.html","2025-05-20",""
+2024,PMK-rechts,PMK -rechts-,42788,1488,"BMI/BKA PMK-Jahresbericht 2024","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2025/05/pmk2024.html","2025-05-20","all 2024 figures from BMI/BKA joint press release 20 May 2025; categories sum to 84172 (verified)"
+2024,PMK-links,PMK -links-,9971,762,"BMI/BKA PMK-Jahresbericht 2024","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2025/05/pmk2024.html","2025-05-20",""
+2024,PMK-auslaendische-Ideologie,PMK -ausländische Ideologie-,7343,975,"BMI/BKA PMK-Jahresbericht 2024","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2025/05/pmk2024.html","2025-05-20","681 of 975 violent offenses linked to Middle East conflict per BKA"
+2024,PMK-religioese-Ideologie,PMK -religiöse Ideologie-,1877,87,"BMI/BKA PMK-Jahresbericht 2024","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2025/05/pmk2024.html","2025-05-20",""
+2024,PMK-sonstige,PMK -sonstige Zuordnung-,22193,795,"BMI/BKA PMK-Jahresbericht 2024","https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2025/05/pmk2024.html","2025-05-20",""

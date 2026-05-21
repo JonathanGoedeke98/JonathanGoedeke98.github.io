@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dbtplenarprotokoll SYSTEM "dbtplenarprotokoll.dtd">
+<!--
+  EXAMPLE FILE — Synthetic data for pipeline demonstration only.
+  Structural format matches the official Bundestag Plenarprotokoll DTD (Version 1.0.2, 2023-09-05).
+  Real Plenarprotokolle can be downloaded via the Bundestag DIP API:
+  https://dip.bundestag.de/ (API key required)
+  License of official data: Datenlizenz Deutschland – Namensnennung – Version 2.0
+-->
+<dbtplenarprotokoll
+  wahlperiode="20"
+  sitzung-nr="180"
+  sitzung-datum="20.03.2024"
+  sitzung-start-uhrzeit="09:00"
+  sitzung-ende-uhrzeit="18:45"
+  sitzung-naechste-datum="21.03.2024"
+  sitzung-ort="Berlin"
+  herausgeber="Deutscher Bundestag"
+  herstellung="SRZ Berlin"
+  vertrieb="Bundesanzeiger Verlag GmbH, Postfach 1 0 05 34, 50445 Köln, Telefon (02 21) 97 66 83 40, Fax (02 21) 97 66 83 44, www.bundesanzeiger-verlag.de"
+  issn="0722-7980"
+  start-seitennr="22345">
+
+  <vorspann>
+    <kopfdaten>
+      <plenarprotokoll-nummer>Plenarprotokoll <wahlperiode>20</wahlperiode>/<sitzungsnr>180</sitzungsnr></plenarprotokoll-nummer>
+      <herausgeber>Deutscher Bundestag</herausgeber>
+      <berichtart>Stenografischer Bericht</berichtart>
+      <sitzungstitel><sitzungsnr>180</sitzungsnr>. Sitzung</sitzungstitel>
+      <veranstaltungsdaten>Berlin, <datum date="20.03.2024">Mittwoch, den 20. März 2024</datum></veranstaltungsdaten>
+    </kopfdaten>
+    <inhaltsverzeichnis>
+      <ivz-titel>Inhalt:</ivz-titel>
+      <ivz-block>
+        <ivz-block-titel>Tagesordnung</ivz-block-titel>
+        <ivz-eintrag>Tagesordnungspunkt 1: Zweite und dritte Beratung des Entwurfs eines Gesetzes über die Feststellung des Bundeshaushaltsplans für das Haushaltsjahr 2024</ivz-eintrag>
+        <ivz-eintrag>Tagesordnungspunkt 2: Beratung des Antrags der Bundesregierung zur Wirtschaftspolitik</ivz-eintrag>
+      </ivz-block>
+    </inhaltsverzeichnis>
+  </vorspann>
+
+  <sitzungsverlauf>
+    <sitzungsbeginn sitzung-start-uhrzeit="09:00">
+      <p>Die Sitzung wird um 9 Uhr durch den Präsidenten eröffnet.</p>
+      <p>Guten Morgen, liebe Kolleginnen und Kollegen. Die Sitzung ist eröffnet.</p>
+    </sitzungsbeginn>
+
+    <tagesordnungspunkt top-id="tagesordnungspunkt1">
+      <top-titel>Tagesordnungspunkt 1: Beratung des Bundeshaushalts 2024</top-titel>
+
+      <rede id="ID2018001100">
+        <p><redner id="11009901"><name><vorname>Klaus</vorname> <nachname>Weber</nachname><fraktion>SPD</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Kolleginnen und Kollegen!</p>
+        <p>Der Bundeshaushalt 2024 ist ein Haushalt der Zukunftsinvestitionen. Wir setzen klare Prioritäten: Investitionen in Infrastruktur, in Bildung und in den sozialen Zusammenhalt unseres Landes. Der Haushaltsentwurf der Bundesregierung stellt sicher, dass wir die notwendigen Mittel für die großen Herausforderungen unserer Zeit bereitstellen.</p>
+        <p>Wir investieren in den Ausbau der digitalen Infrastruktur, in den öffentlichen Nahverkehr und in die Sanierung von Schulen und Kindergärten. Das sind Investitionen, die sich langfristig auszahlen und die Wettbewerbsfähigkeit Deutschlands stärken. Die Schuldenbremse halten wir dabei ein – das ist keine Frage des Wollens, sondern des Müssens.</p>
+        <p>Ein zentrales Element dieses Haushalts ist die Förderung von Forschung und Innovation. Wir erhöhen die Mittel für Forschungseinrichtungen und stärken die Zusammenarbeit zwischen Wissenschaft und Wirtschaft. Deutschland muss ein führender Standort für technologische Innovation bleiben. Dafür brauchen wir nicht nur finanzielle Mittel, sondern auch die richtigen Rahmenbedingungen.</p>
+        <p>Gleichzeitig sorgen wir für soziale Absicherung. Die Rentenversicherung wird stabilisiert, und wir stärken die gesetzliche Krankenversicherung. Niemand soll aufgrund von Geldmangel auf notwendige medizinische Versorgung verzichten müssen. Das ist unser Verständnis von sozialer Marktwirtschaft.</p>
+        <p>Vielen Dank.</p>
+        <kommentar>(Beifall bei der SPD)</kommentar>
+      </rede>
+
+      <rede id="ID2018001200">
+        <p><redner id="11009902"><name><vorname>Anna</vorname> <nachname>Müller</nachname><fraktion>CDU/CSU</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Meine Damen und Herren!</p>
+        <p>Der vorliegende Haushalt zeigt leider einmal mehr, dass die Bundesregierung die grundlegenden Haushaltsregeln nicht ernst nimmt. Statt nachhaltiger Konsolidierung sehen wir strukturelle Ausgabensteigerungen, die langfristig nicht finanzierbar sind. Die Schuldenbremse ist kein Hindernis – sie ist ein Schutzwall für künftige Generationen.</p>
+        <p>Die CDU/CSU-Fraktion hat wiederholt auf die Notwendigkeit hingewiesen, Prioritäten zu setzen und nicht einfach alle Ausgaben zu erhöhen. Haushaltsdisziplin ist die Grundlage für wirtschaftliche Stabilität. Wir können nicht dauerhaft mehr ausgeben als wir einnehmen, ohne die Zukunft unserer Kinder zu belasten.</p>
+        <p>Was wir stattdessen brauchen, sind Reformen auf der Ausgabenseite. Bürokratieabbau, Verwaltungsmodernisierung und effizientere Mittelverwendung sind die Stellschrauben, an denen wir drehen müssen. Wir als Union stehen für eine wirtschaftliche Politik, die Wachstum durch bessere Rahmenbedingungen und nicht durch höhere Staatsausgaben erzeugt.</p>
+        <p>Die Steuerpolitik muss entlastend wirken, nicht belastend. Unternehmen brauchen Planungssicherheit und faire Bedingungen im internationalen Wettbewerb. Nur eine starke Wirtschaft kann den Sozialstaat dauerhaft finanzieren.</p>
+        <p>Ich danke Ihnen.</p>
+        <kommentar>(Beifall bei der CDU/CSU)</kommentar>
+      </rede>
+
+      <rede id="ID2018001300">
+        <p><redner id="11009903"><name><vorname>Thomas</vorname> <nachname>Fischer</nachname><fraktion>BÜNDNIS 90/DIE GRÜNEN</fraktion></name></redner></p>
+        <p klasse="J_1">Frau Präsidentin! Liebe Kolleginnen und Kollegen!</p>
+        <p>Dieser Haushalt setzt wichtige Signale für die ökologische Transformation unserer Wirtschaft. Die Mittel für erneuerbare Energien und Klimaschutz werden deutlich aufgestockt. Das ist richtig und notwendig, denn die Klimakrise ist die größte wirtschaftliche und gesellschaftliche Herausforderung unserer Zeit.</p>
+        <p>Investitionen in Klimaschutz sind keine Ausgaben – sie sind Zukunftsinvestitionen, die uns vor weit höheren Kosten durch Klimaschäden bewahren. Jeder Euro, den wir heute in die Energiewende investieren, spart uns morgen mehrere Euro an Schadenskosten. Das ist fiskalisch klug, nicht leichtfertig.</p>
+        <p>Wir begrüßen die Mittelerhöhung für den Bundesklimafonds und die Förderung von Wärmepumpen, Gebäudesanierung und öffentlichem Nahverkehr. Diese Investitionen schaffen zugleich Arbeitsplätze in zukunftsfähigen Branchen und stärken die regionale Wertschöpfung.</p>
+        <p>Allerdings fordern wir eine noch konsequentere Ausrichtung des gesamten Haushalts auf Klimaziele. Subventionen für fossile Energieträger müssen abgebaut werden, und die eingesparten Mittel können gezielt in die grüne Transformation fließen.</p>
+        <kommentar>(Beifall beim BÜNDNIS 90/DIE GRÜNEN)</kommentar>
+      </rede>
+
+      <rede id="ID2018001400">
+        <p><redner id="11009904"><name><vorname>Sabine</vorname> <nachname>Schneider</nachname><fraktion>FDP</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Meine Damen und Herren!</p>
+        <p>Wirtschaftliche Freiheit und fiskalische Vernunft sind zwei Seiten derselben Medaille. Die FDP tritt für einen Haushalt ein, der durch kluge Priorisierung und nicht durch Schuldenfinanzierung gekennzeichnet ist. Deutschland braucht einen schlanken, effizienten Staat, der sich auf seine Kernaufgaben konzentriert.</p>
+        <p>Bürokratieabbau ist für uns keine Phrase, sondern ein konkretes wirtschaftspolitisches Ziel. Unternehmen brauchen weniger Bürokratie, weniger Regulierung und mehr unternehmerische Freiheit. Nur so können wir Innovationen fördern und die Wettbewerbsfähigkeit des Standorts Deutschland sichern.</p>
+        <p>Die Digitalisierung der Verwaltung muss endlich mit echtem Ernst betrieben werden. Das Onlinezugangsgesetz ist ein guter Rahmen – nun müssen aber konkrete Ergebnisse folgen. Bürger und Unternehmen warten auf einfache, digitale Verwaltungsdienstleistungen, die Zeit und Ressourcen sparen.</p>
+        <p>Steuerentlastungen für Unternehmen und Bürger sind kein Geschenk – sie sind die richtige wirtschaftspolitische Antwort auf das aktuell schwierige Wachstumsumfeld. Wir brauchen Anreize für private Investitionen und Innovationen.</p>
+        <kommentar>(Beifall bei der FDP)</kommentar>
+      </rede>
+
+      <rede id="ID2018001500">
+        <p><redner id="11009905"><name><vorname>Hans</vorname> <nachname>Becker</nachname><fraktion>DIE LINKE</fraktion></name></redner></p>
+        <p klasse="J_1">Herr Präsident! Kolleginnen und Kollegen!</p>
+        <p>Dieser Haushalt ist eine verpasste Chance für soziale Gerechtigkeit. Während die oberen Einkommensgruppen erneut von Steuervorteilen profitieren, werden notwendige Investitionen in den sozialen Wohnungsbau, in die Pflege und in die Grundsicherung nicht ausreichend finanziert.</p>
+        <p>Die Schere zwischen Arm und Reich in Deutschland wird größer, nicht kleiner. Das zeigen alle verfügbaren Daten eindeutig. Wir brauchen dringend eine gerechtere Steuerpolitik, die hohe Vermögen und Erbschaften angemessen besteuert und die dadurch entstehenden Mittel in öffentliche Daseinsvorsorge investiert.</p>
+        <p>Die Rente muss armutsfest sein – das ist ein gesellschaftlicher Grundkonsens, der sich aber nicht im vorliegenden Haushalt widerspiegelt. Millionen älterer Menschen sind von Altersarmut betroffen oder bedroht. Das ist ein gesellschaftliches Versagen, das wir nicht hinnehmen dürfen.</p>
+        <p>Auch die Wohnungsfrage ist ungelöst. Bezahlbarer Wohnraum ist ein Grundrecht, und der Staat muss massiv in den sozialen Wohnungsbau investieren. Die aktuell bereitgestellten Mittel reichen bei Weitem nicht aus.</p>
+        <kommentar>(Beifall bei der LINKEN)</kommentar>
+      </rede>
+
+    </tagesordnungspunkt>
+
+    <sitzungsende sitzung-ende-uhrzeit="18:45">
+      <p>Ich berufe die nächste Sitzung des Deutschen Bundestages auf Donnerstag, den 21. März 2024, 9 Uhr, ein.</p>
+      <p>Die Sitzung ist geschlossen.</p>
+    </sitzungsende>
+  </sitzungsverlauf>
+
+  <anlagen>
+    <anlagen-titel>Anlagen zum Stenografischen Bericht</anlagen-titel>
+    <anlage>
+      <anlagen-titel>Anlage 1 — Liste der entschuldigten Abgeordneten</anlagen-titel>
+      <anlagen-text anlagen-typ="Entschuldigung">
+        <p>Folgende Abgeordnete haben sich für die Sitzung entschuldigt.</p>
+      </anlagen-text>
+    </anlage>
+  </anlagen>
+
+  <rednerliste sitzung-datum="20.03.2024">
+    <redner id="11009901"><name><vorname>Klaus</vorname> <nachname>Weber</nachname><fraktion>SPD</fraktion></name></redner>
+    <redner id="11009902"><name><vorname>Anna</vorname> <nachname>Müller</nachname><fraktion>CDU/CSU</fraktion></name></redner>
+    <redner id="11009903"><name><vorname>Thomas</vorname> <nachname>Fischer</nachname><fraktion>BÜNDNIS 90/DIE GRÜNEN</fraktion></name></redner>
+    <redner id="11009904"><name><vorname>Sabine</vorname> <nachname>Schneider</nachname><fraktion>FDP</fraktion></name></redner>
+    <redner id="11009905"><name><vorname>Hans</vorname> <nachname>Becker</nachname><fraktion>DIE LINKE</fraktion></name></redner>
+  </rednerliste>
+
+</dbtplenarprotokoll>

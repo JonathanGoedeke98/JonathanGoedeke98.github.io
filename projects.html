@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Jonathan Gödeke</title>
+    <meta name="description" content="Applied data science projects by Jonathan Gödeke: text analysis, public-policy dashboards, causal inference, and reproducible machine-learning pipelines.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .project-status {
+            display: inline-block;
+            padding: 0.18rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.73rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            letter-spacing: 0.02em;
+        }
+        .status-in-development {
+            background: #fef9ec;
+            color: #b7770d;
+            border: 1px solid #f0d060;
+        }
+        .status-concept {
+            background: #e8f4fd;
+            color: #2471a3;
+            border: 1px solid #a9cce3;
+        }
+        .status-research-based {
+            background: #eafaf1;
+            color: #1a7a45;
+            border: 1px solid #82c8a0;
+        }
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin: 0.6rem 0;
+        }
+        .tag {
+            background: var(--light-color);
+            border: 1px solid #ddd;
+            padding: 0.18rem 0.55rem;
+            border-radius: 20px;
+            font-size: 0.76rem;
+        }
+        .project-actions {
+            margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .btn-disabled {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 2px solid #d5d5d5;
+            color: #aaa;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: default;
+            pointer-events: none;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1.75rem;
+        }
+        .group-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        .group-heading {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.4rem;
+        }
+        .group-desc {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1.75rem;
+            max-width: 720px;
+        }
+        .demonstrates-line {
+            font-size: 0.82rem;
+            color: #555;
+            font-style: italic;
+            margin: 0.5rem 0 0;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .demonstrates-line i {
+            color: var(--accent-color);
+            margin-right: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="theses.html">Academic Work</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>Applied Data Science Projects</h1>
+                <p>Rather than showcasing isolated code snippets, these projects document full analytical workflows: defining a question, preparing data, modelling, validating results, visualising findings, and making the analysis reproducible.</p>
+                <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="border-color: rgba(255,255,255,0.7); color: inherit;"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>GitHub Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Group A: Applied Portfolio -->
+    <section>
+        <div class="container">
+
+            <div class="card reveal" style="background: linear-gradient(135deg, #f0f4ff, #f5f7fa); border-left: 4px solid var(--secondary-color); margin-bottom: 2.5rem; padding: 1.2rem 1.5rem;">
+                <p style="margin: 0; font-size: 0.92rem;"><strong>Portfolio note:</strong> All four applied portfolio projects have initial prototypes complete — pipelines run end-to-end with real results and figures. Each project targets a distinct competency: NLP/text analysis, reproducible ML engineering, causal inference, and public administrative data analysis. All use only public or published data; data sources are fully documented in each project's repository.</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="group-label">A. Applied Data Science Portfolio</p>
+                <h2 class="group-heading">Independent Portfolio Projects</h2>
+                <p class="group-desc">Projects developed independently to demonstrate end-to-end data science workflows on publicly available data. Each follows a structured approach from question definition to reproducible output.</p>
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- Project 1: Parliamentary Text Analysis -->
+                <div class="project-card reveal">
+                    <span class="project-status status-research-based"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Initial Prototype Complete</span>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Political Text Analysis of Parliamentary Speeches</h3>
+                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem;">End-to-end NLP pipeline for Bundestag plenary transcripts: XML parsing, TF-IDF feature extraction, NMF topic modelling, and reproducible visual reporting on public parliamentary data.</p>
+                    <div class="tag-row">
+                        <span class="tag">Python</span>
+                        <span class="tag">scikit-learn</span>
+                        <span class="tag">TF-IDF</span>
+                        <span class="tag">NMF</span>
+                        <span class="tag">lxml</span>
+                        <span class="tag">matplotlib</span>
+                        <span class="tag">Git</span>
+                    </div>
+                    <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methods:</strong> XML parsing · German stopword removal · TF-IDF · NMF topic modelling · visual reporting</p>
+                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>Demonstrates end-to-end NLP pipeline, German text preprocessing, topic modelling, and reproducible figure generation.</p>
+                    <div class="project-actions">
+                        <a href="project-parliamentary-text.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">View Analysis &rarr;</a>
+                        <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;"><i class="fab fa-github" style="margin-right: 0.3rem;"></i>GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Crime Trends Dashboard -->
+                <div class="project-card reveal" style="animation-delay: 0.1s;">
+                    <span class="project-status status-research-based"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Initial Public-Data Dashboard</span>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Trends in Politically Motivated Crime: Public Data Dashboard</h3>
+                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem;">Descriptive analysis of Germany's official PMK statistics (BMI/BKA 2024): 84,172 recorded offenses, checksum-validated dataset from official aggregate publications, four reproducible visualisations, and full source documentation.</p>
+                    <div class="tag-row">
+                        <span class="tag">Python</span>
+                        <span class="tag">pandas</span>
+                        <span class="tag">matplotlib</span>
+                        <span class="tag">BMI/BKA data</span>
+                        <span class="tag">Git</span>
+                    </div>
+                    <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methods:</strong> Public administrative data · manual extraction + validation · descriptive statistics · category comparison</p>
+                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>Demonstrates careful sourcing and documentation of official statistics, checksum validation, sober visualisation, and ethical handling of sensitive administrative data.</p>
+                    <div class="project-actions">
+                        <a href="project-crime-trends.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">View Dashboard &rarr;</a>
+                        <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;"><i class="fab fa-github" style="margin-right: 0.3rem;"></i>GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Reproducible ML Pipeline -->
+                <div class="project-card reveal" style="animation-delay: 0.2s;">
+                    <span class="project-status status-research-based"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Initial Prototype Complete</span>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Reproducible Machine Learning Pipeline</h3>
+                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem;">End-to-end supervised learning on the UCI Wine Quality dataset: leak-free sklearn Pipelines, three model comparison (LR · RF · GBM), cross-validation, and reproducible visual reporting. Random Forest: ROC-AUC 0.900.</p>
+                    <div class="tag-row">
+                        <span class="tag">Python</span>
+                        <span class="tag">scikit-learn</span>
+                        <span class="tag">pandas</span>
+                        <span class="tag">matplotlib</span>
+                        <span class="tag">pytest</span>
+                        <span class="tag">Git</span>
+                    </div>
+                    <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methods:</strong> Binary classification · sklearn Pipeline · cross-validation · feature importance · ROC-AUC</p>
+                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>Demonstrates end-to-end ML workflow, data leakage prevention, model evaluation, and reproducible figure generation.</p>
+                    <div class="project-actions">
+                        <a href="project-ml-pipeline.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">View Analysis &rarr;</a>
+                        <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;"><i class="fab fa-github" style="margin-right: 0.3rem;"></i>GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Group B: Research-Based -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="group-label">B. Research-Based Quantitative Analysis</p>
+                <h2 class="group-heading">Completed Academic &amp; Research Work</h2>
+                <p class="group-desc">Completed analyses conducted within formal research and academic settings. These represent full, peer-assessed workflows using real datasets and established causal inference methods.</p>
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- Project 3: Causal Policy Analysis -->
+                <div class="project-card reveal">
+                    <span class="project-status status-research-based"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Research-Based Case Study</span>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Causal Policy Analysis with Quasi-Experimental Methods</h3>
+                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem;">Two completed analyses using RDD and DiD on real survey data: Uruguay PANES cash transfers (RDD, ~10% political support gain, Distinction 83%) and Victoria COVID-19 lockdown on life satisfaction (DiD + PSM, HILDA panel 215K obs).</p>
+                    <div class="tag-row">
+                        <span class="tag">Stata</span>
+                        <span class="tag">Regression Discontinuity</span>
+                        <span class="tag">Difference-in-Differences</span>
+                        <span class="tag">Propensity Score Matching</span>
+                        <span class="tag">Panel Data</span>
+                    </div>
+                    <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methods:</strong> Sharp RDD · DiD · PSM · McCrary test · donut-hole · bandwidth sensitivity · rdrobust</p>
+                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>Demonstrates causal reasoning beyond prediction: identification strategy, assumption testing, robustness, and transparent uncertainty communication.</p>
+                    <div class="project-actions">
+                        <a href="project-causal-policy.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">View Case Study &rarr;</a>
+                        <a href="theses.html" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Academic Work</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="theses.html">Academic Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="mailto:goedeke@wiso.uni-koeln.de">Email</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/main.js"></script>
+</body>
+</html>
