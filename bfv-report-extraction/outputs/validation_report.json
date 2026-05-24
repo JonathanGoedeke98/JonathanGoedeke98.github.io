@@ -1,0 +1,48 @@
+{
+  "validation_date": "2026-05-24",
+  "data_files": [
+    "vsb_personalpotenzial.csv",
+    "vsb_straftaten.csv"
+  ],
+  "n_pp_rows": 20,
+  "n_st_rows": 11,
+  "checks": {
+    "V1_schema": {
+      "status": "PASS",
+      "message": "All required columns present (20 PP rows, 11 ST rows)"
+    },
+    "V2_nonnegative": {
+      "status": "PASS",
+      "message": "All numeric values >= 0"
+    },
+    "V3_gw_lt_pp": {
+      "status": "PASS",
+      "message": "All gewaltorientiert values < personalpotenzial"
+    },
+    "V4_cross_year_consistency": {
+      "status": "PASS",
+      "message": "Rechtsextremismus PP cross-report consistent: 2022=38800, 2023=40600, 2024=50250"
+    },
+    "V5_rechts_lt_gesamt": {
+      "status": "PASS",
+      "message": "Rechtsextremismus Straftaten < Gesamt Straftaten for all available years"
+    },
+    "V6_source_urls": {
+      "status": "PASS",
+      "message": "All 31 rows have source_url"
+    },
+    "V7_year_range": {
+      "status": "PASS",
+      "message": "All observation years in valid range {2024, 2021, 2022, 2023}"
+    },
+    "V8_no_duplicates": {
+      "status": "PASS",
+      "message": "No duplicate (year, category/indicator) pairs"
+    }
+  },
+  "summary": {
+    "n_pass": 8,
+    "n_fail": 0,
+    "all_pass": true
+  }
+}

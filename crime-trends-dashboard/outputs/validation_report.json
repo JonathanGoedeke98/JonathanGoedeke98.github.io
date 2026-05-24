@@ -1,0 +1,84 @@
+{
+  "generated": "2026-05-24",
+  "dataset_years": [
+    2023,
+    2024
+  ],
+  "n_pass": 15,
+  "n_warn": 0,
+  "n_fail": 0,
+  "overall": "PASS",
+  "checks": {
+    "V1_schema_totals": {
+      "status": "PASS",
+      "detail": "Columns present: ['year', 'total_offenses', 'violent_offenses', 'internet_offenses', 'clearance_rate_pct', 'source', 'source_url', 'access_date', 'notes', 'yoy_change_pct', 'yoy_violent_change_pct']"
+    },
+    "V1_schema_cats": {
+      "status": "PASS",
+      "detail": "Columns present: ['year', 'category', 'category_label_de', 'offenses', 'violent_offenses', 'source', 'source_url', 'access_date', 'notes', 'share_pct', 'violent_share_pct', 'yoy_offenses_change_pct', 'yoy_violent_change_pct']"
+    },
+    "V2_no_dup_totals": {
+      "status": "PASS",
+      "detail": "0 duplicate year rows"
+    },
+    "V2_no_dup_cats": {
+      "status": "PASS",
+      "detail": "0 duplicate year×category rows"
+    },
+    "V3_no_missing_totals": {
+      "status": "PASS",
+      "detail": "0 missing values in key fields"
+    },
+    "V3_no_missing_cats": {
+      "status": "PASS",
+      "detail": "0 missing values in key fields"
+    },
+    "V4_allowed_categories": {
+      "status": "PASS",
+      "detail": "All 5 categories recognised"
+    },
+    "V5_nonneg_totals": {
+      "status": "PASS",
+      "detail": "0 negative total_offenses values"
+    },
+    "V5_nonneg_cats": {
+      "status": "PASS",
+      "detail": "0 negative offenses values"
+    },
+    "V6_sum_reconciliation": {
+      "status": "PASS",
+      "detail": "2023: off=60028/60028 ✓, vio=3561/3561 ✓; 2024: off=84172/84172 ✓, vio=4107/4107 ✓"
+    },
+    "V7_yoy_continuity": {
+      "status": "PASS",
+      "detail": "0 year-over-year jumps > 300% (0 expected for adjacent years)"
+    },
+    "V8_subcat_bounds_2023": {
+      "status": "PASS",
+      "detail": "Subcategory sum 5164 vs total 60028: within bounds"
+    },
+    "V8_subcat_bounds_2024": {
+      "status": "PASS",
+      "detail": "Subcategory sum 29857 vs total 84172: within bounds"
+    },
+    "V9_source_documented": {
+      "status": "PASS",
+      "detail": "Source column: 0 empty in totals, 0 empty in cats"
+    },
+    "V10_comparability": {
+      "status": "PASS",
+      "detail": "Dataset covers years: [2023, 2024]. Both years use the unified PMK reporting system introduced in 2001. No cross-system comparison issues for the current dataset. Extension to pre-2024 years requires per-year comparability verification."
+    }
+  },
+  "official_totals_used_for_reconciliation": {
+    "2023": {
+      "total_offenses": 60028,
+      "total_violent": 3561
+    },
+    "2024": {
+      "total_offenses": 84172,
+      "total_violent": 4107
+    }
+  },
+  "source_note": "Official totals sourced from BMI/BKA joint press releases: PMK 2023 (20.05.2024) and PMK 2024 (20.05.2025)."
+}
