@@ -1,0 +1,35 @@
+{
+  "total_sessions_downloaded": 214,
+  "total_sessions_parsed": 214,
+  "sessions_excluded": 0,
+  "total_speeches": 26993,
+  "speeches_after_preprocessing": 26992,
+  "unique_speakers": 806,
+  "vocabulary_unique_tokens": 194570,
+  "total_raw_tokens": 13750738,
+  "total_clean_tokens": 5911149,
+  "date_first_session": "2021-10-26",
+  "date_last_session": "2025-03-18",
+  "wahlperiode": 20,
+  "n_topics": 8,
+  "nmf_reconstruction_error": 157.1685,
+  "topic_stability_mean_cosine": {
+    "früh (Okt.2021–ca.Dez.2022)": 0.797,
+    "mittel (ca.Jan.2023–ca.Apr.2024)": 0.963,
+    "spät (ca.Mai 2024–Mär.2025)": 0.842
+  },
+  "topic_labels": {
+    "1": "Parlamentarische Diskussionskultur / Debattenbeiträge",
+    "2": "Ukraine / Russland / Europäische Sicherheitspolitik",
+    "3": "Bildung, Soziales und Kommunalfinanzierung",
+    "4": "Energie- und Wirtschaftspolitik",
+    "5": "Fragestunde und Parlamentarische Anfragen",
+    "6": "Gesetzgebungsverfahren und Verwaltung",
+    "7": "Bundeswehr / Auslandseinsätze / Verteidigung",
+    "8": "Demokratie, Gesellschaft und Wertedebatte"
+  },
+  "data_source": "Deutscher Bundestag Open Data Portal",
+  "data_license": "Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)",
+  "retrieval_date": "2026-05-24",
+  "analysis_date": "2026-05-24"
+}

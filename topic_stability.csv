@@ -1,0 +1,25 @@
+split,split_topic,full_topic_match,cosine_similarity
+früh (Okt.2021–ca.Dez.2022),1,3,0.7463
+früh (Okt.2021–ca.Dez.2022),2,2,0.9696
+früh (Okt.2021–ca.Dez.2022),3,4,0.7773
+früh (Okt.2021–ca.Dez.2022),4,3,0.7802
+früh (Okt.2021–ca.Dez.2022),5,6,0.5502
+früh (Okt.2021–ca.Dez.2022),6,4,0.634
+früh (Okt.2021–ca.Dez.2022),7,1,0.9463
+früh (Okt.2021–ca.Dez.2022),8,7,0.9719
+mittel (ca.Jan.2023–ca.Apr.2024),1,1,0.9893
+mittel (ca.Jan.2023–ca.Apr.2024),2,2,0.9498
+mittel (ca.Jan.2023–ca.Apr.2024),3,5,0.9842
+mittel (ca.Jan.2023–ca.Apr.2024),4,3,0.9558
+mittel (ca.Jan.2023–ca.Apr.2024),5,4,0.9572
+mittel (ca.Jan.2023–ca.Apr.2024),6,6,0.9725
+mittel (ca.Jan.2023–ca.Apr.2024),7,7,0.9784
+mittel (ca.Jan.2023–ca.Apr.2024),8,8,0.9204
+spät (ca.Mai 2024–Mär.2025),1,1,0.9348
+spät (ca.Mai 2024–Mär.2025),2,2,0.9442
+spät (ca.Mai 2024–Mär.2025),3,3,0.8104
+spät (ca.Mai 2024–Mär.2025),4,8,0.9493
+spät (ca.Mai 2024–Mär.2025),5,5,0.9318
+spät (ca.Mai 2024–Mär.2025),6,6,0.9474
+spät (ca.Mai 2024–Mär.2025),7,7,0.9457
+spät (ca.Mai 2024–Mär.2025),8,4,0.2727
