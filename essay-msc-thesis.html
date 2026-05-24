@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,6 +64,17 @@
         .wip-banner { background: linear-gradient(135deg, #f39c12, #e67e22); color: #fff; border-radius: 10px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
         .wip-banner i { font-size: 1.4rem; }
         .wip-banner p { margin: 0; font-size: 0.9rem; }
+
+        /* Practical Relevance Visual */
+        .rv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 0.8rem 0; }
+        @media (max-width: 640px) { .rv-grid { grid-template-columns: 1fr; } }
+        .rv-panel { border-radius: 10px; padding: 1.3rem; }
+        .rv-panel-old { background: #fef9f9; border: 1.5px solid #f5c6c6; }
+        .rv-panel-new { background: #f0faf2; border: 1.5px solid #a8d8b3; }
+        .rv-bar { position: relative; height: 30px; background: #ebebeb; border-radius: 6px; overflow: visible; margin: 1rem 0 4px; }
+        .rv-verdict { border-radius: 6px; padding: 0.4rem 0.8rem; font-weight: 700; font-size: 0.85rem; margin: 0.7rem 0 0.4rem; text-align: center; }
+        .rv-verdict-reject { background: #fdecea; color: #c0392b; }
+        .rv-verdict-ok { background: #e8f5e9; color: #1e8449; }
     </style>
 </head>
 <body>
@@ -79,10 +90,11 @@
             </button>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="theses.html" class="active">Academic Work</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="projects.html">Projekte</a></li>
+                    <li><a href="theses.html" class="active">Wissenschaftliche Arbeiten</a></li>
+                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
@@ -91,7 +103,7 @@
     <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content animate-fade-in">
-                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;">MSc Thesis &mdash; University of Cologne | Supervised by Prof. Dr. Dominik Wied | 2026</p>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;">MSc-Abschlussarbeit &mdash; Universität zu Köln | Betreuer: Prof. Dr. Dominik Wied | 2026</p>
                 <h1 style="font-size: 1.8rem; line-height: 1.3; margin-bottom: 1rem;">A Test for the Practical Relevance<br>of Endogeneity in Semiparametric<br>Distribution Regression</h1>
                 <div class="tag-row" style="justify-content: center; margin-bottom: 1.2rem;">
                     <span class="tag">Statistical Theory</span>
@@ -103,9 +115,116 @@
                     <span class="tag">R</span>
                 </div>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <span style="background: #f39c12; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem;"><i class="fas fa-flask" style="margin-right: 0.4rem;"></i>Research in Progress &mdash; 2026</span>
-                    <a href="files/MSC_Thesis_Endogeneity_Distribution_Regression.pdf" target="_blank" rel="noopener" class="btn" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Current Draft</a>
-                    <a href="theses.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.6); color: inherit;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>All Academic Work</a>
+                    <span style="background: #f39c12; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem;"><i class="fas fa-flask" style="margin-right: 0.4rem;"></i>Forschungsarbeit in Vorbereitung &mdash; 2026</span>
+                    <a href="files/MSC_Thesis_Endogeneity_Distribution_Regression.pdf" target="_blank" rel="noopener" class="btn" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Aktueller Entwurf</a>
+                    <a href="thesis-brief.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.6); color: inherit;"><i class="fas fa-print" style="margin-right: 0.4rem;"></i>Druckbare Kurzfassung</a>
+                    <a href="theses.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.6); color: inherit;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Alle wissenschaftlichen Arbeiten</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruiter layer -->
+    <section>
+        <div class="container">
+            <div class="card reveal">
+                <div class="section-label">Auf einen Blick</div>
+                <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Worum geht es — und warum ist das relevant?</h2>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+                    <div style="background: var(--light-color); border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 1.2rem;">
+                        <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color); margin-bottom: 0.4rem;">Problem in einem Satz</div>
+                        <p style="font-size: 0.9rem; margin: 0;">Klassische Endogenitätstests sind in großen Stichproben uninformativ — selbst vernachlässigbare Verzerrungen werden mit Wahrscheinlichkeit eins entdeckt und führen zu unnötiger Instrumentalvariablenschätzung, die Präzision kostet ohne inhaltlichen Mehrwert.</p>
+                    </div>
+                    <div style="background: var(--light-color); border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 1.2rem;">
+                        <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color); margin-bottom: 0.4rem;">Mein Beitrag</div>
+                        <p style="font-size: 0.9rem; margin: 0;">Ich entwickle einen Test, der nicht fragt „Ist Endogenität exakt null?", sondern „Verändert die Korrektur die geschätzte bedingte Verteilung um mehr als eine inhaltlich bedeutsame Schwelle Δ?" — eine statistisch wie substanziell fundierte Entscheidungsgrundlage.</p>
+                    </div>
+                    <div style="background: var(--light-color); border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 1.2rem;">
+                        <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color); margin-bottom: 0.4rem;">Methoden</div>
+                        <p style="font-size: 0.9rem; margin: 0;">Semiparametrische Verteilungsregression · Instrumentalvariablen (Control-Function) · Asymptotische Theorie (Einfluss-Funktionen, sequenzielle Linearisierung) · Monte-Carlo-Simulation in R · Empirische Anwendung (Card 1995, n = 3 010)</p>
+                    </div>
+                    <div style="background: var(--light-color); border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 1.2rem;">
+                        <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color); margin-bottom: 0.4rem;">Ergebnis</div>
+                        <p style="font-size: 0.9rem; margin: 0;">Der Test ist asymptotisch pivotal — kein Bootstrap erforderlich. Simulationen bestätigen Niveau α = 0,05 und Konsistenz. Empirisch: Endogenität ist praktisch relevant, aber nur für hochgebildete Arbeitnehmer — ein Befund, den ein klassischer Hausman-Test vollständig verdeckt.</p>
+                    </div>
+                </div>
+
+                <div style="background: var(--light-color); border-left: 4px solid #27ae60; border-radius: 8px; padding: 1rem 1.4rem; margin-bottom: 0.5rem;">
+                    <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #27ae60; margin-bottom: 0.4rem;">Warum relevant für datengetriebene Entscheidungsunterstützung</div>
+                    <p style="font-size: 0.9rem; margin: 0;">Analyseverfahren, die statistische Signifikanz mit praktischer Bedeutsamkeit gleichsetzen, rauschen über das hinaus, was wirklich zählt. Diese Arbeit demonstriert, wie man eine Entscheidungsregel so formuliert, dass sie inhaltlich kalibriert ist — eine Fähigkeit, die überall dort relevant wird, wo Modellaussagen operative oder rechtliche Konsequenzen haben.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSS Visual: Statistical vs. Practical Relevance -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <div class="card reveal">
+                <div class="section-label">Visualisierung des Kernbeitrags</div>
+                <h2 style="font-size: 1.2rem; margin-bottom: 0.4rem;">Statistische Signifikanz &ne; Praktische Relevanz</h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">Beide Diagramme zeigen dieselbe gemessene Verzerrung d̂ = 0,026. Der Unterschied liegt allein in der Entscheidungsschwelle. (Monte-Carlo-Illustration: n&nbsp;=&nbsp;1.000, &rho;&nbsp;=&nbsp;0,5.)</p>
+
+                <div class="rv-grid">
+                    <!-- Classical Test Panel -->
+                    <div class="rv-panel rv-panel-old">
+                        <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem;"><i class="fas fa-times-circle" style="color: #c0392b;"></i> Klassischer Hausman-Test</div>
+                        <p style="font-size: 0.85rem; margin-bottom: 0.4rem;"><strong>Frage:</strong> Ist d &gt; 0?</p>
+                        <div class="rv-bar" style="background: rgba(231,76,60,0.18);">
+                            <!-- Entire bar = reject zone (threshold at 0) -->
+                            <!-- Point: d̂ = 0.026 → 26% of 0–0.10 range -->
+                            <div style="position: absolute; top: 50%; left: 26%; transform: translate(-50%, -50%);">
+                                <div style="width: 12px; height: 12px; background: #2c3e50; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 2px #2c3e50;"></div>
+                            </div>
+                        </div>
+                        <div style="position: relative; font-size: 0.68rem; color: #888; height: 1.3rem; margin-bottom: 0.5rem;">
+                            <span style="position: absolute; left: 0; color: #c0392b; font-weight: 700;">0 &larr; Schwelle</span>
+                            <span style="position: absolute; left: 26%; transform: translateX(-50%); color: #2c3e50; font-weight: 700;">d̂&nbsp;=&nbsp;0,026</span>
+                            <span style="position: absolute; right: 0;">0,10</span>
+                        </div>
+                        <div class="rv-verdict rv-verdict-reject">IV erzwungen &mdash; d̂ &gt; 0</div>
+                        <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Jede messbare Abweichung d̂ &gt; 0 führt in großen Stichproben zur Ablehnung &mdash; auch wenn die Korrektur inhaltlich bedeutungslos ist.</p>
+                    </div>
+
+                    <!-- New Test Panel -->
+                    <div class="rv-panel rv-panel-new">
+                        <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem;"><i class="fas fa-check-circle" style="color: #27ae60;"></i> Praktischer Relevanztest (diese Arbeit)</div>
+                        <p style="font-size: 0.85rem; margin-bottom: 0.4rem;"><strong>Frage:</strong> Ist d &gt; &Delta;?</p>
+                        <div class="rv-bar">
+                            <!-- Green zone: d < Δ (0–50%) -->
+                            <div style="position: absolute; top: 0; height: 100%; left: 0; width: 50%; background: rgba(39,174,96,0.2); border-radius: 6px 0 0 6px;"></div>
+                            <!-- Red zone: d > Δ (50–100%) -->
+                            <div style="position: absolute; top: 0; height: 100%; left: 50%; width: 50%; background: rgba(231,76,60,0.18); border-radius: 0 6px 6px 0;"></div>
+                            <!-- Threshold line at Δ = 0.05 → 50% -->
+                            <div style="position: absolute; top: -6px; bottom: -6px; left: 50%; width: 2px; background: #27ae60; transform: translateX(-50%);"></div>
+                            <!-- Point: d̂ = 0.026 → 26% (in green zone) -->
+                            <div style="position: absolute; top: 50%; left: 26%; transform: translate(-50%, -50%);">
+                                <div style="width: 12px; height: 12px; background: #1e5c38; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 2px #1e5c38;"></div>
+                            </div>
+                        </div>
+                        <div style="position: relative; font-size: 0.68rem; color: #888; height: 1.3rem; margin-bottom: 0.5rem;">
+                            <span style="position: absolute; left: 0;">0</span>
+                            <span style="position: absolute; left: 26%; transform: translateX(-50%); color: #2c3e50; font-weight: 700;">d̂&nbsp;=&nbsp;0,026</span>
+                            <span style="position: absolute; left: 50%; transform: translateX(-50%); color: #27ae60; font-weight: 700;">&Delta;&nbsp;=&nbsp;0,05</span>
+                            <span style="position: absolute; right: 0;">0,10</span>
+                        </div>
+                        <div class="rv-verdict rv-verdict-ok">OLS ausreichend &mdash; d̂ &lt; &Delta;</div>
+                        <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.45; margin: 0;">d̂ = 0,026 liegt <em>unterhalb</em> der Relevanzschwelle &Delta; = 0,05: Verzerrung statistisch vorhanden, aber inhaltlich bedeutungslos. IV-Schätzung würde Präzision ohne Mehrwert kosten.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical detail divider -->
+    <section>
+        <div class="container">
+            <div style="background: linear-gradient(135deg, #2c3e50, #34495e); color: #fff; border-radius: 10px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
+                <i class="fas fa-graduation-cap" style="font-size: 1.3rem; opacity: 0.85;"></i>
+                <div>
+                    <strong style="font-size: 0.95rem;">Für technische Leserinnen und Leser: vollständige Herleitung</strong>
+                    <p style="margin: 0.2rem 0 0; font-size: 0.85rem; opacity: 0.85;">Das Folgende enthält die formale Theorie, Simulationsergebnisse und die empirische Anwendung der Abschlussarbeit. Die Arbeit ist noch in Bearbeitung; theoretisches Rahmenwerk, Asymptotik und Monte-Carlo-Simulation sind abgeschlossen.</p>
                 </div>
             </div>
         </div>
@@ -117,7 +236,7 @@
             <div class="card reveal">
                 <div class="wip-banner">
                     <i class="fas fa-flask"></i>
-                    <p><strong>Research in progress.</strong> This is my MSc thesis at the University of Cologne, currently being written under supervision of Prof. Dr. Dominik Wied. The theoretical framework, asymptotic proofs, and Monte Carlo simulation are complete. The empirical application is included as a preliminary illustration.</p>
+                    <p><strong>Forschungsarbeit in Vorbereitung.</strong> Dies ist meine Abschlussarbeit im MSc Volkswirtschaftslehre an der Universität zu Köln, betreut von Prof. Dr. Dominik Wied. Theoretisches Rahmenwerk, asymptotische Beweise und Monte-Carlo-Simulation sind abgeschlossen. Die empirische Anwendung ist als vorläufige Illustration enthalten.</p>
                 </div>
 
                 <div class="section-label">Overview</div>
@@ -500,24 +619,26 @@
     <!-- Back CTA -->
     <section>
         <div class="container" style="text-align: center; padding: 2rem 0;">
-            <a href="theses.html" class="btn btn-outline hover-lift" style="margin-right: 1rem;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Academic Work</a>
-            <a href="files/MSC_Thesis_Endogeneity_Distribution_Regression.pdf" target="_blank" rel="noopener" class="btn hover-lift"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Download Current Draft</a>
+            <a href="theses.html" class="btn btn-outline hover-lift" style="margin-right: 0.8rem;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Alle wissenschaftlichen Arbeiten</a>
+            <a href="thesis-brief.html" class="btn btn-outline hover-lift" style="margin-right: 0.8rem;"><i class="fas fa-print" style="margin-right: 0.4rem;"></i>Druckbare Kurzfassung</a>
+            <a href="files/MSC_Thesis_Endogeneity_Distribution_Regression.pdf" target="_blank" rel="noopener" class="btn hover-lift"><i class="fas fa-file-pdf" style="margin-right: 0.4rem;"></i>Aktuellen Entwurf herunterladen</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <p>&copy; 2026 Jonathan Gödeke. Alle Rechte vorbehalten.</p>
             <ul class="social-icons">
                 <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
                 <li><a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
             </ul>
             <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="theses.html">Academic Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="mailto:goedeke@wiso.uni-koeln.de">Email</a></li>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="projects.html">Projekte</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+                <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
             </ul>
         </div>
     </footer>

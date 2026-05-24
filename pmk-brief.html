@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMK-Analysebriefing: Politisch Motivierte Kriminalität 2023–2024 | Jonathan Gödeke</title>
+    <style>
+        /* ── Reset ──────────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Screen ─────────────────────────────────────────────── */
+        @media screen {
+            body {
+                background: #d8d8d8;
+                padding: 2rem 1rem;
+                font-family: 'Georgia', 'Times New Roman', serif;
+                font-size: 11pt;
+                color: #111;
+            }
+            .nav-bar {
+                max-width: 210mm;
+                margin: 0 auto 1.2rem;
+                display: flex;
+                gap: 0.8rem;
+                align-items: center;
+                font-family: 'Helvetica Neue', Arial, sans-serif;
+                font-size: 0.85rem;
+            }
+            .nav-bar a { color: #2c3e50; text-decoration: none; }
+            .nav-bar a:hover { text-decoration: underline; }
+            .nav-bar .print-btn {
+                margin-left: auto;
+                background: #2c3e50;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                padding: 0.35rem 0.9rem;
+                cursor: pointer;
+                font-size: 0.85rem;
+                font-family: inherit;
+            }
+            .page {
+                background: #fff;
+                width: 210mm;
+                min-height: 297mm;
+                margin: 0 auto;
+                padding: 18mm 22mm 14mm;
+                box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+            }
+        }
+
+        /* ── Print ──────────────────────────────────────────────── */
+        @media print {
+            @page { size: A4; margin: 18mm 22mm 14mm; }
+            body {
+                background: #fff;
+                font-family: 'Georgia', 'Times New Roman', serif;
+                font-size: 10.5pt;
+                color: #111;
+            }
+            .nav-bar { display: none; }
+            .page { width: 100%; padding: 0; margin: 0; }
+        }
+
+        /* ── Typography ─────────────────────────────────────────── */
+        body { line-height: 1.45; }
+        h1  { font-size: 14pt; font-weight: bold; line-height: 1.25; }
+        h2  { font-size: 10.5pt; font-weight: bold; margin: 1rem 0 0.3rem;
+              border-bottom: 1pt solid #1a1a1a; padding-bottom: 2pt; }
+        p   { font-size: 9.5pt; margin-bottom: 0.4rem; }
+        ol, ul { margin: 0.3rem 0 0.3rem 1.2rem; }
+        ol li, ul li { font-size: 9.5pt; margin-bottom: 0.3rem; line-height: 1.5; }
+        code { font-family: 'Courier New', monospace; font-size: 9pt; }
+        small { font-size: 8pt; color: #555; }
+
+        /* ── Header ─────────────────────────────────────────────── */
+        .brief-header {
+            border-bottom: 2pt solid #1a1a1a;
+            padding-bottom: 7pt;
+            margin-bottom: 11pt;
+        }
+        .brief-subtitle { font-size: 11pt; color: #333; margin-top: 2pt; font-style: italic; }
+        .brief-meta {
+            font-size: 8.5pt; color: #444; margin-top: 3pt;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .brief-footer {
+            margin-top: 1rem;
+            border-top: 0.5pt solid #bbb;
+            padding-top: 5pt;
+            font-size: 8pt; color: #666;
+            display: flex; justify-content: space-between;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* ── Stat tiles ─────────────────────────────────────────── */
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6pt; margin: 8pt 0; }
+        .stat-tile {
+            border: 1pt solid #ccc; border-top: 2.5pt solid #1a1a1a;
+            border-radius: 3pt; padding: 5pt 7pt; text-align: center;
+        }
+        .stat-tile .num { font-size: 14pt; font-weight: bold; display: block; line-height: 1.1; }
+        .stat-tile .chg { font-size: 7.5pt; color: #444; margin: 1pt 0; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .stat-tile .lbl { font-size: 8pt; color: #555; font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+        /* ── Finding boxes ──────────────────────────────────────── */
+        .finding-list { margin: 5pt 0; padding-left: 0; list-style: none; }
+        .finding-list li {
+            padding: 5pt 9pt;
+            margin-bottom: 4pt;
+            border-left: 2.5pt solid #1a1a1a;
+            background: #f7f7f7;
+            font-size: 9.5pt;
+            line-height: 1.5;
+        }
+        .finding-list li strong { display: block; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.3pt; color: #333; margin-bottom: 2pt; font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+        /* ── Limit box ──────────────────────────────────────────── */
+        .limit-box {
+            border-left: 2.5pt solid #e67e22;
+            padding: 5pt 9pt;
+            margin: 6pt 0;
+            background: #fffbf5;
+        }
+        .limit-box .lbl {
+            font-size: 8pt; font-weight: bold; text-transform: uppercase;
+            letter-spacing: 0.3pt; color: #b7650a;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin-bottom: 2pt;
+        }
+        .limit-box p { font-size: 9pt; margin: 0; }
+
+        /* ── Source table ───────────────────────────────────────── */
+        .source-table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin: 6pt 0; }
+        .source-table th {
+            background: #1a1a1a; color: #fff; padding: 3.5pt 6pt;
+            text-align: left; font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 8pt;
+        }
+        .source-table td { padding: 3.5pt 6pt; border-bottom: 0.5pt solid #ddd; vertical-align: top; }
+        .source-table tr:nth-child(even) td { background: #f5f5f5; }
+
+        /* ── Validation badge row ───────────────────────────────── */
+        .badge-row { display: flex; gap: 6pt; flex-wrap: wrap; margin: 5pt 0; }
+        .badge {
+            font-size: 8pt; font-weight: bold;
+            padding: 2pt 7pt; border-radius: 20pt;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .badge-green { background: #e8f5e9; color: #1e7e34; border: 0.75pt solid #82c8a0; }
+        .badge-amber { background: #fffbea; color: #856404; border: 0.75pt solid #f0d060; }
+
+        /* ── Two-column ─────────────────────────────────────────── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; margin-top: 5pt; }
+    </style>
+</head>
+<body>
+
+<!-- Navigation (screen only) -->
+<nav class="nav-bar">
+    <a href="project-crime-trends.html">&larr; Vollständige Projektseite</a>
+    <span style="color:#888;">/</span>
+    <a href="projects.html">Alle Projekte</a>
+    <button class="print-btn" onclick="window.print()">Drucken / Als PDF speichern</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 1 — print as one A4 page
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page">
+
+    <div class="brief-header">
+        <h1>Analytisches Briefing: Politisch Motivierte Kriminalität<br>in Deutschland 2023–2024</h1>
+        <div class="brief-subtitle">Öffentliche PMK-Aggregatstatistiken — Deskriptive Analyse, Prüfsummenvalidierung, Interpretationsgrenzen</div>
+        <div class="brief-meta">Jonathan Gödeke &nbsp;&middot;&nbsp; Datenbasis: BMI/BKA (amtliche Jahresberichte) &nbsp;&middot;&nbsp; Daten zuletzt abgeglichen: 24. Mai 2026</div>
+    </div>
+
+    <!-- GEGENSTAND -->
+    <h2>Gegenstand</h2>
+    <p>Deskriptive Aufbereitung und Visualisierung amtlicher PMK-Aggregatstatistiken (BMI/BKA, 2022–2024) mit vollständiger Quellendokumentation, automatisierter Konsistenzvalidierung und expliziten Interpretationsgrenzen. Keine kausale Analyse; keine Prognosen; keine Einzeldaten.</p>
+
+    <!-- DATENBASIS + KENNZAHLEN -->
+    <h2>Datenbasis &amp; amtliche Kennzahlen</h2>
+    <p>Quellen: BMI/BKA-Jahrespressekonferenzen PMK&nbsp;2023 (21. Mai 2024) und PMK&nbsp;2024 (20. Mai 2025). Manuelle Transkription; alle Werte aus mindestens zwei amtlichen Quellen bestätigt.</p>
+
+    <div class="stat-grid">
+        <div class="stat-tile">
+            <span class="num">84.172</span>
+            <div class="chg">+40,2 % ggü. 2023</div>
+            <div class="lbl">PMK-Straftaten gesamt 2024</div>
+        </div>
+        <div class="stat-tile">
+            <span class="num">60.028</span>
+            <div class="chg">Vorjahreswert</div>
+            <div class="lbl">PMK-Straftaten gesamt 2023</div>
+        </div>
+        <div class="stat-tile">
+            <span class="num">4.107</span>
+            <div class="chg">+15,3 % ggü. 2023</div>
+            <div class="lbl">Gewalttaten PMK 2024</div>
+        </div>
+        <div class="stat-tile">
+            <span class="num">6.236</span>
+            <div class="chg">+20,8 % ggü. 2023</div>
+            <div class="lbl">Antisemitische Straftaten 2024</div>
+        </div>
+    </div>
+
+    <!-- DREI BELEGTE BEFUNDE -->
+    <h2>Drei belegte Befunde</h2>
+    <ol class="finding-list">
+        <li>
+            <strong>Befund 1 — Höchstwert seit Einführung der PMK-Statistik (2001)</strong>
+            Die PMK-Gesamtzahl stieg von 60.028 (2023) auf 84.172 (2024) — ein Anstieg um +40,2&nbsp;%, der laut BMI/BKA-Jahresbericht 2024 der höchste seit Einführung der Statistik im Jahr 2001 ist. Quelle: BMI/BKA PMK-Jahresbericht 2024, Pressekonferenz 20. Mai 2025.
+        </li>
+        <li>
+            <strong>Befund 2 — PMK-rechts größter Phänomenbereich; PMK-ausländische Ideologie stärkster relativer Anstieg bei Gewalttaten</strong>
+            PMK-rechts umfasst 42.788 Straftaten (50,8&nbsp;% der Gesamtzahl 2024). PMK-ausländische Ideologie verzeichnet den stärksten relativen Anstieg bei Gewalttaten (+98,6&nbsp;%) und macht 23,7&nbsp;% der Gewalttaten, aber nur 8,7&nbsp;% der Gesamtstraftaten aus. Quelle: BMI/BKA PMK-Jahresbericht 2024.
+        </li>
+        <li>
+            <strong>Befund 3 — Dreijähriger Anstieg antisemitischer Straftaten</strong>
+            Antisemitische Straftaten stiegen von 2.641 (2022) auf 5.164 (2023) auf 6.236 (2024). Alle drei Werte aus amtlichen BMI/BKA-Jahresberichten (Quellen: BKA-Jahresbericht 2022; BMI/BKA-Pressekonferenzen 2024, 2025).
+        </li>
+    </ol>
+
+    <!-- WAS NICHT BELEGT -->
+    <div class="limit-box" style="margin-top: 6pt;">
+        <div class="lbl">Was diese Analyse nicht belegt</div>
+        <p>Die beobachteten Veränderungen können Anzeigeverhalten, Erfassungsprioritäten, Definitionsanpassungen oder reale Inzidenzveränderungen widerspiegeln — diese Faktoren sind aus Aggregatdaten nicht trennbar. Es werden keine Ursachen benannt, keine Prognosen erstellt, keine individuellen Täter- oder Opferdaten analysiert. Keine Vergleichbarkeitsaussagen für Jahre vor 2022 (Prüfung ausstehend).</p>
+    </div>
+
+    <!-- QUELLEN + VALIDIERUNG + REPRODUZIERBARKEIT -->
+    <div class="two-col">
+        <div>
+            <h2>Quellenübersicht</h2>
+            <table class="source-table">
+                <thead>
+                    <tr><th>Quelle</th><th>Datenstand</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>BMI/BKA PMK-Jahresbericht 2024 (PK 20. Mai 2025)</td><td>2024</td></tr>
+                    <tr><td>BMI/BKA PMK-Jahresbericht 2023 (PK 21. Mai 2024)</td><td>2023</td></tr>
+                    <tr><td>BKA PMK-Jahresbericht 2022</td><td>2022</td></tr>
+                    <tr><td>bpb.de — PMK 2024 (Sekundärquelle, Querprüfung)</td><td>2024</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h2>Validierung &amp; Reproduzierbarkeit</h2>
+            <div class="badge-row">
+                <span class="badge badge-green">15/15 Prüfungen bestanden</span>
+                <span class="badge badge-green">4 Prüfsummen ✓</span>
+                <span class="badge badge-amber">Historische Vergleichbarkeit: ausstehend</span>
+            </div>
+            <p style="font-size:9pt;margin-top:5pt;">Vollständig ausführbarer Workflow (<code>make all</code>). Validierungsskript <code>validate.py</code>: 15 Checks (Schema, Summen, Wertebereiche, Vergleichbarkeit) — alle bestanden (24. Mai 2026). Erweiterung auf Jahre vor 2022: methodisch geplant; keine Vergleichbarkeitsaussage bis zur Prüfung.</p>
+        </div>
+    </div>
+
+    <div class="brief-footer">
+        <span>Jonathan Gödeke &nbsp;&middot;&nbsp; PMK-Datenprojekt &nbsp;&middot;&nbsp; 2026 &nbsp;&middot;&nbsp; Ausschließlich öffentliche BMI/BKA-Aggregatdaten</span>
+        <span><a href="project-crime-trends.html" style="color:#666;">Vollständige Projektseite ↗</a></span>
+    </div>
+
+</div>
+
+</body>
+</html>

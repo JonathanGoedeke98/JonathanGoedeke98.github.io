@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurzfassung: Endogenität in Verteilungsregressionen | Jonathan Gödeke</title>
+    <style>
+        /* ── Reset ──────────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Screen: A4-preview layout ──────────────────────────── */
+        @media screen {
+            body {
+                background: #d8d8d8;
+                padding: 2rem 1rem;
+                font-family: 'Georgia', 'Times New Roman', serif;
+                font-size: 11pt;
+                color: #111;
+            }
+            .nav-bar {
+                max-width: 210mm;
+                margin: 0 auto 1.2rem;
+                display: flex;
+                gap: 0.8rem;
+                align-items: center;
+                font-family: 'Helvetica Neue', Arial, sans-serif;
+                font-size: 0.85rem;
+            }
+            .nav-bar a { color: #2c3e50; text-decoration: none; }
+            .nav-bar a:hover { text-decoration: underline; }
+            .nav-bar .print-btn {
+                margin-left: auto;
+                background: #2c3e50;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                padding: 0.35rem 0.9rem;
+                cursor: pointer;
+                font-size: 0.85rem;
+                font-family: inherit;
+            }
+            .page {
+                background: #fff;
+                width: 210mm;
+                min-height: 297mm;
+                margin: 0 auto 2rem;
+                padding: 18mm 22mm 14mm;
+                box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+            }
+        }
+
+        /* ── Print: true A4 ─────────────────────────────────────── */
+        @media print {
+            @page { size: A4; margin: 18mm 22mm 14mm; }
+            body {
+                background: #fff;
+                font-family: 'Georgia', 'Times New Roman', serif;
+                font-size: 10.5pt;
+                color: #111;
+            }
+            .nav-bar { display: none; }
+            .page { width: 100%; padding: 0; margin: 0; }
+            .page-break { page-break-after: always; }
+        }
+
+        /* ── Typography ─────────────────────────────────────────── */
+        body { line-height: 1.45; }
+        h1  { font-size: 14pt; font-weight: bold; line-height: 1.25; }
+        h2  { font-size: 10.5pt; font-weight: bold; margin: 1.1rem 0 0.35rem;
+              border-bottom: 1pt solid #1a1a1a; padding-bottom: 2pt; }
+        h3  { font-size: 10pt; font-weight: bold; margin: 0.7rem 0 0.25rem; }
+        p   { margin-bottom: 0.45rem; font-size: 10pt; }
+        ul  { margin: 0.3rem 0 0.3rem 1.2rem; }
+        ul li { font-size: 10pt; margin-bottom: 0.2rem; }
+        small { font-size: 8.5pt; color: #555; }
+
+        /* ── Page header / footer ───────────────────────────────── */
+        .brief-header {
+            border-bottom: 2pt solid #1a1a1a;
+            padding-bottom: 7pt;
+            margin-bottom: 12pt;
+        }
+        .brief-meta { font-size: 8.5pt; color: #444; margin-top: 3pt; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .brief-subtitle { font-size: 11pt; color: #333; margin-top: 2pt; font-style: italic; }
+        .brief-footer {
+            margin-top: 1rem;
+            border-top: 0.5pt solid #bbb;
+            padding-top: 5pt;
+            font-size: 8pt;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .cont-header {
+            border-bottom: 0.75pt solid #aaa;
+            padding-bottom: 5pt;
+            margin-bottom: 11pt;
+            font-size: 8.5pt;
+            color: #555;
+            font-style: italic;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* ── Info grid ──────────────────────────────────────────── */
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5pt; margin: 8pt 0; }
+        .info-cell { background: #f4f4f4; padding: 5pt 7pt; border-radius: 3pt; }
+        .info-cell .lbl {
+            font-size: 7.5pt; font-weight: bold; text-transform: uppercase;
+            letter-spacing: 0.4pt; color: #555;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin-bottom: 2pt;
+        }
+        .info-cell .val { font-size: 9pt; }
+
+        /* ── Finding boxes ──────────────────────────────────────── */
+        .find-box { border-left: 2.5pt solid #1a1a1a; padding: 5pt 9pt; margin: 6pt 0; background: #f8f8f8; }
+        .find-box .lbl {
+            font-size: 7.5pt; font-weight: bold; text-transform: uppercase;
+            letter-spacing: 0.4pt; color: #444;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin-bottom: 2pt;
+        }
+        .find-box p { font-size: 9pt; margin: 0; }
+
+        /* ── CSS Threshold Visual ───────────────────────────────── */
+        .rv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; margin: 8pt 0; }
+        .rv-panel { border-radius: 4pt; padding: 7pt 9pt; }
+        .rv-panel-old { background: #fef9f9; border: 1pt solid #f5c6c6; }
+        .rv-panel-new { background: #f0faf2; border: 1pt solid #a8d8b3; }
+        .rv-panel-title { font-size: 8.5pt; font-weight: bold; margin-bottom: 5pt;
+                          font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .rv-bar { position: relative; height: 18pt; background: #e8e8e8; border-radius: 4pt; overflow: visible; margin: 5pt 0 2pt; }
+        .rv-bar-all-red { background: rgba(200,50,50,0.2); }
+        .rv-axis { font-size: 7pt; color: #888; display: flex; justify-content: space-between;
+                   font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 4pt; }
+        .rv-verdict { font-size: 8.5pt; font-weight: bold; text-align: center;
+                      padding: 3pt 6pt; border-radius: 3pt; margin: 5pt 0 4pt; }
+        .rv-verdict-reject { background: #fdecea; color: #c0392b; }
+        .rv-verdict-ok { background: #e8f5e9; color: #1e8449; }
+        .rv-note { font-size: 8pt; color: #444; line-height: 1.4; }
+
+        /* ── Empirical table ────────────────────────────────────── */
+        .brief-table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 6pt 0; }
+        .brief-table th {
+            background: #1a1a1a; color: #fff; padding: 4pt 6pt;
+            text-align: left; font-size: 8.5pt;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .brief-table td { padding: 4pt 6pt; border-bottom: 0.5pt solid #ddd; vertical-align: top; }
+        .brief-table tr:nth-child(even) td { background: #f5f5f5; }
+        .brief-table tfoot td { font-size: 7.5pt; color: #666; font-style: italic; padding-top: 4pt; border-bottom: none; }
+        .rej-yes { color: #1e8449; font-weight: bold; }
+        .rej-no  { color: #c0392b; }
+
+        /* ── Two-column layout (page 2) ─────────────────────────── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 8pt; }
+
+        /* ── Limit box ──────────────────────────────────────────── */
+        .limit-box {
+            border-left: 2.5pt solid #e67e22;
+            padding: 5pt 9pt;
+            margin: 6pt 0;
+            background: #fffbf5;
+        }
+        .limit-box .lbl {
+            font-size: 7.5pt; font-weight: bold; text-transform: uppercase;
+            letter-spacing: 0.4pt; color: #b7650a;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin-bottom: 2pt;
+        }
+        .limit-box p { font-size: 9pt; margin: 0; }
+    </style>
+</head>
+<body>
+
+<!-- Navigation bar (screen only) -->
+<nav class="nav-bar">
+    <a href="essay-msc-thesis.html">&larr; Vollständige Arbeit</a>
+    <span style="color:#888;">/</span>
+    <a href="theses.html">Alle wissenschaftlichen Arbeiten</a>
+    <button class="print-btn" onclick="window.print()">Drucken / Als PDF speichern</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 1
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page page-break">
+
+    <div class="brief-header">
+        <h1>A Test for the Practical Relevance of Endogeneity<br>in Semiparametric Distribution Regression</h1>
+        <div class="brief-subtitle">Kurzfassung für Entscheidungsträgerinnen und Entscheidungsträger</div>
+        <div class="brief-meta">Jonathan Gödeke &nbsp;&middot;&nbsp; MSc Volkswirtschaftslehre, Universität zu Köln &nbsp;&middot;&nbsp; Betreuer: Prof. Dr. Dominik Wied &nbsp;&middot;&nbsp; Forschungsarbeit in Vorbereitung, 2026</div>
+    </div>
+
+    <h2>Worum geht es?</h2>
+    <p>Diese Arbeit entwickelt ein neues statistisches Testverfahren für ein grundlegendes methodisches Problem: Klassische Tests auf Endogenität in der Ökonometrie liefern in großen Stichproben fast immer ein positives Signal — selbst wenn der Effekt in der Praxis vernachlässigbar klein ist. Dies zwingt Analysten unnötig auf aufwendigere und weniger präzise Schätzverfahren umzusteigen. Der neue Test fragt stattdessen: <em>Ist die Korrektur groß genug, um inhaltlich zu zählen?</em></p>
+
+    <div class="info-grid">
+        <div class="info-cell">
+            <div class="lbl">Methoden</div>
+            <div class="val">Verteilungsregression &middot; Instrumentalvariablen (Control-Function) &middot; Asymptotische Theorie (Einfluss-Funktionen) &middot; Monte-Carlo-Simulation (R)</div>
+        </div>
+        <div class="info-cell">
+            <div class="lbl">Empirische Anwendung</div>
+            <div class="val">Card (1995): Bildungsrenditen, n&nbsp;=&nbsp;3.010, Instrument: Nähe zu Hochschule (nearc4)</div>
+        </div>
+        <div class="info-cell">
+            <div class="lbl">Status</div>
+            <div class="val">Abschlussarbeit in Vorbereitung — Theorie, Asymptotik und Monte-Carlo-Simulation abgeschlossen; empirische Anwendung illustrativ</div>
+        </div>
+        <div class="info-cell">
+            <div class="lbl">Reproduzierbarkeit</div>
+            <div class="val">R-Code verfügbar (Simulation + empirische Anwendung); alle berichteten Kennzahlen replizierbar</div>
+        </div>
+    </div>
+
+    <h2>Das Problem</h2>
+    <p>Endogenität bedeutet: ein Regressor korreliert mit dem Modellrest, und eine naive Schätzung ist verzerrt. Der klassische Ansatz (Hausman-Test) prüft, ob diese Verzerrung <em>exakt null</em> ist. In großen Stichproben wird selbst eine winzige Verzerrung mit Sicherheit erkannt — und erzwingt aufwendigere Instrumentalvariablen(IV)-Schätzung, die deutlich weniger präzise ist. Das Ergebnis: Präzisionsverlust ohne inhaltlichen Mehrwert. Dieses Problem ist seit Hodges &amp; Lehmann (1954) bekannt; für Verteilungsregressionen war es bisher ungelöst.</p>
+
+    <h2>Die Lösung: Ein kalibrierter Relevanzschwellentest</h2>
+    <p>Der neue Test fragt: <em>Verändert die IV-Korrektur die geschätzte bedingte Verteilung um mehr als eine inhaltlich bedeutsame Schwelle &Delta;?</em> Die Schwelle wird vor der Analyse auf Grundlage inhaltlicher Kriterien festgelegt — etwa als Bruchteil der Marginalvarianz. Nur wenn die gemessene Verzerrung &Delta; überschreitet, wird IV empfohlen.</p>
+
+    <h3>Visueller Vergleich: Gleiche Datenlage — unterschiedliche Entscheidung</h3>
+    <p style="font-size: 8.5pt; color: #555; margin-bottom: 4pt;">Beide Diagramme zeigen dieselbe gemessene Verzerrung d̂ = 0,026 (Monte-Carlo: n = 1.000, &rho; = 0,5, &Delta; = 0,05).</p>
+
+    <div class="rv-grid">
+        <!-- Classical Test -->
+        <div class="rv-panel rv-panel-old">
+            <div class="rv-panel-title">Klassischer Hausman-Test — Frage: d &gt; 0?</div>
+            <div class="rv-bar rv-bar-all-red">
+                <!-- Entire bar = reject (threshold at 0) -->
+                <div style="position:absolute;top:50%;left:26%;transform:translate(-50%,-50%);">
+                    <div style="width:9pt;height:9pt;background:#2c3e50;border-radius:50%;border:1.5pt solid #fff;box-shadow:0 0 0 1.5pt #2c3e50;"></div>
+                </div>
+            </div>
+            <div class="rv-axis">
+                <span style="color:#c0392b;font-weight:bold;">0&larr;Schwelle</span>
+                <span style="color:#2c3e50;font-weight:bold;">d̂=0,026</span>
+                <span>0,10</span>
+            </div>
+            <div class="rv-verdict rv-verdict-reject">IV erzwungen &mdash; d̂ &gt; 0</div>
+            <p class="rv-note">Jede messbare Abweichung führt zur Ablehnung, unabhängig von der inhaltlichen Bedeutung.</p>
+        </div>
+
+        <!-- New Test -->
+        <div class="rv-panel rv-panel-new">
+            <div class="rv-panel-title">Praktischer Relevanztest (diese Arbeit) — Frage: d &gt; &Delta;?</div>
+            <div class="rv-bar">
+                <!-- Green zone: 0–50% -->
+                <div style="position:absolute;top:0;height:100%;left:0;width:50%;background:rgba(39,174,96,0.22);border-radius:4pt 0 0 4pt;"></div>
+                <!-- Red zone: 50–100% -->
+                <div style="position:absolute;top:0;height:100%;left:50%;width:50%;background:rgba(200,50,50,0.16);border-radius:0 4pt 4pt 0;"></div>
+                <!-- Threshold line at 50% -->
+                <div style="position:absolute;top:-4pt;bottom:-4pt;left:50%;width:1.5pt;background:#27ae60;transform:translateX(-50%);"></div>
+                <!-- Point at 26% (green zone) -->
+                <div style="position:absolute;top:50%;left:26%;transform:translate(-50%,-50%);">
+                    <div style="width:9pt;height:9pt;background:#1e5c38;border-radius:50%;border:1.5pt solid #fff;box-shadow:0 0 0 1.5pt #1e5c38;"></div>
+                </div>
+            </div>
+            <div class="rv-axis">
+                <span>0</span>
+                <span style="color:#2c3e50;font-weight:bold;">d̂=0,026</span>
+                <span style="color:#27ae60;font-weight:bold;">&Delta;=0,05</span>
+                <span>0,10</span>
+            </div>
+            <div class="rv-verdict rv-verdict-ok">OLS ausreichend &mdash; d̂ &lt; &Delta;</div>
+            <p class="rv-note">d̂ = 0,026 &lt; &Delta; = 0,05: Verzerrung vorhanden, aber unterhalb der Relevanzschwelle.</p>
+        </div>
+    </div>
+
+    <div class="brief-footer">
+        <span>Jonathan Gödeke &nbsp;&middot;&nbsp; MSc Volkswirtschaftslehre, Universität zu Köln &nbsp;&middot;&nbsp; 2026</span>
+        <span>Seite 1 von 2</span>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 2
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page">
+
+    <div class="cont-header">Kurzfassung (Fortsetzung) &nbsp;&mdash;&nbsp; A Test for the Practical Relevance of Endogeneity in Distribution Regression &nbsp;&middot;&nbsp; Jonathan Gödeke, 2026</div>
+
+    <h2>Hauptbefund: Endogenität ist heterogen — der klassische Test verdeckt das</h2>
+    <p>Anwendung auf Card (1995): Der Hausman-Test auf Mittelwertbasis findet keine Endogenität (p = 0,215) und empfiehlt OLS für alle Gruppen. Der neue Test zeigt: Für hochgebildete Arbeitnehmer (Bildungsjahre&nbsp;=&nbsp;17) verschiebt die IV-Korrektur die bedingte Lohnverteilung um ein praktisch relevantes Ausmaß — für gering- und mittelgebildete Arbeitnehmer bleibt sie unterhalb jeder getesteten Schwelle. Dieser verteilungsspezifische Befund ist mit mittlerwertbasierten Tests nicht zu entdecken.</p>
+
+    <table class="brief-table">
+        <thead>
+            <tr>
+                <th>Profil</th>
+                <th>Getestete Schwellen &Delta;</th>
+                <th>Punkt-Schätzer d̂ (L²-Abstand)</th>
+                <th>Ablehnen H₀?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Geringgebildet<br><small>(educ=10, exper=4)</small></td>
+                <td>0,01 / 0,02 / 0,03 / 0,05</td>
+                <td>0,148</td>
+                <td class="rej-no">Nein (alle Schwellen)</td>
+            </tr>
+            <tr>
+                <td>Mittelgebildet<br><small>(educ=13, exper=8)</small></td>
+                <td>0,01 / 0,02 / 0,03 / 0,05</td>
+                <td>0,030</td>
+                <td class="rej-no">Nein (alle Schwellen)</td>
+            </tr>
+            <tr>
+                <td>Hochgebildet<br><small>(educ=17, exper=15)</small></td>
+                <td>0,01 / 0,02 / 0,03 / 0,05</td>
+                <td>0,195</td>
+                <td class="rej-yes">Ja (alle Schwellen)</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">Datenbasis: Card (1995), n = 3.010. Instrument: Collegenähe (nearc4). Standardkontrollen (Erfahrung, Rasse, Region). Ablehnung nach Regel: T̂_n &gt; &Delta;² + q₀,₉₅ · V̂_n; q₀,₉₅ ≈ 2,69 (&epsilon; = 0,2). Entscheidung basiert auf der selbst-normierenden Teststatistik, nicht allein auf d̂ vs. &Delta;.</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h2>Methodischer Beitrag</h2>
+
+    <div class="two-col">
+        <div>
+            <div class="find-box">
+                <div class="lbl">Asymptotisch Pivotal</div>
+                <p>Kein Bootstrap erforderlich. Die Teststatistik konvergiert zu einem Quotienten aus Brownschen Bewegungsfunktionalen — die kritischen Werte können einmalig simuliert werden (q₀,₉₅ ≈ 1,755 für &epsilon; = 0,1).</p>
+            </div>
+            <div class="find-box">
+                <div class="lbl">Konsistenz &amp; Konvergenzrate</div>
+                <p>Der Test erkennt echte Abweichungen mit Wahrscheinlichkeit 1 (Konsistenz) und lokale Alternativen mit der parametrischen Rate n⁻¹/².</p>
+            </div>
+        </div>
+        <div>
+            <div class="find-box">
+                <div class="lbl">Profilspezifisch</div>
+                <p>Der Test wird für jeden Kovariatenvektor (x, y₂) separat durchgeführt. Er identifiziert, <em>für welche Gruppen</em> die Korrektur inhaltlich relevant ist, nicht nur ob sie global vorhanden ist.</p>
+            </div>
+            <div class="find-box">
+                <div class="lbl">Schwellenkalibrierung</div>
+                <p>&Delta; wird vor der Analyse inhaltlich definiert (Benchmark-Verschiebung oder Bruchteil der Marginalvarianz). Dies verhindert post-hoc-Anpassung der Entscheidungsregel.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Einschränkungen</h2>
+    <div class="limit-box">
+        <div class="lbl">Hinweis zur Einordnung</div>
+        <p>Die Arbeit befindet sich in Vorbereitung; die empirische Anwendung hat illustrativen Charakter. Der Test setzt Instrumentengültigkeit (Relevanz und Exogenität) voraus. Die Wahl von &Delta; erfordert inhaltliche Expertise und muss vor der Analyse dokumentiert werden. Die Monte-Carlo-Simulation umfasst 100 Replikationen; größere Studien stehen aus. Diese Arbeit enthält keine Politikempfehlungen und keine sicherheits-, justiz- oder nachrichtendienstlichen Anwendungen.</p>
+    </div>
+
+    <h2>Reproduzierbarkeit &amp; Materialien</h2>
+    <p>Simulation und empirische Anwendung in R (Basis: <code style="font-family:monospace;font-size:9pt;">AER</code>-Paket, Card-Datensatz); vollständig reproduzierbar. R-Code auf Anfrage verfügbar. Aktueller Entwurf: <a href="files/MSC_Thesis_Endogeneity_Distribution_Regression.pdf" style="color: #111;">PDF herunterladen</a>. Vollständige Seite: <a href="essay-msc-thesis.html" style="color: #111;">Detailseite mit technischer Herleitung</a>.</p>
+
+    <div class="brief-footer">
+        <span>Jonathan Gödeke &nbsp;&middot;&nbsp; MSc Volkswirtschaftslehre, Universität zu Köln &nbsp;&middot;&nbsp; 2026</span>
+        <span>Seite 2 von 2</span>
+    </div>
+</div>
+
+</body>
+</html>

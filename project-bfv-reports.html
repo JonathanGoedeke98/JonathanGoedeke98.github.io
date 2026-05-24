@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BfV Verfassungsschutzberichte: Öffentliche Aggregatdaten 2022–2024 | Jonathan Gödeke</title>
+    <meta name="description" content="Deskriptive Analyse öffentlicher BfV-Verfassungsschutzbericht-Aggregatdaten (2022–2024) mit vollständiger Quellendokumentation, Konsistenzvalidierung und expliziten Interpretationsgrenzen. Nur amtlich veröffentlichte Aggregate — keine operativen, klassifizierten oder personenbezogenen Daten.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0; }
+        .tag { background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .info-box { background: var(--light-color); border-radius: 8px; padding: 1rem; }
+        .info-box .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--secondary-color); margin-bottom: 0.3rem; display: block; }
+        .info-box .value { font-size: 0.9rem; font-weight: 500; }
+        .status-badge { display: inline-block; padding: 0.25rem 0.8rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+        .stat-tile { background: var(--light-color); border-radius: 8px; padding: 1.1rem 1rem; text-align: center; border-top: 3px solid var(--secondary-color); }
+        .stat-tile .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: block; line-height: 1.1; }
+        .stat-tile .stat-change { font-size: 0.78rem; font-weight: 600; color: #888; margin: 0.2rem 0 0.1rem; }
+        .stat-tile .stat-label { font-size: 0.78rem; color: #666; }
+        .source-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin: 1rem 0; }
+        .source-table th { background: var(--primary-color); color: #fff; padding: 0.45rem 0.75rem; text-align: left; font-weight: 600; }
+        .source-table td { padding: 0.4rem 0.75rem; border-bottom: 1px solid #e8e8e8; vertical-align: top; font-size: 0.82rem; }
+        .source-table tr:nth-child(even) td { background: var(--light-color); }
+        .source-table code { font-size: 0.78rem; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin: 1rem 0; }
+        .data-table th { background: var(--secondary-color); color: #fff; padding: 0.45rem 0.75rem; text-align: left; font-weight: 600; font-size: 0.82rem; }
+        .data-table td { padding: 0.4rem 0.75rem; border-bottom: 1px solid #e8e8e8; vertical-align: top; }
+        .data-table tr:nth-child(even) td { background: var(--light-color); }
+        .data-table .accent { font-weight: 700; color: var(--secondary-color); }
+        .fig-block { margin: 1.5rem 0; }
+        .fig-block img { width: 100%; border: 1px solid #e0e0e0; border-radius: 8px; }
+        .fig-caption { font-size: 0.80rem; color: #666; margin-top: 0.4rem; font-style: italic; }
+        .fig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0; }
+        @media (max-width: 640px) { .fig-grid { grid-template-columns: 1fr; } }
+        .ethics-note { background: #f0f7ee; border: 1px solid #b2d8b2; border-left: 4px solid #2e8b57; border-radius: 0 8px 8px 0; padding: 1.1rem 1.4rem; margin: 1rem 0; }
+        .caveat-banner { background: #fef9ec; border: 1px solid #f0d060; border-left: 4px solid #d4ac0d; border-radius: 0 8px 8px 0; padding: 0.9rem 1.3rem; margin: 1.25rem 0; font-size: 0.88rem; }
+        .separation-box { background: #fff3e0; border: 1px solid #ffe082; border-left: 4px solid #f57c00; border-radius: 0 8px 8px 0; padding: 0.9rem 1.3rem; margin: 1rem 0; font-size: 0.88rem; }
+        .limitation-list li { font-size: 0.88rem; line-height: 1.75; margin-bottom: 0.25rem; }
+        .role-relevance { background: #e8f4fd; border-left: 4px solid var(--secondary-color); border-radius: 0 8px 8px 0; padding: 0.8rem 1.3rem; margin: 1rem 0 1.5rem; }
+        .role-relevance .rr-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--secondary-color); margin: 0 0 0.2rem; }
+        .role-relevance p { font-size: 0.87rem; color: #444; margin: 0; line-height: 1.55; }
+        .val-badge { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.78rem; font-weight: 700; margin-left: 0.3rem; }
+        .val-pass { background: #e8f5e9; color: #1e7e34; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Zum Inhalt springen</a>
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
+            <button class="hamburger" id="hamburger" aria-label="Navigation öffnen">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="projects.html" class="active">Projekte</a></li>
+                    <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;"><a href="projects.html" style="color: inherit; text-decoration: underline;">Projekte</a> &rsaquo; BfV-Berichtsdaten</p>
+                <h1 style="font-size: 1.9rem; line-height: 1.3;">Verfassungsschutzberichte: Öffentliche Aggregatdaten<br>2022–2024</h1>
+                <p style="font-size: 0.98rem; max-width: 640px; margin: 0.8rem auto 1rem;">Dokumentierter, prüfsummenvalidierter Analyseworkflow für amtliche BfV-Aggregatstatistiken aus öffentlichen Verfassungsschutzberichten und Pressemitteilungen — mit vollständiger Quellendokumentation und expliziten Interpretationsgrenzen.</p>
+                <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; justify-content: center; margin-top: 0.5rem;">
+                    <span class="status-badge" style="background:#eafaf1;color:#1a7a45;border:1px solid #82c8a0;"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Validiertes MVP</span>
+                    <span class="status-badge" style="background:#e8f4fd;color:#1a6a9a;border:1px solid #90caf9;"><i class="fas fa-shield-alt" style="margin-right: 0.3rem;"></i>Nur öffentliche Aggregatdaten</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="card reveal" style="max-width: 920px; margin: 0 auto;">
+
+                <div class="info-grid">
+                    <div class="info-box">
+                        <span class="label">Bereich</span>
+                        <span class="value">Öffentliche Sicherheitsstatistiken</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Quelle</span>
+                        <span class="value">BfV Verfassungsschutzberichte &amp; Pressemitteilungen</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Abdeckung</span>
+                        <span class="value">2022–2024 (mit 2021-Vorjahreswerten)</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Sprache</span>
+                        <span class="value">Python 3</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Status</span>
+                        <span class="value">Validiertes MVP — öffentl. Daten</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="label">Validierung</span>
+                        <span class="value">8/8 Prüfungen bestanden</span>
+                    </div>
+                </div>
+
+                <!-- Executive Briefing -->
+                <div style="background:#f8f9fa;border:1px solid #dee2e6;border-radius:8px;padding:1.2rem 1.4rem;margin:1rem 0;">
+                    <p style="margin:0 0 0.6rem;font-size:0.95rem;font-weight:700;color:var(--primary-color);">Analytisches Executive Briefing</p>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Gegenstand</p>
+                    <p style="margin:0 0 0.85rem;font-size:0.88rem;color:#333;line-height:1.65;">Deskriptive Aufbereitung öffentlicher BfV-Aggregatindikatoren aus Verfassungsschutzberichten 2022–2024: Personalpotenzial nach Phänomenbereich sowie extremistisch motivierte Straftaten — mit vollständiger Quelldokumentation auf URL-Ebene, automatisierter Konsistenzvalidierung und strikter Trennung von BKA/BMI-PMK-Daten.</p>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Datenbasis</p>
+                    <p style="margin:0 0 0.85rem;font-size:0.88rem;color:#333;line-height:1.65;">Drei Verfassungsschutzberichte (VSB 2022–2024) und zugehörige BfV-Pressemitteilungen. Abgerufene Quellen: (1) VSB 2022 Pressemitteilung, 20. Juni 2023; (2) VSB 2023 Pressemitteilung, 18. Juni 2024; (3) VSB 2024 Pressemitteilung, 10. Juni 2025; (4) VSB 2024 Rechtsextremismus-Kapitel (Online-Artikel). Abrufdatum: 24. Mai 2026. Alle Werte wurden durch Querprüfung zwischen Berichten bestätigt.</p>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Drei belegte Befunde</p>
+                    <ol style="margin:0 0 0.85rem;padding-left:1.3rem;font-size:0.87rem;color:#333;line-height:1.85;">
+                        <li>Das Personalpotenzial im Bereich Rechtsextremismus stieg von 38.800 (2022) über 40.600 (2023) auf 50.250 (2024) — ein Anstieg um 23,8 % innerhalb eines Jahres (2023 &rarr; 2024). Quelle: VSB 2024 Pressemitteilung (BfV, 10. Juni 2025).</li>
+                        <li>Rechtsextremistische Straftaten stiegen 2024 auf 37.835 (+47,4 % gegenüber 2023: 25.660), davon 24.177 Propagandadelikte (63,9 %) und 1.281 Gewalttaten (+11,6 %). Quelle: VSB 2024 Rechtsextremismus-Artikel.</li>
+                        <li>Die Gesamtzahl der vom BfV erfassten Straftaten mit extremistischem Hintergrund (alle Phänomenbereiche) stieg von 35.452 (2022) auf 39.433 (2023) auf 57.701 (2024). Quelle: VSB-Pressemitteilungen 2022–2024.</li>
+                    </ol>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Was diese Analyse nicht belegt</p>
+                    <p style="margin:0 0 0.85rem;font-size:0.88rem;color:#333;line-height:1.65;">BfV-Personalpotenzial sind Schätzwerte, keine Vollerhebungen — Überschneidungen zwischen Phänomenbereichen werden bereinigt, Methodik nicht vollständig publiziert. Straftaten mit extremistischem Hintergrund (BfV-Systematik) sind nicht mit PMK-Statistiken (BKA/BMI) zu vergleichen. Es werden keine Ursachen benannt, keine Prognosen gemacht, keine individuellen Personen oder Gruppen identifiziert. Keine Aussage zu klassifizierten oder operativen Erkenntnissen.</p>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Reproduzierbarkeit &amp; Aktualität</p>
+                    <p style="margin:0;font-size:0.88rem;color:#333;line-height:1.65;">Vollständig ausführbarer Workflow (<code>validate_bfv.py</code>, <code>make_figures.py</code>). Daten zuletzt abgeglichen: 24. Mai 2026. VSB 2025 (Berichtsjahr 2025) noch nicht veröffentlicht (Erscheinungsdatum erfahrungsgemäß Juni 2026). Erweiterung auf frühere Jahre: methodisch geplant; Vergleichbarkeitsprüfung für Jahre vor 2022 ausstehend.</p>
+                </div>
+
+                <!-- Ethics Note -->
+                <div class="ethics-note">
+                    <p style="margin:0 0 0.4rem;font-size:0.9rem;font-weight:700;color:#1a5c38;"><i class="fas fa-shield-alt" style="margin-right: 0.4rem;"></i>Datenverwendung &amp; Ethikhinweis</p>
+                    <p style="margin:0;font-size:0.88rem;line-height:1.65;">Dieses Projekt verwendet ausschließlich öffentlich zugängliche, aggregierte Daten aus amtlichen BfV-Publikationen (Verfassungsschutzberichte und Pressemitteilungen). Es werden keine personenbezogenen Daten, keine klassifizierten Erkenntnisse, keine operativen Informationen, keine extremistischen Inhalte aus nicht-amtlichen Quellen und keine Einzel- oder Gruppenidentifikationen verarbeitet. Das Personalpotenzial ist eine BfV-eigene Schätzgröße, die im Jahresbericht veröffentlicht wird. Ziel ist ausschließlich die methodisch transparente Aufbereitung und Visualisierung amtlich veröffentlichter Aggregatdaten — entsprechend der Art von Analysen, die in den Berichten selbst routinemäßig veröffentlicht werden.</p>
+                </div>
+
+                <!-- Separation from PMK -->
+                <div class="separation-box">
+                    <strong><i class="fas fa-exclamation-triangle" style="margin-right: 0.4rem;"></i>Analytische Trennung von PMK-Statistiken (BKA/BMI):</strong> Die hier dargestellten BfV-Indikatoren (Personalpotenzial, BfV-Straftaten) verwenden andere Erhebungsmethoden und Definitionen als die PMK-Statistik des Bundeskriminalamts. Ein direkter Vergleich oder eine Verknüpfung ist ohne offizielle Quellengrundlage nicht statthaft. Für PMK-Analysen: <a href="project-crime-trends.html" style="color:#b7550a;">PMK-Datenprojekt</a>.
+                </div>
+
+                <!-- Role relevance -->
+                <div class="role-relevance">
+                    <p class="rr-label">Stellenrelevanz</p>
+                    <p>Demonstriert deskriptive Analyse öffentlicher Sicherheitsstatistiken im Bereich Rechtsextremismus, systematische Quelldokumentation, reproduzierbare Datenpipeline und verantwortungsvollen Umgang mit amtlich veröffentlichten Aggregatdaten des Verfassungsschutzes.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Figures 2024 -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <div class="card reveal" style="max-width: 920px; margin: 0 auto;">
+                <h3 class="card-title">Amtliche Indikatoren 2024 (Quelle: BfV VSB 2024, Pressemitteilung 10. Juni 2025)</h3>
+
+                <div class="caveat-banner">
+                    <strong>Hinweis:</strong> Personalpotenzial ist eine BfV-Schätzgröße (nach Bereinigung von Überschneidungen) — keine Vollerhebung. Werte sind auf Hundert gerundete Schätzwerte. Straftaten = BfV-Zählsystematik, abweichend von PMK.
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-tile">
+                        <span class="stat-num">50.250</span>
+                        <div class="stat-change">+23,8 % ggü. 2023 (40.600)</div>
+                        <div class="stat-label">Rechtsextremismus: Personalpotenzial gesamt</div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-num">15.300</span>
+                        <div class="stat-change">+5,5 % ggü. 2023 (14.500)</div>
+                        <div class="stat-label">Rechtsextremismus: Gewaltorientierte</div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-num">37.835</span>
+                        <div class="stat-change">+47,4 % ggü. 2023 (25.660)</div>
+                        <div class="stat-label">Rechtsextremistische Straftaten 2024</div>
+                    </div>
+                    <div class="stat-tile">
+                        <span class="stat-num">57.701</span>
+                        <div class="stat-change">+46 % ggü. 2023 (39.433)</div>
+                        <div class="stat-label">Straftaten extrem. Hintergrund (alle Bereiche)</div>
+                    </div>
+                </div>
+
+                <!-- Figures -->
+                <h3 class="card-title" style="margin-top: 1.5rem;">Visualisierungen</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Alle Abbildungen werden vollständig aus Code erzeugt (<code>make_figures.py</code>). Quellen sind in den Abbildungstiteln angegeben.</p>
+
+                <div class="fig-block">
+                    <img src="images/projects/bfv-reports/fig1_rechtsextremismus_pp_trend.png"
+                         alt="Balkendiagramm: Rechtsextremismus Personalpotenzial von 33.900 (2021) über 38.800 (2022) und 40.600 (2023) auf 50.250 (2024); davon gewaltorientiert: 13.500 / 14.000 / 14.500 / 15.300">
+                    <p class="fig-caption">Abb. 1 &mdash; Rechtsextremismus: Personalpotenzial 2021–2024. Gesamtpotenzial (dunkel) und Anteil Gewaltorientierter (blau). 2021-Werte: Vorjahresreferenz aus VSB 2022 Pressemitteilung, kein eigenständig abgerufener VSB 2021. Quelle: BfV Pressemitteilungen zu VSB 2022, 2023, 2024.</p>
+                </div>
+
+                <div class="fig-grid">
+                    <div class="fig-block">
+                        <img src="images/projects/bfv-reports/fig2_personalpotenzial_2024.png"
+                             alt="Horizontales Balkendiagramm: Personalpotenzial nach Phänomenbereich 2024 — Rechtsextremismus 50.250, Auslandsbezogener Extremismus 32.500, Linksextremismus 38.000, Islamismus 28.280, Reichsbürger/Selbstverwalter 26.000">
+                        <p class="fig-caption">Abb. 2 &mdash; BfV Personalpotenzial nach Phänomenbereich, 2024. Kategorien sind nicht addierbar (BfV bereinigt Überschneidungen). Quelle: VSB 2024 Pressemitteilung.</p>
+                    </div>
+                    <div class="fig-block">
+                        <img src="images/projects/bfv-reports/fig3_straftaten_trend.png"
+                             alt="Balkendiagramm: Straftaten mit extremistischem Hintergrund (alle Bereiche) von 35.452 (2022) über 39.433 (2023) auf 57.701 (2024); Gewalttaten: 2.847 / 2.761 / 2.976">
+                        <p class="fig-caption">Abb. 3 &mdash; Straftaten mit extremistischem Hintergrund 2022–2024 (alle Phänomenbereiche kombiniert). BfV-Zählsystematik; nicht mit PMK-Daten vergleichbar. Quelle: BfV Pressemitteilungen zu VSB 2022, 2023, 2024.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Personalpotenzial Table -->
+    <section>
+        <div class="container">
+            <div class="card reveal" style="max-width: 920px; margin: 0 auto;">
+                <h3 class="card-title">Personalpotenzial nach Phänomenbereich 2022–2024</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Alle Werte: BfV-Schätzungen (auf Hundert gerundet), nach Bereinigung von Überschneidungen. Gewaltorientiert-Anteile für Linksextremismus nicht als Absolutzahl veröffentlicht.</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Phänomenbereich</th>
+                            <th>2022</th>
+                            <th>2023</th>
+                            <th>2024</th>
+                            <th>Davon gewaltorientiert (2024)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="accent">Rechtsextremismus</td>
+                            <td>38.800</td>
+                            <td>40.600</td>
+                            <td class="accent">50.250</td>
+                            <td>15.300</td>
+                        </tr>
+                        <tr>
+                            <td>Reichsbürger / Selbstverwalter</td>
+                            <td>23.000</td>
+                            <td>25.000</td>
+                            <td>26.000</td>
+                            <td>2.600</td>
+                        </tr>
+                        <tr>
+                            <td>Linksextremismus</td>
+                            <td>36.500</td>
+                            <td>37.000</td>
+                            <td>38.000</td>
+                            <td>&gt;25 % (kein Absolutwert veröff.)</td>
+                        </tr>
+                        <tr>
+                            <td>Islamismus</td>
+                            <td>27.480</td>
+                            <td>27.200</td>
+                            <td>28.280</td>
+                            <td>9.540</td>
+                        </tr>
+                        <tr>
+                            <td>Auslandsbezogener Extremismus</td>
+                            <td>29.750</td>
+                            <td>30.650</td>
+                            <td>32.500</td>
+                            <td>22.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.78rem; color: #888; font-style: italic;">Kategorien nicht addierbar — Individuen können mehreren Bereichen zugeordnet sein. Vollständige Quellenreferenzen: Provenienz-Tabelle unten.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Quellen und Validierung -->
+    <section style="background-color: var(--light-color);">
+        <div class="container">
+            <div class="card reveal" style="max-width: 920px; margin: 0 auto;">
+                <h3 class="card-title">Quellen und Provenienz</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Alle Werte wurden manuell aus den folgenden amtlichen BfV-Quellen extrahiert und durch Querprüfung zwischen den Berichten bestätigt. Abrufdatum aller URLs: 24. Mai 2026.</p>
+
+                <table class="source-table">
+                    <thead>
+                        <tr><th>Dokument</th><th>Datum</th><th>Verwendung</th><th>URL</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>VSB 2024 Pressemitteilung</td>
+                            <td>2025-06-10</td>
+                            <td>Personalpotenzial 2024 (alle Kategorien); Gewalttaten 2024; Gesamt-Straftaten 2024</td>
+                            <td><a href="https://www.verfassungsschutz.de/SharedDocs/pressemitteilungen/DE/2025/pressemitteilung-2025-vsb-2024.html" target="_blank" rel="noopener" style="font-size:0.78rem;">verfassungsschutz.de ↗</a></td>
+                        </tr>
+                        <tr>
+                            <td>VSB 2024 Rechtsextremismus-Artikel</td>
+                            <td>2025-06-10</td>
+                            <td>Rechtsextremismus Personalpotenzial-Tabelle 2022–2024; Straftaten-Unterkategorien 2024 (Propaganda, Gewalt)</td>
+                            <td><a href="https://www.verfassungsschutz.de/DE/verfassungsschutz/der-bericht/vsb-rechtsextremismus/2024-vsb-rechtsextremismus_artikel.html" target="_blank" rel="noopener" style="font-size:0.78rem;">verfassungsschutz.de ↗</a></td>
+                        </tr>
+                        <tr>
+                            <td>VSB 2023 Pressemitteilung</td>
+                            <td>2024-06-18</td>
+                            <td>Personalpotenzial 2023 (alle Kategorien); Gesamt-Straftaten 2023; PKK-Anhänger 2023</td>
+                            <td><a href="https://www.verfassungsschutz.de/SharedDocs/pressemitteilungen/DE/2024/pressemitteilung-2024-06-18-vsb-2023.html" target="_blank" rel="noopener" style="font-size:0.78rem;">verfassungsschutz.de ↗</a></td>
+                        </tr>
+                        <tr>
+                            <td>VSB 2022 Pressemitteilung</td>
+                            <td>2023-06-20</td>
+                            <td>Personalpotenzial 2022 (alle Kategorien); Gesamt-Straftaten 2022; Vorjahreswerte 2021</td>
+                            <td><a href="https://www.verfassungsschutz.de/SharedDocs/pressemitteilungen/DE/2023/pressemitteilung-2023-4-vsb-2022.html" target="_blank" rel="noopener" style="font-size:0.78rem;">verfassungsschutz.de ↗</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="card-title" style="margin-top: 1.5rem;">Datensatzkonstruktion &amp; Validierung</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Zwei Roh-CSV-Dateien wurden manuell aus amtlichen Quellen erstellt. Jede Zeile enthält Quell-URL und Publikationsdatum.</p>
+
+                <div style="display: grid; gap: 0.85rem; margin: 1rem 0;">
+                    <div style="display: flex; gap: 1rem; align-items: flex-start; background: var(--light-color); border-radius: 10px; padding: 0.9rem 1.1rem;">
+                        <div style="background: var(--secondary-color); color: #fff; border-radius: 50%; width: 1.9rem; height: 1.9rem; min-width: 1.9rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem;">1</div>
+                        <div>
+                            <h4 style="font-size: 0.88rem; font-weight: 700; margin-bottom: 0.15rem;">Manuelle Transkription (<code>data/raw/</code>)</h4>
+                            <p style="font-size: 0.83rem; margin: 0; color: #555;">Zwei CSVs aus amtlichen BfV-Quellen: <code>vsb_personalpotenzial.csv</code> (20 Zeilen, 5 Kategorien × 4 Jahre) und <code>vsb_straftaten.csv</code> (11 Zeilen). Jede Zeile: Quelle URL + Publikationsdatum + Quelldokument + Hinweis zur Verifikation.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: flex-start; background: var(--light-color); border-radius: 10px; padding: 0.9rem 1.1rem;">
+                        <div style="background: var(--secondary-color); color: #fff; border-radius: 50%; width: 1.9rem; height: 1.9rem; min-width: 1.9rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem;">2</div>
+                        <div>
+                            <h4 style="font-size: 0.88rem; font-weight: 700; margin-bottom: 0.15rem;">Validierung (<code>scripts/validate_bfv.py</code>)</h4>
+                            <p style="font-size: 0.83rem; margin: 0; color: #555;">8 Konsistenzprüfungen: Schema, Vorzeichen, Gewaltorientiert &lt; Gesamtpotenzial, jahresübergreifende Konsistenz (Vorjahreswerte stimmen zwischen Berichten überein), Straftaten-Plausibilität, Quell-URLs vollständig, Jahresbereich, keine Duplikate. Ergebnis: 8/8 PASS (24. Mai 2026).</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: flex-start; background: var(--light-color); border-radius: 10px; padding: 0.9rem 1.1rem;">
+                        <div style="background: var(--secondary-color); color: #fff; border-radius: 50%; width: 1.9rem; height: 1.9rem; min-width: 1.9rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem;">3</div>
+                        <div>
+                            <h4 style="font-size: 0.88rem; font-weight: 700; margin-bottom: 0.15rem;">Abbildungserzeugung (<code>scripts/make_figures.py</code>)</h4>
+                            <p style="font-size: 0.83rem; margin: 0; color: #555;">3 Abbildungen vollständig aus Code erzeugt (matplotlib): PP-Trend, Kategorievergleich 2024, Straftaten-Trend. Quellenangaben in Abbildungstiteln eingebettet; Hinweis auf Datenbasis und Einschränkungen in Bildunterschriften.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Validation Results -->
+                <h3 class="card-title" style="margin-top: 1.5rem;">Validierungsergebnis</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Alle 8 Konsistenzprüfungen bestanden (24. Mai 2026). Schlüsselprüfung V4 bestätigt: Vorjahreswerte sind zwischen VSB 2022, 2023 und 2024 numerisch konsistent.</p>
+
+                <table class="source-table" style="font-size: 0.82rem;">
+                    <thead>
+                        <tr><th>Prüfung</th><th>Gegenstand</th><th>Ergebnis</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>V1</td><td>Schema — Pflichtfelder vorhanden</td><td><span class="val-badge val-pass">PASS</span></td></tr>
+                        <tr><td>V2</td><td>Vorzeichen — alle Werte &ge; 0</td><td><span class="val-badge val-pass">PASS</span></td></tr>
+                        <tr><td>V3</td><td>Gewaltorientiert &lt; Personalpotenzial (je Kategorie/Jahr)</td><td><span class="val-badge val-pass">PASS</span></td></tr>
+                        <tr><td>V4</td><td>Jahresübergreifende Konsistenz: Rechtsext. 2022=38.800, 2023=40.600 in allen Berichten übereinstimmend</td><td><span class="val-badge val-pass">PASS</span></td></tr>
+                        <tr><td>V5</td><td>Rechtsextremismus-Straftaten &lt; Gesamt-Straftaten (gleiche Zählsystematik)</td><td><span class="val-badge val-pass">PASS</span></td></tr>
+                        <tr><td>V6</td><td>Quell-URLs — alle 31 Zeilen vollständig dokumentiert</td><td><span class="val-badge val-pass">PASS</span></td></tr>
+                        <tr><td>V7</td><td>Beobachtungsjahre im gültigen Bereich [2021–2024]</td><td><span class="val-badge val-pass">PASS</span></td></tr>
+                        <tr><td>V8</td><td>Keine Duplikate in (Jahr, Kategorie)-Paaren</td><td><span class="val-badge val-pass">PASS</span></td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Limitations -->
+    <section>
+        <div class="container">
+            <div class="card reveal" style="max-width: 920px; margin: 0 auto;">
+                <h3 class="card-title">Grenzen der Analyse</h3>
+                <ul class="limitation-list">
+                    <li><strong>Schätzwerte, keine Vollerhebungen:</strong> BfV-Personalpotenzial sind gerundete Schätzgrößen. Die Erhebungsmethodik ist nicht vollständig veröffentlicht; Vergleiche zwischen Phänomenbereichen und über die Zeit sind mit Vorsicht zu interpretieren.</li>
+                    <li><strong>Keine Quelldateien:</strong> BfV veröffentlicht keine maschinenlesbaren Rohdaten; alle Werte wurden manuell aus Pressemitteilungen und Online-Artikeln transkribiert. Fehler bei der Transkription sind möglich und sollten gegen die Primärquellen geprüft werden.</li>
+                    <li><strong>Keine Vergleichbarkeit mit PMK:</strong> BfV-Straftaten mit extremistischem Hintergrund und PMK-Statistiken (BKA/BMI) verwenden unterschiedliche Definitionen und Erhebungsmethoden. Eine Verknüpfung ohne explizite offizielle Grundlage ist methodisch nicht statthaft.</li>
+                    <li><strong>Keine Aussage zu Vorjahren vor 2022:</strong> Vergleichbarkeitsprüfung für Jahre vor 2022 (mögliche Definitions- oder Systematikänderungen) ausstehend — Zeitreihen werden nicht über 2021 hinaus verlängert.</li>
+                    <li><strong>Vollständige Berichte nicht gelesen:</strong> Die vorliegenden Daten stammen aus Pressemitteilungen und Online-Artikeln, nicht aus dem Volltext der Verfassungsschutzberichte. Detaillierte Methodendokumentationen oder Fußnoten aus dem Vollbericht konnten nicht einbezogen werden.</li>
+                </ul>
+
+                <h3 class="card-title" style="margin-top: 1.5rem;">Reproduzierbarkeit</h3>
+                <p style="font-size: 0.88rem; color: #555;">Skripte: <code>projects/bfv-report-extraction/scripts/validate_bfv.py</code>, <code>make_figures.py</code>. Roh-CSV: <code>data/raw/vsb_personalpotenzial.csv</code>, <code>vsb_straftaten.csv</code>. Validierungsbericht: <code>outputs/validation_report.json</code>. Python 3, matplotlib. Keine externen APIs; alle Quell-URLs im Datensatz enthalten.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back CTA -->
+    <section>
+        <div class="container" style="text-align: center; padding: 2rem 0;">
+            <a href="projects.html" class="btn btn-outline hover-lift" style="margin-right: 0.8rem;"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Alle Projekte</a>
+            <a href="project-crime-trends.html" class="btn btn-outline hover-lift"><i class="fas fa-chart-bar" style="margin-right: 0.4rem;"></i>PMK-Datenprojekt</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jonathan Gödeke. Alle Rechte vorbehalten.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            </ul>
+            <ul class="footer-links">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="projects.html">Projekte</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+                <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/main.js"></script>
+</body>
+</html>

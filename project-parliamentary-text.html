@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Political Text Analysis of Parliamentary Speeches | Jonathan Gödeke</title>
-    <meta name="description" content="End-to-end NLP pipeline for analysing German Bundestag plenary transcripts: XML parsing, TF-IDF feature extraction, NMF topic modelling, and reproducible visual reporting.">
+    <title>Themenmodellierung Bundestag 20. Wahlperiode | Jonathan Gödeke</title>
+    <meta name="description" content="Vollständige NLP-Analyse aller 214 Plenarsitzungen der 20. Wahlperiode des Deutschen Bundestags: XML-Parsing, TF-IDF, NMF-Themenmodellierung mit Stabilitätsanalyse — reproduzierbar aus offiziellen Open-Data-Protokollen.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/accessibility.css">
@@ -15,7 +15,7 @@
     <style>
         .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0; }
         .tag { background: var(--light-color); border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.78rem; }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
         .info-box { background: var(--light-color); border-radius: 8px; padding: 1rem; }
         .info-box .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--secondary-color); margin-bottom: 0.3rem; display: block; }
         .info-box .value { font-size: 0.9rem; font-weight: 500; }
@@ -26,10 +26,17 @@
         .step-item p { font-size: 0.85rem; margin: 0; color: #555; }
         .status-badge { display: inline-block; padding: 0.25rem 0.8rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
         .result-callout { background: linear-gradient(135deg, #eaf4fb, #f0f7ee); border-left: 4px solid var(--secondary-color); border-radius: 0 8px 8px 0; padding: 1rem 1.5rem; margin: 1.5rem 0; font-size: 0.92rem; }
-        .topic-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+        .topic-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
         .topic-table th { background: var(--primary-color); color: #fff; padding: 0.5rem 0.75rem; text-align: left; font-weight: 600; }
-        .topic-table td { padding: 0.45rem 0.75rem; border-bottom: 1px solid #e8e8e8; }
+        .topic-table td { padding: 0.45rem 0.75rem; border-bottom: 1px solid #e8e8e8; vertical-align: top; }
         .topic-table tr:nth-child(even) td { background: var(--light-color); }
+        .stability-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .stability-table th { background: #2c5f8a; color: #fff; padding: 0.5rem 0.75rem; text-align: left; font-weight: 600; }
+        .stability-table td { padding: 0.4rem 0.75rem; border-bottom: 1px solid #e8e8e8; font-size: 0.83rem; }
+        .stability-table tr:nth-child(even) td { background: #f5f8fc; }
+        .sim-high { color: #1a7a3a; font-weight: 600; }
+        .sim-mid  { color: #7a6000; font-weight: 600; }
+        .sim-low  { color: #b00000; font-weight: 600; }
         .fig-block { margin: 1.5rem 0; }
         .fig-block img { width: 100%; border: 1px solid #e0e0e0; border-radius: 8px; }
         .fig-caption { font-size: 0.80rem; color: #666; margin-top: 0.4rem; font-style: italic; }
@@ -37,28 +44,37 @@
         @media (max-width: 640px) { .fig-grid { grid-template-columns: 1fr; } }
         .limitation-list li { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.3rem; }
         .data-note { background: #f0f7ee; border: 1px solid #b2d8b2; border-left: 4px solid #2e8b57; border-radius: 0 8px 8px 0; padding: 1.1rem 1.4rem; margin: 0.5rem 0 1rem; }
+        .warn-note { background: #fef9ec; border: 1px solid #f0d060; border-left: 4px solid #b7770d; border-radius: 0 8px 8px 0; padding: 0.9rem 1.3rem; margin: 0.75rem 0; }
         .role-relevance { background: #e8f4fd; border-left: 4px solid var(--secondary-color); border-radius: 0 8px 8px 0; padding: 0.8rem 1.3rem; margin: 1rem 0 1.5rem; }
         .role-relevance .rr-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--secondary-color); margin: 0 0 0.2rem; }
         .role-relevance p { font-size: 0.87rem; color: #444; margin: 0; line-height: 1.55; }
+        .rep-doc-block { background: var(--light-color); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.6rem 0; border-left: 3px solid var(--secondary-color); }
+        .rep-doc-block .doc-meta { font-size: 0.78rem; color: #666; margin-bottom: 0.35rem; }
+        .rep-doc-block .doc-preview { font-size: 0.83rem; color: #333; font-style: italic; line-height: 1.5; }
+        .corpus-stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 0.85rem; margin: 1.25rem 0; }
+        .corpus-stat { background: var(--primary-color); color: #fff; border-radius: 8px; padding: 0.85rem 1rem; text-align: center; }
+        .corpus-stat .cs-val { font-size: 1.35rem; font-weight: 700; display: block; }
+        .corpus-stat .cs-lbl { font-size: 0.72rem; opacity: 0.85; display: block; margin-top: 0.2rem; }
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <a href="#main-content" class="skip-to-content">Zum Inhalt springen</a>
     <div class="loader"><div class="loader-spinner"></div></div>
     <div class="progress-container"><div class="progress-bar"></div></div>
 
     <header>
         <div class="container header-container">
             <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <button class="hamburger" id="hamburger" aria-label="Navigation öffnen">
                 <i class="fas fa-bars"></i>
             </button>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li>
-                    <li><a href="theses.html">Academic Work</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="projects.html" class="active">Projekte</a></li>
+                    <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
@@ -67,168 +83,370 @@
     <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content animate-fade-in">
-                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;"><a href="projects.html" style="color: inherit; text-decoration: underline;">Projects</a> &rsaquo; Text Analysis</p>
-                <h1 style="font-size: 2rem;">Political Text Analysis of Parliamentary Speeches</h1>
-                <p style="font-size: 1rem;">An end-to-end NLP pipeline for German Bundestag plenary transcripts: XML parsing, TF-IDF feature extraction, NMF topic modelling, and reproducible visual reporting.</p>
-                <span class="status-badge" style="background:#eafaf1;color:#1a7a45;border:1px solid #82c8a0;"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Applied NLP case study</span>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;"><a href="projects.html" style="color: inherit; text-decoration: underline;">Projekte</a> &rsaquo; Parlamentarische Textanalyse</p>
+                <h1 style="font-size: 1.85rem;">Thematische Strukturanalyse parlamentarischer Debatten</h1>
+                <p style="font-size: 1rem;">NLP-Pipeline über alle 214 Plenarsitzungen der 20. Wahlperiode des Deutschen Bundestags: automatisiertes XML-Parsing, TF-IDF-Merkmalsextraktion, NMF-Themenmodellierung mit Stabilitätsprüfung und repräsentativer Dokumentvalidierung.</p>
+                <span class="status-badge" style="background:#eaf7ee;color:#1a7a3a;border:1px solid #6fcf97;"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Vollständige Analyse &mdash; 214 Sitzungen &middot; 20. Wahlperiode &middot; 2021&ndash;2025</span>
             </div>
         </div>
     </section>
 
     <section>
         <div class="container">
-            <div class="card reveal" style="max-width: 900px; margin: 0 auto;">
+            <div class="card reveal" style="max-width: 960px; margin: 0 auto;">
 
-                <div class="info-grid">
+                <!-- Korpusstatistiken -->
+                <div class="corpus-stat-grid">
+                    <div class="corpus-stat">
+                        <span class="cs-val">214</span>
+                        <span class="cs-lbl">Plenarsitzungen</span>
+                    </div>
+                    <div class="corpus-stat">
+                        <span class="cs-val">26.992</span>
+                        <span class="cs-lbl">Redeeinheiten (nach Bereinigung)</span>
+                    </div>
+                    <div class="corpus-stat">
+                        <span class="cs-val">806</span>
+                        <span class="cs-lbl">Sprecher:innen (speaker_id)</span>
+                    </div>
+                    <div class="corpus-stat">
+                        <span class="cs-val">13,75 Mio.</span>
+                        <span class="cs-lbl">Roh-Wörter (vor Bereinigung)</span>
+                    </div>
+                    <div class="corpus-stat">
+                        <span class="cs-val">5,91 Mio.</span>
+                        <span class="cs-lbl">Bereinigte Wörter (nach Stopwortfilter)</span>
+                    </div>
+                    <div class="corpus-stat">
+                        <span class="cs-val">194.570</span>
+                        <span class="cs-lbl">Einzigartige Wortformen (Vokabular)</span>
+                    </div>
+                    <div class="corpus-stat">
+                        <span class="cs-val">8</span>
+                        <span class="cs-lbl">NMF-Themen (k=8)</span>
+                    </div>
+                    <div class="corpus-stat">
+                        <span class="cs-val">Okt.&nbsp;2021&nbsp;&ndash;&nbsp;Mär.&nbsp;2025</span>
+                        <span class="cs-lbl">Analysezeitraum</span>
+                    </div>
+                </div>
+
+                <div class="info-grid" style="margin-top: 0.5rem;">
                     <div class="info-box">
-                        <span class="label">Domain</span>
-                        <span class="value">Computational Text Analysis</span>
+                        <span class="label">Datenquelle</span>
+                        <span class="value">Bundestag Open Data (dl-de/by-2-0)</span>
                     </div>
                     <div class="info-box">
-                        <span class="label">Data</span>
-                        <span class="value">Bundestag Plenarprotokolle (XML)</span>
+                        <span class="label">Sprache</span>
+                        <span class="value">Python 3.13 · scikit-learn</span>
                     </div>
                     <div class="info-box">
-                        <span class="label">Language</span>
-                        <span class="value">Python 3.13</span>
+                        <span class="label">Methode</span>
+                        <span class="value">TF-IDF + NMF (k=8, Seed 42)</span>
                     </div>
                     <div class="info-box">
                         <span class="label">Status</span>
-                        <span class="value">Applied NLP case study</span>
+                        <span class="value">Vollständig ausgeführt &amp; validiert</span>
                     </div>
                 </div>
 
-                <!-- Role relevance -->
+                <!-- Stellenrelevanz -->
                 <div class="role-relevance">
-                    <p class="rr-label">Role relevance</p>
-                    <p>Demonstrates text-data processing, feature extraction, topic modelling, classification evaluation, and transparent communication of NLP results using public parliamentary records.</p>
+                    <p class="rr-label">Methodische Relevanz</p>
+                    <p>Zeigt strukturierte Verarbeitung großer deutschsprachiger Textbestände, reproduzierbare Merkmalsextraktion, unüberwachte thematische Extraktion aus Rohdaten sowie transparente Kommunikation von Ergebnissen und Grenzen &mdash; ohne Schlüsse zu ziehen, die über die methodische Aussagekraft der Daten hinausgehen.</p>
                 </div>
 
-                <!-- Result summary callout -->
+                <!-- Korpusdefinition -->
+                <div class="data-note" style="margin-top: 0.5rem;">
+                    <p style="margin:0 0 0.4rem;font-size:0.9rem;font-weight:600;color:#1a5c38;">Korpusdefinition: Was zählt als &bdquo;Rede&ldquo;?</p>
+                    <p style="margin:0;font-size:0.85rem;line-height:1.7;">Extrahiert werden alle <code>&lt;rede&gt;</code>-Elemente aus den offiziellen Bundestags-XML-Dateien — unabhängig von Länge oder Funktion. Das bedeutet: <strong>Sitzungsleitende Bemerkungen</strong> der Bundestagspräsident:innen sind enthalten (z.B. Bärbel Bas, Fraktion SPD). <strong>Mitglieder der Bundesregierung</strong> (Scholz, Habeck, Faeser u.a.) sind enthalten, erscheinen im XML ohne Fraktionszuordnung und werden als &bdquo;Unbekannt&ldquo; geführt (3.576 Reden, 101 Sprecher:innen). <strong>Zwischenrufe</strong> (<code>&lt;kommentar&gt;</code>-Elemente) sind <em>ausgeschlossen</em>. Prozedurale Annotationen im Redetext (Beifall, Zuruf etc.) werden in der Vorverarbeitung entfernt. 1 Rede mit 0 bereinigten Tokens nach der Vorverarbeitung wurde ausgeschlossen. Kurzantworten und Verfahrensbeiträge unter 50 Roh-Tokens: 512 Fälle (im Datensatz enthalten, aber gering gewichtet in der NMF).</p>
+                </div>
+
+                <!-- Analytische Zusammenfassung -->
                 <div class="result-callout">
-                    <strong>Summary:</strong> End-to-end NLP pipeline run on real Bundestag Plenarprotokoll XML files (open-data licence, directly downloadable from bundestag.de). Six plenary sessions from the 20th Bundestag (2021–2024) were parsed into a structured corpus of 180 speeches by 131 speakers. TF-IDF feature extraction and NMF topic modelling recover five interpretable thematic clusters: COVID response, agricultural legislation, the 2021 Belarus/Poland border crisis, climate and energy policy, and parliamentary procedural discourse.
+                    <strong>Analytische Zusammenfassung:</strong> Die NMF-Themenmodellierung (k=8) über den vollständigen Korpus der 20. Wahlperiode identifiziert acht lexikalisch kohärente Themencluster. Sechs der acht Themen erreichen eine Kosinus-Ähnlichkeit &ge;0,90 mit dem Vollkorpus-Modell in der mittleren Wahlperiode. Die thematische Entwicklung über die Zeit spiegelt nachweisbare politische Ereignisse wider: der Ukraine-Themencluster erreicht ab Februar 2022 eine deutlich erhöhte Prävalenz; der Energie- und Wirtschaftscluster intensiviert sich 2022/23; das Demokratie-Thema gewinnt 2023/24 an Gewicht. Diese Muster sind explorativ interpretierbar, nicht kausal.
                 </div>
 
-                <h3 class="card-title" style="margin-top: 1.5rem;">Research Question</h3>
-                <p>Can standard NLP methods recover meaningful thematic structure from German parliamentary speech transcripts, and how consistently do speeches cluster by policy domain rather than by party affiliation? The project prioritises workflow quality and reproducibility alongside analytical rigour.</p>
+                <h3 class="card-title">Analysefragestellung</h3>
+                <p>Welche thematischen Strukturen lassen sich mittels unüberwachter NLP-Methoden aus dem vollständigen Plenarprotokoll-Korpus der 20. Wahlperiode extrahieren? Sind die identifizierten Themencluster über Zeitabschnitte hinweg stabil, und spiegeln die zeitlichen Prävalenzverläufe nachvollziehbare politische Ereignisse wider?</p>
+                <p style="font-size: 0.88rem; color: #555; margin-top: 0.5rem;">Der Analysefokus liegt auf methodischer Reproduzierbarkeit und transparenter Darstellung der Ergebnisse. Die extrahierten Themen beschreiben lexikalische Häufungsmuster im Plenartext, keine politischen Positionen oder Bewertungen.</p>
 
-                <h3 class="card-title">Data Source</h3>
-                <p>German Bundestag Plenarprotokolle are published in a structured XML format under an open-data licence (<em>Datenlizenz Deutschland &ndash; Namensnennung &ndash; Version 2.0</em>). Each XML file contains one plenary session and encodes speaker name, parliamentary group (Fraktion), session date, and full speech text in a machine-readable structure defined by the official DTD (version 1.0.2, September 2023).</p>
-                <p style="margin-top: 0.5rem;">The pipeline uses six real plenary sessions directly downloaded from the Bundestag open-data portal: Sessions 1 (26 October 2021, inaugural session), 2 (11 November 2021), and 3 (18 November 2021) from the opening of the 20th Bundestag; and Sessions 180 (20 March 2024), 185 (17 April 2024), and 190 (8 May 2024) from 2024. This two-period sample spans both the coalition formation phase and a mid-term legislative period, providing a varied thematic cross-section.</p>
+                <!-- Datenquelle -->
+                <h3 class="card-title">Datenquelle</h3>
+                <p>Die Plenarprotokolle des Deutschen Bundestags werden im strukturierten XML-Format unter offener Lizenz veröffentlicht (<em>Datenlizenz Deutschland &ndash; Namensnennung &ndash; Version 2.0, dl-de/by-2-0</em>). Jede XML-Datei enthält eine vollständige Plenarsitzung mit maschinenlesbarer Struktur nach offiziellem DTD-Schema (Version 1.0.2, September 2023): Sitzungsnummer, Datum, Redner:in, Fraktion, Rede-ID und vollständiger Redetext.</p>
 
                 <div class="data-note">
-                    <p style="margin:0 0 0.3rem; font-size:0.9rem; font-weight:600; color:#1a5c38;">Data source</p>
-                    <p style="margin:0; font-size:0.88rem;">Deutscher Bundestag — Open Data Portal, <a href="https://www.bundestag.de/services/opendata" target="_blank" rel="noopener">bundestag.de/services/opendata</a>. Files are directly downloadable (no authentication required) under <em>Datenlizenz Deutschland &ndash; Namensnennung &ndash; Version 2.0 (dl-de/by-2-0)</em>.</p>
+                    <p style="margin:0 0 0.3rem; font-size:0.9rem; font-weight:600; color:#1a5c38;">Datenquelle</p>
+                    <p style="margin:0; font-size:0.88rem;">Deutscher Bundestag &mdash; Open-Data-Portal, <a href="https://www.bundestag.de/services/opendata" target="_blank" rel="noopener">bundestag.de/services/opendata</a>. 214 XML-Dateien, direkt herunterladbar (keine Authentifizierung erforderlich), Lizenz: <em>dl-de/by-2-0</em>. Vollständiger Zeitraum: 26. Oktober 2021 bis 18. März 2025.</p>
                 </div>
 
+                <!-- Pipeline -->
                 <h3 class="card-title">Pipeline</h3>
                 <div class="step-grid">
                     <div class="step-item">
                         <div class="step-number">1</div>
                         <div>
-                            <h4>Data Acquisition (<code>01_fetch_data.py</code>)</h4>
-                            <p>Loads sample XML files or downloads protocols via the Bundestag DIP REST API. Writes a session manifest and organises raw files by session number.</p>
+                            <h4>Download (<code>01_fetch_data.py</code>)</h4>
+                            <p>Automatisierter Download aller 214 XML-Dateien über offizielle Bundestag-URLs. URL-Liste und Session-Manifest werden als Artefakt gespeichert. Gesamtvolumen: ~191 MB.</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
                         <div>
-                            <h4>XML Parsing (<code>02_parse_xml.py</code>)</h4>
-                            <p>Traverses each <code>&lt;rede&gt;</code> element using lxml, extracts speaker name, Fraktion, speech ID, and paragraph text. Outputs a structured CSV corpus (one row per speech).</p>
+                            <h4>XML-Parsing (<code>02_parse_xml.py</code>)</h4>
+                            <p>lxml-basiertes Traversieren aller <code>&lt;rede&gt;</code>-Elemente. Extraktion: Sitzungsnummer, Datum, Rede-ID, Sprecher:in (Vor- und Nachname), Fraktion, Redetext. <code>&lt;kommentar&gt;</code>-Elemente (Beifall, Zwischenrufe) werden übersprungen. Ausgabe: strukturiertes CSV mit einer Zeile pro Rede.</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">3</div>
                         <div>
-                            <h4>Text Preprocessing (<code>03_preprocess.py</code>)</h4>
-                            <p>Removes procedural annotations (Beifall, Zuruf), applies NFKC normalisation, lowercases, strips punctuation, tokenises, and filters against a German stopword list covering function words and parliamentary filler phrases. Outputs a vocabulary frequency table.</p>
+                            <h4>Vorverarbeitung (<code>03_preprocess.py</code>)</h4>
+                            <p>NFKC-Normalisierung, Kleinschreibung, Satzzeichen-Entfernung, Tokenisierung, Filterung gegen eine kuratierte deutsche Stopwortliste (parlamentarische Phrasen und Funktionswörter). Vokabularstatistiken werden als Artefakt gespeichert.</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">4</div>
                         <div>
-                            <h4>TF-IDF &amp; NMF (<code>04_analyse.py</code>)</h4>
-                            <p>Builds a TF-IDF feature matrix (max 500 features, unigrams + bigrams, sublinear TF scaling). Fits a Non-negative Matrix Factorisation model (k = 5 topics, NNDSVDA initialisation) to recover latent topic structure. Optionally runs a logistic regression classifier to predict Fraktion from speech text.</p>
+                            <h4>TF-IDF &amp; NMF (<code>04_analyse_full.py</code>)</h4>
+                            <p>TF-IDF-Matrix (max_features=3.000, min_df=10, Unigramme+Bigramme, sublinear TF). NMF-Themenmodell: k=8, NNDSVDA-Initialisierung, Seed=42. Stabilitätsanalyse: drei temporale Teilkorpora &times; unabhängige NMF-Fits &times; Kosinus-Ähnlichkeit mit Vollkorpus-H-Matrix. Top-3-Repräsentativdokumente je Thema mit vollständiger Provenienz.</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">5</div>
                         <div>
-                            <h4>Visualisation (<code>05_visualise.py</code>)</h4>
-                            <p>Generates four static figures using matplotlib and seaborn: corpus composition, top TF-IDF terms, per-topic term charts, and speech-length distribution. All figures are reproducible from code — no manual editing.</p>
+                            <h4>Visualisierung (<code>05_visualise_full.py</code>)</h4>
+                            <p>Sechs statische Abbildungen (matplotlib, Agg-Backend, DPI=150): Korpusübersicht, Top-Terme je Thema, Stabilitätsheatmap, monatlicher Themenverlauf (gestapelt), Fraktion-Thema-Heatmap (explorativ), Redeverteilung nach Fraktion.</p>
                         </div>
                     </div>
                 </div>
 
-                <h3 class="card-title" style="margin-top: 1.5rem;">Results</h3>
+                <!-- Abbildung: Korpusübersicht -->
+                <h3 class="card-title" style="margin-top: 1.75rem;">Ergebnisse</h3>
 
-                <p><strong>Corpus:</strong> 180 speeches &nbsp;&middot;&nbsp; 6 sessions &nbsp;&middot;&nbsp; 131 unique speakers &nbsp;&middot;&nbsp; 6 Fraktionen &nbsp;&middot;&nbsp; 9,896 unique tokens after preprocessing &nbsp;&middot;&nbsp; mean speech length: 212 tokens (median: 222).</p>
-                <p style="font-size: 0.88rem; color: #555; margin-top: 0.3rem;">Party breakdown: SPD 41 speeches, CDU/CSU 41, AfD 26, Bündnis 90/Die Grünen 27, FDP 21, Die Linke 19. Reflects coalition composition of the 20th Bundestag.</p>
+                <div class="fig-block">
+                    <img src="images/projects/parliamentary-full/fig_corpus_overview.png"
+                         alt="Drei Balkendiagramme: 214 Plenarsitzungen verarbeitet, 26.992 Reden nach Bereinigung, 806 Sprecher:innen">
+                    <p class="fig-caption">Abb. 1 &mdash; Korpusübersicht: vollständige 20. Wahlperiode. 214 Sitzungen, 26.992 Reden nach Bereinigung, 806 eindeutige Sprecher:innen. Quelle: Bundestag Open Data (dl-de/by-2-0).</p>
+                </div>
 
-                <h4 style="font-size: 0.95rem; margin: 1.25rem 0 0.5rem;">NMF Topic Model — 5 Topics</h4>
-                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Topics are derived from term co-occurrence patterns in the real corpus. Labels are interpretive, not ground truth. Top terms shown as extracted by the model.</p>
+                <!-- Themenmodell-Tabelle -->
+                <h4 style="font-size: 0.97rem; margin: 1.5rem 0 0.5rem;">NMF-Themenmodell (k=8) &mdash; Top-Terme und Interpretation</h4>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Themenbezeichnungen sind interpretativ und beschreiben lexikalische Häufungen, keine verifizierten politischen Kategorien. Top-Terme werden direkt aus der NMF-H-Matrix entnommen (gewichtet nach NMF-Gewicht, absteigend).</p>
+
                 <table class="topic-table">
                     <thead>
-                        <tr><th>#</th><th>Top Terms (extracted)</th><th>Interpretation</th></tr>
+                        <tr><th>T#</th><th>Themenbezeichnung</th><th>Top-Terme (extrahiert)</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>1</td><td>landwirte, gesetzentwurf, betriebe, landwirten, gesetz, erhält</td><td>Agricultural legislation</td></tr>
-                        <tr><td>2</td><td>maßnahmen, lage, impfen, pandemie, länder, epidemischen, schulen</td><td>COVID-19 pandemic response</td></tr>
-                        <tr><td>3</td><td>lukaschenko, polen, grenze, europäische union, polnischen, europäischen</td><td>Belarus/Poland border crisis (2021)</td></tr>
-                        <tr><td>4</td><td>wahl, dank, freue, kollegin, vertrauen, werde</td><td>Parliamentary procedural / inaugural session</td></tr>
-                        <tr><td>5</td><td>deutschland, klimaschutz, energien, erneuerbaren, thema</td><td>Climate &amp; renewable energy</td></tr>
+                        <tr>
+                            <td>T1</td>
+                            <td>Parlamentarische Diskussionskultur / Debattenbeiträge</td>
+                            <td style="font-size:0.80rem; color:#555;"><em>ihnen, was, nichts, kollege, gar, wirklich, einfach, union, grünen, wie</em></td>
+                        </tr>
+                        <tr>
+                            <td>T2</td>
+                            <td>Ukraine / Russland / Europäische Sicherheitspolitik</td>
+                            <td style="font-size:0.80rem; color:#555;"><em>ukraine, russland, europa, krieg, europäischen, putin, nato, russischen, frieden, waffen</em></td>
+                        </tr>
+                        <tr>
+                            <td>T3</td>
+                            <td>Bildung, Soziales und Kommunalfinanzierung</td>
+                            <td style="font-size:0.80rem; color:#555;"><em>menschen, kinder, bildung, bund, kommunen, haushalt, länder, geld, familien, programm</em></td>
+                        </tr>
+                        <tr>
+                            <td>T4</td>
+                            <td>Energie- und Wirtschaftspolitik</td>
+                            <td style="font-size:0.80rem; color:#555;"><em>unternehmen, wirtschaft, energien, erneuerbaren, energie, gas, ausbau, strom, klimaschutz, industrie</em></td>
+                        </tr>
+                        <tr>
+                            <td>T5</td>
+                            <td>Fragestunde und Parlamentarische Anfragen</td>
+                            <td style="font-size:0.80rem; color:#555;"><em>frage, nachfrage, dank, minister, ministerin, nächste frage, fragen, thema</em></td>
+                        </tr>
+                        <tr>
+                            <td>T6</td>
+                            <td>Gesetzgebungsverfahren und Verwaltung</td>
+                            <td style="font-size:0.80rem; color:#555;"><em>gesetz, gesetzentwurf, verfahren, regelungen, umsetzung, regelung, entwurf, daten, maßnahmen</em></td>
+                        </tr>
+                        <tr>
+                            <td>T7</td>
+                            <td>Bundeswehr / Auslandseinsätze / Verteidigung</td>
+                            <td style="font-size:0.80rem; color:#555;"><em>soldaten, bundeswehr, soldatinnen, einsatz, mandat, mission, sicherheit, mali, nato, stabilität</em></td>
+                        </tr>
+                        <tr>
+                            <td>T8</td>
+                            <td>Demokratie, Gesellschaft und Wertedebatte</td>
+                            <td style="font-size:0.80rem; color:#555;"><em>menschen, demokratie, leben, land, gesellschaft, afd, deutschland, frauen, gewalt, freiheit</em></td>
+                        </tr>
                     </tbody>
                 </table>
 
-                <h4 style="font-size: 0.95rem; margin: 1.25rem 0 0.5rem;">Party Classification (exploratory)</h4>
-                <p style="font-size: 0.88rem; color: #555;">Logistic regression trained on TF-IDF features to predict Fraktion from speech text. 5-fold stratified cross-validation accuracy: <strong>32.0% ± 5.5%</strong> (6-class problem; random-chance baseline: ~17%). The model performs substantially better than chance, suggesting that speech vocabulary carries some party-specific signal even in a small cross-session sample. Results should not be over-interpreted given corpus size.</p>
-
-                <h4 style="font-size: 0.95rem; margin: 1.25rem 0 0.75rem;">Figures</h4>
-
-                <div class="fig-grid">
-                    <div class="fig-block">
-                        <img src="images/projects/parliamentary/fig1_speeches_by_party.png"
-                             alt="Bar chart showing number of speeches per parliamentary group: SPD 41, CDU/CSU 41, AfD 26, Grünen 27, FDP 21, Linke 19">
-                        <p class="fig-caption">Fig. 1 &mdash; Speeches by parliamentary group across 6 real sessions. SPD and CDU/CSU are joint-largest, reflecting the 20th Bundestag composition.</p>
-                    </div>
-                    <div class="fig-block">
-                        <img src="images/projects/parliamentary/fig2_top_tfidf_terms.png"
-                             alt="Horizontal bar chart of top 15 corpus-level TF-IDF terms including menschen, was, wie, dank, deutschland, heute">
-                        <p class="fig-caption">Fig. 2 &mdash; Top 15 TF-IDF terms (corpus mean) after German stopword removal. High-frequency civic and deliberative vocabulary reflects parliamentary register.</p>
-                    </div>
+                <!-- Abbildung: Top-Terme je Thema -->
+                <div class="fig-block">
+                    <img src="images/projects/parliamentary-full/fig_topic_terms_full.png"
+                         alt="Acht Balkendiagramme (2×4-Raster): Top-10-NMF-Terme je Thema für die acht extrahierten Themencluster">
+                    <p class="fig-caption">Abb. 2 &mdash; NMF-Themenmodell (k=8): Top-10-Terme je Thema nach NMF-Gewicht. Vollständiger Korpus: 214 Sitzungen, 26.992 Reden. Themenbezeichnungen sind interpretativ.</p>
                 </div>
+
+                <!-- Stabilitätsanalyse -->
+                <h3 class="card-title">Stabilitätsanalyse der Themen</h3>
+                <p>Um die Robustheit des Themenmodells zu beurteilen, wurde der Korpus chronologisch in drei Teilabschnitte gleicher Größe aufgeteilt. Für jeden Teilabschnitt wurde ein NMF-Modell mit identischen Parametern <strong>unabhängig trainiert</strong> — auf der Teilmenge der Dokument-Term-Matrix des jeweiligen Abschnitts. Der gemeinsame Merkmalsraum (TF-IDF-Vokabular) stammt aus dem Gesamtkorpus; die Modellparameter werden vollständig neu optimiert.</p>
+                <p style="font-size:0.86rem;color:#555;margin-top:0.4rem;">Die Kosinus-Ähnlichkeit zwischen den Themen-Term-Verteilungen (H-Matrizen) des Teil-Modells und des Vollkorpus-Modells misst, wie nah ein Teil-Thema dem entsprechenden Vollkorpus-Thema liegt. Zuordnung erfolgt per Greedy-Argmax: jedes Teil-Thema wird dem Vollkorpus-Thema mit der höchsten Ähnlichkeit zugeordnet. Im &bdquo;früh&ldquo;-Abschnitt führt dies zu Kollisionen (FC3 und FC4 werden je zweimal zugeordnet) — dies zeigt die Grenzen der Greedy-Methode und ist methodisch relevant.</p>
+                <p style="font-size:0.86rem;color:#555;margin-top:0.4rem;"><strong>Gesamtmittelwert über alle 24 Themen-Abschnitt-Paare: 0,867.</strong> Der oft zitierte Wert 0,963 bezieht sich ausschließlich auf den mittleren Zeitabschnitt (Jan. 2023–Apr. 2024), der die höchste Stabilität aufweist.</p>
+
+                <table class="stability-table">
+                    <thead>
+                        <tr>
+                            <th>Zeitabschnitt</th>
+                            <th>T1</th><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th><th>T7</th><th>T8</th>
+                            <th>Mittelwert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Früh</strong> (Okt.2021–ca.Dez.2022)<br><span style="font-size:0.73rem;color:#888;">n&asymp;8.997; Greedy-Kollisionen: FC3, FC4</span></td>
+                            <td class="sim-mid">0,746</td>
+                            <td class="sim-high">0,970</td>
+                            <td class="sim-mid">0,777</td>
+                            <td class="sim-mid">0,780</td>
+                            <td class="sim-low">0,550</td>
+                            <td class="sim-mid">0,634</td>
+                            <td class="sim-high">0,946</td>
+                            <td class="sim-high">0,972</td>
+                            <td><strong>0,797</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mittel</strong> (ca.Jan.2023–ca.Apr.2024)<br><span style="font-size:0.73rem;color:#888;">n&asymp;8.997; keine Kollisionen</span></td>
+                            <td class="sim-high">0,989</td>
+                            <td class="sim-high">0,950</td>
+                            <td class="sim-high">0,984</td>
+                            <td class="sim-high">0,956</td>
+                            <td class="sim-high">0,957</td>
+                            <td class="sim-high">0,973</td>
+                            <td class="sim-high">0,978</td>
+                            <td class="sim-high">0,920</td>
+                            <td><strong>0,963</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spät</strong> (ca.Mai 2024–Mär.2025)<br><span style="font-size:0.73rem;color:#888;">n&asymp;8.998; keine Kollisionen</span></td>
+                            <td class="sim-high">0,935</td>
+                            <td class="sim-high">0,944</td>
+                            <td class="sim-mid">0,810</td>
+                            <td class="sim-high">0,949</td>
+                            <td class="sim-high">0,932</td>
+                            <td class="sim-high">0,947</td>
+                            <td class="sim-high">0,946</td>
+                            <td class="sim-low">0,273</td>
+                            <td><strong>0,842</strong></td>
+                        </tr>
+                        <tr style="background:#f5f8fc;font-style:italic;">
+                            <td><strong>Gesamtmittel</strong> (24 Themen-Abschnitt-Paare)</td>
+                            <td colspan="8" style="text-align:center;color:#555;font-size:0.83rem;">—</td>
+                            <td><strong>0,867</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.83rem; color: #555; margin-top: 0.3rem;"><strong>Farbkodierung:</strong> <span class="sim-high">grün ≥ 0,90</span> &nbsp;|&nbsp; <span class="sim-mid">gelb 0,70–0,89</span> &nbsp;|&nbsp; <span class="sim-low">rot &lt; 0,70</span>. Werte = Kosinus-Ähnlichkeit (Greedy-Argmax) der Teil-Themenverteilung mit dem Vollkorpus-Thema. Gesamtmittel 0,867 über alle 24 Paare.</p>
+
+                <div class="warn-note" style="margin-top: 0.75rem;">
+                    <p style="margin:0 0 0.3rem; font-size:0.88rem; font-weight:700; color:#7a5200;"><i class="fas fa-info-circle" style="margin-right:0.4rem;"></i>Methodische Einschränkungen der Stabilitätsanalyse</p>
+                    <p style="margin:0; font-size:0.85rem; color:#5c3d00; line-height:1.65;"><strong>T5 (Fragestunde), früh (0,550):</strong> Der Fragestunden-Cluster ist im frühen Abschnitt noch nicht konsolidiert. Im frühen Abschnitt werden T1 (FC3) und T4 (FC3) sowie T3 (FC4) und T6 (FC4) jeweils auf dasselbe Vollkorpus-Thema zugeordnet (Greedy-Kollision), was die Vergleichbarkeit einschränkt. <strong>T8 (Demokratie/Wertedebatte), spät (0,273):</strong> Das stark abweichende Ergebnis zeigt, dass das NMF-Modell für den späten Abschnitt auf einem anderen lokalen Optimum einrastet. Dies ist eine algorithmische Eigenschaft, keine inhaltliche Aussage. <strong>Gesamtbewertung:</strong> Die Stabilitätsanalyse ist ein ergänzendes Sensitivitätsmerkmal, kein formaler Gütetest. Ein robusterer Ansatz würde Hungarian Matching und unabhängige TF-IDF-Vokabulare je Abschnitt verwenden.</p>
+                </div>
+
+                <!-- Stabilitäts-Heatmap -->
+                <div class="fig-block" style="margin-top: 1.25rem;">
+                    <img src="images/projects/parliamentary-full/fig_topic_stability.png"
+                         alt="Heatmap der Kosinus-Ähnlichkeiten: drei Zeilen (früh, mittel, spät) × acht Spalten (T1-T8). Mittlerer Abschnitt zeigt fast überall dunkelgrüne Werte ≥0,92.">
+                    <p class="fig-caption">Abb. 3 &mdash; Themenstabilität: Kosinus-Ähnlichkeit der Themen-Term-Verteilungen zwischen drei Zeitabschnitten und dem Vollkorpus-Modell. Der mittlere Abschnitt (Jan. 2023–Apr. 2024) zeigt die höchste Stabilität (Ø 0,963).</p>
+                </div>
+
+                <!-- Monatlicher Themenverlauf -->
+                <h3 class="card-title">Zeitlicher Themenverlauf</h3>
+                <p>Die monatlichen mittleren NMF-Gewichte je Thema zeigen, wie die thematische Zusammensetzung der Plenardebatten über die Wahlperiode variiert. Die gestapelte Fläche gibt die relative Präsenz der acht Themen je Kalendermonat wieder.</p>
 
                 <div class="fig-block">
-                    <img src="images/projects/parliamentary/fig3_topic_terms.png"
-                         alt="Five-panel subplot showing top NMF terms per topic: agricultural legislation, COVID pandemic, Belarus border crisis, parliamentary procedural, climate and energy">
-                    <p class="fig-caption">Fig. 3 &mdash; NMF topic model (k = 5) on real corpus. Each panel shows the top terms by NMF weight for one latent topic. The topics correspond to real legislative and geopolitical events in the 20th Bundestag: the 2021 pandemic, the Belarus/Poland border crisis, agricultural legislation, and climate policy.</p>
+                    <img src="images/projects/parliamentary-full/fig_monthly_prevalence.png"
+                         alt="Gestapeltes Flächendiagramm: monatliche NMF-Themengewichte für acht Themen von Oktober 2021 bis März 2025. Zwei vertikale Markierungen: Invasion Ukraine (Feb. 2022) und Haushaltskrise (Nov. 2023).">
+                    <p class="fig-caption">Abb. 4 &mdash; Thematische Schwerpunkte im Zeitverlauf: monatliche mittlere NMF-Gewichte (gestapelt). Ereignismarkierungen: Russlands Invasion der Ukraine (24. Februar 2022) und Bundesverfassungsgerichtsurteil zum Bundeshaushalt (November 2023). Muster sind explorativ; keine Kausalaussagen.</p>
                 </div>
 
-                <div class="fig-block">
-                    <img src="images/projects/parliamentary/fig4_speech_length_dist.png"
-                         alt="Box plot showing speech length distribution by parliamentary group, with median around 220 tokens and some variation across groups">
-                    <p class="fig-caption">Fig. 4 &mdash; Speech length (tokens after preprocessing) by Fraktion. Distributions reflect the structured speaking time in Bundestag debate rounds. Outliers correspond to longer ministerial or committee statements.</p>
+                <!-- Repräsentativdokumente -->
+                <h3 class="card-title">Repräsentativdokumente je Thema</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Die jeweils drei Reden mit dem höchsten NMF-Gewicht je Thema dienen zur manuellen Plausibilitätsprüfung der Themenzuweisungen. Alle Angaben sind aus dem Parsing der offiziellen XML-Protokolle entnommen.</p>
+
+                <h4 style="font-size: 0.92rem; margin: 1.25rem 0 0.4rem;">T2 — Ukraine / Russland / Europäische Sicherheitspolitik</h4>
+                <div class="rep-doc-block">
+                    <p class="doc-meta">Rang 1 &nbsp;&middot;&nbsp; Score 0,1229 &nbsp;&middot;&nbsp; <strong>Adis Ahmetovic (SPD)</strong> &nbsp;&middot;&nbsp; 85. Sitzung, 9. Februar 2023 &nbsp;&middot;&nbsp; Rede-ID: ID208506200</p>
+                    <p class="doc-preview">„Eines habe ich in der Schule gelernt: Falsche Aussagen bleiben falsch, egal ob sie geschrieben, gesprochen oder geschrien werden [...] Vor genau einem Jahr durfte ich hier [...] meine erste Rede halten – quasi zum selben Thema –, nur wenige Tage vor dem Einmarsch Russlands in die Ukraine [...]"</p>
+                </div>
+                <div class="rep-doc-block">
+                    <p class="doc-meta">Rang 2 &nbsp;&middot;&nbsp; Score 0,1203 &nbsp;&middot;&nbsp; <strong>Olaf Scholz (Bundesregierung)</strong> &nbsp;&middot;&nbsp; 75. Sitzung, 14. Dezember 2022 &nbsp;&middot;&nbsp; Rede-ID: ID207500100</p>
+                    <p class="doc-preview">„Russlands Angriffskrieg gegen die Ukraine ist ein entsetzlicher Einschnitt. Er trifft zuallererst die Ukrainerinnen und Ukrainer. Sie ertragen seit fast zehn Monaten Vertreibung und Verschleppung, Verwundung und Tod [...]"</p>
+                </div>
+                <div class="rep-doc-block">
+                    <p class="doc-meta">Rang 3 &nbsp;&middot;&nbsp; Score 0,1196 &nbsp;&middot;&nbsp; <strong>Christian Dürr (FDP)</strong> &nbsp;&middot;&nbsp; 19. Sitzung, 27. Februar 2022 &nbsp;&middot;&nbsp; Rede-ID: ID201901100</p>
+                    <p class="doc-preview">„Die Realität in Europa so zu verzerren [...] ist niederträchtig. [...] Die Bundesrepublik Deutschland ist eine wehrhafte Demokratie, und zwar nach außen – das beweist die Mehrheit des Deutschen Bundestages gerade [...]"</p>
                 </div>
 
-                <h3 class="card-title">Limitations</h3>
+                <h4 style="font-size: 0.92rem; margin: 1.25rem 0 0.4rem;">T7 — Bundeswehr / Auslandseinsätze / Verteidigung</h4>
+                <div class="rep-doc-block">
+                    <p class="doc-meta">Rang 1 &nbsp;&middot;&nbsp; Score 0,1679 &nbsp;&middot;&nbsp; <strong>Boris Pistorius (Bundesregierung)</strong> &nbsp;&middot;&nbsp; 154. Sitzung, 22. Februar 2024 &nbsp;&middot;&nbsp; Rede-ID: ID2015410800</p>
+                    <p class="doc-preview">„Die Männer und Frauen unserer Bundeswehr tragen weltweit dazu bei, Terror zu bekämpfen, Frieden und Stabilität zu sichern. Sie bilden aus, sie beraten, sie unterstützen bei der Einhaltung von Friedensabkommen [...]"</p>
+                </div>
+                <div class="rep-doc-block">
+                    <p class="doc-meta">Rang 2 &nbsp;&middot;&nbsp; Score 0,1583 &nbsp;&middot;&nbsp; <strong>Boris Pistorius (Bundesregierung)</strong> &nbsp;&middot;&nbsp; 102. Sitzung, 10. Mai 2023 &nbsp;&middot;&nbsp; Rede-ID: ID2010211800</p>
+                    <p class="doc-preview">„Seit zehn Jahren sind deutsche Kräfte bei MINUSMA aktiv. Mehr als 18 000 deutsche Soldatinnen und Soldaten waren in diesem Zeitraum bisher bei dieser UN-Mission im Einsatz [...]"</p>
+                </div>
+
+                <h4 style="font-size: 0.92rem; margin: 1.25rem 0 0.4rem;">T8 — Demokratie, Gesellschaft und Wertedebatte</h4>
+                <div class="rep-doc-block">
+                    <p class="doc-meta">Rang 1 &nbsp;&middot;&nbsp; Score 0,1121 &nbsp;&middot;&nbsp; <strong>Nancy Faeser (Bundesregierung)</strong> &nbsp;&middot;&nbsp; 10. Sitzung, 12. Januar 2022 &nbsp;&middot;&nbsp; Rede-ID: ID201006200</p>
+                    <p class="doc-preview">„Wir wollen mehr Fortschritt wagen. Fortschritt braucht Sicherheit. Nur so werden wir den notwendigen Rückhalt für Veränderungen haben. Wir sind ein starkes Land. Die überwältigende Mehrheit in unserem Land steht hinter unserer Demokratie [...]"</p>
+                </div>
+                <div class="rep-doc-block">
+                    <p class="doc-meta">Rang 2 &nbsp;&middot;&nbsp; Score 0,1110 &nbsp;&middot;&nbsp; <strong>Nancy Faeser (Bundesregierung)</strong> &nbsp;&middot;&nbsp; 134. Sitzung, 9. November 2023 &nbsp;&middot;&nbsp; Rede-ID: ID2013400100</p>
+                    <p class="doc-preview">„Sehr verehrte Damen und Herren! Liebe Margot Friedländer! [...] „Es wird eine Zeit kommen, wo man sich fragt, wie ein bis dahin gesittetes, anständiges Volk sich zu solchen Greueltaten veranlassen konnte." Das schrieb der Düsseldorfer Jude Albert Herzfeld im Rückblick [...]"</p>
+                </div>
+
+                <!-- Fraktion-Thema (explorativ) -->
+                <h3 class="card-title">Explorative Analyse: Fraktion &times; Thema</h3>
+
+                <div class="warn-note">
+                    <p style="margin:0 0 0.25rem; font-size:0.88rem; font-weight:700; color:#7a5200;"><i class="fas fa-exclamation-triangle" style="margin-right:0.4rem;"></i>Explorativ — keine kausalen Aussagen</p>
+                    <p style="margin:0; font-size:0.85rem; color:#5c3d00; line-height:1.6;">Mitglieder der Bundesregierung (Scholz, Habeck, Faeser, Pistorius u.a.) erscheinen im XML ohne Fraktionszuordnung und werden als „Unbekannt" geführt. Die Fraktion-Thema-Heatmap zeigt lexikalische Häufungsmuster, keine politischen Positionen oder kausalen Zusammenhänge.</p>
+                </div>
+
+                <div class="fig-grid" style="margin-top: 0.75rem;">
+                    <div class="fig-block">
+                        <img src="images/projects/parliamentary-full/fig_fraktion_topics.png"
+                             alt="Heatmap: Fraktion (y-Achse) × Thema (x-Achse), mittleres NMF-Gewicht als Farbintensität">
+                        <p class="fig-caption">Abb. 5 &mdash; Mittleres NMF-Gewicht je Thema und Fraktion (explorativ). Hellere Felder indizieren höhere mittlere Themengewichte in Reden dieser Fraktion.</p>
+                    </div>
+                    <div class="fig-block">
+                        <img src="images/projects/parliamentary-full/fig_speeches_by_fraktion.png"
+                             alt="Balkendiagramm: Anzahl Reden nach Fraktion. CDU/CSU und SPD am stärksten, AfD und Grüne folgen.">
+                        <p class="fig-caption">Abb. 6 &mdash; Redeverteilung nach Fraktion: 214 Sitzungen, 26.992 Reden. Kat. „Unbekannt" = Bundesregierungsmitglieder ohne Fraktionszuordnung in der XML-Quelle.</p>
+                    </div>
+                </div>
+
+                <!-- Grenzen der Analyse -->
+                <h3 class="card-title">Grenzen der Analyse</h3>
                 <ul class="limitation-list" style="padding-left: 1.5rem;">
-                    <li><strong>Corpus size:</strong> Six sessions (180 speeches) is a small sample of the full 20th Bundestag corpus (214 sessions). TF-IDF and NMF results are exploratory; robust topic inference and classification would require several thousand speeches across a representative session sample.</li>
-                    <li><strong>Session selection:</strong> The two time windows (Oct–Nov 2021 and Mar–May 2024) may not be representative of the full Wahlperiode. The inaugural sessions in particular contain atypically many procedural speeches.</li>
-                    <li><strong>German compound words:</strong> Compound splitting is not applied; compounds like <em>Digitalisierungsstrategie</em> are treated as single tokens, reducing recall on semantically related terms.</li>
-                    <li><strong>Party classification accuracy:</strong> The 5-fold CV accuracy (32%) reflects a genuinely difficult 6-class problem on a small corpus. The figure is reported with appropriate caveats and should not be over-interpreted.</li>
-                    <li><strong>Topic labels:</strong> NMF topic assignments are exploratory, not confirmatory — they describe lexical clusters, not verified political categories.</li>
+                    <li><strong>Korpusinhalt:</strong> Der Datensatz enthält <em>alle</em> <code>&lt;rede&gt;</code>-Elemente — einschließlich kurzer Sitzungsleitungs-Beiträge, Verfahrensformulierungen und Kurzantworten der Bundesregierung. Nicht alle Einheiten sind &bdquo;Substanzreden&ldquo; im politischen Sinn.</li>
+                    <li><strong>Stabilitätsmethodik:</strong> Die Stabilitätsanalyse nutzt ein gemeinsames TF-IDF-Vokabular (Gesamtkorpus) für alle Teilabschnitte, keine vollständig unabhängigen Merkmalräume. Zuordnung per Greedy-Argmax (kein Hungarian Matching). Im frühen Abschnitt treten Kollisionen auf (zwei Teil-Themen je auf dasselbe Vollkorpus-Thema zugeordnet). Gesamtmittelwert 0,867 über alle 24 Paare; der Wert 0,963 bezieht sich nur auf den mittleren Zeitabschnitt.</li>
+                    <li><strong>Unüberwachte Themenextraktion:</strong> NMF-Themen sind lexikalische Cluster, keine verifizierten inhaltlichen Kategorien. Themenbezeichnungen sind interpretativ und können anders bezeichnet werden.</li>
+                    <li><strong>Komposita:</strong> Compound-Splitting wurde nicht angewendet. Komposita (z.B. <em>Digitalisierungsstrategie</em>) werden als einzelne Tokens verarbeitet, was die Recall-Rate semantisch verwandter Terme reduziert.</li>
+                    <li><strong>k-Wahl:</strong> k=8 wurde anhand der Interpretierbarkeit gewählt, nicht durch ein formales Kohärenzmaß. Andere k-Werte können andere, ebenso kohärente Themenstrukturen erzeugen.</li>
+                    <li><strong>Fraktion-Zuordnung:</strong> Mitglieder der Bundesregierung erscheinen ohne Fraktionszuordnung im XML-Format (101 Sprecher:innen, 3.576 Reden). Fraktion-bezogene Analysen sind entsprechend eingeschränkt.</li>
+                    <li><strong>T8-Instabilität (spät) und Greedy-Kollisionen (früh):</strong> Zwei methodische Befunde, die getrennt interpretiert werden müssen — beide sind Algorithmuseigenschaften, keine inhaltlichen Befunde. Dokumentation in der Stabilitätstabelle.</li>
+                    <li><strong>Keine politischen Schlüsse:</strong> Die Analyse beschreibt lexikalische Häufungsmuster in öffentlichen Plenarprotokollen. Sie enthält keine Aussagen über politische Positionen, Absichten oder Parteiverhalten.</li>
                 </ul>
 
-                <h3 class="card-title">Next Steps</h3>
-                <ul style="padding-left: 1.5rem; font-size: 0.95rem; line-height: 2;">
-                    <li>Extend to the full 20th Bundestag corpus (214 sessions, directly downloadable from bundestag.de)</li>
-                    <li>Add German compound splitting (using <code>CharSplit</code> or a custom trie-based splitter)</li>
-                    <li>Tune NMF topic count <em>k</em> using coherence metrics across a range of values</li>
-                    <li>Add time-series analysis: topic share per session over the Wahlperiode</li>
-                    <li>Evaluate Fraktion classification at larger corpus scale, with proper train/test splits</li>
-                    <li>Extend to cross-party bigram analysis (shared vocabulary patterns and divergence)</li>
-                </ul>
+                <!-- Reproduzierbarkeit -->
+                <h3 class="card-title">Reproduzierbarkeit</h3>
+                <p>Die vollständige Pipeline läuft in fünf nummerierten Skripten (<code>01</code>&ndash;<code>05</code>), die sequenziell aus einem frischen Clone ausgeführt werden können. Alle 214 Quell-XML-Dateien sind direkt über öffentliche Bundestag-URLs abrufbar. Parameter: TF-IDF max_features=3.000, min_df=10; NMF k=8, NNDSVDA, Seed=42. Alle Abbildungen werden vollständig aus Code generiert — kein manuelles Nachbearbeiten. Output-Artefakte: <code>full_corpus_stats.json</code>, <code>topic_terms_full.csv</code>, <code>topic_stability.csv</code>, <code>representative_docs.csv</code>, <code>monthly_topic_share.csv</code>, <code>fraktion_topic.csv</code>, <code>doc_topics_full.csv</code>.</p>
 
+                <!-- Tools -->
                 <h3 class="card-title">Tools</h3>
                 <div class="tag-row">
                     <span class="tag">Python 3.13</span>
@@ -236,24 +454,21 @@
                     <span class="tag">pandas</span>
                     <span class="tag">scikit-learn</span>
                     <span class="tag">TF-IDF</span>
-                    <span class="tag">NMF</span>
+                    <span class="tag">NMF (k=8)</span>
                     <span class="tag">matplotlib</span>
-                    <span class="tag">seaborn</span>
+                    <span class="tag">NumPy</span>
                     <span class="tag">Git</span>
                 </div>
 
-                <h3 class="card-title">Reproducibility</h3>
-                <p>The full pipeline runs in five numbered scripts (<code>01</code>&ndash;<code>05</code>) that can be executed sequentially from a fresh clone. All dependencies are pinned in <code>requirements.txt</code>. Figures are generated entirely from code; no manual post-processing. The parser switches automatically between sample XML and API-downloaded data depending on what is available in <code>data/</code>.</p>
-
-                <!-- Ethical note -->
+                <!-- Ethik- und Datenschutzhinweis -->
                 <div class="data-note" style="margin-top: 1.5rem;">
-                    <p style="margin:0 0 0.4rem; font-size:0.9rem; font-weight:600; color:#1a5c38;">Data use &amp; ethical note</p>
-                    <p style="margin:0; font-size:0.88rem;">This project uses public parliamentary speech data published in official open-access records by the German Bundestag. It is a methodological demonstration of text preprocessing, topic exploration, and transparent visualisation. It does not involve private data, operational analysis, or profiling of private individuals. No political claims or partisan interpretations are drawn from the results. All outputs describe aggregate patterns in publicly available institutional text.</p>
+                    <p style="margin:0 0 0.4rem; font-size:0.9rem; font-weight:600; color:#1a5c38;">Datenverwendung &amp; Ethikhinweis</p>
+                    <p style="margin:0; font-size:0.88rem; line-height:1.65;">Dieses Projekt verarbeitet ausschließlich öffentlich zugängliche parlamentarische Plenarprotokolle, die der Deutsche Bundestag unter offener Lizenz (dl-de/by-2-0) bereitstellt. Es handelt sich um eine methodische Demonstration automatisierter Textverarbeitung auf Aggregatebene. Es werden keine privaten Daten verarbeitet, keine individuellen Profile erstellt und keine politischen Bewertungen vorgenommen. Alle Ergebnisse beschreiben Muster im öffentlichen parlamentarischen Sprachgebrauch.</p>
                 </div>
 
                 <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                    <a href="projects.html" class="btn btn-outline hover-lift"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Projects</a>
-                    <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn hover-lift"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>View on GitHub</a>
+                    <a href="projects.html" class="btn btn-outline hover-lift"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Zurück zu den Projekten</a>
+                    <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn hover-lift"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>Auf GitHub ansehen</a>
                 </div>
             </div>
         </div>
@@ -261,23 +476,24 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <p>&copy; 2026 Jonathan Gödeke. Alle Rechte vorbehalten.</p>
             <ul class="social-icons">
                 <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
                 <li><a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
             </ul>
             <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="theses.html">Academic Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="mailto:goedeke@wiso.uni-koeln.de">Email</a></li>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="projects.html">Projekte</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+                <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
             </ul>
         </div>
     </footer>
 
-    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button class="back-to-top" aria-label="Nach oben"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Dunkelmodus umschalten"><i class="fas fa-moon"></i></button>
     <script src="js/main.js"></script>
 </body>
 </html>

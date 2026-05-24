@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trends in Politically Motivated Crime: Public Data Dashboard | Jonathan Gödeke</title>
-    <meta name="description" content="Reproducible descriptive analysis of Germany's official PMK statistics (BMI/BKA 2024): dataset construction from official aggregate sources, checksum validation, and sober visualisation of publicly available administrative data.">
+    <title>PMK-Datenprojekt: Amtliche Statistiken zur Politisch Motivierten Kriminalität | Jonathan Gödeke</title>
+    <meta name="description" content="Reproduzierbarer, prüfsummenvalidierter Analyseworkflow für amtliche PMK-Aggregatstatistiken aus BMI/BKA-Publikationen — 15/15 Validierungsprüfungen bestanden, transparente Quellendokumentation, explorative Visualisierungen.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/accessibility.css">
@@ -56,22 +56,23 @@
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <a href="#main-content" class="skip-to-content">Zum Inhalt springen</a>
     <div class="loader"><div class="loader-spinner"></div></div>
     <div class="progress-container"><div class="progress-bar"></div></div>
 
     <header>
         <div class="container header-container">
             <div class="logo"><a href="index.html">Jonathan Gödeke</a></div>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <button class="hamburger" id="hamburger" aria-label="Navigation öffnen">
                 <i class="fas fa-bars"></i>
             </button>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li>
-                    <li><a href="theses.html">Academic Work</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="projects.html" class="active">Projekte</a></li>
+                    <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
@@ -80,10 +81,13 @@
     <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content animate-fade-in">
-                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;"><a href="projects.html" style="color: inherit; text-decoration: underline;">Projects</a> &rsaquo; Public Data Dashboard</p>
-                <h1 style="font-size: 2rem;">Trends in Politically Motivated Crime: Public Data Dashboard</h1>
-                <p style="font-size: 1rem;">Reproducible descriptive analysis of Germany's official PMK aggregate statistics — dataset construction from BMI/BKA publications, checksum validation, and sober visualisation of publicly available administrative data.</p>
-                <span class="status-badge" style="background:#eafaf1;color:#1a7a45;border:1px solid #82c8a0;"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Public-data case study</span>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.5rem;"><a href="projects.html" style="color: inherit; text-decoration: underline;">Projekte</a> &rsaquo; PMK-Datenprojekt</p>
+                <h1 style="font-size: 2rem;">Politisch Motivierte Kriminalität: Öffentliches Datenanalyse-Dashboard</h1>
+                <p style="font-size: 1rem;">Dokumentierter, prüfsummenvalidierter Analyseworkflow für amtliche PMK-Aggregatstatistiken aus BMI/BKA-Publikationen — reproduzierbare Visualisierungen und explizite Trennung zwischen erfassten Fallzahlen und weitergehenden Schlussfolgerungen.</p>
+                <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; margin-top: 0.8rem;">
+                    <span class="status-badge" style="background:#eafaf1;color:#1a7a45;border:1px solid #82c8a0;"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Vollständige Analyse</span>
+                    <a href="pmk-brief.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.6); color: inherit;"><i class="fas fa-print" style="margin-right: 0.4rem;"></i>Druckbares Briefing</a>
+                </div>
             </div>
         </div>
     </section>
@@ -94,183 +98,274 @@
 
                 <div class="info-grid">
                     <div class="info-box">
-                        <span class="label">Domain</span>
-                        <span class="value">Public Administrative Data</span>
+                        <span class="label">Bereich</span>
+                        <span class="value">Öffentliche Verwaltungsdaten</span>
                     </div>
                     <div class="info-box">
-                        <span class="label">Source</span>
-                        <span class="value">BMI / BKA (official aggregate)</span>
+                        <span class="label">Quelle</span>
+                        <span class="value">BMI / BKA (amtliche Aggregatdaten)</span>
                     </div>
                     <div class="info-box">
-                        <span class="label">Period covered</span>
+                        <span class="label">Abdeckung</span>
                         <span class="value">2022–2024</span>
                     </div>
                     <div class="info-box">
-                        <span class="label">Language</span>
+                        <span class="label">Sprache</span>
                         <span class="value">Python 3.13</span>
                     </div>
                     <div class="info-box">
                         <span class="label">Status</span>
-                        <span class="value">Public-data case study</span>
+                        <span class="value">Öffentliche Daten, Fallstudie</span>
                     </div>
                     <div class="info-box">
-                        <span class="label">Validation</span>
-                        <span class="value">4 checksums passing</span>
+                        <span class="label">Validierung</span>
+                        <span class="value">15/15 Prüfungen bestanden</span>
                     </div>
                 </div>
 
-                <!-- Ethics first — prominent placement -->
+                <!-- Executive Briefing -->
+                <div style="background:#f8f9fa;border:1px solid #dee2e6;border-radius:8px;padding:1.2rem 1.4rem;margin:1rem 0;">
+                    <p style="margin:0 0 0.6rem;font-size:0.95rem;font-weight:700;color:var(--primary-color);">Analytisches Executive Briefing</p>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Gegenstand</p>
+                    <p style="margin:0 0 0.85rem;font-size:0.88rem;color:#333;line-height:1.65;">Deskriptive Aufbereitung und Visualisierung amtlicher PMK-Aggregatstatistiken (BMI/BKA, 2023–2024) mit vollständiger Quellendokumentation, automatisierter Konsistenzvalidierung und expliziten Interpretationsgrenzen.</p>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Datenbasis</p>
+                    <p style="margin:0 0 0.85rem;font-size:0.88rem;color:#333;line-height:1.65;">BMI/BKA Gemeinsame Pressekonferenzen PMK 2023 (20. Mai 2024) und PMK 2024 (20. Mai 2025). Amtliche Gesamtzahlen: 60.028 Straftaten (2023) und 84.172 Straftaten (2024). Prüfsummenvalidiert gegen vier offizielle Einzelwerte.</p>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Drei belegte Befunde</p>
+                    <ol style="margin:0 0 0.85rem;padding-left:1.3rem;font-size:0.87rem;color:#333;line-height:1.8;">
+                        <li>Die PMK-Gesamtzahl stieg von 60.028 (2023) auf 84.172 (2024) — ein Anstieg um +40,2&nbsp;%, der laut BMI/BKA der höchste seit Einführung der PMK-Statistik im Jahr 2001 ist.</li>
+                        <li>PMK-rechts bildet mit 42.788 Straftaten (50,8&nbsp;% der 2024er Gesamtzahl) den größten Phänomenbereich; PMK-ausländische Ideologie hat mit +98,6&nbsp;% den stärksten relativen Anstieg bei Gewalttaten.</li>
+                        <li>Antisemitische Straftaten stiegen von 2.641 (2022) auf 5.164 (2023) auf 6.236 (2024) — alle drei Werte direkt aus amtlichen BMI/BKA-Berichten.</li>
+                    </ol>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Was diese Analyse nicht belegt</p>
+                    <p style="margin:0 0 0.85rem;font-size:0.88rem;color:#333;line-height:1.65;">Die beobachteten Veränderungen können Anzeigeverhalten, Erfassungsprioritäten, Definitionsanpassungen oder reale Inzidenzveränderungen widerspiegeln — diese Faktoren sind aus Aggregatdaten nicht trennbar. Es werden keine Ursachen benannt, keine Prognosen gemacht, keine individuellen Täter- oder Opferdaten analysiert.</p>
+
+                    <p style="margin:0 0 0.4rem;font-size:0.82rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.4px;">Reproduzierbarkeit &amp; Aktualität</p>
+                    <p style="margin:0;font-size:0.88rem;color:#333;line-height:1.65;">Vollständig ausführbarer Workflow (<code>make all</code>). Daten zuletzt abgeglichen: 24. Mai 2026. Erweiterung auf frühere Jahre: methodisch geplant, Vergleichbarkeitsprüfung ausstehend.</p>
+                </div>
+
+                <!-- Ethikhinweis -->
                 <div class="ethics-note">
-                    <p style="margin:0 0 0.4rem;font-size:0.9rem;font-weight:700;color:#1a5c38;"><i class="fas fa-shield-alt" style="margin-right: 0.4rem;"></i>Data use &amp; ethical note</p>
-                    <p style="margin:0;font-size:0.88rem;">This project uses only publicly available, aggregated official statistics from the German Federal Ministry of the Interior (BMI) and the Federal Criminal Police Office (BKA). It does not involve personal data, operational intelligence, scraping of extremist content, or identification of individuals or groups. The aim is to demonstrate careful statistical analysis and transparent visualisation of public administrative data — the same type of analysis published routinely in government statistics reports.</p>
+                    <p style="margin:0 0 0.4rem;font-size:0.9rem;font-weight:700;color:#1a5c38;"><i class="fas fa-shield-alt" style="margin-right: 0.4rem;"></i>Datenverwendung &amp; Ethikhinweis</p>
+                    <p style="margin:0;font-size:0.88rem;">Dieses Projekt verwendet ausschließlich öffentlich zugängliche, aggregierte amtliche Statistiken des Bundesministeriums des Innern (BMI) und des Bundeskriminalamts (BKA). Es werden keine personenbezogenen Daten, keine operativen Erkenntnisse, keine extremistischen Inhalte und keine Einzel- oder Gruppenidentifikationen verarbeitet. Ziel ist die methodisch sorgfältige Analyse und transparente Visualisierung öffentlicher Verwaltungsdaten — entsprechend der Art von Analysen, die in behördlichen Statistikberichten routinemäßig veröffentlicht werden.</p>
                 </div>
 
-                <!-- Role relevance -->
+                <!-- Stellenrelevanz -->
                 <div class="role-relevance">
-                    <p class="rr-label">Role relevance</p>
-                    <p>Demonstrates descriptive analysis of official aggregated administrative data, careful source documentation, transparent visualisation, and ethical handling of sensitive public statistics.</p>
+                    <p class="rr-label">Stellenrelevanz</p>
+                    <p>Zeigt deskriptive Analyse amtlicher Aggregatstatistiken, sorgfältige Quelldokumentation, transparente Visualisierung und verantwortungsvollen Umgang mit gesellschaftlich sensiblen Verwaltungsdaten.</p>
                 </div>
 
-                <!-- Summary callout -->
-                <div class="result-callout">
-                    <strong>Summary:</strong> This dashboard constructs a documented dataset from official BMI/BKA PMK publications, validates figures against published totals (checksum verified), and produces four descriptive charts covering 2024 composition, 2023–2024 comparison, violent offenses by category, and a three-year antisemitic offenses trend. All figures are reproducible from code.
+                <!-- Kurzfassung -->
+                <div class="result-callout" style="margin-top: 1rem;">
+                    <strong>Kurzfassung:</strong> Aus amtlichen BMI/BKA-PMK-Jahresberichten wird ein dokumentierter Datensatz konstruiert, gegen publizierte Gesamtsummen prüfsummenvalidiert (4 Checksums, alle bestanden) und in vier deskriptive Abbildungen überführt — PMK-Zusammensetzung 2024, Jahresvergleich 2023–2024, Gewalttaten nach Phänomenbereich und dreijähriger Antisemitismus-Trend. Alle Abbildungen sind vollständig reproduzierbar aus Code.
                 </div>
 
-                <!-- ── Headline statistics ─────────────────────────── -->
-                <h3 class="card-title" style="margin-top: 1.5rem;">Key 2024 Figures (Official BMI/BKA)</h3>
+                <!-- Amtliche Kennzahlen 2024 -->
+                <h3 class="card-title" style="margin-top: 1.5rem;">Amtliche Kennzahlen 2024 (Quelle: BMI/BKA)</h3>
 
                 <div class="caveat-banner">
-                    <strong>Note:</strong> The figures below are police-recorded offense counts from the official BMI/BKA PMK annual report for 2024. They measure recorded offenses, not underlying crime prevalence. Changes over time may reflect reporting behaviour, enforcement priorities, or classification changes, as well as actual incident patterns.
+                    <strong>Hinweis:</strong> Die folgenden Zahlen sind polizeilich erfasste Straftaten aus dem amtlichen PMK-Jahresbericht 2024. Sie messen <em>erfasste</em> Straftaten, nicht die reale Inzidenz. Veränderungen über die Zeit können Anzeigeverhalten, Erfassungsprioritäten, Definitonsänderungen oder tatsächliche Inzidenzveränderungen widerspiegeln.
                 </div>
 
                 <div class="stat-grid">
                     <div class="stat-tile">
                         <span class="stat-num">84,172</span>
                         <div class="stat-change">+40.2% vs. 2023</div>
-                        <div class="stat-label">Total PMK offenses recorded (2024)</div>
+                        <div class="stat-label">Erfasste PMK-Straftaten gesamt (2024)</div>
                     </div>
                     <div class="stat-tile">
-                        <span class="stat-num">4,107</span>
-                        <div class="stat-change">+15.3% vs. 2023</div>
-                        <div class="stat-label">Violent PMK offenses (Gewalttaten, 2024)</div>
+                        <span class="stat-num">4.107</span>
+                        <div class="stat-change">+15,3 % ggü. 2023</div>
+                        <div class="stat-label">Gewalttaten im Bereich PMK (2024)</div>
                     </div>
                     <div class="stat-tile accent">
-                        <span class="stat-num">20,074</span>
-                        <div class="stat-change">≈ 24% of total</div>
-                        <div class="stat-label">Offenses using the internet as means (2024)</div>
+                        <span class="stat-num">20.074</span>
+                        <div class="stat-change">≈ 24 % des Gesamtwerts</div>
+                        <div class="stat-label">Straftaten unter Nutzung des Internets (2024)</div>
                     </div>
                     <div class="stat-tile accent">
-                        <span class="stat-num">6,236</span>
-                        <div class="stat-change">+20.8% vs. 2023</div>
-                        <div class="stat-label">Antisemitic offenses (2024)</div>
+                        <span class="stat-num">6.236</span>
+                        <div class="stat-change">+20,8 % ggü. 2023</div>
+                        <div class="stat-label">Antisemitische Straftaten (2024)</div>
                     </div>
                 </div>
 
-                <!-- ── Figures section ────────────────────────────── -->
-                <h3 class="card-title">Visualisations</h3>
-                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">All charts are generated programmatically from the documented dataset. Source annotations are embedded. No manual editing of outputs.</p>
+                <!-- ── Visualisierungen ───────────────────────────── -->
+                <h3 class="card-title">Visualisierungen</h3>
+                <p style="font-size: 0.88rem; color: #555; margin-bottom: 0.75rem;">Alle Abbildungen werden vollständig aus Code erzeugt. Quellenangaben sind eingebettet. Kein manuelles Nachbearbeiten der Outputs.</p>
 
                 <div class="fig-block">
                     <img src="images/projects/crime-trends/fig1_pmk_2024_composition.png"
-                         alt="Horizontal bar chart showing 2024 PMK total offenses by Phänomenbereich: PMK-rechts 42788 (50.8%), PMK-sonstige 22193 (26.4%), PMK-links 9971 (11.8%), PMK-ausländische Ideologie 7343 (8.7%), PMK-religiöse Ideologie 1877 (2.2%)">
-                    <p class="fig-caption">Fig. 1 &mdash; PMK 2024: total recorded offenses by Phänomenbereich. The five official categories sum to exactly 84,172 (checksum verified against published BMI/BKA total). PMK -sonstige Zuordnung- (26.4%) is a residual category for offenses not clearly attributable to a specific phenomenon area.</p>
+                         alt="Horizontales Balkendiagramm: PMK-Gesamtstraftaten 2024 nach Phänomenbereich — rechts 42.788 (50,8 %), sonstige 22.193 (26,4 %), links 9.971 (11,8 %), ausländische Ideologie 7.343 (8,7 %), religiöse Ideologie 1.877 (2,2 %)">
+                    <p class="fig-caption">Abb. 1 &mdash; PMK 2024: erfasste Straftaten nach Phänomenbereich. Die fünf amtlichen Kategorien summieren auf exakt 84.172 (Prüfsumme gegen veröffentlichte BMI/BKA-Gesamtzahl). PMK -sonstige Zuordnung- (26,4 %) ist eine Restkategorie für Straftaten, die keinem Phänomenbereich eindeutig zuzuordnen sind.</p>
                 </div>
 
                 <div class="fig-block">
                     <img src="images/projects/crime-trends/fig2_pmk_2023_vs_2024.png"
-                         alt="Grouped bar chart comparing PMK offenses by category for 2023 and 2024, showing increases across all five Phänomenbereiche with percentage change labels">
-                    <p class="fig-caption">Fig. 2 &mdash; PMK offenses by Phänomenbereich: 2023 vs. 2024. All five categories increased year-on-year. The largest absolute increase is in PMK -rechts- (+13,843 offenses). The largest relative increase in total offenses is also in PMK -rechts- (+47.8%), though PMK -ausländische Ideologie- saw the largest increase in violent offenses (+98.6%), linked in part to the Middle East conflict.</p>
+                         alt="Gruppiertes Balkendiagramm: Vergleich PMK-Straftaten nach Kategorie 2023 und 2024, mit Prozentveränderungsbeschriftungen für alle fünf Phänomenbereiche">
+                    <p class="fig-caption">Abb. 2 &mdash; PMK-Straftaten nach Phänomenbereich: 2023 vs. 2024. Alle fünf Kategorien stiegen im Jahresvergleich. Absolut stärkster Anstieg: PMK-rechts (+13.843 Straftaten). Relativ stärkster Anstieg bei Gewalttaten: PMK-ausländische Ideologie (+98,6 %). Keine Kausalaussage über Ursachen.</p>
                 </div>
 
                 <div class="fig-grid">
                     <div class="fig-block">
                         <img src="images/projects/crime-trends/fig3_pmk_2024_violent.png"
-                             alt="Horizontal bar chart showing 2024 violent PMK offenses by category: PMK-rechts 1488 (36.2%), PMK-ausländische Ideologie 975 (23.7%), PMK-sonstige 795 (19.4%), PMK-links 762 (18.6%), PMK-religiöse Ideologie 87 (2.1%)">
-                        <p class="fig-caption">Fig. 3 &mdash; Violent PMK offenses (Gewalttaten) by Phänomenbereich, 2024. The distribution of violent offenses differs markedly from total offenses: PMK -ausländische Ideologie- accounts for 23.7% of violent offenses but only 8.7% of total offenses.</p>
+                             alt="Horizontales Balkendiagramm: Gewalttaten 2024 nach Phänomenbereich — rechts 1.488 (36,2 %), ausländische Ideologie 975 (23,7 %), sonstige 795 (19,4 %), links 762 (18,6 %), religiöse Ideologie 87 (2,1 %)">
+                        <p class="fig-caption">Abb. 3 &mdash; Gewalttaten nach Phänomenbereich, 2024. Die Verteilung der Gewalttaten weicht deutlich von der Gesamtstraftatenverteilung ab: PMK-ausländische Ideologie macht 23,7 % der Gewalttaten aus, aber nur 8,7 % der Gesamtstraftaten.</p>
                     </div>
                     <div class="fig-block">
                         <img src="images/projects/crime-trends/fig4_pmk_antisemitic_trend.png"
-                             alt="Bar chart showing antisemitic offenses rising from 2641 in 2022 to 5164 in 2023 to 6236 in 2024">
-                        <p class="fig-caption">Fig. 4 &mdash; Antisemitic offenses (Antisemitische Straftaten) 2022–2024. Three-year trend from official BMI/BKA figures for each year. The 2023 increase from 2022 was proportionally larger; the 2024 figure is the highest in this three-year window. The BMI/BKA 2024 report describes the overall PMK total as the highest since the statistics were introduced in 2001.</p>
+                             alt="Balkendiagramm: Antisemitische Straftaten steigen von 2.641 (2022) auf 5.164 (2023) auf 6.236 (2024)">
+                        <p class="fig-caption">Abb. 4 &mdash; Antisemitische Straftaten 2022–2024. Dreijähriger Trend aus amtlichen BMI/BKA-Jahresberichten. Der Wert 2024 ist der höchste im dargestellten Dreijahreszeitraum. Laut BMI/BKA-Bericht 2024 ist der PMK-Gesamtwert der höchste seit Einführung der Statistik im Jahr 2001.</p>
                     </div>
                 </div>
 
-                <!-- ── Data sources ───────────────────────────────── -->
-                <h3 class="card-title">Data Sources</h3>
-                <p>All data was manually transcribed from official BMI and BKA publications and press releases, which are the primary sources for all figures. BKA and BMI web servers block automated access; all values were extracted from the official annual press releases. The bpb.de article listed below was used only for secondary cross-verification — it is not a primary source. All figures were confirmed across at least two sources before inclusion.</p>
+                <!-- ── Quellenprovenienz ──────────────────────────── -->
+                <h3 class="card-title">Quellen und Provenienz</h3>
+                <p style="font-size:0.88rem;color:#555;line-height:1.7;">Alle Daten wurden manuell aus amtlichen BMI- und BKA-Publikationen und Pressekonferenzen entnommen. BMI/BKA-Webserver blockieren automatisierten Zugriff; alle Werte wurden direkt aus den amtlichen Jahrespressekonferenzen extrahiert. Der bpb.de-Artikel diente ausschließlich der Querprüfung — er ist keine Primärquelle. Jeder angezeigte Wert wurde vor Aufnahme in den Datensatz aus mindestens zwei Quellen bestätigt.</p>
 
                 <table class="source-table">
                     <thead>
-                        <tr><th>Source</th><th>Period</th><th>Used for</th></tr>
+                        <tr><th>Quelle</th><th>Jahr</th><th>Verwendung</th></tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>BMI/BKA PMK-Jahresbericht 2024 (joint press release, 20 May 2025)</td>
+                            <td>BMI/BKA PMK-Jahresbericht 2024 (gemeinsame Pressekonferenz, 20. Mai 2025)</td>
                             <td>2024</td>
-                            <td>All 2024 headline figures; all 2024 category breakdowns</td>
+                            <td>Alle Gesamtzahlen und Kategorienaufschlüsselungen 2024 (Primärquelle)</td>
                         </tr>
                         <tr>
-                            <td>BMI/BKA PMK-Jahresbericht 2023 (joint press release, 21 May 2024)</td>
+                            <td>BMI/BKA PMK-Jahresbericht 2023 (gemeinsame Pressekonferenz, 21. Mai 2024)</td>
                             <td>2023</td>
-                            <td>All 2023 baseline figures; 2023 category breakdowns</td>
+                            <td>Alle Gesamtzahlen und Kategorienaufschlüsselungen 2023 (Primärquelle)</td>
                         </tr>
                         <tr>
                             <td>BKA PMK-Jahresbericht 2022</td>
                             <td>2022</td>
-                            <td>2022 antisemitic offenses baseline (2,641)</td>
+                            <td>Ausgangswert antisemitische Straftaten 2022: 2.641 (Primärquelle)</td>
                         </tr>
                         <tr>
-                            <td>bpb.de — Politisch motivierte Kriminalität 2024 (secondary, cites BMI/BKA)</td>
+                            <td>bpb.de — Politisch motivierte Kriminalität 2024 (Sekundärquelle, zitiert BMI/BKA)</td>
                             <td>2024</td>
-                            <td>Cross-verification of all 2024 figures</td>
+                            <td>Querprüfung aller 2024-Werte (keine eigenständige Primärquelle)</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <!-- ── Dataset construction ──────────────────────── -->
-                <h3 class="card-title">Dataset Construction</h3>
-                <p style="font-size: 0.88rem; color: #555;">Three raw CSV files were constructed by hand from official sources and are fully documented with source URLs, access dates, and derivation notes. The cleaning script validates checksums before any analysis proceeds.</p>
+                <!-- ── Datensatzkonstruktion ──────────────────────── -->
+                <h3 class="card-title">Datensatzkonstruktion</h3>
+                <p style="font-size: 0.88rem; color: #555;">Drei Roh-CSV-Dateien wurden manuell aus amtlichen Quellen erstellt und sind vollständig mit Quell-URLs, Zugriffsdaten und Ableitungshinweisen dokumentiert. Das Bereinigungsskript validiert Prüfsummen, bevor eine Analyse durchgeführt wird.</p>
                 <div class="step-grid">
                     <div class="step-item">
                         <div class="step-number">1</div>
                         <div>
-                            <h4>Manual transcription (<code>data/raw/</code>)</h4>
-                            <p>Three CSVs built from official BMI/BKA publications: headline totals (2023–2024), category breakdown (2023–2024), and subcategory data (antisemitic offenses 2022–2024, hate crime, islamophobic offenses). Each row carries source URL and access date.</p>
+                            <h4>Manuelle Transkription (<code>data/raw/</code>)</h4>
+                            <p>Drei CSVs aus amtlichen BMI/BKA-Publikationen: Gesamtzahlen 2023–2024, Kategorienaufschlüsselung 2023–2024 und Subkategoriedaten (antisemitische Straftaten 2022–2024, Hasskriminalität, islamfeindliche Straftaten). Jede Zeile enthält Quell-URL und Zugriffsdatum.</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
                         <div>
-                            <h4>Validation and cleaning (<code>scripts/build_dataset.py</code>)</h4>
-                            <p>Loads raw files, runs four checksum assertions (2023 and 2024 total offenses; 2023 and 2024 violent offenses), computes percentage shares and year-on-year changes, and saves processed CSVs. Script exits with an error if any checksum fails.</p>
+                            <h4>Validierung &amp; Bereinigung (<code>scripts/build_dataset.py</code>)</h4>
+                            <p>Lädt Roh-Dateien, führt vier Prüfsummen-Assertions durch (2023 und 2024 Gesamtstraftaten; 2023 und 2024 Gewalttaten), berechnet Prozentwerte und Jahresveränderungen und speichert verarbeitete CSVs. Skript bricht mit Fehler ab, wenn eine Prüfsumme nicht übereinstimmt.</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">3</div>
                         <div>
-                            <h4>Figure generation (<code>scripts/make_figures.py</code>)</h4>
-                            <p>Reads processed CSVs and generates four matplotlib figures with source annotations. Figures are saved to <code>outputs/figures/</code> and copied to the website images directory. No manual post-processing.</p>
+                            <h4>Abbildungsgenerierung (<code>scripts/make_figures.py</code>)</h4>
+                            <p>Liest verarbeitete CSVs und generiert vier matplotlib-Abbildungen mit Quellenangaben. Abbildungen werden in <code>outputs/figures/</code> gespeichert und in das Website-Bildverzeichnis kopiert. Kein manuelles Nachbearbeiten.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- ── Limitations ──────────────────────────────── -->
-                <h3 class="card-title">Limitations</h3>
+                <!-- ── Validierungsbericht ──────────────────────── -->
+                <h3 class="card-title">Automatisierter Validierungsbericht</h3>
+                <p style="font-size:0.88rem;color:#555;line-height:1.7;">Das Validierungsskript (<code>scripts/validate.py</code>) führt 15 Prüfungen über den prozessierten Datensatz aus und schreibt einen maschinenlesbaren Bericht (<code>outputs/validation_report.json</code>). Alle 15 Prüfungen bestanden am 24. Mai 2026.</p>
+
+                <div style="background:#eaf7ee;border:1px solid #6fcf97;border-left:4px solid #1a7a3a;border-radius:0 8px 8px 0;padding:0.85rem 1.2rem;margin:0.75rem 0;">
+                    <p style="margin:0 0 0.3rem;font-size:0.9rem;font-weight:700;color:#1a5c38;"><i class="fas fa-check-circle" style="margin-right:0.4rem;"></i>Ergebnis: 15/15 Prüfungen bestanden &nbsp;&middot;&nbsp; 0 Warnungen &nbsp;&middot;&nbsp; 0 Fehler</p>
+                    <p style="margin:0;font-size:0.82rem;color:#1a5c38;">Erstellt: 2026-05-24 &nbsp;&middot;&nbsp; Datenjahre: 2023, 2024 &nbsp;&middot;&nbsp; Quelle: <code>outputs/validation_report.json</code></p>
+                </div>
+
+                <table class="source-table" style="margin-top:0.75rem;">
+                    <thead>
+                        <tr><th>Prüfung</th><th>Ergebnis</th><th>Details</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>V1 Schema (Totals)</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">Alle Pflichtspalten vorhanden</td></tr>
+                        <tr><td>V1 Schema (Kategorien)</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">Alle Pflichtspalten vorhanden</td></tr>
+                        <tr><td>V2 Keine Duplikate (Totals)</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">0 doppelte Jahreszeilen</td></tr>
+                        <tr><td>V2 Keine Duplikate (Kategorien)</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">0 doppelte Jahr×Kategorie-Zeilen</td></tr>
+                        <tr><td>V3 Keine fehlenden Werte (Totals)</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">0 fehlende Werte in Schlüsselfeldern</td></tr>
+                        <tr><td>V3 Keine fehlenden Werte (Kategorien)</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">0 fehlende Werte in Schlüsselfeldern</td></tr>
+                        <tr><td>V4 Erlaubte Kategorienwerte</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">Alle 5 Kategorien erkannt</td></tr>
+                        <tr><td>V5 Nicht-negative Zählwerte (Totals)</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">0 negative total_offenses-Werte</td></tr>
+                        <tr><td>V5 Nicht-negative Zählwerte (Kategorien)</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">0 negative offenses-Werte</td></tr>
+                        <tr><td>V6 Kategorien-Summen-Abgleich</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">2023: 60.028/60.028 ✓, vio: 3.561/3.561 ✓ &nbsp;|&nbsp; 2024: 84.172/84.172 ✓, vio: 4.107/4.107 ✓</td></tr>
+                        <tr><td>V7 Jahresverlauf-Kontinuität</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">0 Jahressprünge &gt;300% (kein einzeljähriger Ausreißer)</td></tr>
+                        <tr><td>V8 Unterkategorien im Bereich 2023</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">Subkategorien-Summe 5.164 ≤ Gesamt 60.028</td></tr>
+                        <tr><td>V8 Unterkategorien im Bereich 2024</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">Subkategorien-Summe 29.857 ≤ Gesamt 84.172</td></tr>
+                        <tr><td>V9 Quellenangaben vollständig</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">0 leere Quellfelder in Totals und Kategorien</td></tr>
+                        <tr><td>V10 Vergleichbarkeitsregister</td><td style="color:#1a7a3a;font-weight:600;">✓ PASS</td><td style="font-size:0.80rem;color:#555;">Datensatz: 2023–2024. Beide Jahre nutzen das seit 2001 gültige PMK-Erfassungssystem. Erweiterung auf frühere Jahre: Vergleichbarkeitsprüfung ausstehend.</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- ── Vergleichbarkeitsregister ─────────────────── -->
+                <h3 class="card-title">Vergleichbarkeitsregister</h3>
+                <p style="font-size:0.88rem;color:#555;line-height:1.7;">Die PMK-Statistik wird seit 2001 nach einem einheitlichen Erfassungssystem erhoben. Der aktuelle Datensatz umfasst die Jahre 2023 und 2024, für die konsistente Definitionen belegt sind.</p>
+                <table class="source-table">
+                    <thead>
+                        <tr><th>Jahr</th><th>Erfassungssystem</th><th>Vergleichbarkeit mit 2024</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2024</td>
+                            <td>Einheitliches PMK-System (seit 2001)</td>
+                            <td>Referenzjahr</td>
+                            <td style="color:#1a7a3a;font-weight:600;">✓ Im Datensatz</td>
+                        </tr>
+                        <tr>
+                            <td>2023</td>
+                            <td>Einheitliches PMK-System (seit 2001)</td>
+                            <td>Direkt vergleichbar</td>
+                            <td style="color:#1a7a3a;font-weight:600;">✓ Im Datensatz</td>
+                        </tr>
+                        <tr>
+                            <td>2022</td>
+                            <td>Einheitliches PMK-System (seit 2001)</td>
+                            <td>Antis. Straftaten: direkt vergleichbar; Kategoriensummen: Prüfung ausstehend</td>
+                            <td style="color:#b7770d;font-weight:600;">⚠ Teilweise (Unterkategorie)</td>
+                        </tr>
+                        <tr>
+                            <td>Vor 2022</td>
+                            <td>Nicht geprüft</td>
+                            <td>Vergleichbarkeit: Prüfung ausstehend — Erweiterung geplant</td>
+                            <td style="color:#888;font-weight:600;">— Ausstehend</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- ── Grenzen der Analyse ──────────────────────── -->
+                <h3 class="card-title">Grenzen der Analyse</h3>
                 <ul class="limitation-list" style="padding-left: 1.5rem;">
-                    <li><strong>Recorded offenses, not prevalence.</strong> PMK statistics count police-recorded offenses. Changes over time may reflect enforcement priorities, reporting behaviour, classification changes, or actual incident patterns — these cannot be disentangled from aggregate totals alone.</li>
-                    <li><strong>Category definitions.</strong> The PMK Phänomenbereich classification has evolved. Comparisons across years longer than those covered here require careful verification that definitions have not changed.</li>
-                    <li><strong>Residual category.</strong> PMK -sonstige Zuordnung- (22,193 offenses in 2024; 26% of total) is a large residual that limits interpretation of the breakdown.</li>
-                    <li><strong>Short time series.</strong> The dataset covers 2023–2024 at the category level and 2022–2024 for antisemitic offenses only. A longer series requires manual compilation from prior annual reports.</li>
-                    <li><strong>Derived values.</strong> The 2023 PMK-rechts violent offense figure (1,270) is derived arithmetically from confirmed totals; the 2023 internet offense figure (15,490) is back-calculated from the stated percentage change. Both are clearly flagged in the data documentation.</li>
-                    <li><strong>No causal interpretation.</strong> This analysis is purely descriptive. It does not identify causes, make predictions, or support individual-level or operational inference of any kind.</li>
+                    <li><strong>Erfasste Straftaten, nicht Prävalenz.</strong> PMK-Statistiken zählen polizeilich erfasste Straftaten. Veränderungen über die Zeit können Erfassungsprioritäten, Anzeigeverhalten, Definitionsänderungen oder tatsächliche Inzidenzveränderungen widerspiegeln — diese lassen sich aus Aggregatdaten nicht trennen.</li>
+                    <li><strong>Kategoriendefinitionen.</strong> Die PMK-Phänomenbereich-Klassifikation hat sich im Zeitverlauf entwickelt. Vergleiche über den hier abgedeckten Zeitraum hinaus erfordern eine sorgfältige Prüfung der Definitionskontinuität.</li>
+                    <li><strong>Restkategorie.</strong> PMK-sonstige Zuordnung (22.193 Straftaten 2024; 26 % der Gesamtzahl) ist eine große Restkategorie, die die Interpretation der Aufschlüsselung begrenzt.</li>
+                    <li><strong>Kurze Zeitreihe.</strong> Der Datensatz umfasst 2023–2024 auf Kategorienebene und 2022–2024 nur für antisemitische Straftaten. Eine längere Reihe erfordert manuelle Kompilation aus früheren Jahresberichten mit Vergleichbarkeitsprüfung.</li>
+                    <li><strong>Abgeleitete Werte.</strong> Der Wert der Gewalttaten PMK-rechts 2023 (1.270) wird arithmetisch aus bestätigten Gesamtzahlen abgeleitet; der Internet-Straftaten-Wert 2023 (15.490) wird aus dem angegebenen prozentualen Anstieg zurückgerechnet. Beide sind in der Datendokumentation als abgeleitet gekennzeichnet.</li>
+                    <li><strong>Keine kausale Interpretation.</strong> Diese Analyse ist rein deskriptiv. Es werden keine Ursachen identifiziert, keine Prognosen erstellt, keine individuellen oder operativen Schlüsse gezogen.</li>
                 </ul>
 
-                <!-- ── Reproducibility ──────────────────────────── -->
-                <h3 class="card-title">Reproducibility</h3>
-                <p>The full pipeline runs with two commands from the project root:</p>
+                <!-- ── Reproduzierbarkeit ───────────────────────── -->
+                <h3 class="card-title">Reproduzierbarkeit</h3>
+                <p>Der vollständige Workflow läuft mit zwei Befehlen vom Projektverzeichnis aus:</p>
                 <pre style="background:var(--light-color);border-radius:6px;padding:0.9rem 1rem;font-size:0.83rem;overflow-x:auto;"><code>pip install -r requirements.txt
 make all    # build_dataset.py → make_figures.py</code></pre>
-                <p style="font-size: 0.88rem; margin-top: 0.5rem;">The build step will exit with an error if any checksum fails, preventing figure generation from invalid data. All source URLs and access dates are stored in the raw CSV files alongside each data point.</p>
+                <p style="font-size: 0.88rem; margin-top: 0.5rem;">Der Build-Schritt bricht mit einem Fehler ab, wenn eine Prüfsumme nicht übereinstimmt — damit wird verhindert, dass Abbildungen aus ungültigen Daten generiert werden. Alle Quell-URLs und Zugriffsdaten sind in den Roh-CSV-Dateien neben jedem Datenpunkt gespeichert.</p>
 
                 <!-- ── Tools ────────────────────────────────────── -->
                 <h3 class="card-title">Tools</h3>
@@ -283,18 +378,69 @@ make all    # build_dataset.py → make_figures.py</code></pre>
                     <span class="tag">Makefile</span>
                 </div>
 
+                <!-- ── Was geschlossen werden kann — und was nicht ── -->
+                <h3 class="card-title">Was aus diesen Daten geschlossen werden kann — und was nicht</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                    <div style="background: #eafaf1; border-radius: 8px; padding: 1rem 1.2rem; border-left: 3px solid #27ae60;">
+                        <p style="font-weight: 700; font-size: 0.85rem; color: #1a5c38; margin-bottom: 0.5rem;"><i class="fas fa-check" style="margin-right: 0.4rem;"></i>Was diese Daten zeigen</p>
+                        <ul style="padding-left: 1.1rem; margin: 0; font-size: 0.84rem; color: #333; line-height: 1.7;">
+                            <li>Die Anzahl polizeilich <em>erfasster</em> PMK-Straftaten nach Phänomenbereich und Jahr</li>
+                            <li>Die Zusammensetzung erfasster Straftaten nach amtlicher Kategorie</li>
+                            <li>Relative Veränderungen der erfassten Fallzahlen von Jahr zu Jahr</li>
+                            <li>Den Anteil von Gewalttaten und Internet-Straftaten an der Gesamtmenge</li>
+                            <li>Den Dreijahrestrend bei antisemitischen Straftaten (2022–2024)</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fce4ec; border-radius: 8px; padding: 1rem 1.2rem; border-left: 3px solid #c0392b;">
+                        <p style="font-weight: 700; font-size: 0.85rem; color: #7b1a2e; margin-bottom: 0.5rem;"><i class="fas fa-times" style="margin-right: 0.4rem;"></i>Was diese Daten <em>nicht</em> zeigen</p>
+                        <ul style="padding-left: 1.1rem; margin: 0; font-size: 0.84rem; color: #333; line-height: 1.7;">
+                            <li>Die tatsächliche Prävalenz politisch motivierter Kriminalität in der Bevölkerung</li>
+                            <li>Ursachen von Veränderungen (Anzeigeverhalten, Erfassungsprioritäten, Definitionsänderungen oder reale Inzidenzveränderungen lassen sich aus Aggregatdaten nicht trennen)</li>
+                            <li>Informationen über Täter·innen, Opfer oder Tatumstände auf Individualebene</li>
+                            <li>Regionale Unterschiede auf Bundesland- oder Kreisebene (nur Bundesaggregat)</li>
+                            <li>Prognostische Aussagen über zukünftige Entwicklungen</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="caveat-banner" style="margin-top: 0.5rem;">
+                    <strong>Methodische Einschränkung:</strong> Die Kategorien der PMK-Statistik (Phänomenbereiche) haben sich im Laufe der Zeit verändert. Langfristige Trendvergleiche über den hier dargestellten Zeitraum (2022–2024) hinaus erfordern eine sorgfältige Überprüfung der Definitionskontinuität. Das Projekt deckt bewusst nur den Zeitraum ab, für den konsistente Kategoriedefinitionen belegt sind.
+                </div>
+
+                <!-- ── Analytischer Mehrwert ──────────────────── -->
+                <h3 class="card-title">Analytischer Mehrwert für öffentliche Entscheidungsunterstützung</h3>
+                <p style="font-size: 0.88rem; color: #444; line-height: 1.7; margin-bottom: 0.75rem;">Dieser Workflow demonstriert, wie amtliche Statistiken zu einem transparenten, nachvollziehbaren Informationsprodukt aufbereitet werden können — ohne operative Schlussfolgerungen zu überziehen. Für analytische Teams im öffentlichen Sektor hat das Projekt folgenden Mehrwert:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.85rem; margin: 0.75rem 0;">
+                    <div style="background: var(--light-color); border-radius: 8px; padding: 0.9rem 1rem;">
+                        <p style="font-weight: 700; font-size: 0.84rem; color: var(--primary-color); margin-bottom: 0.3rem;"><i class="fas fa-check-double" style="color: var(--secondary-color); margin-right: 0.3rem;"></i>Datenintegrität</p>
+                        <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">Prüfsummenvalidierung gegen amtliche Summen stellt sicher, dass keine Transkriptionsfehler in die Analyse eingehen. Der Build-Prozess schlägt fehl, wenn Checksums nicht übereinstimmen.</p>
+                    </div>
+                    <div style="background: var(--light-color); border-radius: 8px; padding: 0.9rem 1rem;">
+                        <p style="font-weight: 700; font-size: 0.84rem; color: var(--primary-color); margin-bottom: 0.3rem;"><i class="fas fa-file-alt" style="color: var(--secondary-color); margin-right: 0.3rem;"></i>Vollständige Quellenangaben</p>
+                        <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">Jeder Datenpunkt trägt Quell-URL, Publikationsdatum und Zugriffsdatum — für jede Zahl ist nachvollziehbar, woher sie stammt und wann sie erhoben wurde.</p>
+                    </div>
+                    <div style="background: var(--light-color); border-radius: 8px; padding: 0.9rem 1rem;">
+                        <p style="font-weight: 700; font-size: 0.84rem; color: var(--primary-color); margin-bottom: 0.3rem;"><i class="fas fa-sync" style="color: var(--secondary-color); margin-right: 0.3rem;"></i>Reproduzierbarkeit</p>
+                        <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">Der vollständige Workflow läuft mit zwei Befehlen (<code>pip install</code> + <code>make all</code>). Abbildungen werden ohne manuelle Eingriffe neu erzeugt, wenn neue Jahresberichte erscheinen.</p>
+                    </div>
+                    <div style="background: var(--light-color); border-radius: 8px; padding: 0.9rem 1rem;">
+                        <p style="font-weight: 700; font-size: 0.84rem; color: var(--primary-color); margin-bottom: 0.3rem;"><i class="fas fa-balance-scale" style="color: var(--secondary-color); margin-right: 0.3rem;"></i>Interpretationsdisziplin</p>
+                        <p style="font-size: 0.82mm; color: #555; line-height: 1.6; margin: 0;">Alle Abbildungen enthalten Quellenangaben und Erläuterungen. Der Kausalitätsvorbehalt ist in jedem Output explizit — nicht in einer separaten Fußnote, die übersehen werden kann.</p>
+                    </div>
+                </div>
+
                 <!-- ── Next steps ───────────────────────────────── -->
-                <h3 class="card-title">Next Steps</h3>
+                <h3 class="card-title">Nächste Schritte</h3>
                 <ul style="padding-left: 1.5rem; font-size: 0.88rem; line-height: 2;">
-                    <li>Add prior years (2020–2022) from historical BKA annual reports to extend the time series and show longer trends</li>
-                    <li>Add Bundesland-level data if consistent state-level official aggregate data is publicly available</li>
-                    <li>Add a data freshness indicator that warns when the dataset has not been updated for more than 12 months</li>
-                    <li>Explore an automated ingestion path if BKA publishes machine-readable data formats in future</li>
+                    <li>Erweiterung der Zeitreihe auf 2020–2022 aus historischen BKA-Jahresberichten — mit dokumentierter Harmonisierungsschicht für Kategoriedefinitionsänderungen</li>
+                    <li>Automatisierter Validierungsbericht als PDF-/HTML-Output aus Code (reproduzierbare Executive Summary)</li>
+                    <li>Datums-Aktualitätsindikator, der warnt, wenn der Datensatz seit mehr als 12 Monaten nicht aktualisiert wurde</li>
+                    <li>Bundesland-Aggregatanalyse, falls konsistente offizielle Länderdaten verfügbar sind</li>
+                    <li>Unsicherheits- und Interpretationshinweise direkt in den Abbildungen (als Annotations-Layer in matplotlib)</li>
                 </ul>
 
                 <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                    <a href="projects.html" class="btn btn-outline hover-lift"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Back to Projects</a>
-                    <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn hover-lift"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>View on GitHub</a>
+                    <a href="projects.html" class="btn btn-outline hover-lift"><i class="fas fa-arrow-left" style="margin-right: 0.4rem;"></i>Zurück zu den Projekten</a>
+                    <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn hover-lift"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>Auf GitHub ansehen</a>
                 </div>
 
             </div>
@@ -303,23 +449,24 @@ make all    # build_dataset.py → make_figures.py</code></pre>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Jonathan Gödeke. All rights reserved.</p>
+            <p>&copy; 2026 Jonathan Gödeke. Alle Rechte vorbehalten.</p>
             <ul class="social-icons">
                 <li><a href="https://www.linkedin.com/in/jonathan-gödeke/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
                 <li><a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
             </ul>
             <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="theses.html">Academic Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="mailto:goedeke@wiso.uni-koeln.de">Email</a></li>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="projects.html">Projekte</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+                <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
             </ul>
         </div>
     </footer>
 
-    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button class="back-to-top" aria-label="Nach oben"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Dunkelmodus umschalten"><i class="fas fa-moon"></i></button>
     <script src="js/main.js"></script>
 </body>
 </html>
