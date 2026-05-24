@@ -1,0 +1,121 @@
+topic_id,rank,term,weight,topic_label
+1,1,ihnen,1.092254,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,2,was,1.091233,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,3,nichts,0.826324,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,4,kollege,0.735013,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,5,gar,0.704841,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,6,wirklich,0.657322,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,7,einfach,0.638323,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,8,union,0.624888,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,9,grünen,0.602171,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,10,wie,0.590423,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,11,ihre,0.587156,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,12,spd,0.583407,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,13,alles,0.577513,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,14,vielleicht,0.568722,Parlamentarische Diskussionskultur / Debattenbeiträge
+1,15,wäre,0.56763,Parlamentarische Diskussionskultur / Debattenbeiträge
+2,1,ukraine,1.49925,Ukraine / Russland / Europäische Sicherheitspolitik
+2,2,russland,0.911983,Ukraine / Russland / Europäische Sicherheitspolitik
+2,3,europa,0.870216,Ukraine / Russland / Europäische Sicherheitspolitik
+2,4,krieg,0.820278,Ukraine / Russland / Europäische Sicherheitspolitik
+2,5,europäischen,0.671064,Ukraine / Russland / Europäische Sicherheitspolitik
+2,6,putin,0.653764,Ukraine / Russland / Europäische Sicherheitspolitik
+2,7,europäische,0.53662,Ukraine / Russland / Europäische Sicherheitspolitik
+2,8,russischen,0.523649,Ukraine / Russland / Europäische Sicherheitspolitik
+2,9,nato,0.480038,Ukraine / Russland / Europäische Sicherheitspolitik
+2,10,staaten,0.479965,Ukraine / Russland / Europäische Sicherheitspolitik
+2,11,frieden,0.447745,Ukraine / Russland / Europäische Sicherheitspolitik
+2,12,bundeskanzler,0.411399,Ukraine / Russland / Europäische Sicherheitspolitik
+2,13,russische,0.410249,Ukraine / Russland / Europäische Sicherheitspolitik
+2,14,waffen,0.396437,Ukraine / Russland / Europäische Sicherheitspolitik
+2,15,deutschland,0.396167,Ukraine / Russland / Europäische Sicherheitspolitik
+3,1,menschen,0.687546,"Bildung, Soziales und Kommunalfinanzierung"
+3,2,kinder,0.620121,"Bildung, Soziales und Kommunalfinanzierung"
+3,3,bildung,0.557892,"Bildung, Soziales und Kommunalfinanzierung"
+3,4,bund,0.507879,"Bildung, Soziales und Kommunalfinanzierung"
+3,5,kommunen,0.485605,"Bildung, Soziales und Kommunalfinanzierung"
+3,6,wichtig,0.452786,"Bildung, Soziales und Kommunalfinanzierung"
+3,7,haushalt,0.450994,"Bildung, Soziales und Kommunalfinanzierung"
+3,8,länder,0.433529,"Bildung, Soziales und Kommunalfinanzierung"
+3,9,mittel,0.403551,"Bildung, Soziales und Kommunalfinanzierung"
+3,10,geld,0.400697,"Bildung, Soziales und Kommunalfinanzierung"
+3,11,ländern,0.395451,"Bildung, Soziales und Kommunalfinanzierung"
+3,12,viele,0.392332,"Bildung, Soziales und Kommunalfinanzierung"
+3,13,programm,0.386975,"Bildung, Soziales und Kommunalfinanzierung"
+3,14,familien,0.382573,"Bildung, Soziales und Kommunalfinanzierung"
+3,15,gemeinsam,0.366108,"Bildung, Soziales und Kommunalfinanzierung"
+4,1,unternehmen,0.791634,Energie- und Wirtschaftspolitik
+4,2,wirtschaft,0.720683,Energie- und Wirtschaftspolitik
+4,3,energien,0.684828,Energie- und Wirtschaftspolitik
+4,4,erneuerbaren,0.644254,Energie- und Wirtschaftspolitik
+4,5,deutschland,0.581411,Energie- und Wirtschaftspolitik
+4,6,energie,0.543101,Energie- und Wirtschaftspolitik
+4,7,gas,0.523502,Energie- und Wirtschaftspolitik
+4,8,ausbau,0.520364,Energie- und Wirtschaftspolitik
+4,9,strom,0.514166,Energie- und Wirtschaftspolitik
+4,10,erneuerbaren energien,0.476446,Energie- und Wirtschaftspolitik
+4,11,klimaschutz,0.465882,Energie- und Wirtschaftspolitik
+4,12,land,0.434879,Energie- und Wirtschaftspolitik
+4,13,industrie,0.427678,Energie- und Wirtschaftspolitik
+4,14,bürger,0.416079,Energie- und Wirtschaftspolitik
+4,15,investitionen,0.379893,Energie- und Wirtschaftspolitik
+5,1,frage,1.60432,Fragestunde und Parlamentarische Anfragen
+5,2,nachfrage,1.390727,Fragestunde und Parlamentarische Anfragen
+5,3,dank,0.610625,Fragestunde und Parlamentarische Anfragen
+5,4,minister,0.468867,Fragestunde und Parlamentarische Anfragen
+5,5,dank frage,0.461177,Fragestunde und Parlamentarische Anfragen
+5,6,ministerin,0.459238,Fragestunde und Parlamentarische Anfragen
+5,7,thema,0.458447,Fragestunde und Parlamentarische Anfragen
+5,8,wie,0.415707,Fragestunde und Parlamentarische Anfragen
+5,9,was,0.381836,Fragestunde und Parlamentarische Anfragen
+5,10,nächste frage,0.334117,Fragestunde und Parlamentarische Anfragen
+5,11,geehrter,0.325854,Fragestunde und Parlamentarische Anfragen
+5,12,fragen,0.324676,Fragestunde und Parlamentarische Anfragen
+5,13,nächste,0.321854,Fragestunde und Parlamentarische Anfragen
+5,14,deswegen,0.319799,Fragestunde und Parlamentarische Anfragen
+5,15,gerne,0.306235,Fragestunde und Parlamentarische Anfragen
+6,1,gesetz,0.907447,Gesetzgebungsverfahren und Verwaltung
+6,2,gesetzentwurf,0.815225,Gesetzgebungsverfahren und Verwaltung
+6,3,verfahren,0.480218,Gesetzgebungsverfahren und Verwaltung
+6,4,dies,0.379299,Gesetzgebungsverfahren und Verwaltung
+6,5,regelungen,0.365691,Gesetzgebungsverfahren und Verwaltung
+6,6,umsetzung,0.342139,Gesetzgebungsverfahren und Verwaltung
+6,7,insbesondere,0.31748,Gesetzgebungsverfahren und Verwaltung
+6,8,regelung,0.312934,Gesetzgebungsverfahren und Verwaltung
+6,9,schritt,0.303258,Gesetzgebungsverfahren und Verwaltung
+6,10,wichtig,0.301472,Gesetzgebungsverfahren und Verwaltung
+6,11,entwurf,0.293976,Gesetzgebungsverfahren und Verwaltung
+6,12,daten,0.291842,Gesetzgebungsverfahren und Verwaltung
+6,13,vorliegenden,0.290677,Gesetzgebungsverfahren und Verwaltung
+6,14,unternehmen,0.287942,Gesetzgebungsverfahren und Verwaltung
+6,15,maßnahmen,0.285322,Gesetzgebungsverfahren und Verwaltung
+7,1,soldaten,1.250715,Bundeswehr / Auslandseinsätze / Verteidigung
+7,2,bundeswehr,1.120054,Bundeswehr / Auslandseinsätze / Verteidigung
+7,3,soldatinnen,1.034065,Bundeswehr / Auslandseinsätze / Verteidigung
+7,4,soldatinnen soldaten,1.013569,Bundeswehr / Auslandseinsätze / Verteidigung
+7,5,einsatz,0.733961,Bundeswehr / Auslandseinsätze / Verteidigung
+7,6,mandat,0.548406,Bundeswehr / Auslandseinsätze / Verteidigung
+7,7,mission,0.490875,Bundeswehr / Auslandseinsätze / Verteidigung
+7,8,sicherheit,0.44246,Bundeswehr / Auslandseinsätze / Verteidigung
+7,9,region,0.420072,Bundeswehr / Auslandseinsätze / Verteidigung
+7,10,mali,0.360536,Bundeswehr / Auslandseinsätze / Verteidigung
+7,11,nato,0.331796,Bundeswehr / Auslandseinsätze / Verteidigung
+7,12,unserer,0.307601,Bundeswehr / Auslandseinsätze / Verteidigung
+7,13,beitrag,0.271372,Bundeswehr / Auslandseinsätze / Verteidigung
+7,14,stabilität,0.269685,Bundeswehr / Auslandseinsätze / Verteidigung
+7,15,nationen,0.263977,Bundeswehr / Auslandseinsätze / Verteidigung
+8,1,menschen,0.86432,"Demokratie, Gesellschaft und Wertedebatte"
+8,2,demokratie,0.808537,"Demokratie, Gesellschaft und Wertedebatte"
+8,3,leben,0.647851,"Demokratie, Gesellschaft und Wertedebatte"
+8,4,land,0.597637,"Demokratie, Gesellschaft und Wertedebatte"
+8,5,gesellschaft,0.596602,"Demokratie, Gesellschaft und Wertedebatte"
+8,6,afd,0.585827,"Demokratie, Gesellschaft und Wertedebatte"
+8,7,deutschland,0.483021,"Demokratie, Gesellschaft und Wertedebatte"
+8,8,unserer,0.476874,"Demokratie, Gesellschaft und Wertedebatte"
+8,9,ihre,0.453109,"Demokratie, Gesellschaft und Wertedebatte"
+8,10,frauen,0.438223,"Demokratie, Gesellschaft und Wertedebatte"
+8,11,gewalt,0.437315,"Demokratie, Gesellschaft und Wertedebatte"
+8,12,freiheit,0.42141,"Demokratie, Gesellschaft und Wertedebatte"
+8,13,unserem,0.411066,"Demokratie, Gesellschaft und Wertedebatte"
+8,14,demokratischen,0.398958,"Demokratie, Gesellschaft und Wertedebatte"
+8,15,unserem land,0.371576,"Demokratie, Gesellschaft und Wertedebatte"
