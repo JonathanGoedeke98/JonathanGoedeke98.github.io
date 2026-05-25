@@ -74,7 +74,14 @@
     top: 1rem;
     right: 1rem;
   }
-  
+
+  .lang-toggle {
+    position: absolute;
+    top: 1.1rem;
+    right: 3.5rem;
+    margin-left: 0;
+  }
+
   .show-menu {
     display: flex;
   }

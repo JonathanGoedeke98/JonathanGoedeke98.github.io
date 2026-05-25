@@ -561,6 +561,28 @@ section:nth-child(even) {
   transform: translateY(-3px);
 }
 
+/* Language toggle — in header */
+.lang-toggle {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  color: var(--light-text-color);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.22rem 0.65rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  white-space: nowrap;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.lang-toggle:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.85);
+}
+
 /* Theme toggle */
 .theme-toggle {
   position: fixed;
