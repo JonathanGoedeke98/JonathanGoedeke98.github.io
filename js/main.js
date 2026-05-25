@@ -9,6 +9,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const revealElements = document.querySelectorAll('.reveal');
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
+
+    // Language toggle
+    const langToggle = document.getElementById('lang-toggle');
+    if (langToggle) {
+        function applyLanguage(lang) {
+            localStorage.setItem('language', lang);
+            document.documentElement.lang = lang;
+            langToggle.textContent = lang === 'de' ? 'EN' : 'DE';
+
+            if (typeof TRANSLATIONS === 'undefined') return;
+            const t = TRANSLATIONS[lang];
+            if (!t) return;
+
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) el.textContent = t[key];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                const key = el.getAttribute('data-i18n-html');
+                if (t[key] !== undefined) el.innerHTML = t[key];
+            });
+        }
+
+        const savedLang = localStorage.getItem('language') || 'de';
+        applyLanguage(savedLang);
+
+        langToggle.addEventListener('click', function() {
+            const current = localStorage.getItem('language') || 'de';
+            applyLanguage(current === 'de' ? 'en' : 'de');
+        });
+    }
     
     // Initialize loader
     if (loader) {
