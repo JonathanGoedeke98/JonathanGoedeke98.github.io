@@ -196,13 +196,14 @@
             </button>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="index.html" class="active">Startseite</a></li>
-                    <li><a href="projects.html">Projekte</a></li>
-                    <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
-                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="index.html" class="active"><span data-i18n="nav-home">Startseite</span></a></li>
+                    <li><a href="application-data-science-public-security.html"><span data-i18n="nav-application">Bewerbungsportfolio</span></a></li>
+                    <li><a href="theses.html"><span data-i18n="nav-academic">Wissenschaftliche Arbeiten</span></a></li>
+                    <li><a href="projects.html"><span data-i18n="nav-projects">Projekte</span></a></li>
+                    <li><a href="contact.html"><span data-i18n="nav-contact">Kontakt</span></a></li>
                 </ul>
             </nav>
+            <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">EN</button>
         </div>
     </header>
 
@@ -212,13 +213,13 @@
             <div class="hero-content animate-fade-in">
                 <img src="images/Profil.png" alt="Jonathan Gödeke" class="profile-image">
                 <h1 style="font-size: 2rem; margin-bottom: 0.4rem;">Jonathan Gödeke</h1>
-                <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">Data Scientist | Quantitative Analyse gesellschaftlicher Datenbestände</p>
-                <p style="font-size: 0.93rem; opacity: 0.9; max-width: 640px; margin: 0 auto 0.7rem; line-height: 1.65;">Ich entwickle reproduzierbare Analyseworkflows für gesellschaftlich relevante Fragestellungen — von der Datenaufbereitung und statistischen Modellierung über maschinelles Lernen bis zur zielgruppengerechten Ergebnisvermittlung.</p>
+                <p data-i18n="hero-subtitle" style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">Data Scientist | Quantitative Analyse gesellschaftlicher Datenbestände</p>
+                <p data-i18n="hero-desc" style="font-size: 0.93rem; opacity: 0.9; max-width: 640px; margin: 0 auto 0.7rem; line-height: 1.65;">Ich entwickle reproduzierbare Analyseworkflows für gesellschaftlich relevante Fragestellungen: von der Datenaufbereitung und statistischen Modellierung über maschinelles Lernen bis zur zielgruppengerechten Ergebnisvermittlung.</p>
                 <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 1.35rem; letter-spacing: 0.01em;">Python &nbsp;&middot;&nbsp; R &nbsp;&middot;&nbsp; Stata &nbsp;&middot;&nbsp; scikit-learn &nbsp;&middot;&nbsp; pandas &nbsp;&middot;&nbsp; Git/GitHub &nbsp;&middot;&nbsp; Statistische Modellierung &nbsp;&middot;&nbsp; Kausale Inferenz</p>
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;">
-                    <a href="projects.html" class="btn hover-lift">Relevante Projekte ansehen</a>
-                    <a href="files/CV_Jonathan_Goedeke.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="border-color: rgba(255,255,255,0.7); color: inherit;">Lebenslauf herunterladen</a>
-                    <a href="education-experience.html" class="btn btn-outline hover-lift" style="border-color: rgba(255,255,255,0.7); color: inherit;">Methoden &amp; Erfahrung</a>
+                    <a href="projects.html" data-i18n="hero-btn-projects" class="btn hover-lift">Relevante Projekte ansehen</a>
+                    <a href="files/CV_Jonathan_Goedeke.pdf" target="_blank" rel="noopener" data-i18n="hero-btn-cv" class="btn btn-outline hover-lift" style="border-color: rgba(255,255,255,0.7); color: inherit;">Lebenslauf herunterladen</a>
+                    <a href="education-experience.html" data-i18n="hero-btn-methods" class="btn btn-outline hover-lift" style="border-color: rgba(255,255,255,0.7); color: inherit;">Methoden &amp; Erfahrung</a>
                 </div>
             </div>
         </div>
@@ -227,24 +228,24 @@
     <!-- ── 2. Profil in Kürze ────────────────────────────────── -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <h2 class="section-title reveal">Profil in Kürze</h2>
-            <p class="reveal" style="font-size: 0.9rem; color: #555; max-width: 680px; margin-bottom: 0.25rem; line-height: 1.65;">Vier nachweisbare Kompetenzbereiche — jeder belegt durch abgeschlossene Projekte, begutachtete Arbeiten oder mehrjährige Forschungstätigkeit.</p>
+            <h2 data-i18n="profile-heading" class="section-title reveal">Profil in Kürze</h2>
+            <p data-i18n="profile-subtext" class="reveal" style="font-size: 0.9rem; color: #555; max-width: 680px; margin-bottom: 0.25rem; line-height: 1.65;">Vier nachweisbare Kompetenzbereiche, jeder belegt durch abgeschlossene Projekte, begutachtete Arbeiten oder mehrjährige Forschungstätigkeit.</p>
             <div class="rf-grid">
                 <div class="rf-card reveal">
-                    <h4><i class="fas fa-chart-line" style="color: var(--accent-color);"></i>Quantitative Modellierung</h4>
-                    <p>Kausalinferenz (RDD, DiD, PSM), Bayes-Ökonometrie, Paneldaten, Verteilungsregression und Monte-Carlo-Simulation — belegt durch begutachtete Abschlussarbeiten (Note 1,0) und eigenständige Forschungsprojekte.</p>
+                    <h4><i class="fas fa-chart-line" style="color: var(--accent-color);"></i><span data-i18n="rfcard1-title">Quantitative Modellierung</span></h4>
+                    <p data-i18n="rfcard1-body">Kausalinferenz (RDD, DiD, PSM), Bayes-Ökonometrie, Paneldaten, Verteilungsregression und Monte-Carlo-Simulation, belegt durch begutachtete Abschlussarbeiten (Note 1,0) und eigenständige Forschungsprojekte.</p>
                 </div>
                 <div class="rf-card reveal" style="animation-delay: 0.08s;">
-                    <h4><i class="fas fa-code" style="color: var(--accent-color);"></i>Python, R, Stata &amp; reproduzierbare Pipelines</h4>
-                    <p>Vier Jahre Anwendungspraxis mit pandas, scikit-learn, matplotlib, tidyverse und ggplot2 — mit Git, Makefile, pytest und vollständig dokumentierten Analyseworkflows.</p>
+                    <h4><i class="fas fa-code" style="color: var(--accent-color);"></i><span data-i18n="rfcard2-title">Python, R, Stata &amp; reproduzierbare Pipelines</span></h4>
+                    <p data-i18n="rfcard2-body">Vier Jahre Anwendungspraxis mit pandas, scikit-learn, matplotlib, tidyverse und ggplot2, eingesetzt mit Git, Makefile, pytest und vollständig dokumentierten Analyseworkflows.</p>
                 </div>
                 <div class="rf-card reveal" style="animation-delay: 0.16s;">
-                    <h4><i class="fas fa-database" style="color: var(--accent-color);"></i>Öffentliche Verwaltungs- und Politikdaten</h4>
-                    <p>Analyse offizieller Bundesstatistiken (BMI/BKA) und parlamentarischer Protokolldaten — mit konsequenter Quelldokumentation, Prüfsummenvalidierung und expliziten Interpretationsgrenzen.</p>
+                    <h4><i class="fas fa-database" style="color: var(--accent-color);"></i><span data-i18n="rfcard3-title">Öffentliche Verwaltungs- und Politikdaten</span></h4>
+                    <p data-i18n="rfcard3-body">Analyse offizieller Bundesstatistiken (BMI/BKA) und parlamentarischer Protokolldaten, mit konsequenter Quelldokumentation, Prüfsummenvalidierung und expliziten Interpretationsgrenzen.</p>
                 </div>
                 <div class="rf-card reveal" style="animation-delay: 0.24s;">
-                    <h4><i class="fas fa-comments" style="color: var(--accent-color);"></i>Adressatengerechte Kommunikation</h4>
-                    <p>Visualisierungen, kompakte Ergebniszusammenfassungen und Berichte für Forschende, Entscheidungsträger und Nicht-Fachpublikum — in akademischen und institutionellen Kontexten.</p>
+                    <h4><i class="fas fa-comments" style="color: var(--accent-color);"></i><span data-i18n="rfcard4-title">Adressatengerechte Kommunikation</span></h4>
+                    <p data-i18n="rfcard4-body">Visualisierungen, kompakte Ergebniszusammenfassungen und Berichte für Forschende, Entscheidungsträger und Nicht-Fachpublikum, in akademischen und institutionellen Kontexten.</p>
                 </div>
             </div>
         </div>
@@ -253,18 +254,18 @@
     <!-- ── 3. Ausgewählte Datenprojekte ─────────────────────── -->
     <section>
         <div class="container">
-            <h2 class="section-title reveal">Ausgewählte Datenprojekte</h2>
-            <p class="reveal" style="font-size: 0.9rem; color: #555; max-width: 700px; margin-bottom: 0.25rem; line-height: 1.65;">Angewandte Fallstudien zu öffentlichen Verwaltungsdaten, amtlichen Sicherheitsstatistiken, parlamentarischer Textanalyse, kausaler Politikanalyse und reproduzierbaren Machine-Learning-Workflows.</p>
+            <h2 data-i18n="projects-heading" class="section-title reveal">Ausgewählte Datenprojekte</h2>
+            <p data-i18n="projects-subtext" class="reveal" style="font-size: 0.9rem; color: #555; max-width: 700px; margin-bottom: 0.25rem; line-height: 1.65;">Angewandte Fallstudien zu öffentlichen Verwaltungsdaten, amtlichen Sicherheitsstatistiken, kausaler Politikanalyse und reproduzierbaren Machine-Learning-Workflows.</p>
             <div class="proj-grid">
 
                 <!-- Projekt 1: PMK — Flagship -->
                 <div class="proj-card flagship reveal">
                     <div class="proj-card-header">
-                        <h3>Politisch Motivierte Kriminalität: Öffentliches Datenanalyse-Dashboard</h3>
-                        <span class="badge badge-status-green">Vollständige Analyse</span>
+                        <h3 data-i18n="proj-pmk-title">Politisch Motivierte Kriminalität: Öffentliches Datenanalyse-Dashboard</h3>
+                        <span data-i18n="proj-pmk-status" class="badge badge-status-green">Vollständige Analyse</span>
                     </div>
-                    <p class="proj-desc">Dokumentierter Analyseworkflow für amtliche Aggregatdaten zur PMK aus BMI/BKA-Publikationen (2022–2024): prüfsummenvalidierter Datensatz, vier reproduzierbare Visualisierungen, vollständige Quellendokumentation und explizite Interpretationsgrenzen.</p>
-                    <p class="proj-demonstrates"><strong>Demonstriert:</strong> Sorgfältige Aufbereitung offizieller Verwaltungsstatistiken, Prüfsummenvalidierung, nüchterne Visualisierung und verantwortungsvolle Kommunikation gesellschaftlich sensibler Daten.</p>
+                    <p data-i18n="proj-pmk-desc" class="proj-desc">Dokumentierter Analyseworkflow für amtliche Aggregatdaten zur PMK aus BMI/BKA-Publikationen (2022–2024): prüfsummenvalidierter Datensatz, vier reproduzierbare Visualisierungen, vollständige Quellendokumentation und explizite Interpretationsgrenzen.</p>
+                    <p class="proj-demonstrates"><strong data-i18n="demonstrates-label">Demonstriert:</strong> <span data-i18n="proj-pmk-demonstrates">Quelldokumentation, Prüfsummenvalidierung und nüchterne Visualisierung amtlicher Verwaltungsstatistiken. Jede Zahl ist einer konkreten Quelle zugeordnet.</span></p>
                     <div class="badge-row">
                         <span class="badge badge-method">Python</span>
                         <span class="badge badge-method">pandas</span>
@@ -273,55 +274,35 @@
                         <span class="badge badge-method">Datenvalidierung</span>
                         <span class="badge badge-method">Makefile</span>
                     </div>
-                    <a href="project-crime-trends.html" class="btn hover-lift">Zum Projekt &rarr;</a>
+                    <a href="project-crime-trends.html" data-i18n="proj-pmk-btn" class="btn hover-lift">Zum Projekt</a>
                 </div>
 
-                <!-- Projekt 2: Parlamentarische Textanalyse -->
+                <!-- Projekt 2: BfV Verfassungsschutzberichte -->
                 <div class="proj-card reveal" style="animation-delay: 0.1s;">
                     <div class="proj-card-header">
-                        <h3>Textanalyse parlamentarischer Plenarprotokolle</h3>
-                        <span class="badge badge-status-green">Vollständige Analyse</span>
+                        <h3 data-i18n="proj-bfv-title">BfV Verfassungsschutzberichte: Öffentliche Aggregatdaten</h3>
+                        <span data-i18n="proj-bfv-status" class="badge badge-status-green">Validiertes MVP</span>
                     </div>
-                    <p class="proj-desc">Vollständige NLP-Analyse aller 214 Plenarsitzungen der 20. Wahlperiode: 26.992 Redeeinheiten, 806 Sprecher:innen, 2021–2025, 13,75 Mio. Roh-Tokens. TF-IDF + NMF (k=8) mit Stabilitätsanalyse über drei Zeitabschnitte (Gesamtmittel 0,867; mittlere Periode: 0,963) und repräsentativer Dokumentvalidierung. Quelle: Bundestag Open Data (dl-de/by-2-0).</p>
-                    <p class="proj-demonstrates"><strong>Demonstriert:</strong> Strukturierte Verarbeitung großer deutschsprachiger Textbestände, reproduzierbare Merkmalsextraktion, unüberwachte thematische Extraktion mit Stabilitätsprüfung und transparente Ergebniskommunikation.</p>
-                    <div class="badge-row">
-                        <span class="badge badge-method">Python</span>
-                        <span class="badge badge-method">lxml</span>
-                        <span class="badge badge-method">TF-IDF</span>
-                        <span class="badge badge-method">NMF</span>
-                        <span class="badge badge-method">scikit-learn</span>
-                        <span class="badge badge-method">matplotlib</span>
-                    </div>
-                    <a href="project-parliamentary-text.html" class="btn hover-lift">Zum Projekt &rarr;</a>
-                </div>
-
-                <!-- Projekt 3: BfV Verfassungsschutzberichte -->
-                <div class="proj-card reveal" style="animation-delay: 0.15s;">
-                    <div class="proj-card-header">
-                        <h3>BfV Verfassungsschutzberichte: Öffentliche Aggregatdaten</h3>
-                        <span class="badge badge-status-green">Validiertes MVP</span>
-                    </div>
-                    <p class="proj-desc">Dokumentierter Analyseworkflow für amtliche BfV-Aggregatstatistiken aus Verfassungsschutzberichten 2022–2024: Personalpotenzial nach Phänomenbereich (Rechtsextremismus: 50.250 in 2024), extremistisch motivierte Straftaten, 8/8 Konsistenzprüfungen bestanden, vollständige Quellendokumentation auf URL-Ebene. Analytisch strikt getrennt von PMK-Daten.</p>
-                    <p class="proj-demonstrates"><strong>Demonstriert:</strong> Strukturierte Extraktion öffentlicher Sicherheitsstatistiken, systematische Quelldokumentation auf URL-Ebene, reproduzierbare Datenpipeline auf amtlichen BfV-Aggregatdaten.</p>
+                    <p data-i18n="proj-bfv-desc" class="proj-desc">Dokumentierter Analyseworkflow für amtliche BfV-Aggregatstatistiken aus Verfassungsschutzberichten 2022–2024: Personalpotenzial nach Phänomenbereich (Rechtsextremismus: 50.250 in 2024), extremistisch motivierte Straftaten, 8/8 Konsistenzprüfungen bestanden, vollständige Quellendokumentation auf URL-Ebene.</p>
+                    <p class="proj-demonstrates"><strong data-i18n="demonstrates-label">Demonstriert:</strong> <span data-i18n="proj-bfv-demonstrates">Strukturierte Extraktion öffentlicher Sicherheitsstatistiken, systematische Quelldokumentation auf URL-Ebene, reproduzierbare Datenpipeline auf amtlichen BfV-Aggregatdaten.</span></p>
                     <div class="badge-row">
                         <span class="badge badge-method">Python</span>
                         <span class="badge badge-method">pandas</span>
                         <span class="badge badge-method">matplotlib</span>
                         <span class="badge badge-method">BfV-Daten</span>
-                        <span class="badge badge-method">Rechtsextremismus</span>
                         <span class="badge badge-method">Datenvalidierung</span>
                     </div>
-                    <a href="project-bfv-reports.html" class="btn hover-lift">Zum Projekt &rarr;</a>
+                    <a href="project-bfv-reports.html" data-i18n="proj-bfv-btn" class="btn hover-lift">Zum Projekt</a>
                 </div>
 
-                <!-- Projekt 4: Kausale Politikanalyse -->
-                <div class="proj-card reveal" style="animation-delay: 0.25s;">
+                <!-- Projekt 3: Kausale Politikanalyse -->
+                <div class="proj-card reveal" style="animation-delay: 0.2s;">
                     <div class="proj-card-header">
-                        <h3>Kausale Politikanalyse mit quasi-experimentellen Methoden</h3>
-                        <span class="badge badge-status-green">Begutachtete Forschungsarbeit</span>
+                        <h3 data-i18n="proj-causal-title">Kausale Politikanalyse mit quasi-experimentellen Methoden</h3>
+                        <span data-i18n="proj-causal-status" class="badge badge-status-green">Begutachtete Forschungsarbeit</span>
                     </div>
-                    <p class="proj-desc">Zwei abgeschlossene, benotete Analysen mit RDD und DiD: Uruguay PANES-Programm (~10&nbsp;% kausaler Anstieg politischer Unterstützung; Note: Distinction 83&nbsp;%) und COVID-19-Lockdown und Lebenszufriedenheit (DiD&nbsp;+ PSM, HILDA-Panel, 215.000 Beobachtungen).</p>
-                    <p class="proj-demonstrates"><strong>Demonstriert:</strong> Kausales Schlussfolgern, Identifikationsstrategie, Annahmentests, Robustheitsprüfungen und transparente Unsicherheitskommunikation für politikrelevante Fragen.</p>
+                    <p data-i18n="proj-causal-desc" class="proj-desc">Zwei abgeschlossene, benotete Analysen mit RDD und DiD: Uruguay PANES-Programm (ca. 10&nbsp;% kausaler Anstieg politischer Unterstützung; Note: Distinction 83&nbsp;%) und COVID-19-Lockdown und Lebenszufriedenheit (DiD&nbsp;+ PSM, HILDA-Panel, 215.000 Beobachtungen).</p>
+                    <p class="proj-demonstrates"><strong data-i18n="demonstrates-label">Demonstriert:</strong> <span data-i18n="proj-causal-demonstrates">Kausales Schlussfolgern jenseits von Korrelation. Identifikationsstrategie, Annahmentests, Robustheitsprüfungen und transparente Unsicherheitskommunikation für politikrelevante Fragen.</span></p>
                     <div class="badge-row">
                         <span class="badge badge-method">Stata</span>
                         <span class="badge badge-method">R</span>
@@ -330,17 +311,17 @@
                         <span class="badge badge-method">PSM</span>
                         <span class="badge badge-method">Paneldaten</span>
                     </div>
-                    <a href="project-causal-policy.html" class="btn hover-lift">Zum Projekt &rarr;</a>
+                    <a href="project-causal-policy.html" data-i18n="proj-causal-btn" class="btn hover-lift">Zum Projekt</a>
                 </div>
 
-                <!-- Projekt 5: ML-Pipeline -->
-                <div class="proj-card reveal" style="animation-delay: 0.35s;">
+                <!-- Projekt 4: ML-Pipeline -->
+                <div class="proj-card reveal" style="animation-delay: 0.3s;">
                     <div class="proj-card-header">
-                        <h3>Reproduzierbare Machine-Learning-Pipeline</h3>
-                        <span class="badge badge-status-blue">Ingenieurtechnischer Nachweis</span>
+                        <h3 data-i18n="proj-ml-title">Reproduzierbare Machine-Learning-Pipeline</h3>
+                        <span data-i18n="proj-ml-status" class="badge badge-status-blue">Ingenieurtechnischer Nachweis</span>
                     </div>
-                    <p class="proj-desc">End-to-End-Supervised-Learning-Workflow: leckagefreie sklearn-Pipelines, Modellvergleich (LR&nbsp;· RF&nbsp;· GBM), Kreuzvalidierung, 11 automatisierte pytest-Tests und reproduzierbare Dokumentation. Random Forest: ROC-AUC&nbsp;0,900.</p>
-                    <p class="proj-demonstrates"><strong>Demonstriert:</strong> Saubere Python-Projektstruktur, Vermeidung von Data Leakage, Modellvalidierung, automatisierte Tests und reproduzierbare Ergebnisdokumentation.</p>
+                    <p data-i18n="proj-ml-desc" class="proj-desc">End-to-End-Supervised-Learning-Workflow: leckagefreie sklearn-Pipelines, Modellvergleich (LR&nbsp;· RF&nbsp;· GBM), Kreuzvalidierung, 11 automatisierte pytest-Tests und reproduzierbare Dokumentation. Random Forest: ROC-AUC&nbsp;0,900.</p>
+                    <p class="proj-demonstrates"><strong data-i18n="demonstrates-label">Demonstriert:</strong> <span data-i18n="proj-ml-demonstrates">Saubere Python-Projektstruktur, Vermeidung von Data Leakage, Modellvalidierung, automatisierte Tests und reproduzierbare Ergebnisdokumentation.</span></p>
                     <div class="badge-row">
                         <span class="badge badge-method">Python</span>
                         <span class="badge badge-method">scikit-learn</span>
@@ -349,12 +330,12 @@
                         <span class="badge badge-method">Random Forest</span>
                         <span class="badge badge-method">GBM</span>
                     </div>
-                    <a href="project-ml-pipeline.html" class="btn hover-lift">Zum Projekt &rarr;</a>
+                    <a href="project-ml-pipeline.html" data-i18n="proj-ml-btn" class="btn hover-lift">Zum Projekt</a>
                 </div>
 
             </div>
             <div class="text-center reveal" style="margin-top: 1.5rem;">
-                <a href="projects.html" class="btn btn-outline hover-lift">Alle Projekte ansehen</a>
+                <a href="projects.html" data-i18n="proj-all-btn" class="btn btn-outline hover-lift">Alle Projekte ansehen</a>
             </div>
         </div>
     </section>
@@ -362,7 +343,7 @@
     <!-- ── 4. Werkzeuge & Methoden ───────────────────────────── -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <h2 class="section-title reveal">Werkzeuge &amp; Methoden</h2>
+            <h2 data-i18n="tools-heading" class="section-title reveal">Werkzeuge &amp; Methoden</h2>
             <div class="toolkit-grid reveal">
                 <div class="tk-col">
                     <h4>Programmierung</h4>
@@ -432,8 +413,8 @@
     <!-- ── 5. Verantwortungsvoller Umgang mit Daten ──────────── -->
     <section>
         <div class="container">
-            <h2 class="section-title reveal">Verantwortungsvoller Umgang mit gesellschaftlich sensiblen Daten</h2>
-            <p class="reveal" style="font-size: 0.9rem; color: #555; max-width: 720px; margin-bottom: 0.25rem; line-height: 1.65;">Analytische Belastbarkeit erfordert nicht nur methodische Sorgfalt, sondern auch verantwortungsvolle Interpretation — insbesondere bei Daten mit gesellschaftlicher Sprengkraft. Diese Grundsätze leiten meine gesamte Arbeit.</p>
+            <h2 data-i18n="resp-heading" class="section-title reveal">Verantwortungsvoller Umgang mit gesellschaftlich sensiblen Daten</h2>
+            <p data-i18n="resp-subtext" class="reveal" style="font-size: 0.9rem; color: #555; max-width: 720px; margin-bottom: 0.25rem; line-height: 1.65;">Analytische Belastbarkeit erfordert nicht nur methodische Sorgfalt, sondern auch verantwortungsvolle Interpretation, insbesondere bei Daten mit gesellschaftlicher Sprengkraft. Diese Grundsätze leiten meine gesamte Arbeit.</p>
             <div class="resp-grid" style="margin-top: 1.25rem;">
                 <div class="resp-item reveal">
                     <i class="fas fa-shield-alt resp-icon"></i>
@@ -458,7 +439,7 @@
     <!-- ── 6. Berufliche Erfahrung in der Datenanalyse ──────── -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <h2 class="section-title reveal">Berufliche Erfahrung in der Datenanalyse</h2>
+            <h2 data-i18n="exp-heading" class="section-title reveal">Berufliche Erfahrung in der Datenanalyse</h2>
             <div class="exp-grid">
 
                 <div class="exp-card reveal">
@@ -489,19 +470,19 @@
     <!-- ── 7. Akademischer Hintergrund ──────────────────────── -->
     <section>
         <div class="container">
-            <h2 class="section-title reveal">Akademischer Hintergrund</h2>
+            <h2 data-i18n="acad-bg-heading" class="section-title reveal">Akademischer Hintergrund</h2>
             <div class="edu-grid">
 
                 <div class="edu-card reveal">
                     <div class="edu-dates">2024 &ndash; 2026</div>
-                    <div class="edu-deg">MSc Volkswirtschaftslehre &mdash; Note 1,0, Beste(r) 1&nbsp;%</div>
+                    <div class="edu-deg">MSc Volkswirtschaftslehre, Note 1,0, Beste(r) 1&nbsp;%</div>
                     <div class="edu-inst">Universität zu Köln &nbsp;&middot;&nbsp; Austausch: Universität Tokio (03–08/2026)</div>
-                    <div class="edu-detail">Schwerpunkt: Statistik und Datenanalyse. Kurse: Mikroökonometrie, Bayes-Ökonometrie, Machine-Learning-Methoden, Wahrscheinlichkeitstheorie. Abschlussarbeit: statistischer Test auf praktische Relevanz von Endogenität in semiparametrischer Verteilungsregression (Monte-Carlo-Simulation in R). Voraussichtlicher Abschluss: 08/2026 (Abschlussarbeit in Vorbereitung). Stipendium der Studienstiftung des deutschen Volkes.</div>
+                    <div class="edu-detail">Schwerpunkt: Statistik und Datenanalyse. Kurse: Mikroökonometrie, Bayes-Ökonometrie, Machine-Learning-Methoden, Wahrscheinlichkeitstheorie. Abschlussarbeit: statistischer Test auf praktische Relevanz von Endogenität in semiparametrischer Verteilungsregression (Monte-Carlo-Simulation in R). Voraussichtlicher Abschluss: 08/2026. Stipendium der Studienstiftung des deutschen Volkes.</div>
                 </div>
 
                 <div class="edu-card reveal" style="animation-delay: 0.1s;">
                     <div class="edu-dates">2023 &ndash; 2025</div>
-                    <div class="edu-deg">MSc Behavioural Science &mdash; High Merit</div>
+                    <div class="edu-deg">MSc Behavioural Science, High Merit</div>
                     <div class="edu-inst">London School of Economics and Political Science</div>
                     <div class="edu-detail">Schwerpunkt: Kausale Inferenz in der Politikanalyse. Dissertation: Distributionssensitive Politikanalyse mit kausalen Schätzern auf Lebenszufriedenheitsdaten (DiD&nbsp;+ PSM, HILDA-Paneldaten, n&nbsp;&gt;&nbsp;17.000). Stipendium der Studienstiftung des deutschen Volkes.</div>
                 </div>
@@ -515,14 +496,14 @@
 
                 <div class="edu-card reveal" style="animation-delay: 0.3s;">
                     <div class="edu-dates">2019 &ndash; 2023</div>
-                    <div class="edu-deg">BSc Betriebswirtschaftslehre &mdash; Note 1,3, Top 5&nbsp;%</div>
+                    <div class="edu-deg">BSc Betriebswirtschaftslehre, Note 1,3, Top 5&nbsp;%</div>
                     <div class="edu-inst">Universität zu Köln</div>
                     <div class="edu-detail">Schwerpunkt: Quantitative Methoden und Experimentaldesign. Stipendium der Studienstiftung des deutschen Volkes.</div>
                 </div>
 
             </div>
             <div style="margin-top: 1.25rem;">
-                <a href="files/CV_Jonathan_Goedeke.pdf" target="_blank" rel="noopener" class="btn btn-outline hover-lift reveal" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">Lebenslauf herunterladen</a>
+                <a href="files/CV_Jonathan_Goedeke.pdf" target="_blank" rel="noopener" data-i18n="acad-bg-cv-btn" class="btn btn-outline hover-lift reveal" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">Lebenslauf herunterladen</a>
             </div>
         </div>
     </section>
@@ -530,7 +511,7 @@
     <!-- ── 8. Ausgewählte wissenschaftliche Arbeiten ─────────── -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <h2 class="section-title reveal">Ausgewählte wissenschaftliche Arbeiten</h2>
+            <h2 data-i18n="acad-works-heading" class="section-title reveal">Ausgewählte wissenschaftliche Arbeiten</h2>
             <div class="acad-entries">
 
                 <div class="acad-entry reveal">
@@ -573,7 +554,7 @@
 
             </div>
             <div class="text-center reveal" style="margin-top: 1.5rem;">
-                <a href="theses.html" class="btn btn-outline hover-lift">Alle wissenschaftlichen Arbeiten</a>
+                <a href="theses.html" data-i18n="acad-works-all-btn" class="btn btn-outline hover-lift">Alle wissenschaftlichen Arbeiten</a>
             </div>
         </div>
     </section>
@@ -582,12 +563,12 @@
     <section>
         <div class="container">
             <div class="cta-banner reveal">
-                <h2>Meine Arbeiten erkunden</h2>
-                <p>Angewandte Datenprojekte mit reproduzierbarem Code und dokumentierten Pipelines — sowie quantitative Forschungsarbeiten zu statistischer Theorie, Ökonometrie und kausaler Inferenz.</p>
+                <h2 data-i18n="cta-heading">Meine Arbeiten erkunden</h2>
+                <p data-i18n="cta-desc">Angewandte Datenprojekte mit reproduzierbarem Code und dokumentierten Pipelines, sowie quantitative Forschungsarbeiten zu statistischer Theorie, Ökonometrie und kausaler Inferenz.</p>
                 <div class="btn-row">
-                    <a href="projects.html" class="btn hover-lift">Projekte ansehen</a>
-                    <a href="application-data-science-public-security.html" class="btn btn-outline hover-lift">Bewerbungsportfolio</a>
-                    <a href="contact.html" class="btn btn-outline hover-lift">Kontakt</a>
+                    <a href="projects.html" data-i18n="cta-btn-projects" class="btn hover-lift">Projekte ansehen</a>
+                    <a href="application-data-science-public-security.html" data-i18n="cta-btn-application" class="btn btn-outline hover-lift">Bewerbungsportfolio</a>
+                    <a href="contact.html" data-i18n="cta-btn-contact" class="btn btn-outline hover-lift">Kontakt</a>
                     <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>GitHub</a>
                 </div>
             </div>
@@ -604,9 +585,9 @@
             </ul>
             <ul class="footer-links">
                 <li><a href="index.html">Startseite</a></li>
-                <li><a href="projects.html">Projekte</a></li>
-                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
                 <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="projects.html">Projekte</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
                 <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
             </ul>
@@ -615,6 +596,7 @@
 
     <button class="back-to-top" aria-label="Nach oben"><i class="fas fa-arrow-up"></i></button>
     <button class="theme-toggle" aria-label="Dunkelmodus umschalten"><i class="fas fa-moon"></i></button>
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

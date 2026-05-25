@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekte | Jonathan Gödeke</title>
-    <meta name="description" content="Angewandte Data-Science-Projekte von Jonathan Gödeke: öffentliche Verwaltungsdaten, parlamentarische Textanalyse, kausale Politikanalyse und reproduzierbare Machine-Learning-Workflows.">
+    <meta name="description" content="Angewandte Data-Science-Projekte von Jonathan Gödeke: öffentliche Verwaltungsdaten, kausale Politikanalyse und reproduzierbare Machine-Learning-Workflows.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/accessibility.css">
@@ -126,21 +126,22 @@
             </button>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="projects.html" class="active">Projekte</a></li>
-                    <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
-                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="index.html"><span data-i18n="nav-home">Startseite</span></a></li>
+                    <li><a href="application-data-science-public-security.html"><span data-i18n="nav-application">Bewerbungsportfolio</span></a></li>
+                    <li><a href="theses.html"><span data-i18n="nav-academic">Wissenschaftliche Arbeiten</span></a></li>
+                    <li><a href="projects.html" class="active"><span data-i18n="nav-projects">Projekte</span></a></li>
+                    <li><a href="contact.html"><span data-i18n="nav-contact">Kontakt</span></a></li>
                 </ul>
             </nav>
+            <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">EN</button>
         </div>
     </header>
 
     <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content animate-fade-in">
-                <h1>Angewandte Data-Science-Projekte</h1>
-                <p>Ausgewählte Fallstudien, die meinen analytischen Ansatz dokumentieren: Fragestellung, Datenaufbereitung, Modellierung, Validierung, Visualisierung und reproduzierbare Workflows — auf öffentlichen, institutionellen und administrativen Daten.</p>
+                <h1 data-i18n="page-projects-hero-title">Angewandte Data-Science-Projekte</h1>
+                <p data-i18n="page-projects-hero-desc">Ausgewählte Fallstudien, die meinen analytischen Ansatz dokumentieren: Fragestellung, Datenaufbereitung, Modellierung, Validierung, Visualisierung und reproduzierbare Workflows auf öffentlichen, institutionellen und administrativen Daten.</p>
                 <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="border-color: rgba(255,255,255,0.7); color: inherit;"><i class="fab fa-github" style="margin-right: 0.4rem;"></i>GitHub-Profil</a>
             </div>
         </div>
@@ -151,13 +152,13 @@
         <div class="container">
 
             <div class="card reveal" style="background: linear-gradient(135deg, #f0f4ff, #f5f7fa); border-left: 4px solid var(--secondary-color); margin-bottom: 2.5rem; padding: 1.2rem 1.5rem;">
-                <p style="margin: 0; font-size: 0.92rem;"><strong>Hinweis zum Portfolio:</strong> Diese Projekte decken vier Kompetenzbereiche ab, die für angewandte Data-Science relevant sind: Analyse öffentlicher Verwaltungsdaten, NLP und Textextraktion, kausale Politikanalyse und reproduzierbare ML-Ingenieurpraxis. Projektstatusangaben sind explizit und ehrlich: vollständige Analyse, reproduzierbarer Prototyp oder begutachtete Forschungsarbeit.</p>
+                <p data-i18n="page-projects-notice" style="margin: 0; font-size: 0.92rem;"><strong>Hinweis zum Portfolio:</strong> Diese Projekte decken drei Kompetenzbereiche ab, die für angewandte Data-Science relevant sind: Analyse öffentlicher Verwaltungsdaten, kausale Politikanalyse und reproduzierbare ML-Ingenieurpraxis. Projektstatusangaben sind explizit und ehrlich: vollständige Analyse, reproduzierbarer Prototyp oder begutachtete Forschungsarbeit.</p>
             </div>
 
             <div style="margin-bottom: 1.5rem;">
-                <p class="group-label">A. Angewandtes Data-Science-Portfolio</p>
-                <h2 class="group-heading">Eigenständige Portfolioprojekte</h2>
-                <p class="group-desc">Eigenständig entwickelte Projekte auf öffentlich zugänglichen Daten, die End-to-End-Analyseworkflows demonstrieren — von der Datenquelle bis zum reproduzierbaren Output.</p>
+                <p data-i18n="page-projects-groupA-label" class="group-label">A. Angewandtes Data-Science-Portfolio</p>
+                <h2 data-i18n="page-projects-groupA-heading" class="group-heading">Eigenständige Portfolioprojekte</h2>
+                <p data-i18n="page-projects-groupA-desc" class="group-desc">Eigenständig entwickelte Projekte auf öffentlich zugänglichen Daten, die End-to-End-Analyseworkflows demonstrieren: von der Datenquelle bis zum reproduzierbaren Output.</p>
             </div>
 
             <div class="projects-grid">
@@ -165,9 +166,9 @@
                 <!-- Projekt 1: PMK — Flagship -->
                 <div class="project-card flagship reveal">
                     <span class="flagship-note"><i class="fas fa-star" style="margin-right: 0.3rem;"></i>Schwerpunktprojekt</span>
-                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Vollständige Analyse</span>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Politisch Motivierte Kriminalität: Öffentliches Datenanalyse-Dashboard</h3>
-                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Dokumentierter Analyseworkflow für amtliche PMK-Aggregatdaten aus BMI/BKA-Publikationen (2022–2024): prüfsummenvalidierter Datensatz (84.172 erfasste Straftaten 2024), vier reproduzierbare Visualisierungen und vollständige Quellendokumentation mit expliziten Interpretationsgrenzen.</p>
+                    <span data-i18n="proj-pmk-status" class="project-status status-complete"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Vollständige Analyse</span>
+                    <h3 data-i18n="proj-pmk-title" style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Politisch Motivierte Kriminalität: Öffentliches Datenanalyse-Dashboard</h3>
+                    <p data-i18n="proj-pmk-desc" style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Dokumentierter Analyseworkflow für amtliche PMK-Aggregatdaten aus BMI/BKA-Publikationen (2022–2024): prüfsummenvalidierter Datensatz (84.172 erfasste Straftaten 2024), vier reproduzierbare Visualisierungen und vollständige Quellendokumentation mit expliziten Interpretationsgrenzen.</p>
                     <div class="tag-row">
                         <span class="tag">Python</span>
                         <span class="tag">pandas</span>
@@ -178,61 +179,38 @@
                         <span class="tag">Git</span>
                     </div>
                     <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methoden:</strong> Manuelle Transkription aus amtlichen Quellen · Prüfsummenvalidierung · Deskriptive Statistik · Kategorienvergleich</p>
-                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>Sorgfältige Quelldokumentation, Prüfsummenvalidierung, nüchterne Visualisierung und verantwortungsvolle Kommunikation gesellschaftlich sensibler Verwaltungsstatistiken.</p>
+                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i><span data-i18n="proj-pmk-demonstrates">Quelldokumentation, Prüfsummenvalidierung, nüchterne Visualisierung und verantwortungsvolle Kommunikation gesellschaftlich sensibler Verwaltungsstatistiken.</span></p>
                     <div class="project-actions">
-                        <a href="project-crime-trends.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt &rarr;</a>
+                        <a href="project-crime-trends.html" data-i18n="proj-pmk-btn" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt</a>
                         <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;"><i class="fab fa-github" style="margin-right: 0.3rem;"></i>GitHub</a>
                     </div>
                 </div>
 
-                <!-- Projekt 2: Parlamentarische Textanalyse -->
+                <!-- Projekt 2: BfV Verfassungsschutzberichte -->
                 <div class="project-card reveal" style="animation-delay: 0.1s;">
-                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Vollständige Analyse — 214 Sitzungen, 20. WP</span>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Thematische Strukturanalyse parlamentarischer Debatten</h3>
-                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Vollständige NLP-Analyse aller 214 Plenarsitzungen der 20. Wahlperiode (Bundestag Open Data, dl-de/by-2-0): 26.992 Redeeinheiten, 806 Sprecher:innen, Oktober 2021–März 2025, 13,75 Mio. Roh-Tokens. TF-IDF + NMF (k=8) mit Stabilitätsanalyse (Gesamtmittel 0,867; mittlere Periode: 0,963), repräsentativer Dokumentvalidierung und monatlichem Themenverlauf.</p>
-                    <div class="tag-row">
-                        <span class="tag">Python</span>
-                        <span class="tag">scikit-learn</span>
-                        <span class="tag">TF-IDF</span>
-                        <span class="tag">NMF (k=8)</span>
-                        <span class="tag">lxml</span>
-                        <span class="tag">matplotlib</span>
-                        <span class="tag">Git</span>
-                    </div>
-                    <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methoden:</strong> XML-Parsing · Vorverarbeitung · TF-IDF · NMF-Themenmodellierung · Stabilitätsanalyse · Repräsentativdokument-Validierung</p>
-                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>Strukturierte Verarbeitung großer deutschsprachiger Textbestände, reproduzierbare Merkmalsextraktion, unüberwachte thematische Extraktion mit Stabilitätsprüfung und transparente Ergebniskommunikation auf öffentlichen institutionellen Daten.</p>
-                    <div class="project-actions">
-                        <a href="project-parliamentary-text.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt &rarr;</a>
-                        <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;"><i class="fab fa-github" style="margin-right: 0.3rem;"></i>GitHub</a>
-                    </div>
-                </div>
-
-                <!-- Projekt 3: BfV Verfassungsschutzberichte -->
-                <div class="project-card reveal" style="animation-delay: 0.15s;">
-                    <span class="project-status status-complete"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Validiertes MVP</span>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">BfV Verfassungsschutzberichte: Öffentliche Aggregatdaten</h3>
-                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Dokumentierter Analyseworkflow für amtliche BfV-Aggregatstatistiken aus Verfassungsschutzberichten 2022–2024: Personalpotenzial nach Phänomenbereich (Rechtsextremismus 50.250 in 2024), extremistisch motivierte Straftaten, 8/8 Konsistenzprüfungen bestanden, vollständige Quellendokumentation auf URL-Ebene. Analytisch strikt getrennt von PMK-Daten.</p>
+                    <span data-i18n="proj-bfv-status" class="project-status status-complete"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Validiertes MVP</span>
+                    <h3 data-i18n="proj-bfv-title" style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">BfV Verfassungsschutzberichte: Öffentliche Aggregatdaten</h3>
+                    <p data-i18n="proj-bfv-desc" style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Dokumentierter Analyseworkflow für amtliche BfV-Aggregatstatistiken aus Verfassungsschutzberichten 2022–2024: Personalpotenzial nach Phänomenbereich (Rechtsextremismus 50.250 in 2024), extremistisch motivierte Straftaten, 8/8 Konsistenzprüfungen bestanden, vollständige Quellendokumentation auf URL-Ebene.</p>
                     <div class="tag-row">
                         <span class="tag">Python</span>
                         <span class="tag">pandas</span>
                         <span class="tag">matplotlib</span>
                         <span class="tag">BfV-Daten</span>
-                        <span class="tag">Rechtsextremismus</span>
                         <span class="tag">Datenvalidierung</span>
                     </div>
                     <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methoden:</strong> Manuelle Transkription aus Pressemitteilungen · Kreuzvalidierung zwischen Berichten · Deskriptive Zeitreihen · Provenienz-Dokumentation</p>
-                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>Strukturierte Extraktion und Aufbereitung öffentlicher Sicherheitsstatistiken, systematische Quelldokumentation, reproduzierbare Datenpipeline auf amtlichen BfV-Aggregatdaten.</p>
+                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i><span data-i18n="proj-bfv-demonstrates">Strukturierte Extraktion und Aufbereitung öffentlicher Sicherheitsstatistiken, systematische Quelldokumentation, reproduzierbare Datenpipeline auf amtlichen BfV-Aggregatdaten.</span></p>
                     <div class="project-actions">
-                        <a href="project-bfv-reports.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt &rarr;</a>
+                        <a href="project-bfv-reports.html" data-i18n="proj-bfv-btn" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt</a>
                         <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;"><i class="fab fa-github" style="margin-right: 0.3rem;"></i>GitHub</a>
                     </div>
                 </div>
 
-                <!-- Projekt 4: Reproduzierbare ML-Pipeline -->
+                <!-- Projekt 3: Reproduzierbare ML-Pipeline -->
                 <div class="project-card reveal" style="animation-delay: 0.2s;">
-                    <span class="project-status status-engineering"><i class="fas fa-cogs" style="margin-right: 0.3rem;"></i>Ingenieurtechnischer Nachweis</span>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Reproduzierbare Machine-Learning-Pipeline</h3>
-                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Supervised-Learning-Workflow auf einem öffentlichen strukturierten Datensatz: leckagefreie sklearn-Pipelines, drei Modellvergleiche (LR&nbsp;· RF&nbsp;· GBM), Kreuzvalidierung, 11 automatisierte pytest-Tests und reproduzierbare Dokumentation. Random Forest: ROC-AUC 0,900.</p>
+                    <span data-i18n="proj-ml-status" class="project-status status-engineering"><i class="fas fa-cogs" style="margin-right: 0.3rem;"></i>Ingenieurtechnischer Nachweis</span>
+                    <h3 data-i18n="proj-ml-title" style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Reproduzierbare Machine-Learning-Pipeline</h3>
+                    <p data-i18n="proj-ml-desc" style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Supervised-Learning-Workflow auf einem öffentlichen strukturierten Datensatz: leckagefreie sklearn-Pipelines, drei Modellvergleiche (LR&nbsp;· RF&nbsp;· GBM), Kreuzvalidierung, 11 automatisierte pytest-Tests und reproduzierbare Dokumentation. Random Forest: ROC-AUC 0,900.</p>
                     <div class="tag-row">
                         <span class="tag">Python</span>
                         <span class="tag">scikit-learn</span>
@@ -242,9 +220,9 @@
                         <span class="tag">Git</span>
                     </div>
                     <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methoden:</strong> Binäre Klassifikation · sklearn Pipeline · Kreuzvalidierung · Feature Importance · ROC-AUC</p>
-                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>End-to-End-ML-Workflow, Vermeidung von Data Leakage, Modellvalidierung, automatisierte Tests und reproduzierbare Figurenerzeugung.</p>
+                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i><span data-i18n="proj-ml-demonstrates">End-to-End-ML-Workflow, Vermeidung von Data Leakage, Modellvalidierung, automatisierte Tests und reproduzierbare Figurenerzeugung.</span></p>
                     <div class="project-actions">
-                        <a href="project-ml-pipeline.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt &rarr;</a>
+                        <a href="project-ml-pipeline.html" data-i18n="proj-ml-btn" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt</a>
                         <a href="https://github.com/JonathanGoedeke98" target="_blank" rel="noopener" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;"><i class="fab fa-github" style="margin-right: 0.3rem;"></i>GitHub</a>
                     </div>
                 </div>
@@ -258,18 +236,18 @@
         <div class="container">
 
             <div style="margin-bottom: 1.5rem;">
-                <p class="group-label">B. Forschungsbasierte quantitative Analyse</p>
-                <h2 class="group-heading">Abgeschlossene akademische und Forschungsarbeiten</h2>
-                <p class="group-desc">Abgeschlossene Analysen in formalen Forschungs- und akademischen Kontexten — auf realen Datensätzen mit etablierten Methoden der kausalen Inferenz, vollständig begutachtet und benotet.</p>
+                <p data-i18n="page-projects-groupB-label" class="group-label">B. Forschungsbasierte quantitative Analyse</p>
+                <h2 data-i18n="page-projects-groupB-heading" class="group-heading">Abgeschlossene akademische und Forschungsarbeiten</h2>
+                <p data-i18n="page-projects-groupB-desc" class="group-desc">Abgeschlossene Analysen in formalen Forschungs- und akademischen Kontexten, auf realen Datensätzen mit etablierten Methoden der kausalen Inferenz, vollständig begutachtet und benotet.</p>
             </div>
 
             <div class="projects-grid">
 
-                <!-- Projekt 4: Kausale Politikanalyse -->
+                <!-- Projekt: Kausale Politikanalyse -->
                 <div class="project-card reveal">
-                    <span class="project-status status-research"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Begutachtete Forschungsarbeit</span>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Kausale Politikanalyse mit quasi-experimentellen Methoden</h3>
-                    <p style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Zwei abgeschlossene Analysen mit RDD und DiD: Uruguays PANES-Transferprogramm (RDD, ~10&nbsp;% kausaler Anstieg politischer Unterstützung, Distinction 83&nbsp;%) und Victoria COVID-19-Lockdown auf Lebenszufriedenheit (DiD&nbsp;+ PSM, HILDA-Panel 215.000 Beobachtungen).</p>
+                    <span data-i18n="proj-causal-status" class="project-status status-research"><i class="fas fa-check-circle" style="margin-right: 0.3rem;"></i>Begutachtete Forschungsarbeit</span>
+                    <h3 data-i18n="proj-causal-title" style="color: var(--primary-color); margin-bottom: 0.4rem; font-size: 1.1rem;">Kausale Politikanalyse mit quasi-experimentellen Methoden</h3>
+                    <p data-i18n="proj-causal-desc" style="font-size: 0.88rem; color: #444; margin: 0 0 0.5rem; line-height: 1.65;">Zwei abgeschlossene Analysen mit RDD und DiD: Uruguay PANES-Programm (ca. 10&nbsp;% kausaler Anstieg politischer Unterstützung, Distinction 83&nbsp;%) und COVID-19-Lockdown auf Lebenszufriedenheit (DiD&nbsp;+ PSM, HILDA-Panel, 215.000 Beobachtungen).</p>
                     <div class="tag-row">
                         <span class="tag">Stata</span>
                         <span class="tag">Regressionsdiskontinuität</span>
@@ -278,10 +256,10 @@
                         <span class="tag">Paneldaten</span>
                     </div>
                     <p style="font-size: 0.78rem; color: #666; margin: 0.3rem 0 0;"><strong>Methoden:</strong> Sharp RDD · DiD · PSM · McCrary-Test · Donut-Hole · Bandbreitensensitivität · rdrobust</p>
-                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i>Kausales Schlussfolgern jenseits von Vorhersage: Identifikationsstrategie, Annahmentests, Robustheitsprüfungen und transparente Unsicherheitskommunikation.</p>
+                    <p class="demonstrates-line"><i class="fas fa-check-circle"></i><span data-i18n="proj-causal-demonstrates">Kausales Schlussfolgern jenseits von Korrelation. Identifikationsstrategie, Annahmentests, Robustheitsprüfungen und transparente Unsicherheitskommunikation.</span></p>
                     <div class="project-actions">
-                        <a href="project-causal-policy.html" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt &rarr;</a>
-                        <a href="theses.html" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Wissenschaftliche Arbeiten</a>
+                        <a href="project-causal-policy.html" data-i18n="proj-causal-btn" class="btn" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Zum Projekt</a>
+                        <a href="theses.html" data-i18n="nav-academic" class="btn btn-outline hover-lift" style="font-size: 0.83rem; padding: 0.42rem 0.85rem;">Wissenschaftliche Arbeiten</a>
                     </div>
                 </div>
 
@@ -298,9 +276,9 @@
             </ul>
             <ul class="footer-links">
                 <li><a href="index.html">Startseite</a></li>
-                <li><a href="projects.html">Projekte</a></li>
-                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
                 <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="projects.html">Projekte</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
                 <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
             </ul>
@@ -309,6 +287,7 @@
 
     <button class="back-to-top" aria-label="Nach oben"><i class="fas fa-arrow-up"></i></button>
     <button class="theme-toggle" aria-label="Dunkelmodus umschalten"><i class="fas fa-moon"></i></button>
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

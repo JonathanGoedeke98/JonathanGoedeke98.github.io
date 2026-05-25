@@ -52,13 +52,14 @@
             </button>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="projects.html">Projekte</a></li>
-                    <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
-                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
-                    <li><a href="contact.html" class="active">Kontakt</a></li>
+                    <li><a href="index.html"><span data-i18n="nav-home">Startseite</span></a></li>
+                    <li><a href="application-data-science-public-security.html"><span data-i18n="nav-application">Bewerbungsportfolio</span></a></li>
+                    <li><a href="theses.html"><span data-i18n="nav-academic">Wissenschaftliche Arbeiten</span></a></li>
+                    <li><a href="projects.html"><span data-i18n="nav-projects">Projekte</span></a></li>
+                    <li><a href="contact.html" class="active"><span data-i18n="nav-contact">Kontakt</span></a></li>
                 </ul>
             </nav>
+            <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">EN</button>
         </div>
     </header>
 
@@ -66,7 +67,7 @@
     <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content animate-fade-in">
-                <h1>Kontakt</h1>
+                <h1 data-i18n="page-contact-hero">Kontakt</h1>
             </div>
         </div>
     </section>
@@ -77,7 +78,7 @@
             <!-- Replaced grid with flex container for more reliable centering -->
             <div class="center-container">
                 <div class="card reveal centered-card">
-                    <h2 class="card-title">Kontaktdaten</h2>
+                    <h2 data-i18n="contact-card-title" class="card-title">Kontaktdaten</h2>
                     <div class="contact-info">
                         <p><i class="fas fa-envelope"></i> <a href="mailto:goedeke@wiso.uni-koeln.de">goedeke@wiso.uni-koeln.de</a></p>
                         <p><i class="fas fa-university"></i> Universität zu Köln</p>
@@ -101,26 +102,18 @@
             </ul>
             <ul class="footer-links">
                 <li><a href="index.html">Startseite</a></li>
-                <li><a href="projects.html">Projekte</a></li>
-                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
                 <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="projects.html">Projekte</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
                 <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
             </ul>
         </div>
     </footer>
 
-    <!-- Back to top button -->
-    <button class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Theme toggle -->
-    <button class="theme-toggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </button>
-
-    <!-- JavaScript -->
+    <button class="back-to-top" aria-label="Nach oben"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Dunkelmodus umschalten"><i class="fas fa-moon"></i></button>
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

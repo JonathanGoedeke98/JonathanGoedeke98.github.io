@@ -90,13 +90,14 @@
             </button>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="projects.html">Projekte</a></li>
-                    <li><a href="theses.html" class="active">Wissenschaftliche Arbeiten</a></li>
-                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="index.html"><span data-i18n="nav-home">Startseite</span></a></li>
+                    <li><a href="application-data-science-public-security.html"><span data-i18n="nav-application">Bewerbungsportfolio</span></a></li>
+                    <li><a href="theses.html" class="active"><span data-i18n="nav-academic">Wissenschaftliche Arbeiten</span></a></li>
+                    <li><a href="projects.html"><span data-i18n="nav-projects">Projekte</span></a></li>
+                    <li><a href="contact.html"><span data-i18n="nav-contact">Kontakt</span></a></li>
                 </ul>
             </nav>
+            <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">EN</button>
         </div>
     </header>
 
@@ -634,9 +635,9 @@
             </ul>
             <ul class="footer-links">
                 <li><a href="index.html">Startseite</a></li>
-                <li><a href="projects.html">Projekte</a></li>
-                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
                 <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="projects.html">Projekte</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
                 <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
             </ul>
@@ -645,6 +646,7 @@
 
     <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
     <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

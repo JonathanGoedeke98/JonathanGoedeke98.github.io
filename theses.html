@@ -25,21 +25,22 @@
             </button>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="projects.html">Projekte</a></li>
-                    <li><a href="theses.html" class="active">Wissenschaftliche Arbeiten</a></li>
-                    <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="index.html"><span data-i18n="nav-home">Startseite</span></a></li>
+                    <li><a href="application-data-science-public-security.html"><span data-i18n="nav-application">Bewerbungsportfolio</span></a></li>
+                    <li><a href="theses.html" class="active"><span data-i18n="nav-academic">Wissenschaftliche Arbeiten</span></a></li>
+                    <li><a href="projects.html"><span data-i18n="nav-projects">Projekte</span></a></li>
+                    <li><a href="contact.html"><span data-i18n="nav-contact">Kontakt</span></a></li>
                 </ul>
             </nav>
+            <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">EN</button>
         </div>
     </header>
 
     <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content animate-fade-in">
-                <h1>Wissenschaftliche Arbeiten</h1>
-                <p>Maschinelles Lernen, statistische Modellierung, Kausalinferenz und Datenanalyse &mdash; Universität zu Köln und LSE</p>
+                <h1 data-i18n="page-theses-hero-title">Wissenschaftliche Arbeiten</h1>
+                <p data-i18n="page-theses-hero-desc">Maschinelles Lernen, statistische Modellierung, Kausalinferenz und Datenanalyse: Universität zu Köln und LSE.</p>
             </div>
         </div>
     </section>
@@ -47,13 +48,13 @@
     <!-- Statistical Theory -->
     <section>
         <div class="container">
-            <h2 class="section-title reveal">Statistische Theorie</h2>
+            <h2 data-i18n="page-theses-section-stat" class="section-title reveal">Statistische Theorie</h2>
 
             <div class="card reveal" style="border-top: 3px solid #f39c12;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
                     <div>
                         <h3 class="publication-title">A Test for the Practical Relevance of Endogeneity in Semiparametric Distribution Regression</h3>
-                        <p class="publication-meta">MSc Thesis | University of Cologne &mdash; Empirical Methods &amp; Data Analysis | 2026 | Supervised by Prof. Dr. Dominik Wied</p>
+                        <p class="publication-meta">MSc Thesis | University of Cologne, Empirical Methods &amp; Data Analysis | 2026 | Supervised by Prof. Dr. Dominik Wied</p>
                     </div>
                     <span style="background: #f39c12; color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; white-space: nowrap;"><i class="fas fa-flask" style="margin-right: 0.3rem;"></i>Forschungsarbeit in Vorbereitung</span>
                 </div>
@@ -79,14 +80,14 @@
     <!-- Quantitative Papers -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <h2 class="section-title reveal">Quantitative Politikanalyse</h2>
+            <h2 data-i18n="page-theses-section-quant" class="section-title reveal">Quantitative Politikanalyse</h2>
 
             <!-- RDD Paper -->
             <div class="card reveal" style="margin-bottom: 2rem;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
                     <div>
                         <h3 class="publication-title">The Effect of Cash Transfers on Political Support</h3>
-                        <p class="publication-meta">LSE &mdash; Quantitative Methods | 2024</p>
+                        <p class="publication-meta">LSE, Quantitative Methods | 2024</p>
                         <p class="publication-meta">Extension of Manacorda, Miguel &amp; Vigorito (2011), <em>AEJ: Applied Economics</em></p>
                     </div>
                 </div>
@@ -111,7 +112,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
                     <div>
                         <h3 class="publication-title">Distribution Sensitive Policy Analysis based on WELLBYs: Constructing a Prioritarian Social Welfare Function through Causal Evidence on Life Satisfaction</h3>
-                        <p class="publication-meta">MSc Dissertation | LSE &mdash; Behavioural Science | 2024 | Supervised by Dr. Christian Krekel</p>
+                        <p class="publication-meta">MSc Dissertation | LSE, Behavioural Science | 2024 | Supervised by Dr. Christian Krekel</p>
                     </div>
                     <span style="background: var(--secondary-color); color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; white-space: nowrap;">MSc Dissertation</span>
                 </div>
@@ -135,7 +136,7 @@
     <!-- Theory & Philosophy Papers -->
     <section>
         <div class="container">
-            <h2 class="section-title reveal">Verhaltenswissenschaft &amp; Messphilosophie</h2>
+            <h2 data-i18n="page-theses-section-behav" class="section-title reveal">Verhaltenswissenschaft &amp; Messphilosophie</h2>
 
             <div class="card reveal" style="background: linear-gradient(135deg, #f0f4ff, #fef9ec); border-left: 4px solid var(--secondary-color); margin-bottom: 1.5rem;">
                 <p style="font-size: 0.93rem; margin: 0;">A data scientist who understands <strong>why people behave as they do</strong> extracts richer insight from behavioral datasets than one who models patterns alone. This work demonstrates applied knowledge of cognitive mechanisms, decision-making under uncertainty, and the theoretical foundations of behavioral measurement — a direct complement to large-scale data analysis involving human actors.</p>
@@ -145,7 +146,7 @@
                 <!-- Dual Process -->
                 <div class="card reveal">
                     <h3 class="publication-title" style="margin: 0 0 0.4rem;">A Dual-Process Model of Self-Defeating Behaviours</h3>
-                    <p class="publication-meta">LSE &mdash; Fundamentals of Behavioural Science | 2023</p>
+                    <p class="publication-meta">LSE, Fundamentals of Behavioural Science | 2023</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0;">
                         <span style="background-color: var(--secondary-color); color: #fff; padding: 0.15rem 0.55rem; border-radius: 20px; font-size: 0.75rem;">Dual-Process Theory</span>
                         <span style="background-color: var(--secondary-color); color: #fff; padding: 0.15rem 0.55rem; border-radius: 20px; font-size: 0.75rem;">Nudge Theory</span>
@@ -161,7 +162,7 @@
                 <!-- Philosophy -->
                 <div class="card reveal" style="animation-delay: 0.2s;">
                     <h3 class="publication-title" style="margin: 0 0 0.4rem;">Well-Being is Measurable After All: A Case for the Differential Realization View</h3>
-                    <p class="publication-meta">LSE &mdash; Philosophy of Economics | 2024</p>
+                    <p class="publication-meta">LSE, Philosophy of Economics | 2024</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0;">
                         <span style="background-color: var(--secondary-color); color: #fff; padding: 0.15rem 0.55rem; border-radius: 20px; font-size: 0.75rem;">Well-Being Measurement</span>
                         <span style="background-color: var(--secondary-color); color: #fff; padding: 0.15rem 0.55rem; border-radius: 20px; font-size: 0.75rem;">Psychometrics</span>
@@ -180,7 +181,7 @@
     <!-- BSc Work -->
     <section style="background-color: var(--light-color);">
         <div class="container">
-            <h2 class="section-title reveal">Bachelorarbeiten &mdash; Universität zu Köln</h2>
+            <h2 data-i18n="page-theses-section-bsc" class="section-title reveal">Bachelorarbeiten, Universität zu Köln</h2>
             <div class="grid">
                 <div class="card reveal">
                     <h3 class="publication-title">Experimental Measurement of Provided Effort in Medical Processes by Diagnostic Indicator Tasks</h3>
@@ -205,17 +206,18 @@
             </ul>
             <ul class="footer-links">
                 <li><a href="index.html">Startseite</a></li>
-                <li><a href="projects.html">Projekte</a></li>
-                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
                 <li><a href="application-data-science-public-security.html">Bewerbungsportfolio</a></li>
+                <li><a href="theses.html">Wissenschaftliche Arbeiten</a></li>
+                <li><a href="projects.html">Projekte</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
                 <li><a href="mailto:goedeke@wiso.uni-koeln.de">E-Mail</a></li>
             </ul>
         </div>
     </footer>
 
-    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button class="back-to-top" aria-label="Nach oben"><i class="fas fa-arrow-up"></i></button>
+    <button class="theme-toggle" aria-label="Dunkelmodus umschalten"><i class="fas fa-moon"></i></button>
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
